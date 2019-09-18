@@ -2,7 +2,17 @@
     "compilerOptions": {
         "experimentalDecorators": true,
         "baseUrl": ".",
-        "paths": {}
+        "paths": {
+            "c/WIPContainer": [
+                "WIPContainer/WIPContainer.js"
+            ],
+            "c/wipContainer": [
+                "wipContainer/wipContainer.js"
+            ],
+            "c/fieldDemoContainer": [
+                "fieldDemoContainer/fieldDemoContainer.js"
+            ]
+        }
     },
     "include": [
         "**/*",

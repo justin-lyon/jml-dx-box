@@ -2,9 +2,46 @@
   <div class="slds-m-around_large">
     <div class="slds-grid slds-gutters slds-wrap">
       <div class="slds-col">
-        <lightning-card title="item 1">
+        <lightning-card title="Default Star Rating">
           <div class="slds-p-horizontal_medium">
-            <p>about item 1</p>
+            <c-star-rating onvalue={handleValue} rating={ratingValue}></c-star-rating>
+          </div>
+          <div slot="footer">
+            Rating: {ratingValue}
+          </div>
+        </lightning-card>
+      </div>
+
+      <div class="slds-col">
+        <lightning-card title="Read Only">
+          <div class="slds-p-horizontal_medium">
+            <c-star-rating rating=3 read-only="true"></c-star-rating>
+          </div>
+          <div slot="footer">
+            Rating: 3
+          </div>
+        </lightning-card>
+      </div>
+
+      <div class="slds-col">
+        <lightning-card title="Max Rating">
+          <div class="slds-p-horizontal_medium">
+            <c-star-rating onvalue={handleValue} rating={ratingValue} max-rating=10></c-star-rating>
+          </div>
+          <div slot="footer">
+            Rating: {ratingValue}
+          </div>
+        </lightning-card>
+      </div>
+
+      <div class="slds-col">
+        <lightning-card title="Colors">
+          <div class="slds-p-horizontal_medium">
+            <c-star-rating onvalue={handleValue} rating={ratingValue} active-color="#ff0000" inactive-color="#0000ff">
+            </c-star-rating>
+          </div>
+          <div slot="footer">
+            Rating: {ratingValue}
           </div>
         </lightning-card>
       </div>

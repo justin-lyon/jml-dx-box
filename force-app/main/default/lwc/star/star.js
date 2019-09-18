@@ -20,7 +20,6 @@ export default class Star extends LightningElement {
     const classes = []
     classes.push('fa fa-star lwc-star')
     classes.push(this.isReadOnly())
-    // classes.push(this.color())
     return classes.join(' ')
   }
 
@@ -30,7 +29,6 @@ export default class Star extends LightningElement {
 
   get color() {
     return 'color:' + (this.star.isActive ? this.activeColor : this.inactiveColor) + ';'
-    // return this.star.isActive ? 'active' : ''
   }
 
   renderedCallback() {

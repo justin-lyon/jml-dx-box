@@ -11,6 +11,15 @@
             ],
             "c/star": [
                 "star/star.js"
+            ],
+            "c/WIPContainer": [
+                "WIPContainer/WIPContainer.js"
+            ],
+            "c/wipContainer": [
+                "wipContainer/wipContainer.js"
+            ],
+            "c/fieldDemoContainer": [
+                "fieldDemoContainer/fieldDemoContainer.js"
             ]
         }
     },

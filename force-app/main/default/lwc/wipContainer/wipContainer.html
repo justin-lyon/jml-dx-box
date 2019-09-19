@@ -1,10 +1,15 @@
 <template>
   <div class="slds-m-around_large">
     <div class="slds-grid slds-gutters slds-wrap">
-      <div class="slds-col">
-        <lightning-card title="item 1">
+      <div class="slds-col slds-size_1-of-3">
+        <lightning-card title="Default Star Rating">
           <div class="slds-p-horizontal_medium">
-            <p>about item 1</p>
+            <c-star-rating
+              onvalue={handleValue}
+              rating={ratingValue} ></c-star-rating>
+          </div>
+          <div slot="footer">
+            Rating: {ratingValue}
           </div>
         </lightning-card>
       </div>

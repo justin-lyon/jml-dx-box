@@ -3,14 +3,17 @@
         "experimentalDecorators": true,
         "baseUrl": ".",
         "paths": {
-            "c/WIPContainer": [
-                "WIPContainer/WIPContainer.js"
+            "c/fieldDemoContainer": [
+                "fieldDemoContainer/fieldDemoContainer.js"
+            ],
+            "c/star": [
+                "star/star.js"
+            ],
+            "c/starRating": [
+                "starRating/starRating.js"
             ],
             "c/wipContainer": [
                 "wipContainer/wipContainer.js"
-            ],
-            "c/fieldDemoContainer": [
-                "fieldDemoContainer/fieldDemoContainer.js"
             ]
         }
     },

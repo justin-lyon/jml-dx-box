@@ -11,11 +11,15 @@
     <label>LWC Demo</label>
     <navType>Console</navType>
     <tabs>standard-home</tabs>
+    <tabs>Base_Demo</tabs>
     <tabs>Field_Demo</tabs>
     <tabs>WIP</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>LWC_Demo_UtilityBar</utilityBar>
     <workspaceConfig>
+        <mappings>
+            <tab>Base_Demo</tab>
+        </mappings>
         <mappings>
             <tab>Field_Demo</tab>
         </mappings>

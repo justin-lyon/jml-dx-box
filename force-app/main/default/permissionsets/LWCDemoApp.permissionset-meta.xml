@@ -7,6 +7,10 @@
     <hasActivationRequired>false</hasActivationRequired>
     <label>LWC Demo App</label>
     <tabSettings>
+        <tab>Base_Demo</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
         <tab>Field_Demo</tab>
         <visibility>Visible</visibility>
     </tabSettings>

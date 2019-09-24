@@ -3,6 +3,9 @@
         "experimentalDecorators": true,
         "baseUrl": ".",
         "paths": {
+            "c/baseDemoContainer": [
+                "baseDemoContainer/baseDemoContainer.js"
+            ],
             "c/fieldDemoContainer": [
                 "fieldDemoContainer/fieldDemoContainer.js"
             ],

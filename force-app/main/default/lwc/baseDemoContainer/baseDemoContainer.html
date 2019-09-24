@@ -1,0 +1,142 @@
+<template>
+  <div class="slds-m-around_large">
+    <div class="slds-grid slds-gutters slds-wrap">
+      <div class="slds-col slds-p-top_medium slds-size_1-of-3">
+        <lightning-card title="Combobox">
+          <div class="slds-p-horizontal_medium">
+            <lightning-combobox
+              value={cbSelected}
+              options={cbOptions}
+              onchange={cbHandleChange} ></lightning-combobox>
+          </div>
+          <div slot="footer">
+            Selected: {cbSelected}
+          </div>
+        </lightning-card>
+      </div>
+
+      <div class="slds-col slds-p-top_medium slds-size_1-of-3">
+        <lightning-card title="Dual Listbox">
+          <div class="slds-p-horizontal_medium">
+            <lightning-dual-listbox
+              name="languages"
+              label="Languages"
+              source-label="Available"
+              selected-label="Selected"
+              field-level-help="This is a dual listbox"
+              options={dlOptions}
+              onchange={dlHandleChange}></lightning-dual-listbox>
+          </div>
+          <div slot="footer">
+            Selected: {dlSelected}
+          </div>
+        </lightning-card>
+      </div>
+
+      <div class="slds-col slds-p-top_medium slds-size_1-of-3">
+        <lightning-card title="File Upload">
+          <div class="slds-p-horizontal_medium">
+            <lightning-file-upload
+              label="Attach a PDF"
+              name="fileUploader"
+              accept=".pdf"
+              record-id={currentUserId}
+              onuploadfinished={handleUploadFinished}
+              multiple></lightning-file-upload>
+          </div>
+          <div slot="footer">
+            <div if:true={isUploaded}>
+              <lightning-icon
+                icon-name="utility:success"
+                variant="success" ></lightning-icon>
+            </div>
+          </div>
+        </lightning-card>
+      </div>
+
+      <div class="slds-col slds-p-top_medium slds-size_1-of-3">
+        <lightning-card title="Formatted Address">
+          <div class="slds-p-horizontal_medium">
+            <lightning-formatted-address
+              street="5080 Spectrum Dr, Suite 650E"
+              city="Addison"
+              country="US"
+              province="TX"
+              postal-code="75001"
+              show-static-map></lightning-formatted-address>
+          </div>
+        </lightning-card>
+      </div>
+
+      <div class="slds-col slds-p-top_medium slds-size_1-of-3">
+        <lightning-card title="Formatted Date-time">
+          <div class="slds-p-horizontal_medium">
+            <lightning-formatted-date-time
+              value={now}
+              year="numeric"
+              month="short"
+              day="2-digit"
+              hour="numeric"
+              weekday="long" ></lightning-formatted-date-time>
+          </div>
+        </lightning-card>
+      </div>
+
+      <div class="slds-col slds-p-top_medium slds-size_1-of-3">
+        <lightning-card title="Input">
+          <div class="slds-p-horizontal_medium">
+            <lightning-input
+              name="search-demo"
+              label="Search"
+              type="search"
+              onkeyup={onSearchKeyup}></lightning-input>
+          </div>
+          <div slot="footer">
+            Searching for: {searchTerm}
+          </div>
+        </lightning-card>
+      </div>
+
+      <div class="slds-col slds-p-top_medium slds-size_1-of-3">
+        <lightning-card title="Map">
+          <div class="slds-p-horizontal_medium">
+            <lightning-map
+              markers-title={markersTitle}
+              map-markers={mapMarkers}></lightning-map>
+          </div>
+        </lightning-card>
+      </div>
+
+      <div class="slds-col slds-p-top_medium slds-size_1-of-3">
+        <lightning-card title="Radio Group">
+          <div class="slds-p-horizontal_medium">
+            <lightning-radio-group
+              name="radio-group"
+              label="Best Friend"
+              options={rgOptions}
+              value={rgSelected}
+              onchange={rgChanged}
+              type="radio" ></lightning-radio-group>
+          </div>
+          <div slot="footer">
+            Selected: {rgSelected}
+          </div>
+        </lightning-card>
+      </div>
+
+      <div class="slds-col slds-p-top_medium slds-size_1-of-3">
+        <lightning-card title="Slider">
+          <div class="slds-p-horizontal_medium">
+            <lightning-slider
+              label="Volume"
+              value={volume}
+              onchange={onVolumeChanged} ></lightning-slider>
+          </div>
+          <div slot="footer">
+            Volume: {volume}
+          </div>
+        </lightning-card>
+      </div>
+    </div>
+  </div>
+</template>

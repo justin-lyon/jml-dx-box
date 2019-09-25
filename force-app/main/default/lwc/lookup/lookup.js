@@ -14,10 +14,11 @@ export default class Lookup extends LightningElement {
       .then(data => {
         console.log('got data', JSON.parse(JSON.stringify(data)))
         console.log('got data', JSON.parse(data))
-        this.records = ...data;
-        this.records = data.map(obj => {
-          return ...obj
-        })
+        const newData = JSON.parse(data)
+        this.records = newData.reduce((acc, val) => {
+          console.log('val', val)
+          return acc.concat(...val)
+        }, [])
         console.log('records', JSON.stringify(this.records))
       })
       .catch(error => {
@@ -32,7 +33,7 @@ export default class Lookup extends LightningElement {
 
     if (this.searchTerm.length > 2) {
       this.search()
-    } else if (this.searchTerm.length == 0) {
+    } else if (this.searchTerm.length === 0) {
       this.records = []
     }
   }

@@ -2,14 +2,9 @@
   <div class="slds-m-around_large">
     <div class="slds-grid slds-gutters slds-wrap">
       <div class="slds-col slds-size_1-of-3">
-        <lightning-card title="Default Star Rating">
+        <lightning-card title="Lookup Search">
           <div class="slds-p-horizontal_medium">
-            <c-star-rating
-              onvalue={handleValue}
-              rating={ratingValue} ></c-star-rating>
-          </div>
-          <div slot="footer">
-            Rating: {ratingValue}
+            <c-lookup></c-lookup>
           </div>
         </lightning-card>
       </div>

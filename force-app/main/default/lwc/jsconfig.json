@@ -9,6 +9,9 @@
             "c/fieldDemoContainer": [
                 "fieldDemoContainer/fieldDemoContainer.js"
             ],
+            "c/lookup": [
+                "lookup/lookup.js"
+            ],
             "c/star": [
                 "star/star.js"
             ],

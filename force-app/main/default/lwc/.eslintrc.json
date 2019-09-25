@@ -1,3 +1,11 @@
 {
-  "extends": ["@salesforce/eslint-config-lwc/recommended"]
+  "parser": "babel-eslint",
+  "plugins": ["@lwc/eslint-plugin-lwc"],
+  "extends": ["@salesforce/eslint-config-lwc/recommended"],
+  "env": {
+    "es6": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 9
+  }
 }

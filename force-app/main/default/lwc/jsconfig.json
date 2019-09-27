@@ -20,6 +20,12 @@
             ],
             "c/wipContainer": [
                 "wipContainer/wipContainer.js"
+            ],
+            "c/listbox": [
+                "listbox/listbox.js"
+            ],
+            "c/listboxItem": [
+                "listboxItem/listboxItem.js"
             ]
         }
     },

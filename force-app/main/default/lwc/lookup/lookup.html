@@ -1,21 +1,23 @@
 <template>
-    <lightning-input
-      type="search"
-      label="Search"
-      value={searchTerm}
-      onchange={onChange}
-      pattern="[a-zA-Z]*"></lightning-input>
+  <div class="slds-combobox_container">
+    <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click"
+      aria-expanded="false"
+      aria-haspopup="listbox"
+      role="combobox">
 
-    <div if:true={hasRecords} class="listbox">
-      <ul>
-        <template for:item="record" for:each={records} >
-          <li key={record.Id}>
-            <lightning-tile label={record.Name}>
-              <lightning-icon slot="media" icon-name="standard:account"></lightning-icon>
-              <p>{record.Description}</p>
-            </lightning-tile>
-          </li>
-        </template>
-      </ul>
+      <lightning-input
+        type="search"
+        label="Search"
+        value={searchTerm}
+        onchange={onChange}
+        pattern="[a-zA-Z]*"></lightning-input>
+
+      <c-listbox
+        records={records}
+        title={title}
+        context={context}
+        icon-name={iconName} ></c-listbox>
+
     </div>
+  </div>
 </template>

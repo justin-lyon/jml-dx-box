@@ -1,12 +1,13 @@
 public with sharing class LookupAuraService {
 
-	@AuraEnabled
+	@AuraEnabled(cacheable=true)
 	public static String getRecords(Searchable searcher) {
 		System.debug(searcher.searchTerm);
 		System.debug(searcher.fieldsByObject);
 		String find = 'FIND\'' + searcher.searchTerm + '*\' IN ALL FIELDS';
 		String returning = 'RETURNING ' + getReturning(searcher.fieldsByObject);
-		String query = find + ' ' + returning;
+		String limitter = 'LIMIT ' + 5;
+		String query = find + ' ' + returning + ' ' + limitter;
 		return JSON.serialize(searchRecords(query));
 	}
 

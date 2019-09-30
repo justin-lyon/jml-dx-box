@@ -9,6 +9,12 @@
             "c/fieldDemoContainer": [
                 "fieldDemoContainer/fieldDemoContainer.js"
             ],
+            "c/listbox": [
+                "listbox/listbox.js"
+            ],
+            "c/listboxItem": [
+                "listboxItem/listboxItem.js"
+            ],
             "c/lookup": [
                 "lookup/lookup.js"
             ],
@@ -20,12 +26,6 @@
             ],
             "c/wipContainer": [
                 "wipContainer/wipContainer.js"
-            ],
-            "c/listbox": [
-                "listbox/listbox.js"
-            ],
-            "c/listboxItem": [
-                "listboxItem/listboxItem.js"
             ]
         }
     },

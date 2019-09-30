@@ -1,23 +1,30 @@
 <template>
-  <div class="slds-combobox_container">
+  <!-- <div class="slds-combobox_container">
     <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click"
       aria-expanded="false"
       aria-haspopup="listbox"
-      role="combobox">
+      role="combobox"> -->
 
-      <lightning-input
-        type="search"
-        label="Search"
-        value={searchTerm}
-        onchange={onChange}
-        pattern="[a-zA-Z]*"></lightning-input>
+      <div class="listbox-container">
+        <lightning-input
+          class="searchInput"
+          type="search"
+          label="Search"
+          value={searchTerm}
+          onchange={onChange}
+          onfocus={setFocus}
+          onblur={setFocus}
+          min-length="3"
+          pattern="[a-zA-Z]*"></lightning-input>
 
-      <c-listbox
-        records={records}
-        title={title}
-        context={context}
-        icon-name={iconName} ></c-listbox>
+        <c-listbox
+          records={records}
+          title={title}
+          context={context}
+          icon-name={iconName}
+          active={focused} ></c-listbox>
+      </div>
 
-    </div>
-  </div>
+    <!-- </div>
+  </div> -->
 </template>

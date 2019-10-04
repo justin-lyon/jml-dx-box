@@ -14,4 +14,10 @@ export default class Listbox extends LightningElement {
   get shown () {
     return this.records.length > 0 && this.active
   }
+
+  @api
+  hasElement (el) {
+    console.log('event.target', el)
+    return this.template.contains(el)
+  }
 }

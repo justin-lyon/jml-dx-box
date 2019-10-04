@@ -26,7 +26,7 @@ export default class Lookup extends LightningElement {
 
     console.log('searcher', searcher)
 
-    getRecords({searcher})
+    getRecords({ searcher })
       .then(data => {
         const newData = JSON.parse(data)
         this.records = newData.flat().sort((a, b) => this.sortAlpha(a, b))
@@ -82,6 +82,15 @@ export default class Lookup extends LightningElement {
   }
 
   setFocus (event) {
+    const listbox = this.template.querySelector('c-listbox')
     this.focused = event.type === 'focus'
+
+    if (event.target && listbox.hasElement(event.target)) {
+      this.focused = true
+    }
+  }
+
+  handleSelected (event) {
+    console.log('selected', event.detail)
   }
 }

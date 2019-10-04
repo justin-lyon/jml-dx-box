@@ -1,14 +1,22 @@
 {
-  "parser": "babel-eslint",
-  "plugins": ["@lwc/eslint-plugin-lwc"],
   "extends": ["@salesforce/eslint-config-lwc/recommended"],
   "env": {
     "es6": true
   },
   "parserOptions": {
-    "ecmaVersion": 9
+    "ecmaVersion": 8,
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true
+    }
   },
   "rules": {
-    "semi": [2, "never"]
+    "semi": [2, "never"],
+    "indent": ["error", 2],
+    "object-curly-spacing": ["error", "always"],
+    "array-bracket-spacing": ["error", "always"],
+    "space-before-blocks": ["error", "always"],
+    "keyword-spacing": [ 2, { "before": true, "after": true }],
+    "space-before-function-paren": ["error", "always"],
+    "no-console": [ "error", { "allow": [ "error" ]}]
   }
 }

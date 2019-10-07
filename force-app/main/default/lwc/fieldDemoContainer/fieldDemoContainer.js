@@ -4,6 +4,7 @@ export default class WipContainer extends LightningElement {
   @track ratingValue = 0
   @track accountId
   @track contactId
+  @track contactId2
 
   handleValue (event) {
     this.ratingValue = event.detail
@@ -15,5 +16,9 @@ export default class WipContainer extends LightningElement {
 
   handleContactLookup (event) {
     this.contactId = event.detail
+  }
+
+  handleContactLookup2 (event) {
+    this.contactId2 = event.detail
   }
 }

@@ -13,16 +13,15 @@ public with sharing class LookupAuraService {
 		expr.add('WHERE Id IN (\'' + String.join(new List<Id>(recentIds), '\', \'') + '\')');
 
 		return JSON.serialize(Database.query(String.join(expr, ' ')));
-		// return String.join(expr, ' ');
 	}
 
 	@AuraEnabled(cacheable=true)
 	public static String getRecords(Searchable searcher) {
-		String find = 'FIND \'*' + searcher.searchTerm + '*\' IN ALL FIELDS';
+		String find = 'FIND \'' + String.escapeSingleQuotes(searcher.searchTerm) + '*\' IN ALL FIELDS';
 		String returning = 'RETURNING ' + getReturning(searcher.objectName, searcher.fields);
 		String limitter = 'LIMIT ' + 5;
 		String query = find + ' ' + returning + ' ' + limitter;
-		return JSON.serialize(searchRecords(query));
+		return JSON.serialize(search.query(query));
 	}
 
 	@AuraEnabled(cacheable=true)
@@ -33,10 +32,6 @@ public with sharing class LookupAuraService {
 		expr.add('WHERE Id = \'' + String.escapeSingleQuotes(recordId) + '\'');
 		expr.add('LIMIT 1');
 		return JSON.serialize(Database.query(String.join(expr, ' ')));
-	}
-
-	private static List<List<SObject>> searchRecords(String soslString) {
-		return search.query(soslString);
 	}
 
 	private static String getReturning(String objectName, List<String> fields) {

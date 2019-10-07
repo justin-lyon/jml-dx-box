@@ -5,19 +5,23 @@ export default class Listbox extends LightningElement {
   @api title
   @api context
   @api iconName
-  @api active = false
+  @api activeId
 
   get hasRecords () {
     return this.records.length > 0
   }
 
-  get shown () {
-    return this.records.length > 0 && this.active
+  @api
+  selectItem () {
+    const items = this.template.querySelectorAll('c-listbox-item')
+    items.forEach(item => { item.selectItem() })
   }
 
-  @api
-  hasElement (el) {
-    console.log('event.target', el)
-    return this.template.contains(el)
+  handleSelected (event) {
+    const selected = new CustomEvent('selected', {
+      bubbles: true,
+      detail: event.detail
+    })
+    this.dispatchEvent(selected)
   }
 }

@@ -18,11 +18,21 @@ public with sharing class LookupAuraService {
 
 	@AuraEnabled(cacheable=true)
 	public static String getRecords(Searchable searcher) {
-		String find = 'FIND\'' + searcher.searchTerm + '*\' IN ALL FIELDS';
+		String find = 'FIND \'*' + searcher.searchTerm + '*\' IN ALL FIELDS';
 		String returning = 'RETURNING ' + getReturning(searcher.objectName, searcher.fields);
 		String limitter = 'LIMIT ' + 5;
 		String query = find + ' ' + returning + ' ' + limitter;
 		return JSON.serialize(searchRecords(query));
+	}
+
+	@AuraEnabled(cacheable=true)
+	public static String getSelectedRecord(Id recordId, Searchable searcher) {
+		List<String> expr = new List<String>();
+		expr.add('SELECT ' + String.join(searcher.fields, ', '));
+		expr.add('FROM ' + searcher.objectName);
+		expr.add('WHERE Id = \'' + String.escapeSingleQuotes(recordId) + '\'');
+		expr.add('LIMIT 1');
+		return JSON.serialize(Database.query(String.join(expr, ' ')));
 	}
 
 	private static List<List<SObject>> searchRecords(String soslString) {

@@ -76,30 +76,8 @@ export default class Lookup extends LightningElement {
     return this.error ? this.error.message : ''
   }
 
-  getSearcher () {
-    return {
-      searchTerm: this.inputValue,
-      objectName: this.sobjectName,
-      fields: [ this.title, this.context ]
-    }
-  }
-
-  cycleActive (forwards) {
-    const currentIndex = this.recordIds.indexOf(this.activeId)
-    if (currentIndex === -1 || currentIndex === this.records.length) {
-      this.activeId = this.recordIds[0]
-    } else if (!forwards && currentIndex === 0) {
-      this.activeId = this.recordIds[this.recordIds.length - 1]
-    } else if (forwards) {
-      this.activeId = this.recordIds[currentIndex + 1]
-    } else {
-      this.activeId = this.recordIds[currentIndex - 1]
-    }
-  }
-
-  selectItem () {
-    const listbox = this.template.querySelector('c-listbox')
-    listbox.selectItem()
+  connectedCallback () {
+    this.requestRecent()
   }
 
   onKeyup (event) {
@@ -130,6 +108,24 @@ export default class Lookup extends LightningElement {
     }
   }
 
+  setFocus (event) {
+    this.focused = event.type === 'focus'
+  }
+
+  handleSelected (event) {
+    this.selected = event.detail
+    this.fireSelected()
+    this.getSelected()
+  }
+
+  getSearcher () {
+    return {
+      searchTerm: this.inputValue,
+      objectName: this.sobjectName,
+      fields: [ this.title, this.context ]
+    }
+  }
+
   search () {
     const searcher = this.getSearcher()
     this.error = null
@@ -152,10 +148,6 @@ export default class Lookup extends LightningElement {
     this.delaySearch = setTimeout(() => {
       this.search()
     }, 300)
-  }
-
-  connectedCallback () {
-    this.requestRecent()
   }
 
   requestRecent () {
@@ -181,16 +173,6 @@ export default class Lookup extends LightningElement {
     if (aName > bName) return 1
 
     return 0
-  }
-
-  setFocus (event) {
-    this.focused = event.type === 'focus'
-  }
-
-  handleSelected (event) {
-    this.selected = event.detail
-    this.fireSelected()
-    this.getSelected()
   }
 
   getSelected () {
@@ -227,5 +209,23 @@ export default class Lookup extends LightningElement {
       detail: this.selected
     })
     this.dispatchEvent(selected)
+  }
+
+  cycleActive (forwards) {
+    const currentIndex = this.recordIds.indexOf(this.activeId)
+    if (currentIndex === -1 || currentIndex === this.records.length) {
+      this.activeId = this.recordIds[0]
+    } else if (!forwards && currentIndex === 0) {
+      this.activeId = this.recordIds[this.recordIds.length - 1]
+    } else if (forwards) {
+      this.activeId = this.recordIds[currentIndex + 1]
+    } else {
+      this.activeId = this.recordIds[currentIndex - 1]
+    }
+  }
+
+  selectItem () {
+    const listbox = this.template.querySelector('c-listbox')
+    listbox.selectItem()
   }
 }

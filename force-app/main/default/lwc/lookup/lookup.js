@@ -137,7 +137,7 @@ export default class Lookup extends LightningElement {
         this.recordIds = this.getRecordIds()
       })
       .catch(error => {
-        console.error('Error searching records: ', JSON.parse(JSON.stringify(error)))
+        console.error('Error searching records: ', error)
         this.error = error
       })
   }
@@ -160,7 +160,7 @@ export default class Lookup extends LightningElement {
         this.recordIds = this.getRecordIds()
       })
       .catch(error => {
-        console.error('Error requesting recents', JSON.parse(JSON.stringify(error)))
+        console.error('Error requesting recents', error)
         this.error = error
       })
   }

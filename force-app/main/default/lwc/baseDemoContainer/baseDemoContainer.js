@@ -15,7 +15,7 @@ export default class BaseDemoContainer extends LightningElement {
     ]
   }
 
-  cbHandleChange ({detail}) {
+  cbHandleChange ({ detail }) {
     this.cbSelected = detail.value
   }
 
@@ -38,7 +38,7 @@ export default class BaseDemoContainer extends LightningElement {
     return this._dlSelected.length ? this._dlSelected : 'none'
   }
 
-  dlHandleChange ({detail}) {
+  dlHandleChange ({ detail }) {
     this._dlSelected = detail.value
   }
 
@@ -113,14 +113,14 @@ export default class BaseDemoContainer extends LightningElement {
     ]
   }
 
-  rgChanged ({detail}) {
+  rgChanged ({ detail }) {
     this.rgSelected = detail.value
   }
 
   // Slider
   @track volume = 10
 
-  onVolumeChanged ({detail}) {
+  onVolumeChanged ({ detail }) {
     this.volume = detail.value
   }
 }

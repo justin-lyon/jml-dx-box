@@ -9,6 +9,15 @@
             "c/fieldDemoContainer": [
                 "fieldDemoContainer/fieldDemoContainer.js"
             ],
+            "c/listbox": [
+                "listbox/listbox.js"
+            ],
+            "c/listboxItem": [
+                "listboxItem/listboxItem.js"
+            ],
+            "c/lookup": [
+                "lookup/lookup.js"
+            ],
             "c/star": [
                 "star/star.js"
             ],

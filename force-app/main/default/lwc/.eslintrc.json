@@ -18,5 +18,8 @@
     "keyword-spacing": [ 2, { "before": true, "after": true }],
     "space-before-function-paren": ["error", "always"],
     "no-console": [ "error", { "allow": [ "error" ]}]
+  },
+  "globals": {
+    "L": "readonly"
   }
 }

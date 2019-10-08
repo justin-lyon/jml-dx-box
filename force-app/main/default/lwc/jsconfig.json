@@ -9,6 +9,9 @@
             "c/fieldDemoContainer": [
                 "fieldDemoContainer/fieldDemoContainer.js"
             ],
+            "c/leafletMap": [
+                "leafletMap/leafletMap.js"
+            ],
             "c/listbox": [
                 "listbox/listbox.js"
             ],
@@ -26,6 +29,12 @@
             ],
             "c/wipContainer": [
                 "wipContainer/wipContainer.js"
+            ],
+            "c/Leaflet": [
+                "../staticresources/Leaflet/Leaflet.js"
+            ],
+            "c/RecentContactsMap": [
+                "RecentContactsMap/RecentContactsMap.js"
             ]
         }
     },

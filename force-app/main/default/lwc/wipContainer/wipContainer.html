@@ -1,16 +1,18 @@
 <template>
   <div class="slds-m-around_large">
     <div class="slds-grid slds-gutters slds-wrap">
+
       <div class="slds-col slds-size_1-of-3">
-        <lightning-card title="Lookup Search">
+        <lightning-card title="Leaflet Map">
           <div class="slds-p-horizontal_medium">
-            <c-lookup sobject-name="Account"
-              title="Name"
-              context="Phone"
-              icon-name="standard:account"></c-lookup>
+            <c-leaflet-map class="wip-map"
+              height="25rem"
+              oninit={onMapInit}
+              onmarkerclick={onMarkerClick}></c-leaflet-map>
           </div>
         </lightning-card>
       </div>
+
     </div>
   </div>
 </template>

@@ -21,6 +21,9 @@
             "c/lookup": [
                 "lookup/lookup.js"
             ],
+            "c/recentContactsMap": [
+                "recentContactsMap/recentContactsMap.js"
+            ],
             "c/star": [
                 "star/star.js"
             ],
@@ -32,9 +35,6 @@
             ],
             "c/Leaflet": [
                 "../staticresources/Leaflet/Leaflet.js"
-            ],
-            "c/RecentContactsMap": [
-                "RecentContactsMap/RecentContactsMap.js"
             ]
         }
     },

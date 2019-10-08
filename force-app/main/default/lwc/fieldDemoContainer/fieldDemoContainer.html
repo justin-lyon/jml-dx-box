@@ -1,7 +1,7 @@
 <template>
   <div class="slds-m-around_large">
     <div class="slds-grid slds-gutters slds-wrap">
-      <div class="slds-col slds-size_1-of-4 slds-p-top_medium">
+      <div class="slds-col slds-size_1-of-4">
         <lightning-card title="Default Star Rating">
           <div class="slds-p-horizontal_medium">
             <c-star-rating onvalue={handleValue} rating={ratingValue}></c-star-rating>
@@ -12,7 +12,7 @@
         </lightning-card>
       </div>
 
-      <div class="slds-col slds-size_1-of-4 slds-p-top_medium">
+      <div class="slds-col slds-size_1-of-4">
         <lightning-card title="Read Only">
           <div class="slds-p-horizontal_medium">
             <c-star-rating rating=3 read-only="true"></c-star-rating>
@@ -23,7 +23,7 @@
         </lightning-card>
       </div>
 
-      <div class="slds-col slds-size_1-of-4 slds-p-top_medium">
+      <div class="slds-col slds-size_1-of-4">
         <lightning-card title="Max Rating">
           <div class="slds-p-horizontal_medium">
             <c-star-rating onvalue={handleValue} rating={ratingValue} max-rating=10></c-star-rating>
@@ -34,7 +34,7 @@
         </lightning-card>
       </div>
 
-      <div class="slds-col slds-size_1-of-4 slds-p-top_medium">
+      <div class="slds-col slds-size_1-of-4">
         <lightning-card title="Colors">
           <div class="slds-p-horizontal_medium">
             <c-star-rating onvalue={handleValue} rating={ratingValue} active-color="#ff0000" inactive-color="#0000ff">
@@ -90,6 +90,28 @@
           </div>
         </lightning-card>
       </div>
+
+      <div class="slds-col slds-size_1-of-3 slds-p-top_medium">
+        <lightning-card title="Leaflet Map">
+          <div class="slds-p-horizontal_medium">
+            <c-leaflet-map class="wip-map"
+              height="20rem"
+              oninit={onMapInit}
+              onmarkerclick={onMarkerClick}></c-leaflet-map>
+          </div>
+        </lightning-card>
+      </div>
+
+      <div class="slds-col slds-size_1-of-3 slds-p-top_medium">
+        <lightning-card title="Recent Contacts Map">
+          <div class="slds-p-horizontal_medium">
+            <c-recent-contacts-map
+              height="20rem"
+              onmarkerclick={onMarkerClick}></c-recent-contacts-map>
+          </div>
+        </lightning-card>
+      </div>
+
     </div>
   </div>
 </template>

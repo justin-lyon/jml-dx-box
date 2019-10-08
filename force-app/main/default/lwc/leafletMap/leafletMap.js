@@ -6,6 +6,8 @@ export default class LeafletMap extends LightningElement {
   @track map
   @track markerGroup
 
+  @api height
+
   @api
   setMarkers (pins) {
     this.resetMarkerGroup()
@@ -34,11 +36,11 @@ export default class LeafletMap extends LightningElement {
 
   @api
   sizeMap () {
-    this.map.fitBounds(this.markerGroup.getBounds().pad(0.5))
+    this.map.fitBounds(this.markerGroup.getBounds().pad(0.1))
   }
 
   createMarker (pin) {
-    const marker = L.marker([pin.lat, pin.lng], { record: pin.record })
+    const marker = L.marker([ pin.lat, pin.lng ], { record: pin.record })
     marker.bindTooltip(pin.record.Name)
     return marker
   }
@@ -65,25 +67,26 @@ export default class LeafletMap extends LightningElement {
     ])
       .then(() => {
         const mapEl = this.template.querySelector('.map-root')
+        mapEl.style = 'height: ' + this.height + ';'
         this.map = L.map(mapEl, { zoomControl: false })
-          .setView([32.955740, -96.824257], 14) // Default View
+          .setView([ 32.955740, -96.824257 ], 14) // Default View
         L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',
           {
             attribution: 'Justin Lyon @ Slalom'
-          }).addTo(this.map);
-        this.mapReady()
+          }).addTo(this.map)
+        this.fireMapReady()
       })
       .catch(error => {
         console.error('Error loading leaflet styles', error.message)
       })
   }
 
-  mapReady () {
+  fireMapReady () {
     const init = new CustomEvent('init')
     this.dispatchEvent(init)
   }
 
-  clickMarker (self, {layer}) {
+  clickMarker (self, { layer }) {
     self.fireMarker(layer)
   }
 

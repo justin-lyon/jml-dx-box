@@ -1,3 +1,4 @@
+/* eslint-disable @lwc/lwc/no-async-operation */
 import { LightningElement, track } from 'lwc'
 import { NavigationMixin } from 'lightning/navigation'
 
@@ -41,12 +42,11 @@ export default class WipContainer extends NavigationMixin(LightningElement) {
 
       setTimeout(() => {
         this.removeMarker()
-      }, 1000);
+      }, 1000)
     }, 1000)
   }
 
   onMarkerClick (event) {
-    console.log('markerClicked', event.detail)
     this.gotoRecord(event.detail)
   }
 

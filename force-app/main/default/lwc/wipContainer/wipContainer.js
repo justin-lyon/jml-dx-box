@@ -6,12 +6,12 @@ export default class WipContainer extends NavigationMixin(LightningElement) {
   @track map
   pins = [
     {
-      record: { Name: 'Slalom Dallas', Id: '0015400000NjnGwAAJ' },
+      record: { Name: 'Slalom Dallas', Id: '0015400000NjnGEAAZ' },
       lat: 32.955740,
       lng: -96.824257
     },
     {
-      record: { Name: 'Dallas House of Blues', Id: '0015400000NjnGEAAZ' },
+      record: { Name: 'Dallas House of Blues', Id: '0015400000NjnGwAAJ' },
       lat: 32.785327,
       lng: -96.808264
     },

@@ -29,3 +29,6 @@ $RECYCLE.BIN/
 
 # editor settings
 .vscode/
+
+# chore folders
+manifest/

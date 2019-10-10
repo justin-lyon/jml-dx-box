@@ -35,6 +35,9 @@
             ],
             "c/Leaflet": [
                 "../staticresources/Leaflet/Leaflet.js"
+            ],
+            "c/metadataPicker": [
+                "metadataPicker/metadataPicker.js"
             ]
         }
     },

@@ -30,10 +30,6 @@ export default class WipContainer extends NavigationMixin(LightningElement) {
 
   @track rockwallMarker
 
-  handleValue (event) {
-    this.ratingValue = event.detail
-  }
-
   onMapInit () {
     this.map = this.template.querySelector('.wip-map')
     this.setMapRecords()

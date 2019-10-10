@@ -26,8 +26,12 @@ export default class Lookup extends LightningElement {
   @api title = 'Name'
   @api context = 'Id'
 
+  connectedCallback () {
+    this.requestRecent()
+  }
+
   get isReadOnly () {
-    return this.record ? true : false
+    return this.record
   }
 
   get showListbox () {
@@ -76,10 +80,6 @@ export default class Lookup extends LightningElement {
     return this.error ? this.error.message : ''
   }
 
-  connectedCallback () {
-    this.requestRecent()
-  }
-
   onKeyup (event) {
     this.inputValue = event.target.value
     this.error = null
@@ -108,22 +108,10 @@ export default class Lookup extends LightningElement {
     }
   }
 
-  setFocus (event) {
-    this.focused = event.type === 'focus'
-  }
-
   handleSelected (event) {
     this.selected = event.detail
     this.fireSelected()
     this.getSelected()
-  }
-
-  getSearcher () {
-    return {
-      searchTerm: this.inputValue,
-      objectName: this.sobjectName,
-      fields: [ this.title, this.context ]
-    }
   }
 
   search () {
@@ -165,16 +153,6 @@ export default class Lookup extends LightningElement {
       })
   }
 
-  sortAlpha (a, b) {
-    const aName = a[this.title].toLowerCase()
-    const bName = b[this.title].toLowerCase()
-
-    if (aName < bName) return -1
-    if (aName > bName) return 1
-
-    return 0
-  }
-
   getSelected () {
     const searcher = this.getSearcher()
     this.error = null
@@ -200,10 +178,6 @@ export default class Lookup extends LightningElement {
     this.fireSelected()
   }
 
-  getRecordIds () {
-    return this.records.map(record => record.Id)
-  }
-
   fireSelected () {
     const selected = new CustomEvent('selected', {
       detail: this.selected
@@ -227,5 +201,31 @@ export default class Lookup extends LightningElement {
   selectItem () {
     const listbox = this.template.querySelector('c-listbox')
     listbox.selectItem()
+  }
+
+  setFocus (event) {
+    this.focused = event.type === 'focus'
+  }
+
+  getSearcher () {
+    return {
+      searchTerm: this.inputValue,
+      objectName: this.sobjectName,
+      fields: [ this.title, this.context ]
+    }
+  }
+
+  getRecordIds () {
+    return this.records.map(record => record.Id)
+  }
+
+  sortAlpha (a, b) {
+    const aName = a[this.title].toLowerCase()
+    const bName = b[this.title].toLowerCase()
+
+    if (aName < bName) return -1
+    if (aName > bName) return 1
+
+    return 0
   }
 }

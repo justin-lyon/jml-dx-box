@@ -6,10 +6,19 @@
         <lightning-card title="Custom Metadata Picker">
           <div class="slds-p-horizontal_medium">
             <fieldset class="slds-box" >
-              <legend class="slds-p-horizontal_small slds-text-color_weak" >Legendary</legend>
+              <legend class="slds-p-horizontal_small slds-text-color_weak" >Dragons</legend>
 
               <c-metadata-finder
-                status-options={options}></c-metadata-finder>
+                combo-label="Size Filter"
+                picker-label="Search"
+                icon-name="utility:setup"
+                placeholder="Search Dragons..."
+                mdt-name="Dragon__mdt"
+                title="MasterLabel"
+                context="Size__c"
+                filter-by="Size__c"
+                filter-options={options}
+                onselected={handleMdtSelected}></c-metadata-finder>
             </fieldset>
           </div>
 

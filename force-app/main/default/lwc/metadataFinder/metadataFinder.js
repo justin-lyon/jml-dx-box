@@ -3,15 +3,18 @@ import { LightningElement, api, track } from 'lwc'
 export default class WipContainer extends LightningElement {
   @track mdtId = ''
   @track selectedStatus = ''
-  @track placeholder = 'Select One...'
+  @track filterTest = 'Account'
 
-  @api legend = 'MDT Picker'
-  @api comboLabel = 'Trigger Status'
-  @api pickerLabel = 'Trigger Picker'
+  @api comboLabel = ''
+  @api pickerLabel = ''
+  @api iconName = 'utility:setup'
+  @api placeholder = 'Search...'
 
-  @api statusOptions = []
+  @api mdtName = ''
+  @api title = 'MasterLabel'
+  @api context = 'Id'
+  @api filterOptions = []
   @api filterBy = 'MasterLabel'
-  @api filterTest = 'Account'
 
   handleStatusSelected (event) {
     this.selectedStatus = event.target.value

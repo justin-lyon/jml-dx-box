@@ -4,10 +4,9 @@ import { NavigationMixin } from 'lightning/navigation'
 export default class WipContainer extends NavigationMixin(LightningElement) {
   @track mdtId
   @track options = [
-    { label: 'User', value: 'user' },
-    { label: 'Account', value: 'account' },
-    { label: 'Case', value: 'case' },
-    { label: 'Contact', value: 'contact' },
+    { label: 'Small', value: 'small' },
+    { label: 'Medium', value: 'medium' },
+    { label: 'Large', value: 'large' }
   ]
 
   handleMdtSelected (event) {

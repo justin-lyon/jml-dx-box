@@ -3,7 +3,7 @@ import { LightningElement, api } from 'lwc'
 export default class Listbox extends LightningElement {
   @api records
   @api title
-  @api context
+  @api subtitle
   @api iconName
   @api activeId
 

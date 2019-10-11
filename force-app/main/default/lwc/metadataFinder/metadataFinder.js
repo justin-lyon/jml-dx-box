@@ -1,4 +1,6 @@
 import { LightningElement, api, track } from 'lwc'
+import { getPicklistValues } from 'lightning/uiObjectInfoApi'
+import FIELD_NAME from '@salesforce/schema/Dragon__mdt.Size__c'
 
 export default class WipContainer extends LightningElement {
   @track mdtId = ''
@@ -12,9 +14,13 @@ export default class WipContainer extends LightningElement {
 
   @api mdtName = ''
   @api title = 'MasterLabel'
-  @api context = 'Id'
+  @api subtitle = 'Id'
   @api filterOptions = []
   @api filterBy = 'MasterLabel'
+
+  connectedCallback () {
+    console.log('fieldName', FIELD_NAME)
+  }
 
   handleStatusSelected (event) {
     this.selectedStatus = event.target.value

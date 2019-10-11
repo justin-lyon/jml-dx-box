@@ -3,7 +3,7 @@ import { LightningElement, api } from 'lwc'
 export default class ListboxItem extends LightningElement {
   @api record
   @api title
-  @api context
+  @api subtitle
   @api iconName
   @api activeId
 
@@ -13,7 +13,7 @@ export default class ListboxItem extends LightningElement {
   }
 
   get label () { return this.record[this.title] }
-  get subLabel () { return this.record[this.context] }
+  get subLabel () { return this.record[this.subtitle] }
   get isActive () { return this.activeId === this.record.Id }
 
   get itemClasses () {

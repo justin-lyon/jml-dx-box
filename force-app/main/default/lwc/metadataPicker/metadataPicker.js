@@ -26,7 +26,7 @@ export default class Lookup extends LightningElement {
 
   @api mdtName
   @api title = 'Name'
-  @api context = 'Id'
+  @api subtitle = 'Id'
   @api filterBy = ''
   @api filterTest
 
@@ -49,7 +49,7 @@ export default class Lookup extends LightningElement {
   get showListbox () { return this.focused && this.records.length > 0 && !this.record }
   get showClear () { return this.record || (!this.record && this.inputValue.length > 0) }
   get hasError () { return this.error ? this.error.message : '' }
-  get mdtFields () { return [ this.title, this.context ] }
+  get mdtFields () { return [ this.title, this.subtitle ] }
 
   get containerClasses () {
     const classes = [ 'slds-combobox_container' ]
@@ -128,7 +128,7 @@ export default class Lookup extends LightningElement {
     getMetadata({
       searchTerm: this.inputValue,
       metadataName: this.mdtName,
-      mdtFields: [ this.title, this.context ] })
+      mdtFields: [ this.title, this.subtitle ] })
       .then(data => {
         const newData = JSON.parse(data)
         this.records = newData.flat().sort((a, b) => this.sortAlpha(a, b))
@@ -162,7 +162,7 @@ export default class Lookup extends LightningElement {
       filterBy: this.filterBy,
       filterTest: this.filterTest,
       metadataName: this.mdtName,
-      mdtFields: [ this.title, this.context ] })
+      mdtFields: [ this.title, this.subtitle ] })
       .then(data => {
         this.records = JSON.parse(data)
         this.recordIds = this.getRecordIds()

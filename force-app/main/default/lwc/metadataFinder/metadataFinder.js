@@ -1,11 +1,11 @@
 import { LightningElement, api, track } from 'lwc'
-import { getPicklistValues } from 'lightning/uiObjectInfoApi'
-import FIELD_NAME from '@salesforce/schema/Dragon__mdt.Size__c'
+import getPicklistValues from '@salesforce/apex/MetadataFinderAuraService.getPicklistValues'
 
 export default class WipContainer extends LightningElement {
   @track mdtId = ''
   @track selectedStatus = ''
-  @track filterTest = 'Account'
+  @track filterOptions = []
+  @track filterTest = ''
 
   @api comboLabel = ''
   @api pickerLabel = ''
@@ -15,11 +15,24 @@ export default class WipContainer extends LightningElement {
   @api mdtName = ''
   @api title = 'MasterLabel'
   @api subtitle = 'Id'
-  @api filterOptions = []
   @api filterBy = 'MasterLabel'
 
   connectedCallback () {
-    console.log('fieldName', FIELD_NAME)
+    this.fetchFilterOptions()
+  }
+
+  fetchFilterOptions () {
+    getPicklistValues({ mdtName: this.mdtName, fieldName: this.filterBy })
+      .then(data => {
+        if (data.length === 0) {
+          this.filterOptions = [ { label: 'None', value: '' } ]
+          return
+        }
+        this.filterOptions = data
+      })
+      .catch(error => {
+        console.error('error getting ple', error)
+      })
   }
 
   handleStatusSelected (event) {
@@ -30,9 +43,8 @@ export default class WipContainer extends LightningElement {
   }
 
   handleMdtSelected (event) {
-    console.log('finder mdt selected', JSON.parse(JSON.stringify(event.detail)))
     this.mdtId = event.detail ? event.detail.Id : ''
-    this.selectedStatus = event.detail && event.detail[this.filterBy] ? event.detail[this.filterBy].toLowerCase() : this.selectedStatus
+    this.selectedStatus = event.detail && event.detail[this.filterBy] ? event.detail[this.filterBy] : this.selectedStatus
 
     if (event.detail && event.detail.Id) {
       this.fireSelected()

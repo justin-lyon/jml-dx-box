@@ -41,6 +41,9 @@
             ],
             "c/metadataFinder": [
                 "metadataFinder/metadataFinder.js"
+            ],
+            "c/mdtRecordtyper": [
+                "mdtRecordtyper/mdtRecordtyper.js"
             ]
         }
     },

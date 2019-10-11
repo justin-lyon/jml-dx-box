@@ -8,9 +8,9 @@ export default class Listbox extends LightningElement {
   @api activeId
 
   @api
-  selectItem () {
+  selectItem (currentId) {
     const items = this.template.querySelectorAll('c-listbox-item')
-    items.forEach(item => { item.selectItem() })
+    items.forEach(item => { item.selectItem(currentId) })
   }
 
   handleSelected (event) {

@@ -5,7 +5,6 @@
       label={comboLabel}
       value={selectedStatus}
       options={filterOptions}
-      placeholder={placeholder}
       onchange={handleStatusSelected}></lightning-combobox>
 
     <div class="slds-p-top_small">
@@ -17,6 +16,7 @@
         context={context}
         filter-by={filterBy}
         filter-test={filterTest}
+        placeholder={placeholder}
         onselected={handleMdtSelected}></c-metadata-picker>
     </div>
   </div>

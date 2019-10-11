@@ -8,8 +8,8 @@ export default class ListboxItem extends LightningElement {
   @api activeId
 
   @api
-  selectItem () {
-    if (this.isActive) this.clickRecord()
+  selectItem (currentId) {
+    if (this.isActive || currentId === this.record.Id) this.clickRecord()
   }
 
   get label () { return this.record[this.title] }

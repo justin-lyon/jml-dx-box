@@ -114,6 +114,8 @@ export default class Lookup extends LightningElement {
   }
 
   handleSelected (event) {
+    console.log('picker handle selected', event.detail)
+    console.log('records', JSON.parse(JSON.stringify(this.records)))
     this.selected = event.detail
     this.record = this.records.find(record => record.Id === this.selected)
     this.inputValue = this.record[this.title]
@@ -204,12 +206,12 @@ export default class Lookup extends LightningElement {
   selectItem () {
     if (this.activeId === '' || !this.recordIds.includes(this.activeId)) {
       this.activeId = this.records[0].Id
-      this.record = this.records[0]
-      this.inputValue = this.record[this.title]
+      // this.record = this.records[0]
+      // this.inputValue = this.record[this.title]
     }
 
     const listbox = this.template.querySelector('c-listbox')
-    listbox.selectItem()
+    listbox.selectItem(this.activeId)
   }
 
   setFocus (event) {

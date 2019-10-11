@@ -1,0 +1,23 @@
+<template>
+  <div>
+    <lightning-combobox
+      name="statusPicker"
+      label="Trigger Status"
+      value={selectedStatus}
+      options={statusOptions}
+      placeholder={placeholder}
+      onchange={handleStatusSelected}></lightning-combobox>
+
+    <div class="slds-p-top_small">
+      <c-metadata-picker
+        mdt-name="TriggerBypass__mdt"
+        icon-name="utility:setup"
+        field-label="Trigger Bypass Picker"
+        title="MasterLabel"
+        context="IsActive__c"
+        filter-by={filterBy}
+        filter-test={filterTest}
+        onselected={handleMdtSelected}></c-metadata-picker>
+    </div>
+  </div>
+</template>

@@ -1,3 +1,4 @@
+/* eslint-disable @lwc/lwc/no-async-operation */
 import { LightningElement, api, track } from 'lwc'
 import { ShowToastEvent } from 'lightning/platformShowToastEvent'
 import getFilteredMdt from '@salesforce/apex/MetadataPickerAuraService.getFilteredMdt'
@@ -16,14 +17,14 @@ export default class Lookup extends LightningElement {
   @track selected = ''
   @track record
   @track error
-  @track recordIds
+  @track recordIds = []
   @track activeId = ''
 
-  @api mdtName
-  @api iconName
-
+  @api iconName = 'utility:setup'
   @api fieldLabel = 'Search'
   @api placeholder = 'Search...'
+
+  @api mdtName
   @api title = 'Name'
   @api context = 'Id'
   @api filterBy = ''
@@ -99,9 +100,9 @@ export default class Lookup extends LightningElement {
       keyAction[event.code]()
 
     } else {
-      if (this.inputValue.length > 2) {
+      if (event.target.value.length > 2) {
         this.debounceSearch()
-      } else if (this.inputValue.length === 0) {
+      } else if (event.target.value.length === 0) {
         this.records = []
         this.requestFiltered()
       } else {
@@ -147,7 +148,6 @@ export default class Lookup extends LightningElement {
 
   debounceSearch () {
     window.clearTimeout(this.delaySearch)
-    // eslint-disable-next-line @lwc/lwc/no-async-operation
     this.delaySearch = setTimeout(() => {
       this.search()
     }, 300)
@@ -174,6 +174,7 @@ export default class Lookup extends LightningElement {
   clearSelection () {
     this.selected = ''
     this.record = null
+    this.recordIds = []
     this.inputValue = ''
     this.error = null
     this.requestFiltered()
@@ -201,12 +202,11 @@ export default class Lookup extends LightningElement {
   }
 
   selectItem () {
-    if (this.activeId === '' || !this.getRecordIds().includes(this.activeId)) {
+    if (this.activeId === '' || !this.recordIds.includes(this.activeId)) {
       this.activeId = this.records[0].Id
       this.record = this.records[0]
       this.inputValue = this.record[this.title]
     }
-
 
     const listbox = this.template.querySelector('c-listbox')
     listbox.selectItem()

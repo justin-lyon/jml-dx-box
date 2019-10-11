@@ -21,6 +21,9 @@
             "c/lookup": [
                 "lookup/lookup.js"
             ],
+            "c/metadataPicker": [
+                "metadataPicker/metadataPicker.js"
+            ],
             "c/recentContactsMap": [
                 "recentContactsMap/recentContactsMap.js"
             ],
@@ -36,8 +39,8 @@
             "c/Leaflet": [
                 "../staticresources/Leaflet/Leaflet.js"
             ],
-            "c/metadataPicker": [
-                "metadataPicker/metadataPicker.js"
+            "c/metadataFinder": [
+                "metadataFinder/metadataFinder.js"
             ]
         }
     },

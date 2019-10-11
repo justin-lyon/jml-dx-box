@@ -6,27 +6,10 @@
         <lightning-card title="Custom Metadata Picker">
           <div class="slds-p-horizontal_medium">
             <fieldset class="slds-box" >
-              <legend class="slds-p-horizontal_small slds-text-color_weak" >{legend}</legend>
+              <legend class="slds-p-horizontal_small slds-text-color_weak" >Legendary</legend>
 
-              <lightning-combobox
-                name="statusPicker"
-                label="Trigger Status"
-                value={selectedStatus}
-                options={statusOptions}
-                placeholder={placeholder}
-                onchange={handleStatusSelected}></lightning-combobox>
-
-              <div class="slds-p-top_small">
-                <c-metadata-picker
-                  mdt-name="TriggerBypass__mdt"
-                  icon-name="utility:setup"
-                  field-label="Trigger Bypass Picker"
-                  title="MasterLabel"
-                  context="IsActive__c"
-                  filter-by={filterBy}
-                  filter-test={filterTest}
-                  onselected={handleMdtSelected}></c-metadata-picker>
-              </div>
+              <c-metadata-finder
+                status-options={options}></c-metadata-finder>
             </fieldset>
           </div>
 

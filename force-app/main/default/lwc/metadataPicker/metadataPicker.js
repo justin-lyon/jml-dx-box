@@ -204,8 +204,6 @@ export default class Lookup extends LightningElement {
   selectItem () {
     if (this.activeId === '' || !this.recordIds.includes(this.activeId)) {
       this.activeId = this.records[0].Id
-      // this.record = this.records[0]
-      // this.inputValue = this.record[this.title]
     }
 
     const listbox = this.template.querySelector('c-listbox')

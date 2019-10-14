@@ -35,7 +35,7 @@ export default class WipContainer extends LightningElement {
       })
   }
 
-  handleStatusSelected (event) {
+  handleFilterSelected (event) {
     this.selectedStatus = event.target.value
     const mdtPicker = this.template.querySelector('c-metadata-picker')
     mdtPicker.clear()

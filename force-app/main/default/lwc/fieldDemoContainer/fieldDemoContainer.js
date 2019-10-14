@@ -90,4 +90,11 @@ export default class WipContainer extends NavigationMixin(LightningElement) {
   removeMarker () {
     this.map.removeMarker(this.rockwallMarker)
   }
+
+  // MDT Picker
+  @track mdtId
+
+  handleMdtSelected (event) {
+    this.mdtId = event.detail
+  }
 }

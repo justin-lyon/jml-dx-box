@@ -112,6 +112,31 @@
         </lightning-card>
       </div>
 
+      <div class="slds-col slds-size_1-of-3 slds-p-top_medium">
+        <lightning-card title="Custom Metadata Picker">
+          <div class="slds-p-horizontal_medium">
+            <fieldset class="slds-box" >
+              <legend class="slds-p-horizontal_small slds-text-color_weak" >Dragons</legend>
+
+              <c-metadata-finder
+                combo-label="Size Filter"
+                picker-label="Search"
+                icon-name="utility:setup"
+                placeholder="Search Dragons..."
+                mdt-name="Dragon__mdt"
+                title="MasterLabel"
+                subtitle="Size__c"
+                filter-by="Size__c"
+                onselected={handleMdtSelected}></c-metadata-finder>
+            </fieldset>
+          </div>
+
+          <div slot="footer">
+            Custom Metadata Id: {mdtId}
+          </div>
+        </lightning-card>
+      </div>
+
     </div>
   </div>
 </template>

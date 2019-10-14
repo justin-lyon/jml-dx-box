@@ -21,6 +21,12 @@
             "c/lookup": [
                 "lookup/lookup.js"
             ],
+            "c/metadataFinder": [
+                "metadataFinder/metadataFinder.js"
+            ],
+            "c/metadataPicker": [
+                "metadataPicker/metadataPicker.js"
+            ],
             "c/recentContactsMap": [
                 "recentContactsMap/recentContactsMap.js"
             ],

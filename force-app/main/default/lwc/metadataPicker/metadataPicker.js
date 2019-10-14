@@ -107,15 +107,13 @@ export default class Lookup extends LightningElement {
         this.requestFiltered()
       } else {
         this.error = {
-          message: 'Minimum 2 characters'
+          message: 'Minimum 3 characters'
         }
       }
     }
   }
 
   handleSelected (event) {
-    console.log('picker handle selected', event.detail)
-    console.log('records', JSON.parse(JSON.stringify(this.records)))
     this.selected = event.detail
     this.record = this.records.find(record => record.Id === this.selected)
     this.inputValue = this.record[this.title]
@@ -131,7 +129,7 @@ export default class Lookup extends LightningElement {
       mdtFields: [ this.title, this.subtitle ] })
       .then(data => {
         const newData = JSON.parse(data)
-        this.records = newData.flat().sort((a, b) => this.sortAlpha(a, b))
+        this.records = newData.sort((a, b) => this.sortAlpha(a, b))
         this.recordIds = this.getRecordIds()
 
         if (this.records.length === 0) {
@@ -164,7 +162,7 @@ export default class Lookup extends LightningElement {
       metadataName: this.mdtName,
       mdtFields: [ this.title, this.subtitle ] })
       .then(data => {
-        this.records = JSON.parse(data)
+        this.records = JSON.parse(data).sort((a, b) => this.sortAlpha(a, b))
         this.recordIds = this.getRecordIds()
       })
       .catch(error => {

@@ -21,6 +21,9 @@
             "c/lookup": [
                 "lookup/lookup.js"
             ],
+            "c/metadataFinder": [
+                "metadataFinder/metadataFinder.js"
+            ],
             "c/metadataPicker": [
                 "metadataPicker/metadataPicker.js"
             ],
@@ -38,12 +41,6 @@
             ],
             "c/Leaflet": [
                 "../staticresources/Leaflet/Leaflet.js"
-            ],
-            "c/metadataFinder": [
-                "metadataFinder/metadataFinder.js"
-            ],
-            "c/mdtRecordtyper": [
-                "mdtRecordtyper/mdtRecordtyper.js"
             ]
         }
     },

@@ -11,7 +11,7 @@ public with sharing class TriggerBypass {
 
 		try {
 			record = bypassAccessor.queryByMasterLabel(triggerName);
-		} catch(Exception qex) {
+		} catch(QueryException qex) {
 			String message = ERROR_MESSAGE.replace(REPLACER, triggerName);
 			throw new TriggerBypassException(message);
 		}

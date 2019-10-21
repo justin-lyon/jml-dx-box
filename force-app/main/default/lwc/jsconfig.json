@@ -41,6 +41,9 @@
             ],
             "c/Leaflet": [
                 "../staticresources/Leaflet/Leaflet.js"
+            ],
+            "c/recordLink": [
+                "recordLink/recordLink.js"
             ]
         }
     },

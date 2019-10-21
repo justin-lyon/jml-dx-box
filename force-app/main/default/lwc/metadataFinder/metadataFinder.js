@@ -57,10 +57,11 @@ export default class WipContainer extends LightningElement {
     this.selectedStatus = event.detail && event.detail[this.filterBy] ? event.detail[this.filterBy] : this.selectedStatus
 
     if (event.detail && event.detail.Id) {
-      this.fireSelected()
       const mdtPicker = this.template.querySelector('c-metadata-picker')
       mdtPicker.getFilterMetadata(this.selectedStatus)
     }
+
+    this.fireSelected()
   }
 
   fireSelected () {

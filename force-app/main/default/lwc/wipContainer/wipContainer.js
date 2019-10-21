@@ -1,10 +1,10 @@
-import { LightningElement, api, track } from 'lwc'
+import { LightningElement, track } from 'lwc'
 import { NavigationMixin } from 'lightning/navigation'
 
 export default class WipContainer extends NavigationMixin(LightningElement) {
-  @track mdtId
+  @track selected = {}
 
-  handleMdtSelected (event) {
-    this.mdtId = event.detail
+  setSelected (event) {
+    this.selected = event.detail
   }
 }

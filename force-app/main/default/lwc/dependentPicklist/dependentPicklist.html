@@ -1,0 +1,16 @@
+<template>
+  <lightning-record-edit-form
+    object-api-name={objectApiName}>
+
+    <lightning-messages></lightning-messages>
+
+    <lightning-input-field
+      class="parentSelect"
+      field-name={parentFieldName}></lightning-input-field>
+
+    <lightning-input-field
+      class="childSelect"
+      onchange={childChanged}
+      field-name={childFieldName}></lightning-input-field>
+  </lightning-record-edit-form>
+</template>

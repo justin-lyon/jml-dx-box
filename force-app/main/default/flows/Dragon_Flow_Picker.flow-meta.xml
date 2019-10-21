@@ -23,30 +23,6 @@
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
-        <fields>
-            <name>MetadataFinder</name>
-            <extensionName>c:metadataFinder</extensionName>
-            <fieldType>ComponentInstance</fieldType>
-            <inputParameters>
-                <name>mdtName</name>
-                <value>
-                    <stringValue>Dragon__mdt</stringValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>filterBy</name>
-                <value>
-                    <stringValue>Size__c</stringValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>subtitle</name>
-                <value>
-                    <stringValue>Size__c</stringValue>
-                </value>
-            </inputParameters>
-            <isRequired>true</isRequired>
-        </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
     </screens>

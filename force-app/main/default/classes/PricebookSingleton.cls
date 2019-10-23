@@ -1,15 +1,25 @@
 public with sharing class PricebookSingleton {
-	private static Pricebook2 stdPricebook;
 
-	public static Id getStdPricebookId() {
+	private Pricebook2 stdPricebook;
+	private static PricebookSingleton instance;
+
+	private PricebookSingleton() {}
+
+	public static PricebookSingleton get() {
+		if (instance == null) instance = new PricebookSingleton();
+
+		return instance;
+	}
+
+	public Id getStdPricebookId() {
 		return Test.isRunningTest() ? Test.getStandardPricebookId() : getStdPricebook().Id;
 	}
 
-	public static Pricebook2 getStdPricebook() {
+	public Pricebook2 getStdPricebook() {
 		return (stdPricebook != null) ? stdPricebook : queryStdPricebook();
 	}
 
-	private static Pricebook2 queryStdPricebook() {
+	private Pricebook2 queryStdPricebook() {
 		return [
 			SELECT Id,
 				Name

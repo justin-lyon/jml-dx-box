@@ -1,13 +1,11 @@
 public with sharing class PricebookSingleton {
 
 	private Pricebook2 stdPricebook;
-	private static PricebookSingleton instance;
+	private static final PricebookSingleton instance = new PricebookSingleton();
 
 	private PricebookSingleton() {}
 
 	public static PricebookSingleton get() {
-		if (instance == null) instance = new PricebookSingleton();
-
 		return instance;
 	}
 

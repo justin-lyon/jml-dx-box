@@ -12,6 +12,9 @@ sfdx force:source:push
 echo "...Assigning Permission Set LWCDemoApp"
 sfdx force:user:permset:assign -n LWCDemoApp
 
+echo "...Assigning Permission Set ConsoleNav"
+sfdx force:user:permset:assign -n ConsoleNav
+
 # load data
 echo "...Importing data/Account-Contact-plan.json"
 sfdx force:data:tree:import -p data/Account-Contact-plan.json

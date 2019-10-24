@@ -17,4 +17,4 @@ sfdx force:user:permset:assign -n ConsoleNav
 
 # load data
 echo "...Importing data/Account-Contact-plan.json"
-sfdx force:data:tree:import -p data/Account-Contact-plan.json
+sfdx force:data:tree:import -p data/Account-Contact-Case-plan.json

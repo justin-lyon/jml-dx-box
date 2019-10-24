@@ -1,0 +1,342 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef1"
+            },
+            "CaseNumber": "00001006",
+            "Origin": "Phone",
+            "Type": "Other",
+            "Priority": "Low",
+            "Status": "Closed",
+            "AccountId": "@AccountRef1",
+            "ContactId": "@ContactRef1"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef2"
+            },
+            "CaseNumber": "00001016",
+            "Origin": "Web",
+            "Type": "Other",
+            "Priority": "Low",
+            "Status": "New",
+            "AccountId": "@AccountRef1",
+            "ContactId": "@ContactRef1"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef3"
+            },
+            "CaseNumber": "00001009",
+            "Origin": "Phone",
+            "Type": "Mechanical",
+            "Priority": "Medium",
+            "Status": "Closed",
+            "AccountId": "@AccountRef2",
+            "ContactId": "@ContactRef2"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef4"
+            },
+            "CaseNumber": "00001011",
+            "Origin": "Web",
+            "Type": "Electronic",
+            "Priority": "Medium",
+            "Status": "Closed",
+            "AccountId": "@AccountRef3",
+            "ContactId": "@ContactRef3"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef5"
+            },
+            "CaseNumber": "00001015",
+            "Origin": "Web",
+            "Type": "Mechanical",
+            "Priority": "Medium",
+            "Status": "Closed",
+            "AccountId": "@AccountRef3",
+            "ContactId": "@ContactRef3"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef6"
+            },
+            "CaseNumber": "00001010",
+            "Origin": "Web",
+            "Type": "Other",
+            "Priority": "Low",
+            "Status": "Closed",
+            "AccountId": "@AccountRef3",
+            "ContactId": "@ContactRef4"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef7"
+            },
+            "CaseNumber": "00001018",
+            "Origin": "Phone",
+            "Type": "Electrical",
+            "Priority": "Medium",
+            "Status": "Closed",
+            "AccountId": "@AccountRef4",
+            "ContactId": "@ContactRef5"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef8"
+            },
+            "CaseNumber": "00001017",
+            "Origin": "Web",
+            "Type": "Mechanical",
+            "Priority": "Medium",
+            "Status": "Closed",
+            "AccountId": "@AccountRef4",
+            "ContactId": "@ContactRef5"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef9"
+            },
+            "CaseNumber": "00001000",
+            "Origin": "Phone",
+            "Type": "Electrical",
+            "Priority": "High",
+            "Status": "Closed",
+            "AccountId": "@AccountRef4",
+            "ContactId": "@ContactRef6"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef10"
+            },
+            "CaseNumber": "00001020",
+            "Origin": "Phone",
+            "Type": "Electrical",
+            "Priority": "Medium",
+            "Status": "Closed",
+            "AccountId": "@AccountRef5",
+            "ContactId": "@ContactRef7"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef11"
+            },
+            "CaseNumber": "00001019",
+            "Origin": "Web",
+            "Type": "Structural",
+            "Priority": "High",
+            "Status": "Closed",
+            "AccountId": "@AccountRef5",
+            "ContactId": "@ContactRef7"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef12"
+            },
+            "CaseNumber": "00001014",
+            "Origin": "Phone",
+            "Type": "Other",
+            "Priority": "High",
+            "Status": "Closed",
+            "AccountId": "@AccountRef8",
+            "ContactId": "@ContactRef10"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef13"
+            },
+            "CaseNumber": "00001013",
+            "Origin": "Web",
+            "Type": "Other",
+            "Priority": "Medium",
+            "Status": "Closed",
+            "AccountId": "@AccountRef8",
+            "ContactId": "@ContactRef10"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef14"
+            },
+            "CaseNumber": "00001007",
+            "Origin": "Phone",
+            "Type": "Structural",
+            "Priority": "Medium",
+            "Status": "Closed",
+            "AccountId": "@AccountRef8",
+            "ContactId": "@ContactRef11"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef15"
+            },
+            "CaseNumber": "00001008",
+            "Origin": "Web",
+            "Type": "Other",
+            "Priority": "Low",
+            "Status": "Closed",
+            "AccountId": "@AccountRef8",
+            "ContactId": "@ContactRef11"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef16"
+            },
+            "CaseNumber": "00001004",
+            "Origin": "Phone",
+            "Type": "Other",
+            "Priority": "Medium",
+            "Status": "Closed",
+            "AccountId": "@AccountRef9",
+            "ContactId": "@ContactRef13"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef17"
+            },
+            "CaseNumber": "00001005",
+            "Origin": "Phone",
+            "Type": "Electrical",
+            "Priority": "Medium",
+            "Status": "Closed",
+            "AccountId": "@AccountRef9",
+            "ContactId": "@ContactRef12"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef18"
+            },
+            "CaseNumber": "00001003",
+            "Origin": "Web",
+            "Type": "Other",
+            "Priority": "Low",
+            "Status": "Closed",
+            "AccountId": "@AccountRef9",
+            "ContactId": "@ContactRef13"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef19"
+            },
+            "CaseNumber": "00001012",
+            "Origin": "Web",
+            "Type": "Electrical",
+            "Priority": "Medium",
+            "Status": "Closed",
+            "AccountId": "@AccountRef10",
+            "ContactId": "@ContactRef14"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef20"
+            },
+            "CaseNumber": "00001002",
+            "Origin": "Web",
+            "Type": "Electrical",
+            "Priority": "Low",
+            "Status": "New",
+            "AccountId": "@AccountRef11",
+            "ContactId": "@ContactRef17"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef21"
+            },
+            "CaseNumber": "00001021",
+            "Origin": "Phone",
+            "Type": "Structural",
+            "Priority": "High",
+            "Status": "Closed",
+            "AccountId": "@AccountRef11",
+            "ContactId": "@ContactRef17"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef22"
+            },
+            "CaseNumber": "00001022",
+            "Origin": "Web",
+            "Type": "Electronic",
+            "Priority": "Medium",
+            "Status": "Closed",
+            "AccountId": "@AccountRef11",
+            "ContactId": "@ContactRef17"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef23"
+            },
+            "CaseNumber": "00001023",
+            "Origin": "Phone",
+            "Type": "Electrical",
+            "Priority": "High",
+            "Status": "Closed",
+            "AccountId": "@AccountRef11",
+            "ContactId": "@ContactRef17"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef24"
+            },
+            "CaseNumber": "00001001",
+            "Origin": "Phone",
+            "Type": "Electrical",
+            "Priority": "High",
+            "Status": "Closed",
+            "AccountId": "@AccountRef11",
+            "ContactId": "@ContactRef15"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef25"
+            },
+            "CaseNumber": "00001025",
+            "Origin": "Phone",
+            "Type": "Electrical",
+            "Priority": "Medium",
+            "Status": "Closed",
+            "AccountId": "@AccountRef11",
+            "ContactId": "@ContactRef18"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef26"
+            },
+            "CaseNumber": "00001024",
+            "Origin": "Web",
+            "Type": "Mechanical",
+            "Priority": "Low",
+            "Status": "New",
+            "AccountId": "@AccountRef11",
+            "ContactId": "@ContactRef18"
+        }
+    ]
+}

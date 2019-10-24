@@ -6,6 +6,9 @@
             "c/baseDemoContainer": [
                 "baseDemoContainer/baseDemoContainer.js"
             ],
+            "c/dependentPicklist": [
+                "dependentPicklist/dependentPicklist.js"
+            ],
             "c/fieldDemoContainer": [
                 "fieldDemoContainer/fieldDemoContainer.js"
             ],
@@ -30,6 +33,9 @@
             "c/recentContactsMap": [
                 "recentContactsMap/recentContactsMap.js"
             ],
+            "c/recordLink": [
+                "recordLink/recordLink.js"
+            ],
             "c/star": [
                 "star/star.js"
             ],
@@ -41,12 +47,6 @@
             ],
             "c/Leaflet": [
                 "../staticresources/Leaflet/Leaflet.js"
-            ],
-            "c/recordLink": [
-                "recordLink/recordLink.js"
-            ],
-            "c/dependentPicklist": [
-                "dependentPicklist/dependentPicklist.js"
             ]
         }
     },

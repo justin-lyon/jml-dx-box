@@ -11,7 +11,8 @@
             "Description": "Genomics company engaged in mapping and sequencing of the human genome and developing gene-based drugs",
             "Name": "GenePoint",
             "Phone": "(650) 867-3450",
-            "Type": "Customer - Channel"
+            "Type": "Customer - Channel",
+            "ShippingStreet": "345 Shoreline Park\nMountain View, CA 94043\nUSA"
         },
         {
             "attributes": {
@@ -22,7 +23,8 @@
             "BillingStreet": "Kings Park, 17th Avenue, Team Valley Trading Estate,\nGateshead, Tyne and Wear NE26 3HS\nUnited Kingdom",
             "Name": "United Oil & Gas, UK",
             "Phone": "+44 191 4956203",
-            "Type": "Customer - Direct"
+            "Type": "Customer - Direct",
+            "ShippingStreet": "Kings Park, 17th Avenue, Team Valley Trading Estate,\nGateshead, Tyne and Wear NE26 3HS\nUnited Kingdom"
         },
         {
             "attributes": {
@@ -34,7 +36,8 @@
             "BillingStreet": "9 Tagore Lane\nSingapore, Singapore 787472\nSingapore",
             "Name": "United Oil & Gas, Singapore",
             "Phone": "(650) 450-8810",
-            "Type": "Customer - Direct"
+            "Type": "Customer - Direct",
+            "ShippingStreet": "9 Tagore Lane\nSingapore, Singapore 787472\nSingapore"
         },
         {
             "attributes": {
@@ -47,7 +50,8 @@
             "Description": "Edge, founded in 1998, is a start-up based in Austin, TX. The company designs and manufactures a device to convert music from one digital format to another. Edge sells its product through retailers and its own website.",
             "Name": "Edge Communications",
             "Phone": "(512) 757-6000",
-            "Type": "Customer - Direct"
+            "Type": "Customer - Direct",
+            "ShippingStreet": "312 Constitution Place\nAustin, TX 78767\nUSA"
         },
         {
             "attributes": {
@@ -74,7 +78,11 @@
             "BillingStreet": "2 Place Jussieu",
             "Name": "Pyramid Construction Inc.",
             "Phone": "(014) 427-4427",
-            "Type": "Customer - Channel"
+            "Type": "Customer - Channel",
+            "ShippingCity": "Paris",
+            "ShippingCountry": "France",
+            "ShippingStreet": "2 Place Jussieu",
+            "ShippingPostalCode": "75251"
         },
         {
             "attributes": {
@@ -88,7 +96,12 @@
             "BillingStreet": "1301 Hoch Drive",
             "Name": "Dickenson plc",
             "Phone": "(785) 241-6200",
-            "Type": "Customer - Channel"
+            "Type": "Customer - Channel",
+            "ShippingCity": "Lawrence",
+            "ShippingCountry": "USA",
+            "ShippingStreet": "1301 Hoch Drive",
+            "ShippingPostalCode": "66045",
+            "ShippingState": "KS"
         },
         {
             "attributes": {
@@ -101,7 +114,8 @@
             "Description": "Chain of hotels and resorts across the US, UK, Eastern Europe, Japan, and SE Asia.",
             "Name": "Grand Hotels & Resorts Ltd",
             "Phone": "(312) 596-1000",
-            "Type": "Customer - Direct"
+            "Type": "Customer - Direct",
+            "ShippingStreet": "2334 N. Michigan Avenue, Suite 1500\nChicago, IL 60601, USA"
         },
         {
             "attributes": {
@@ -114,7 +128,8 @@
             "Description": "Commerical logistics and transportation company.",
             "Name": "Express Logistics and Transport",
             "Phone": "(503) 421-7800",
-            "Type": "Customer - Channel"
+            "Type": "Customer - Channel",
+            "ShippingStreet": "620 SW 5th Avenue Suite 400\nPortland, Oregon 97204\nUnited States"
         },
         {
             "attributes": {
@@ -127,7 +142,8 @@
             "Description": "Leading university in AZ offering undergraduate and graduate programs in arts and humanities, pure sciences, engineering, business, and medicine.",
             "Name": "University of Arizona",
             "Phone": "(520) 773-9050",
-            "Type": "Customer - Direct"
+            "Type": "Customer - Direct",
+            "ShippingStreet": "888 N Euclid \nHallis Center, Room 501\nTucson, AZ 85721\nUnited States"
         },
         {
             "attributes": {
@@ -140,7 +156,8 @@
             "Description": "World's third largest oil and gas company.",
             "Name": "United Oil & Gas Corp.",
             "Phone": "(212) 842-5500",
-            "Type": "Customer - Direct"
+            "Type": "Customer - Direct",
+            "ShippingStreet": "1301 Avenue of the Americas \r\nNew York, NY 10019\r\nUSA"
         },
         {
             "attributes": {
@@ -154,6 +171,54 @@
             "BillingStreet": "The Landmark @ One Market",
             "Name": "sForce",
             "Phone": "(415) 901-7000"
+        },
+        {
+            "attributes": {
+                "type": "Account",
+                "referenceId": "AccountRef13"
+            },
+            "Name": "The Harbor Rockwall",
+            "ShippingCity": "Rockwall",
+            "ShippingCountry": "USA",
+            "ShippingStreet": "2059 Summer Lee Dr",
+            "ShippingPostalCode": "75032",
+            "ShippingState": "TX"
+        },
+        {
+            "attributes": {
+                "type": "Account",
+                "referenceId": "AccountRef14"
+            },
+            "Name": "H Mart, Plano",
+            "ShippingCity": "Plano",
+            "ShippingCountry": "USA",
+            "ShippingStreet": "3320 K Ave",
+            "ShippingPostalCode": "75074",
+            "ShippingState": "TX"
+        },
+        {
+            "attributes": {
+                "type": "Account",
+                "referenceId": "AccountRef15"
+            },
+            "Name": "Slalom Dallas",
+            "ShippingCity": "Addison",
+            "ShippingCountry": "USA",
+            "ShippingStreet": "5080 Spectrum Dr,\nSuite 650E",
+            "ShippingPostalCode": "75001",
+            "ShippingState": "TX"
+        },
+        {
+            "attributes": {
+                "type": "Account",
+                "referenceId": "AccountRef16"
+            },
+            "Name": "House of Blues, Dallas",
+            "ShippingCity": "Dallas",
+            "ShippingCountry": "USA",
+            "ShippingStreet": "2200 N Lamar St",
+            "ShippingPostalCode": "75202",
+            "ShippingState": "TX"
         }
     ]
 }

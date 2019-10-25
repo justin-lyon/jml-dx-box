@@ -1,0 +1,19 @@
+<aura:component description="NewCaseUtilityItem"
+  implements="lightning:utilityItem, force:hasRecordId"
+  access="global">
+
+  <lightning:utilityBarAPI aura:id="utilityBar" />
+  <aura:attribute name="utilityItemInfo" type="Object" default="{}" />
+
+  <aura:attribute name="isActive" type="Boolean" default="false" />
+  <aura:attribute name="activeRecordId" type="Id" default="" />
+
+  <aura:handler name="change" value="{!v.recordId}" action="{!c.onRecordChange}" />
+
+  <c:newCase recordId="{!v.recordId}" />
+
+  <lightning:button
+    label="Cancel"
+    onclick="{!c.onCancel}"></lightning:button>
+
+</aura:component>

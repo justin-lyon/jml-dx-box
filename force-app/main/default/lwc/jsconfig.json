@@ -30,6 +30,9 @@
             "c/metadataPicker": [
                 "metadataPicker/metadataPicker.js"
             ],
+            "c/newCase": [
+                "newCase/newCase.js"
+            ],
             "c/recentContactsMap": [
                 "recentContactsMap/recentContactsMap.js"
             ],

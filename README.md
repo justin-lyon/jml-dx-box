@@ -11,6 +11,10 @@ sfdx force:project:create -n jml-dx-box -t empty
 git clone https://github.com/jlyon87/jml-dx-box.git jml-dx-box
 # Checkout the develop branch and pull the latest
 git checkout develop && git pull
+
+# Install Node dependencies
+npm install
+
 # Create a scratch org named 'my-scratch' using the develop branch
 bash scripts/create-org.sh my-scratch
 ```

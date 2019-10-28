@@ -4,7 +4,9 @@
   "description": "Justin's SFDX Project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test:unit": "lwc-jest",
+    "test:unit:watch": "lwc-jest --watch",
+    "test:unit:debug": "lwc-jest --debug"
   },
   "repository": {
     "type": "git",

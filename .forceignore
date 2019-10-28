@@ -13,5 +13,4 @@ package.xml
 
 # Metadata Ignore
 AppSwitcher.appMenu
-**/profiles/**
 **/settings/**

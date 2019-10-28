@@ -9,10 +9,18 @@
     },
     {
         "sobject": "Contact",
-        "saveRefs": false,
+        "saveRefs": true,
         "resolveRefs": true,
         "files": [
             "Contacts.json"
+        ]
+    },
+    {
+        "sobject": "Case",
+        "saveRefs": false,
+        "resolveRefs": true,
+        "files": [
+            "Cases.json"
         ]
     }
 ]

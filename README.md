@@ -1,3 +1,20 @@
+# jml-dx-box
+
+> Justin's running sfdx poc environment.
+
+## Setup
+
+```bash
+# In your workspace directory, initialize a new project named `jml-dx-box`
+sfdx force:project:create -n jml-dx-box -t empty
+# Clone the repo
+git clone https://github.com/jlyon87/jml-dx-box.git jml-dx-box
+# Checkout the develop branch and pull the latest
+git checkout develop && git pull
+# Create a scratch org named 'my-scratch' using the develop branch
+bash scripts/create-org.sh my-scratch
+```
+
 # Salesforce App
 
 This guide helps Salesforce developers who are new to Visual Studio Code go from zero to a deployed app using Salesforce Extensions for VS Code and Salesforce CLI.

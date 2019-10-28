@@ -4,6 +4,39 @@
         <componentInstances>
             <componentName>notes:utilityBarNoteList</componentName>
         </componentInstances>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>eager</name>
+                <type>decorator</type>
+                <value>false</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>height</name>
+                <type>decorator</type>
+                <value>300</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>icon</name>
+                <type>decorator</type>
+                <value>case</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>label</name>
+                <type>decorator</type>
+                <value>New Case</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>scrollable</name>
+                <type>decorator</type>
+                <value>true</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>width</name>
+                <type>decorator</type>
+                <value>400</value>
+            </componentInstanceProperties>
+            <componentName>NewCaseUtilityItem</componentName>
+        </componentInstances>
         <name>utilityItems</name>
         <type>Region</type>
     </flexiPageRegions>

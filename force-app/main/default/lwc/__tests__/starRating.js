@@ -14,7 +14,6 @@ const initCmp = (el, { isReadOnly = false, rating = 1, maxRating = 5 }) => {
 
 describe('c-star-rating', () => {
   afterEach(() => {
-    // The jsdom instance is shared across test cases in a single file so reset the dom.
     while (document.body.firstChild) {
       document.body.removeChild(document.body.firstChild)
     }
@@ -24,7 +23,6 @@ describe('c-star-rating', () => {
     const maxRating = 5
     const cmp = initCmp(StarRating, { maxRating })
 
-    // verify i element
     const stars = cmp.shadowRoot.querySelectorAll('c-star')
     expect(stars.length).toBe(maxRating)
   })
@@ -35,9 +33,7 @@ describe('c-star-rating', () => {
     const cmp = initCmp(StarRating, { rating, maxRating })
 
     const activeStars = Array.from(cmp.shadowRoot.querySelectorAll('c-star'))
-      .filter(el => {
-        return el.star.isActive
-      })
+      .filter(el => el.star.isActive)
     expect(activeStars.length).toBe(rating)
   })
 })

@@ -2,6 +2,40 @@
 
 > Justin's running sfdx poc environment.
 
+## Apps
+
+### LWC Demo
+
+A lightning console application for various POCs.
+
+#### Permission Set
+
+LWCDemoApp provides access to the LWC Demo console application.
+
+#### Tabs
+
+ 1. Home - Default Home tab
+ 1. Base Demo - LWC Base Component POCs
+ 1. Field Demo - Custom Component POCs
+ 1. WIP - Work In Progress app page for active development
+
+### Console Nav
+
+A lightning console application to poc the Utility Bar and Workspace APIs.
+
+Setup to mock a typical Service Cloud console for case management.
+
+#### Permission Set
+
+ConsoleNav provides access to the Console Nav console application.
+
+#### Tabs
+
+ 1. Home - Default Home tab
+ 1. Cases
+ 1. Accounts
+ 1. Contacts
+
 ## Setup
 
 ```bash

@@ -1,8 +1,15 @@
 <aura:component description="NewCaseUtilityItem"
+  controller="UtilityItemAuraService"
   implements="lightning:utilityItem, force:hasRecordId"
   access="global">
 
+  <ltng:require scripts="{!join(',',
+    $Resource.LightningKit + '/js/promisify.js')}"
+    afterScriptsLoaded="{!c.afterScriptsLoaded}" />
   <lightning:utilityBarAPI aura:id="utilityBar" />
+
+  <aura:attribute name="isScriptsLoaded" type="Boolean" default="false" />
+  <aura:attribute name="sObjectName" type="String" />
   <aura:attribute name="utilityItemInfo" type="Object" default="{}" />
 
   <aura:attribute name="isActive" type="Boolean" default="false" />
@@ -10,7 +17,13 @@
 
   <aura:handler name="change" value="{!v.recordId}" action="{!c.onRecordChange}" />
 
-  <c:newCase recordId="{!v.recordId}" />
+  <lightning:card title="{!'For ' + v.sObjectName}">
+    <div class="slds-p-horizontal_medium">
+      {!v.recordId}
+    </div>
+  </lightning:card>
+
+  <!-- <c:newCase recordId="{!v.recordId}" /> -->
 
   <lightning:button
     label="Cancel"

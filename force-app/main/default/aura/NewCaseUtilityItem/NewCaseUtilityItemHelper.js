@@ -4,6 +4,23 @@
     helper.getUtilityInfo(cmp, utilityBar);
   },
 
+  fetchSObjectType: function(cmp) {
+    var action = cmp.get('c.getSObjectType');
+    action.setParams({
+      recordId: cmp.get("v.recordId")
+    });
+
+    kit.promisify(action)
+      .then(res => {
+        var name = res.getReturnValue();
+        console.log('object name', name);
+        cmp.set('v.sObjectName', name);
+      })
+      .catch(err => {
+        console.error('Error getting sobject name', err.message);
+      })
+  },
+
   getUtilityInfo: function(cmp, utilityBar) {
     utilityBar.getUtilityInfo()
       .then(utilityItem => {

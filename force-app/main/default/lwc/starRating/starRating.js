@@ -9,23 +9,23 @@ export default class StarRating extends LightningElement {
   @api inactiveColor = '#d8d8d8'
 
   @api
-  get rating() { return this.score }
+  get rating () { return this.score }
 
-  set rating(value) {
+  set rating (value) {
     this.score = value
     this.generateStars()
   }
 
   @api
-  get maxRating() {
+  get maxRating () {
     return this.maxScore
   }
 
-  set maxRating(value) {
+  set maxRating (value) {
     this.maxScore = Number(value)
   }
 
-  generateStars() {
+  generateStars () {
     this.stars = []
     for (let i = 1; i < this.maxRating + 1; i++) {
       const isActive = (i <= this.score)
@@ -37,18 +37,18 @@ export default class StarRating extends LightningElement {
     }
   }
 
-  starClicked(event) {
+  starClicked (event) {
     const clickedStar = event.detail
     this.rating = clickedStar
     this.ratingChanged()
   }
 
-  ratingChanged() {
+  ratingChanged () {
     const value = new CustomEvent('value', { detail: this.score })
     this.dispatchEvent(value)
   }
 
-  connectedCallback() {
+  connectedCallback () {
     this.generateStars()
   }
 }

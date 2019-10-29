@@ -1,0 +1,33 @@
+{
+  "name": "jml-dx-box",
+  "version": "1.0.0",
+  "description": "Justin's SFDX Project",
+  "main": "index.js",
+  "scripts": {
+    "test:unit": "lwc-jest",
+    "test:unit:watch": "lwc-jest --watch",
+    "test:unit:debug": "lwc-jest --debug"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jlyon87/jml-dx-box.git"
+  },
+  "keywords": [
+    "LWC",
+    "Lightning Web Components",
+    "SFDX",
+    "Salesforce",
+    "Lightning",
+    "SalesforceDX",
+    "Salesforce CLI"
+  ],
+  "author": "Justin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jlyon87/jml-dx-box/issues"
+  },
+  "homepage": "https://github.com/jlyon87/jml-dx-box#readme",
+  "devDependencies": {
+    "@salesforce/sfdx-lwc-jest": "^0.6.1"
+  }
+}

@@ -1,5 +1,5 @@
 import { createElement } from 'lwc'
-import star from 'c/star'
+import Star from 'c/star'
 
 const initCmp = (el, data, isReadOnly = false) => {
   const cmp = createElement('c-star', {
@@ -19,8 +19,8 @@ describe('c-star', () => {
     }
   })
 
-  it ('constructs fa-star element', () => {
-    const cmp = initCmp(star, { id: 1, isActive: true })
+  it ('constructs', () => {
+    const cmp = initCmp(Star, { id: 1, isActive: true })
 
     // verify i element
     const italic = cmp.shadowRoot.querySelector('i')
@@ -28,7 +28,7 @@ describe('c-star', () => {
   })
 
   it('is clickable', () => {
-    const cmp = initCmp(star, { id: 1, isActive: true })
+    const cmp = initCmp(Star, { id: 1, isActive: true })
 
     const eventHandler = event => {
       expect(event.detail).toBe(cmp.star.id)
@@ -40,7 +40,7 @@ describe('c-star', () => {
   })
 
   it('is readonly', () => {
-    const cmp = initCmp(star, { id: 20, isActive: true }, true)
+    const cmp = initCmp(Star, { id: 20, isActive: true }, true)
 
     const eventHandler = event => {
       expect(event.detail).not.toBe(cmp.star.id)

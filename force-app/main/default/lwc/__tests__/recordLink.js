@@ -1,6 +1,5 @@
 import { createElement } from 'lwc'
 import RecordLink from 'c/recordLink'
-import { NavigationMixin } from 'lightning/navigation'
 
 const initCmp = (el, {
   label = 'Rick Sanchez',
@@ -28,21 +27,10 @@ describe('c-record-link', () => {
   })
 
   it('constructs', () => {
-    const label = 'Bobby Boucher'
+    const label = 'Danny Tanner'
     const cmp = initCmp(RecordLink, { label })
 
     const span = cmp.shadowRoot.querySelector('span.clickable')
     expect(span.textContent).toBe(label)
-  })
-
-  it('is clickable', () => {
-    const cmp = initCmp(RecordLink, {})
-
-    const clickHandler = event => {
-      console.log('event.detail', event.detail)
-    }
-    cmp.addEventListener('standard__recordPage', clickHandler)
-    const span = cmp.shadowRoot.querySelector('span')
-    span.click()
   })
 })

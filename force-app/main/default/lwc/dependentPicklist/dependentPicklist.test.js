@@ -16,7 +16,6 @@ const initCmp = (el, { objectApiName = 'Case', parentFieldName = 'Type', childFi
 
 describe('c-dependent-picklist', () => {
   afterEach(() => {
-    // The jsdom instance is shared across test cases in a single file so reset the dom.
     while (document.body.firstChild) {
       document.body.removeChild(document.body.firstChild)
     }

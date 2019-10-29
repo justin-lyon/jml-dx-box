@@ -20,7 +20,6 @@ const initCmp = (el, {
 
 describe('c-record-link', () => {
   afterEach(() => {
-    // The jsdom instance is shared across test cases in a single file so reset the dom.
     while (document.body.firstChild) {
       document.body.removeChild(document.body.firstChild)
     }

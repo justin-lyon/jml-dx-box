@@ -13,7 +13,6 @@ const initCmp = (el, data, isReadOnly = false) => {
 
 describe('c-star', () => {
   afterEach(() => {
-    // The jsdom instance is shared across test cases in a single file so reset the dom.
     while (document.body.firstChild) {
       document.body.removeChild(document.body.firstChild)
     }
@@ -22,7 +21,6 @@ describe('c-star', () => {
   it ('constructs', () => {
     const cmp = initCmp(Star, { id: 1, isActive: true })
 
-    // verify i element
     const italic = cmp.shadowRoot.querySelector('i')
     expect(italic.className).toEqual(expect.stringContaining('fa-star'))
   })

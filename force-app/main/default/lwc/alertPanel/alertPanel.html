@@ -1,0 +1,32 @@
+<template>
+  <lightning-card title="Alerts">
+    <div class="slds-p-horizontal_medium">
+      <lightning-accordion >
+        <template for:item="type" for:each={alertsByType}>
+          <lightning-accordion-section
+            key={type.name}
+            name={type.name}
+            label={type.label} >
+
+            <lightning-accordion >
+              <template for:item="alert" for:each={type.alerts}>
+                <lightning-accordion-section
+                  key={alert.id}
+                  name={alert.id}
+                  label={alert.title} >
+                  {alert.message}
+
+                  <div slot="actions">
+                    <lightning-button-icon
+                      icon-name="utility:open"
+                      variant="bare"></lightning-button-icon>
+                  </div>
+                </lightning-accordion-section>
+              </template>
+            </lightning-accordion>
+          </lightning-accordion-section>
+        </template>
+      </lightning-accordion>
+    </div>
+  </lightning-card>
+</template>

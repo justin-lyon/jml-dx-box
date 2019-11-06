@@ -132,6 +132,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>ContactAlert__c.ContactLink__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>ContactAlert__c.IsActiveAlert__c</field>
         <readable>true</readable>
     </fieldPermissions>

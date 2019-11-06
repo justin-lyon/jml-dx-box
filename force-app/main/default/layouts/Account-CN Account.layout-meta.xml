@@ -96,7 +96,11 @@
         <relatedList>RelatedCaseList</relatedList>
     </relatedLists>
     <relatedLists>
-        <fields>NAME</fields>
+        <fields>Alert__c.NAME</fields>
+        <fields>Alert__c.Title__c</fields>
+        <fields>Alert__c.Type__c</fields>
+        <fields>Alert__c.IsActive__c</fields>
+        <fields>Alert__c.Message__c</fields>
         <relatedList>AccountAlert__c.Account__c</relatedList>
     </relatedLists>
     <relatedObjects>ParentId</relatedObjects>
@@ -106,7 +110,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00hR000000197MA</masterLabel>
+        <masterLabel>00h55000000XI3A</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

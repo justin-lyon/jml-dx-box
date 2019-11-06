@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <excludeButtons>RequestUseSfdc</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <layoutSections>
         <customLabel>true</customLabel>
@@ -96,6 +97,7 @@
         <fields>Alert__c.Type__c</fields>
         <fields>Alert__c.IsActive__c</fields>
         <fields>Alert__c.Message__c</fields>
+        <fields>Alert__c.CREATED_DATE</fields>
         <relatedList>ContactAlert__c.Contact__c</relatedList>
     </relatedLists>
     <relatedObjects>AccountId</relatedObjects>

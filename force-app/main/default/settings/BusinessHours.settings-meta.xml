@@ -8,10 +8,8 @@
         <mondayEndTime>17:00:00.000Z</mondayEndTime>
         <mondayStartTime>09:00:00.000Z</mondayStartTime>
         <name>Default</name>
-        <saturdayEndTime>22:00:00.000Z</saturdayEndTime>
+        <saturdayEndTime>14:00:00.000Z</saturdayEndTime>
         <saturdayStartTime>10:00:00.000Z</saturdayStartTime>
-        <sundayEndTime>14:30:00.000Z</sundayEndTime>
-        <sundayStartTime>11:00:00.000Z</sundayStartTime>
         <thursdayEndTime>17:00:00.000Z</thursdayEndTime>
         <thursdayStartTime>09:00:00.000Z</thursdayStartTime>
         <timeZoneId>America/New_York</timeZoneId>

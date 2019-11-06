@@ -15,6 +15,9 @@ sfdx force:user:permset:assign -n LWCDemoApp
 echo "...Assigning Permission Set ConsoleNav"
 sfdx force:user:permset:assign -n ConsoleNav
 
+echo "...Assigning Permission Set AlertsManager"
+sfdx force:user:permset:assign -n AlertsManager
+
 # load data
 echo "...Importing data/Account-Contact-Case-plan.json"
 sfdx force:data:tree:import -p data/Account-Contact-Case-plan.json

@@ -15,3 +15,6 @@ package.xml
 # Metadata Ignore
 AppSwitcher.appMenu
 **/settings/**
+
+# Whitelisted Metadata
+!**/settings/BusinessHours

@@ -99,8 +99,8 @@
         <fields>Alert__c.NAME</fields>
         <fields>Alert__c.Title__c</fields>
         <fields>Alert__c.Type__c</fields>
-        <fields>Alert__c.IsActive__c</fields>
         <fields>Alert__c.Message__c</fields>
+        <fields>IsActiveAlert__c</fields>
         <fields>CREATED_DATE</fields>
         <relatedList>AccountAlert__c.Account__c</relatedList>
     </relatedLists>

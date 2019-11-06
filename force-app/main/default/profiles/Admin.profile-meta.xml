@@ -11,6 +11,14 @@
         <visible>false</visible>
     </applicationVisibilities>
     <classAccesses>
+        <apexClass>BusinessDays</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>BusinessDaysTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>LookupAuraService</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -90,7 +98,28 @@
         <apexClass>TriggerBypassTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
+    <classAccesses>
+        <apexClass>UtilityItemAuraService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>UtilityItemAuraServiceTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
     <custom>false</custom>
+    <customMetadataTypeAccesses>
+        <enabled>false</enabled>
+        <name>Dragon__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>false</enabled>
+        <name>TriggerBypass__mdt</name>
+    </customMetadataTypeAccesses>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Alert__c.IsActive__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>TriggerBypass__mdt.IsActive__c</field>
@@ -98,6 +127,12 @@
     </fieldPermissions>
     <layoutAssignments>
         <layout>Account-CN Account</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>AccountAlert__c-Account Alert Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Alert__c-Alert Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Case-CN Case</layout>
@@ -109,11 +144,45 @@
         <layout>Contact-CN Contact</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>ContactAlert__c-Contact Alert Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>Dragon__mdt-Dragon Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>TriggerBypass__mdt-Trigger Bypass Layout</layout>
     </layoutAssignments>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
+        <object>AccountAlert__c</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
+        <object>Alert__c</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
+        <object>ContactAlert__c</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
+    <tabVisibilities>
+        <tab>Alert__c</tab>
+        <visibility>DefaultOff</visibility>
+    </tabVisibilities>
     <tabVisibilities>
         <tab>Base_Demo</tab>
         <visibility>Hidden</visibility>

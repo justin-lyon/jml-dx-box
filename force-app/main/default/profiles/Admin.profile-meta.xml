@@ -117,6 +117,16 @@
     </customMetadataTypeAccesses>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Account.AlertCount__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Account.HasAlerts__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>AccountAlert__c.IsActiveAlert__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -128,6 +138,16 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Alert__c.IsActive__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.AlertCount__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.HasAlerts__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

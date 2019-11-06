@@ -4,6 +4,7 @@
 
 # Salesforce cache
 .sfdx/
+**/lwc/jsconfig.json
 
 # Logs
 logs

@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/jlyon87/jml-dx-box#readme",
   "devDependencies": {
-    "@salesforce/sfdx-lwc-jest": "^0.6.1"
+    "@salesforce/sfdx-lwc-jest": "^0.6.1",
+    "jest-canvas-mock": "^2.1.2"
   }
 }

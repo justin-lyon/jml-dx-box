@@ -4,26 +4,31 @@
       <lightning-accordion >
         <template for:item="type" for:each={alertsByType}>
           <lightning-accordion-section
+            class="slds-theme_error"
             key={type.name}
             name={type.name}
             label={type.label} >
 
-            <lightning-accordion >
-              <template for:item="alert" for:each={type.alerts}>
-                <lightning-accordion-section
-                  key={alert.id}
-                  name={alert.id}
-                  label={alert.title} >
-                  {alert.message}
+            <ul class="slds-has-dividers_bottom-space">
+              <li class="slds-item">
+                <template for:item="alert" for:each={type.alerts}>
+                  <lightning-card
+                    class="slds-theme_default"
+                    key={alert.id}
+                    title={alert.title}>
+                    <div slot="actions">
+                      <lightning-button-icon
+                        icon-name="utility:open"
+                        variant="bare"></lightning-button-icon>
+                    </div>
 
-                  <div slot="actions">
-                    <lightning-button-icon
-                      icon-name="utility:open"
-                      variant="bare"></lightning-button-icon>
-                  </div>
-                </lightning-accordion-section>
-              </template>
-            </lightning-accordion>
+                    <p class="slds-p-horizontal_medium">
+                      {alert.message}
+                    </p>
+                  </lightning-card>
+                </template>
+              </li>
+            </ul>
           </lightning-accordion-section>
         </template>
       </lightning-accordion>

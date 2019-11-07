@@ -11,6 +11,10 @@
         <visible>false</visible>
     </applicationVisibilities>
     <classAccesses>
+        <apexClass>AccountAlertsPanelAuraService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>BusinessDays</apexClass>
         <enabled>true</enabled>
     </classAccesses>

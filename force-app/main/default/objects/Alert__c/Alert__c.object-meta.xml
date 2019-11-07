@@ -155,9 +155,8 @@
     <enableStreamingApi>true</enableStreamingApi>
     <label>Alert</label>
     <nameField>
-        <displayFormat>A-{00000000}</displayFormat>
-        <label>Alert Number</label>
-        <type>AutoNumber</type>
+        <label>Alert Name</label>
+        <type>Text</type>
     </nameField>
     <pluralLabel>Alerts</pluralLabel>
     <searchLayouts/>

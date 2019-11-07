@@ -23,8 +23,8 @@
                 <field>IsActive__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>IsActiveAlert__c</field>
+                <behavior>Edit</behavior>
+                <field>Message__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns/>

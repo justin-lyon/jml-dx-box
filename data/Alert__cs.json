@@ -5,30 +5,27 @@
                 "type": "Alert__c",
                 "referenceId": "Alert__cRef1"
             },
-            "Title__c": "Missing Documents",
             "Type__c": "Warning",
-            "Message__c": "Ask this user for additional documents",
-            "IsActive__c": true
+            "Name": "Missing Documents",
+            "Description__c": "Ask this user for additional documents"
         },
         {
             "attributes": {
                 "type": "Alert__c",
                 "referenceId": "Alert__cRef2"
             },
-            "Title__c": "Alternate Name",
             "Type__c": "Info",
-            "Message__c": "This person has a nickname",
-            "IsActive__c": true
+            "Name": "Alternate Name",
+            "Description__c": "This person has a nickname"
         },
         {
             "attributes": {
                 "type": "Alert__c",
                 "referenceId": "Alert__cRef3"
             },
-            "Title__c": "Fraud",
             "Type__c": "Danger",
-            "Message__c": "Impersonation attempt",
-            "IsActive__c": true
+            "Name": "Fraud",
+            "Description__c": "Impersonation attempt"
         }
     ]
 }

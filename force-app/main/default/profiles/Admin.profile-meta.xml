@@ -126,18 +126,18 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>AccountAlert__c.IsActiveAlert__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>true</editable>
         <field>AccountAlert__c.IsActive__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Alert__c.IsActive__c</field>
+        <field>AccountAlert__c.Message__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Alert__c.Rank__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -156,13 +156,13 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>ContactAlert__c.IsActiveAlert__c</field>
+        <editable>true</editable>
+        <field>ContactAlert__c.IsActive__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>ContactAlert__c.IsActive__c</field>
+        <field>ContactAlert__c.Message__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -181,9 +181,6 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>Case-CN Case</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>CaseClose-Close Case Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Contact-CN Contact</layout>

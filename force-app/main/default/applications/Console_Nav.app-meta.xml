@@ -41,9 +41,13 @@
     <tabs>standard-Case</tabs>
     <tabs>standard-Account</tabs>
     <tabs>standard-Contact</tabs>
+    <tabs>Alert__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>Console_Nav_UtilityBar</utilityBar>
     <workspaceConfig>
+        <mappings>
+            <tab>Alert__c</tab>
+        </mappings>
         <mappings>
             <tab>standard-Account</tab>
         </mappings>

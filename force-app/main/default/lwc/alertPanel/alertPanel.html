@@ -2,35 +2,48 @@
   <lightning-card title="Alerts">
     <div class="slds-p-horizontal_medium">
       <lightning-accordion >
-        <template for:item="type" for:each={alertsByType}>
-          <lightning-accordion-section
-            class="slds-theme_error"
-            key={type.name}
-            name={type.name}
-            label={type.label} >
+        <lightning-accordion-section
+          if:true={hasDanger}
+          class="slds-theme_error"
+          name="danger"
+          label={dangerLabel} >
 
-            <ul class="slds-has-dividers_bottom-space">
-              <li class="slds-item">
-                <template for:item="alert" for:each={type.alerts}>
-                  <lightning-card
-                    class="slds-theme_default"
-                    key={alert.id}
-                    title={alert.title}>
-                    <div slot="actions">
-                      <lightning-button-icon
-                        icon-name="utility:open"
-                        variant="bare"></lightning-button-icon>
-                    </div>
+          <ul class="slds-has-dividers_bottom-space">
+            <template for:item="alert" for:each={dangers}>
+              <li
+                key={alert.id}
+                class="slds-item">
 
-                    <p class="slds-p-horizontal_medium">
+                <lightning-card
+                  class="slds-theme_default"
+                  title={alert.title}>
+
+                  <div slot="actions">
+                    <lightning-button></lightning-button>
+                  </div>
+                  <div class="slds-p-horizontal_medium">
+                    {alert.description}
+                    <p class="slds-p-vertical_small slds-text-color_weak">
                       {alert.message}
                     </p>
-                  </lightning-card>
-                </template>
+                  </div>
+                </lightning-card>
               </li>
-            </ul>
-          </lightning-accordion-section>
-        </template>
+            </template>
+          </ul>
+        </lightning-accordion-section>
+        <lightning-accordion-section
+          if:true={hasWarning}
+          class="slds-theme_warning"
+          name="warning"
+          label={warningLabel} >
+        </lightning-accordion-section>
+        <lightning-accordion-section
+          if:true={hasInfo}
+          class="slds-theme_info"
+          name="info"
+          label={infoLabel} >
+        </lightning-accordion-section>
       </lightning-accordion>
     </div>
   </lightning-card>

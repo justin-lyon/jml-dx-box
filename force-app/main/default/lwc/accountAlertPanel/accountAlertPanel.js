@@ -5,25 +5,30 @@ export default class AccountAlertPanel extends LightningElement {
   @api recordId
   @track alerts
 
-  @wire(getAlertsByAccount, { accountId: '$recordId' })
-  wiredAlerts ({ error, data }) {
-    console.log('accountId', this.recordId)
-    if (error) {
-      console.error('Error retrieving alerts', error.message)
-      return
-    }
-    console.log('data', data)
-    this.alerts = data
-  }
+  @track infos
+  @track warnings
+  @track dangers
 
   connectedCallback () {
     console.log('connected callback', this.recordId)
+    this.fetchAlerts()
+  }
+
+  fetchAlerts () {
     getAlertsByAccount({ accountId: this.recordId })
       .then(data => {
         console.log('data', data)
+        this.alerts = data
+        this.infos = this.filterByType(data, 'Info')
+        this.warnings = this.filterByType(data, 'Warning')
+        this.dangers = this.filterByType(data, 'Danger')
       })
       .catch(err => {
         console.error('error getting alerts', err.message)
       })
+  }
+
+  filterByType (data, type) {
+    return data.filter(d => d.type === type)
   }
 }

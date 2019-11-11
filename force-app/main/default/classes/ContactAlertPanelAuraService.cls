@@ -1,6 +1,6 @@
 public with sharing class ContactAlertPanelAuraService {
 
-	@AuraEnabled
+	@AuraEnabled(cacheable=true)
 	public static List<AlertModel> getAlertsByContact(Id contactId) {
 		List<ContactAlert__c> contactAlerts = [
 			SELECT Id,

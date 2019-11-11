@@ -1,6 +1,6 @@
 public with sharing class AccountAlertPanelAuraService {
 
-	@AuraEnabled
+	@AuraEnabled(cacheable=true)
 	public static List<AlertModel> getAlertsByAccount(Id accountId) {
 		List<AccountAlert__c> accountAlerts = [
 			SELECT Id,

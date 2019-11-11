@@ -10,7 +10,7 @@ export default class AlertPanel extends LightningElement {
   @api
   get alerts () { return this._alerts }
   set alerts (data) {
-    if (data) {
+    if (data && data.length > 0) {
       this._alerts = data
       this.infos = this.filterByType(data, 'Info')
       this.warnings = this.filterByType(data, 'Warning')
@@ -23,9 +23,15 @@ export default class AlertPanel extends LightningElement {
   get warningLabel () { return 'Warning (' + this.warnings.length + ')' }
   get infoLabel () { return 'Info (' + this.infos.length + ')' }
 
+  get hasAlerts () { return this._alerts && this._alerts.length > 0 }
   get hasDanger () { return this.dangers && this.dangers.length > 0 }
   get hasWarning () { return this.warnings && this.warnings.length > 0 }
   get hasInfo () { return this.infos && this.infos.length > 0 }
+
+  clickRefresh () {
+    const refresh = new CustomEvent('refresh')
+    this.dispatchEvent(refresh)
+  }
 
   filterByType (data, type) {
     return data.filter(d => d.type === type)

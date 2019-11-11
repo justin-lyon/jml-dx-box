@@ -1,7 +1,13 @@
 <template>
   <lightning-card title="Alerts">
+    <div slot="actions">
+      <lightning-button-icon
+        icon-name="utility:refresh"
+        onclick={clickRefresh}
+        variant="bare"></lightning-button-icon>
+    </div>
     <div class="slds-p-horizontal_medium">
-      <lightning-accordion >
+      <lightning-accordion if:true={hasAlerts} >
         <lightning-accordion-section
           if:true={hasDanger}
           class="slds-theme_error"

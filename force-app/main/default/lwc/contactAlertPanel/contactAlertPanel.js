@@ -1,21 +1,25 @@
-import { LightningElement, api, track } from 'lwc'
+import { LightningElement, api, track, wire } from 'lwc'
+import { refreshApex } from '@salesforce/apex'
 import getAlertsByContact from '@salesforce/apex/ContactAlertPanelAuraService.getAlertsByContact'
 
 export default class ContactAlertPanel extends LightningElement {
   @api recordId
   @track alerts
+  wiredAlertResult
 
-  connectedCallback () {
-    this.fetchAlerts()
+  onRefresh () {
+    return refreshApex(this.wiredAlertResult)
   }
 
-  fetchAlerts () {
-    getAlertsByContact({ contactId: this.recordId })
-      .then(data => {
-        this.alerts = data
-      })
-      .catch(err => {
-        console.error('error getting alerts', err.message)
-      })
+  @wire(getAlertsByContact, { contactId: '$recordId' })
+  wiredAlerts (result) {
+    this.wiredAlertResult = result
+    this.alerts = []
+    if (result.data) {
+      this.alerts = result.data
+
+    } else if (result.error) {
+      console.error('Error getting alerts', result.error.message)
+    }
   }
 }

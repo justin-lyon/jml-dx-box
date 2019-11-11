@@ -1,21 +1,24 @@
-import { LightningElement, api, track } from 'lwc'
+import { LightningElement, api, track, wire } from 'lwc'
+import { refreshApex } from '@salesforce/apex'
 import getAlertsByAccount from '@salesforce/apex/AccountAlertPanelAuraService.getAlertsByAccount'
 
 export default class AccountAlertPanel extends LightningElement {
   @api recordId
   @track alerts
+  wiredAlertResult
 
-  connectedCallback () {
-    this.fetchAlerts()
+  onRefresh () {
+    refreshApex(this.wiredAlertResult)
   }
 
-  fetchAlerts () {
-    getAlertsByAccount({ accountId: this.recordId })
-      .then(data => {
-        this.alerts = data
-      })
-      .catch(err => {
-        console.error('error getting alerts', err.message)
-      })
+  @wire(getAlertsByAccount, { accountId: '$recordId' })
+  wiredAlerts (result) {
+    this.wiredAlertResult = result
+    this.alerts = []
+    if (result.data) {
+      this.alerts = result.data
+    } else if (result.error) {
+      console.error('error refreshing', result.error)
+    }
   }
 }

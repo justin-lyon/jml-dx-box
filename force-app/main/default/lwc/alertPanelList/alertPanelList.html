@@ -1,0 +1,13 @@
+<template>
+  <ul class="slds-has-dividers_bottom-space">
+    <template for:item="alert" for:each={alerts}>
+      <li
+        key={alert.id}
+        class="slds-item">
+
+        <c-alert-panel-item
+          alert={alert} ></c-alert-panel-item>
+      </li>
+    </template>
+  </ul>
+</template>

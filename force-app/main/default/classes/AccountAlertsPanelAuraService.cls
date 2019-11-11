@@ -5,6 +5,7 @@ public with sharing class AccountAlertsPanelAuraService {
 		List<AccountAlert__c> accountAlerts = [
 			SELECT Id,
 				Message__c,
+				Alert__c,
 				Alert__r.Type__c,
 				Alert__r.Name,
 				Alert__r.Description__c,
@@ -33,6 +34,10 @@ public with sharing class AccountAlertsPanelAuraService {
 		public String type {get; private set;}
 		@AuraEnabled
 		public Integer rank {get; private set;}
+		@AuraEnabled
+		public String sobjectType {get; private set;}
+		@AuraEnabled
+		public Id alertId {get; private set;}
 
 		public AlertModel(AccountAlert__c aa) {
 			id = aa.Id;
@@ -41,6 +46,8 @@ public with sharing class AccountAlertsPanelAuraService {
 			message = aa.Message__c;
 			type = aa.Alert__r.Type__c;
 			rank = Integer.valueOf(aa.Alert__r.Rank__c);
+			alertId = aa.Alert__c;
+			sobjectType = 'Alert__c';
 		}
 	}
 }

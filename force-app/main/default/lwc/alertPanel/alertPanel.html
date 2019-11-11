@@ -37,12 +37,60 @@
           class="slds-theme_warning"
           name="warning"
           label={warningLabel} >
+
+          <ul class="slds-has-dividers_bottom-space">
+            <template for:item="alert" for:each={warnings}>
+              <li
+                key={alert.id}
+                class="slds-item">
+
+                <lightning-card
+                  class="slds-theme_default"
+                  title={alert.title}>
+
+                  <div slot="actions">
+                    <lightning-button></lightning-button>
+                  </div>
+                  <div class="slds-p-horizontal_medium">
+                    {alert.description}
+                    <p class="slds-p-vertical_small slds-text-color_weak">
+                      {alert.message}
+                    </p>
+                  </div>
+                </lightning-card>
+              </li>
+            </template>
+          </ul>
         </lightning-accordion-section>
         <lightning-accordion-section
           if:true={hasInfo}
           class="slds-theme_info"
           name="info"
           label={infoLabel} >
+
+          <ul class="slds-has-dividers_bottom-space">
+            <template for:item="alert" for:each={infos}>
+              <li
+                key={alert.id}
+                class="slds-item">
+
+                <lightning-card
+                  class="slds-theme_default"
+                  title={alert.title}>
+
+                  <div slot="actions">
+                    <lightning-button></lightning-button>
+                  </div>
+                  <div class="slds-p-horizontal_medium">
+                    {alert.description}
+                    <p class="slds-p-vertical_small slds-text-color_weak">
+                      {alert.message}
+                    </p>
+                  </div>
+                </lightning-card>
+              </li>
+            </template>
+          </ul>
         </lightning-accordion-section>
       </lightning-accordion>
     </div>

@@ -144,6 +144,16 @@
     </flexiPageRegions>
     <flexiPageRegions>
         <componentInstances>
+            <componentName>contactAlertPanel</componentName>
+            <visibilityRule>
+                <criteria>
+                    <leftValue>{!Record.AlertCount__c}</leftValue>
+                    <operator>GT</operator>
+                    <rightValue>0</rightValue>
+                </criteria>
+            </visibilityRule>
+        </componentInstances>
+        <componentInstances>
             <componentInstanceProperties>
                 <name>accordionSections</name>
                 <value>Facet-a7a66545-ced9-4aae-b717-6220a3104867</value>

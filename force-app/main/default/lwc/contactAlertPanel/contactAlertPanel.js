@@ -1,7 +1,7 @@
 import { LightningElement, api, track } from 'lwc'
-import getAlertsByAccount from '@salesforce/apex/AccountAlertPanelAuraService.getAlertsByAccount'
+import getAlertsByContact from '@salesforce/apex/ContactAlertPanelAuraService.getAlertsByContact'
 
-export default class AccountAlertPanel extends LightningElement {
+export default class ContactAlertPanel extends LightningElement {
   @api recordId
   @track alerts
 
@@ -10,7 +10,7 @@ export default class AccountAlertPanel extends LightningElement {
   }
 
   fetchAlerts () {
-    getAlertsByAccount({ accountId: this.recordId })
+    getAlertsByContact({ contactId: this.recordId })
       .then(data => {
         this.alerts = data
       })

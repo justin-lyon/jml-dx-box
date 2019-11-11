@@ -11,7 +11,11 @@
         <visible>false</visible>
     </applicationVisibilities>
     <classAccesses>
-        <apexClass>AccountAlertsPanelAuraService</apexClass>
+        <apexClass>AccountAlertPanelAuraService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>AlertModel</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -20,6 +24,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>BusinessDaysTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>ContactAlertPanelAuraService</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>

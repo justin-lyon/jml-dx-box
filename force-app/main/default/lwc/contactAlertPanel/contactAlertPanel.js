@@ -4,6 +4,7 @@ import getAlertsByContact from '@salesforce/apex/ContactAlertPanelAuraService.ge
 
 export default class ContactAlertPanel extends LightningElement {
   @api recordId
+  @api hasToast
   @track alerts
   wiredAlertResult
 

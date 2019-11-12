@@ -4,6 +4,7 @@ import getAlertsByAccount from '@salesforce/apex/AccountAlertPanelAuraService.ge
 
 export default class AccountAlertPanel extends LightningElement {
   @api recordId
+  @api hasToast
   @track alerts
   wiredAlertResult
 

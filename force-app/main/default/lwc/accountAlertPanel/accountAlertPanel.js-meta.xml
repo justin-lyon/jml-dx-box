@@ -9,6 +9,7 @@
 
     <targetConfigs>
         <targetConfig targets="lightning__RecordPage">
+            <property name="hasToast" label="Has Alert Toast" type="Boolean" default="false" />
             <objects>
                 <object>Account</object>
             </objects>

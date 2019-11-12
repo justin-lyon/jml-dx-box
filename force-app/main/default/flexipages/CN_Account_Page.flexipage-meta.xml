@@ -95,6 +95,10 @@
     </flexiPageRegions>
     <flexiPageRegions>
         <componentInstances>
+            <componentInstanceProperties>
+                <name>hasToast</name>
+                <value>true</value>
+            </componentInstanceProperties>
             <componentName>accountAlertPanel</componentName>
             <visibilityRule>
                 <criteria>

@@ -144,6 +144,10 @@
     </flexiPageRegions>
     <flexiPageRegions>
         <componentInstances>
+            <componentInstanceProperties>
+                <name>hasToast</name>
+                <value>false</value>
+            </componentInstanceProperties>
             <componentName>contactAlertPanel</componentName>
             <visibilityRule>
                 <criteria>

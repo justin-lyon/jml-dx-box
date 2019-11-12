@@ -7,6 +7,8 @@ export default class AlertPanel extends LightningElement {
   @track warnings
   @track infos
 
+  @api hasToast = false
+
   @api
   get alerts () { return this._alerts }
   set alerts (data) {
@@ -15,7 +17,8 @@ export default class AlertPanel extends LightningElement {
       this.infos = this.filterByType(data, 'Info')
       this.warnings = this.filterByType(data, 'Warning')
       this.dangers = this.filterByType(data, 'Danger')
-      this.toastAlert()
+
+      if (this.hasToast) this.toastAlert()
     }
   }
 
@@ -41,19 +44,19 @@ export default class AlertPanel extends LightningElement {
     if (this.dangers && this.dangers.length > 0) {
       this.toast({
         title: 'Danger',
-        message: 'active alert on this record.',
+        message: 'Active alert on this record.',
         variant: 'error'
       })
     } else if (this.warnings && this.warnings.length > 0) {
       this.toast({
         title: 'Warning',
-        message: 'active alert on this record.',
+        message: 'Active alert on this record.',
         variant: 'warning'
       })
     } else if (this.infos && this.infos.length > 0) {
       this.toast({
         title: 'Info',
-        message: 'active alert on this record.',
+        message: 'Active alert on this record.',
         variant: 'info'
       })
     }

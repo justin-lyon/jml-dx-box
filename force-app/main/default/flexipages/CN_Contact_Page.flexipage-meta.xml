@@ -93,62 +93,20 @@
     <flexiPageRegions>
         <componentInstances>
             <componentInstanceProperties>
-                <name>context</name>
-                <value>RECORD</value>
+                <name>hasToast</name>
+                <value>false</value>
             </componentInstanceProperties>
-            <componentName>forceChatter:publisher</componentName>
+            <componentName>contactAlertPanel</componentName>
+            <visibilityRule>
+                <criteria>
+                    <leftValue>{!Record.AlertCount__c}</leftValue>
+                    <operator>GT</operator>
+                    <rightValue>0</rightValue>
+                </criteria>
+            </visibilityRule>
         </componentInstances>
-        <name>Facet-2875ea11-e78f-4dc8-a1dd-5c9d421e90d5</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
         <componentInstances>
             <componentName>runtime_sales_activities:activityPanel</componentName>
-        </componentInstances>
-        <name>Facet-318229a5-1cec-48d6-aa33-1dbf8a2ca894</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <componentInstances>
-            <componentInstanceProperties>
-                <name>body</name>
-                <value>Facet-2875ea11-e78f-4dc8-a1dd-5c9d421e90d5</value>
-            </componentInstanceProperties>
-            <componentInstanceProperties>
-                <name>label</name>
-                <value>Standard.Tab.collaborate</value>
-            </componentInstanceProperties>
-            <componentInstanceProperties>
-                <name>name</name>
-                <value>accordionSection1</value>
-            </componentInstanceProperties>
-            <componentName>flexipage:accordionSection</componentName>
-        </componentInstances>
-        <componentInstances>
-            <componentInstanceProperties>
-                <name>body</name>
-                <value>Facet-318229a5-1cec-48d6-aa33-1dbf8a2ca894</value>
-            </componentInstanceProperties>
-            <componentInstanceProperties>
-                <name>label</name>
-                <value>Standard.Tab.activity</value>
-            </componentInstanceProperties>
-            <componentInstanceProperties>
-                <name>name</name>
-                <value>accordionSection2</value>
-            </componentInstanceProperties>
-            <componentName>flexipage:accordionSection</componentName>
-        </componentInstances>
-        <name>Facet-a7a66545-ced9-4aae-b717-6220a3104867</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <componentInstances>
-            <componentInstanceProperties>
-                <name>accordionSections</name>
-                <value>Facet-a7a66545-ced9-4aae-b717-6220a3104867</value>
-            </componentInstanceProperties>
-            <componentName>flexipage:accordion</componentName>
         </componentInstances>
         <name>sidebar</name>
         <type>Region</type>

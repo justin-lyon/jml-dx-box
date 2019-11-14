@@ -1,12 +1,55 @@
 <template>
-  <lightning-card title="Alerts">
-    <div slot="actions">
+  <!-- <lightning-card title=""> -->
+    <!-- <div slot="actions">
       <lightning-button-icon
         icon-name="utility:refresh"
         onclick={clickRefresh}
         variant="bare"></lightning-button-icon>
+    </div> -->
+    <div class="slds-box slds-theme_default">
+      <div class="slds-grid slds-grid_align-center slds-gutters">
+        <div
+          if:true={hasDanger}
+          class="slds-col">
+
+          <lightning-button-group>
+            <lightning-button
+              icon-name="utility:alert"
+              label={dangers.length}
+              variant="destructive"></lightning-button>
+            <lightning-button
+              icon-name="utility:alert"
+              label={warnings.length} ></lightning-button>
+            <lightning-button
+              icon-name="utility:alert"
+              label={infos.length} ></lightning-button>
+          </lightning-button-group>
+        </div>
+        <!-- <div
+          if:true={hasDanger}
+          class="slds-col">
+          <lightning-button
+            icon-name="utility:alert"
+            label={dangers.length}
+            variant="destructive"></lightning-button>
+        </div>
+        <div
+          if:true={hasWarning}
+          class="slds-col">
+          <lightning-button
+            icon-name="utility:alert"
+            label={warnings.length} ></lightning-button>
+        </div>
+        <div
+          if:true={hasInfo}
+          class="slds-col">
+          <lightning-button
+            icon-name="utility:alert"
+            label={infos.length} ></lightning-button>
+        </div> -->
+      </div>
     </div>
-    <div class="slds-p-horizontal_medium">
+    <!-- <div class="slds-p-horizontal_medium">
       <lightning-accordion if:true={hasAlerts} >
         <lightning-accordion-section
           if:true={hasDanger}
@@ -40,6 +83,6 @@
 
         </lightning-accordion-section>
       </lightning-accordion>
-    </div>
-  </lightning-card>
+    </div> -->
+  <!-- </lightning-card> -->
 </template>

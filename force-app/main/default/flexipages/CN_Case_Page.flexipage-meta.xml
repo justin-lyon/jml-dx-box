@@ -38,57 +38,8 @@
             </componentInstanceProperties>
             <componentName>forceChatter:publisher</componentName>
         </componentInstances>
-        <name>Facet-d93d4eda-f466-4a91-a20a-5563f07863eb</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
         <componentInstances>
             <componentName>runtime_sales_activities:activityPanel</componentName>
-        </componentInstances>
-        <name>Facet-a5942d10-3e79-4c4b-b882-12482bd8d114</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <componentInstances>
-            <componentInstanceProperties>
-                <name>body</name>
-                <value>Facet-d93d4eda-f466-4a91-a20a-5563f07863eb</value>
-            </componentInstanceProperties>
-            <componentInstanceProperties>
-                <name>label</name>
-                <value>Standard.Tab.collaborate</value>
-            </componentInstanceProperties>
-            <componentInstanceProperties>
-                <name>name</name>
-                <value>accordionSection1</value>
-            </componentInstanceProperties>
-            <componentName>flexipage:accordionSection</componentName>
-        </componentInstances>
-        <componentInstances>
-            <componentInstanceProperties>
-                <name>body</name>
-                <value>Facet-a5942d10-3e79-4c4b-b882-12482bd8d114</value>
-            </componentInstanceProperties>
-            <componentInstanceProperties>
-                <name>label</name>
-                <value>Standard.Tab.activity</value>
-            </componentInstanceProperties>
-            <componentInstanceProperties>
-                <name>name</name>
-                <value>accordionSection2</value>
-            </componentInstanceProperties>
-            <componentName>flexipage:accordionSection</componentName>
-        </componentInstances>
-        <name>Facet-8de6f0a1-3187-44ab-ab2d-774a44fd21a6</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <componentInstances>
-            <componentInstanceProperties>
-                <name>accordionSections</name>
-                <value>Facet-8de6f0a1-3187-44ab-ab2d-774a44fd21a6</value>
-            </componentInstanceProperties>
-            <componentName>flexipage:accordion</componentName>
         </componentInstances>
         <name>sidebar</name>
         <type>Region</type>

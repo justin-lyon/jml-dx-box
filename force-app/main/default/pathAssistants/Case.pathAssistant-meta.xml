@@ -5,11 +5,31 @@
     <fieldName>Status</fieldName>
     <masterLabel>Case</masterLabel>
     <pathAssistantSteps>
+        <fieldNames>OwnerId</fieldNames>
+        <fieldNames>Reason</fieldNames>
+        <fieldNames>ClosedDate</fieldNames>
+        <picklistValueName>Closed</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Origin</fieldNames>
+        <fieldNames>OwnerId</fieldNames>
+        <fieldNames>Reason</fieldNames>
+        <fieldNames>ContactEmail</fieldNames>
+        <picklistValueName>Escalated</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
         <fieldNames>AccountId</fieldNames>
         <fieldNames>Origin</fieldNames>
         <fieldNames>Reason</fieldNames>
         <fieldNames>OwnerId</fieldNames>
         <picklistValueName>New</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>AccountId</fieldNames>
+        <fieldNames>Origin</fieldNames>
+        <fieldNames>OwnerId</fieldNames>
+        <fieldNames>Reason</fieldNames>
+        <picklistValueName>Working</picklistValueName>
     </pathAssistantSteps>
     <recordTypeName>__MASTER__</recordTypeName>
 </PathAssistant>

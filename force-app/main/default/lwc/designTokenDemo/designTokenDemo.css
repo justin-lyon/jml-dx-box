@@ -1,0 +1,20 @@
+div.box {
+  width: 100%;
+  height: 5rem;
+}
+
+div.box.warning {
+  background-color: var(--lwc-colorWarning,#fc3000);
+}
+
+div.box.slds-warning {
+
+}
+
+div.box.brand {
+  background-color: var(--lwc-myColorBrand,#7eeba2);
+}
+
+div.box.slds-brand {
+  background-color: var(--lwc-colorBrand,#7eeba2);
+}

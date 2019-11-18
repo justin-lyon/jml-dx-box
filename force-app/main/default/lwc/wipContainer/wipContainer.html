@@ -1,32 +1,3 @@
 <template>
-  <div class="slds-m-around_large">
-    <div class="slds-grid slds-gutters slds-wrap">
-
-      <div class="slds-col slds-size_1-of-3">
-        <lightning-card title="Dependent Picklist">
-          <div class="slds-p-horizontal_medium">
-            <fieldset class="slds-box" >
-              <legend class="slds-p-horizontal_small slds-text-color_weak" >Case Type & Subtype</legend>
-
-              <c-dependent-picklist
-                onselect={setSelected}
-                object-api-name="Case"
-                parent-field-name="Type"
-                child-field-name="Subtype__c"></c-dependent-picklist>
-            </fieldset>
-          </div>
-
-          <div slot="footer">
-            <div>
-              Parent: {selected.parentSelect}
-            </div>
-            <div>
-              Child: {selected.childSelect}
-            </div>
-          </div>
-        </lightning-card>
-      </div>
-
-    </div>
-  </div>
+  <c-design-token-demo></c-design-token-demo>
 </template>

@@ -1,8 +1,16 @@
 {
     "orgName": "Demo Company",
     "edition": "Developer",
-    "features": [],
+    "features": [
+        "Chatter"
+    ],
     "settings": {
+        "chatterSettings": {
+            "chatterEnabled": true
+        },
+        "enhancedNotesSettings": {
+            "enableEnhancedNotes": true
+        },
         "lightningExperienceSettings": {
             "enableS1DesktopEnabled": true
         },

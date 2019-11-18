@@ -19,4 +19,5 @@ AppSwitcher.appMenu
 
 # Whitelisted Metadata
 !**/settings/BusinessHours
+!**/settings/Notes
 !**/profiles/Admin

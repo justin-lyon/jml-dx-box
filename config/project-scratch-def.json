@@ -1,13 +1,8 @@
 {
     "orgName": "Demo Company",
     "edition": "Developer",
-    "features": [
-        "Chatter"
-    ],
+    "features": [],
     "settings": {
-        "chatterSettings": {
-            "chatterEnabled": true
-        },
         "enhancedNotesSettings": {
             "enableEnhancedNotes": true
         },

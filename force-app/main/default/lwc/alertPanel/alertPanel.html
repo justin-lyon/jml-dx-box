@@ -8,7 +8,7 @@
     </div> -->
     <div class="slds-box slds-theme_default">
       <div class="slds-grid slds-grid_align-center slds-gutters">
-        <div
+        <!-- <div
           if:true={hasDanger}
           class="slds-col">
 
@@ -24,7 +24,7 @@
               icon-name="utility:alert"
               label={infos.length} ></lightning-button>
           </lightning-button-group>
-        </div>
+        </div> -->
         <!-- <div
           if:true={hasDanger}
           class="slds-col">
@@ -49,7 +49,8 @@
         </div> -->
       </div>
     </div>
-    <!-- <div class="slds-p-horizontal_medium">
+  <lightning-card title="Alerts">
+    <div class="slds-p-horizontal_medium">
       <lightning-accordion if:true={hasAlerts} >
         <lightning-accordion-section
           if:true={hasDanger}
@@ -83,6 +84,6 @@
 
         </lightning-accordion-section>
       </lightning-accordion>
-    </div> -->
-  <!-- </lightning-card> -->
+    </div>
+  </lightning-card>
 </template>

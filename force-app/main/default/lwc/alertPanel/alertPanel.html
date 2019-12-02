@@ -1,89 +1,83 @@
 <template>
-  <!-- <lightning-card title=""> -->
-    <!-- <div slot="actions">
-      <lightning-button-icon
-        icon-name="utility:refresh"
-        onclick={clickRefresh}
-        variant="bare"></lightning-button-icon>
-    </div> -->
+    <lightning-card title="warning" class="slds-theme_warning">
+      <div class="slds-theme_warning">
+        warning
+
+        <button class="slds-button">button</button>
+      </div>
+    </lightning-card>
     <div class="slds-box slds-theme_default">
       <div class="slds-grid slds-grid_align-center slds-gutters">
-        <!-- <div
-          if:true={hasDanger}
+        <div
+          if:true={hasAlerts}
           class="slds-col">
 
           <lightning-button-group>
             <lightning-button
+              if:true={hasDanger}
               icon-name="utility:alert"
               label={dangers.length}
+              onclick={clickDangerAlert}
               variant="destructive"></lightning-button>
             <lightning-button
+              if:true={hasWarning}
               icon-name="utility:alert"
-              label={warnings.length} ></lightning-button>
+              label={warnings.length}
+              onclick={clickWarningAlert}
+              variant="brand" ></lightning-button>
             <lightning-button
+              if:true={hasInfo}
               icon-name="utility:alert"
-              label={infos.length} ></lightning-button>
+              label={infos.length}
+              onclick={clickInfoAlert}
+              variant="neutral" ></lightning-button>
+
+            <button class="slds-button slds-button_last alert-button danger">
+              <lightning-icon
+                icon-name="utility:alert"
+                size="x-small" ></lightning-icon>
+              <span class="slds-p-left_x-small">{dangers.length}</span>
+            </button>
           </lightning-button-group>
-        </div> -->
-        <!-- <div
-          if:true={hasDanger}
-          class="slds-col">
-          <lightning-button
-            icon-name="utility:alert"
-            label={dangers.length}
-            variant="destructive"></lightning-button>
         </div>
+
         <div
-          if:true={hasWarning}
+          if:true={hasAlerts}
           class="slds-col">
-          <lightning-button
-            icon-name="utility:alert"
-            label={warnings.length} ></lightning-button>
+
+
         </div>
-        <div
-          if:true={hasInfo}
-          class="slds-col">
-          <lightning-button
-            icon-name="utility:alert"
-            label={infos.length} ></lightning-button>
-        </div> -->
+      </div>
+      <div if:true={showAlertPanel}>
+        <div class="slds-grid slds-wrap slds-gutters">
+          <template if:true={showDangerPanel}>
+            <template for:item="alert" for:each={dangers}>
+              <div key={alert.Id} class="slds-col slds-p-top_x-small slds-size_1-of-1">
+
+                <c-alert-panel-item
+                  alert={alert}></c-alert-panel-item>
+              </div>
+            </template>
+          </template>
+          <template if:true={showWarningPanel}>
+            <template for:item="alert" for:each={warnings}>
+              <div key={alert.Id} class="slds-col slds-p-top_x-small slds-size_1-of-1">
+
+                <c-alert-panel-item
+                  alert={alert}></c-alert-panel-item>
+              </div>
+            </template>
+          </template>
+          <template if:true={showInfoPanel}>
+            <template for:item="alert" for:each={infos}>
+              <div key={alert.Id} class="slds-col slds-p-top_x-small slds-size_1-of-1">
+
+                <c-alert-panel-item
+                  alert={alert}></c-alert-panel-item>
+              </div>
+            </template>
+          </template>
+        </div>
       </div>
     </div>
-  <lightning-card title="Alerts">
-    <div class="slds-p-horizontal_medium">
-      <lightning-accordion if:true={hasAlerts} >
-        <lightning-accordion-section
-          if:true={hasDanger}
-          class="slds-theme_error"
-          name="danger"
-          label={dangerLabel} >
-
-          <c-alert-panel-list
-            alerts={dangers} ></c-alert-panel-list>
-
-          </lightning-accordion-section>
-
-        <lightning-accordion-section
-          if:true={hasWarning}
-          class="slds-theme_warning"
-          name="warning"
-          label={warningLabel} >
-
-          <c-alert-panel-list
-            alerts={warnings} ></c-alert-panel-list>
-
-        </lightning-accordion-section>
-        <lightning-accordion-section
-          if:true={hasInfo}
-          class="slds-theme_info"
-          name="info"
-          label={infoLabel} >
-
-          <c-alert-panel-list
-            alerts={infos} ></c-alert-panel-list>
-
-        </lightning-accordion-section>
-      </lightning-accordion>
-    </div>
-  </lightning-card>
 </template>

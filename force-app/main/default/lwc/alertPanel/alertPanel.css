@@ -1,3 +1,27 @@
-lightning-accordion-section {
-  border-radius: 0.5rem;
+.alert-button {
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  transition: border .15s linear;
+}
+
+.alert-button.danger, .alert-button.danger svg {
+  background-color: rgb(194, 57, 52);
+  color: rgb(255, 255, 255);
+  fill: rgb(255, 255, 255);
+}
+
+.alert-button.warning {
+  background-color: rgb(255, 154, 60);
+  color: rgb(81, 79, 77);
+  fill: rgb(81, 79, 77);
+}
+
+.alert-button.info {
+  background-color: rgb(22, 50, 92);
+  color: rgb(255, 255, 255);
+  fill: rgb(255, 255, 255);
 }

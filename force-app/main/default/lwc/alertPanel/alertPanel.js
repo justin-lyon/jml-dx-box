@@ -7,6 +7,11 @@ export default class AlertPanel extends LightningElement {
   @track warnings
   @track infos
 
+  @track showAlertPanel = false
+  @track showDangerPanel = false
+  @track showWarningPanel = false
+  @track showInfoPanel = false
+
   @api hasToast = false
 
   @api
@@ -60,6 +65,27 @@ export default class AlertPanel extends LightningElement {
         variant: 'info'
       })
     }
+  }
+
+  clickDangerAlert () {
+    this.showAlertPanel = true
+    this.showDangerPanel = true
+    this.showWarningPanel = false
+    this.showInfoPanel = false
+  }
+
+  clickWarningAlert () {
+    this.showAlertPanel = true
+    this.showDangerPanel = false
+    this.showWarningPanel = true
+    this.showInfoPanel = false
+  }
+
+  clickInfoAlert () {
+    this.showAlertPanel = true
+    this.showDangerPanel = false
+    this.showWarningPanel = false
+    this.showInfoPanel = true
   }
 
   toast ({ title, message, variant }) {

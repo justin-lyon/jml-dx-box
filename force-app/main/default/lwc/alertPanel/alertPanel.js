@@ -67,6 +67,10 @@ export default class AlertPanel extends LightningElement {
     }
   }
 
+  closeAlertPanel () {
+    this.showAlertPanel = false
+  }
+
   clickDangerAlert () {
     this.showAlertPanel = true
     this.showDangerPanel = true

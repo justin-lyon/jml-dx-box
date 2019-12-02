@@ -1,53 +1,49 @@
 <template>
-    <lightning-card title="warning" class="slds-theme_warning">
-      <div class="slds-theme_warning">
-        warning
-
-        <button class="slds-button">button</button>
-      </div>
-    </lightning-card>
     <div class="slds-box slds-theme_default">
       <div class="slds-grid slds-grid_align-center slds-gutters">
         <div
           if:true={hasAlerts}
           class="slds-col">
 
-          <lightning-button-group>
-            <lightning-button
+          <div class="slds-button-group">
+            <button class="slds-button alert-button danger"
               if:true={hasDanger}
-              icon-name="utility:alert"
-              label={dangers.length}
-              onclick={clickDangerAlert}
-              variant="destructive"></lightning-button>
-            <lightning-button
-              if:true={hasWarning}
-              icon-name="utility:alert"
-              label={warnings.length}
-              onclick={clickWarningAlert}
-              variant="brand" ></lightning-button>
-            <lightning-button
-              if:true={hasInfo}
-              icon-name="utility:alert"
-              label={infos.length}
-              onclick={clickInfoAlert}
-              variant="neutral" ></lightning-button>
-
-            <button class="slds-button slds-button_last alert-button danger">
+              onclick={clickDangerAlert} >
               <lightning-icon
                 icon-name="utility:alert"
+                variant="inverse"
                 size="x-small" ></lightning-icon>
               <span class="slds-p-left_x-small">{dangers.length}</span>
             </button>
-          </lightning-button-group>
-        </div>
-
-        <div
-          if:true={hasAlerts}
-          class="slds-col">
-
-
+            <button class="slds-button alert-button warning"
+              if:true={hasWarning}
+              onclick={clickWarningAlert} >
+              <lightning-icon
+                icon-name="utility:alert"
+                variant="inverse"
+                size="x-small" ></lightning-icon>
+              <span class="slds-p-left_x-small">{warnings.length}</span>
+            </button>
+            <button class="slds-button alert-button info"
+              if:true={hasInfo}
+              onclick={clickInfoAlert} >
+              <lightning-icon
+                icon-name="utility:alert"
+                variant="inverse"
+                size="x-small" ></lightning-icon>
+              <span class="slds-p-left_x-small">{infos.length}</span>
+            </button>
+            <button class="slds-button slds-button_neutral"
+              if:true={showAlertPanel} >
+              <lightning-icon
+                onclick={closeAlertPanel}
+                icon-name="utility:close"
+                size="x-small" ></lightning-icon>
+            </button>
+          </div>
         </div>
       </div>
+
       <div if:true={showAlertPanel}>
         <div class="slds-grid slds-wrap slds-gutters">
           <template if:true={showDangerPanel}>

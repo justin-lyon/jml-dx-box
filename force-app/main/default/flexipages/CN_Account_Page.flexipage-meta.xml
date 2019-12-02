@@ -96,6 +96,20 @@
     <flexiPageRegions>
         <componentInstances>
             <componentInstanceProperties>
+                <name>hasToast</name>
+                <value>true</value>
+            </componentInstanceProperties>
+            <componentName>accountAlertPanel</componentName>
+            <visibilityRule>
+                <criteria>
+                    <leftValue>{!Record.HasAlerts__c}</leftValue>
+                    <operator>EQUAL</operator>
+                    <rightValue>true</rightValue>
+                </criteria>
+            </visibilityRule>
+        </componentInstances>
+        <componentInstances>
+            <componentInstanceProperties>
                 <name>tabs</name>
                 <value>Facet-4021231b-9f27-4583-8dd7-f03ea7d70b2e</value>
             </componentInstanceProperties>

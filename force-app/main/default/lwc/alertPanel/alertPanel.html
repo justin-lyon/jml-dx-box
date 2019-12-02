@@ -1,0 +1,79 @@
+<template>
+    <div class="slds-box slds-theme_default">
+      <div class="slds-grid slds-grid_align-center slds-gutters">
+        <div
+          if:true={hasAlerts}
+          class="slds-col">
+
+          <div class="slds-button-group">
+            <button class="slds-button alert-button danger"
+              if:true={hasDanger}
+              onclick={clickDangerAlert} >
+              <lightning-icon
+                icon-name="utility:alert"
+                variant="inverse"
+                size="x-small" ></lightning-icon>
+              <span class="slds-p-left_x-small">{dangers.length}</span>
+            </button>
+            <button class="slds-button alert-button warning"
+              if:true={hasWarning}
+              onclick={clickWarningAlert} >
+              <lightning-icon
+                icon-name="utility:alert"
+                variant="inverse"
+                size="x-small" ></lightning-icon>
+              <span class="slds-p-left_x-small">{warnings.length}</span>
+            </button>
+            <button class="slds-button alert-button info"
+              if:true={hasInfo}
+              onclick={clickInfoAlert} >
+              <lightning-icon
+                icon-name="utility:alert"
+                variant="inverse"
+                size="x-small" ></lightning-icon>
+              <span class="slds-p-left_x-small">{infos.length}</span>
+            </button>
+            <button class="slds-button slds-button_neutral"
+              if:true={showAlertPanel} >
+              <lightning-icon
+                onclick={closeAlertPanel}
+                icon-name="utility:close"
+                size="x-small" ></lightning-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div if:true={showAlertPanel}>
+        <div class="slds-grid slds-wrap slds-gutters">
+          <template if:true={showDangerPanel}>
+            <template for:item="alert" for:each={dangers}>
+              <div key={alert.Id} class="slds-col slds-p-top_x-small slds-size_1-of-1">
+
+                <c-alert-panel-item
+                  alert={alert}></c-alert-panel-item>
+              </div>
+            </template>
+          </template>
+          <template if:true={showWarningPanel}>
+            <template for:item="alert" for:each={warnings}>
+              <div key={alert.Id} class="slds-col slds-p-top_x-small slds-size_1-of-1">
+
+                <c-alert-panel-item
+                  alert={alert}></c-alert-panel-item>
+              </div>
+            </template>
+          </template>
+          <template if:true={showInfoPanel}>
+            <template for:item="alert" for:each={infos}>
+              <div key={alert.Id} class="slds-col slds-p-top_x-small slds-size_1-of-1">
+
+                <c-alert-panel-item
+                  alert={alert}></c-alert-panel-item>
+              </div>
+            </template>
+          </template>
+        </div>
+      </div>
+    </div>
+</template>

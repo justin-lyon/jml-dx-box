@@ -3,9 +3,7 @@
     <fullName>All</fullName>
     <columns>NAME</columns>
     <columns>Type__c</columns>
-    <columns>Title__c</columns>
-    <columns>Message__c</columns>
-    <columns>IsActive__c</columns>
+    <columns>Description__c</columns>
     <filterScope>Everything</filterScope>
     <label>All</label>
 </ListView>

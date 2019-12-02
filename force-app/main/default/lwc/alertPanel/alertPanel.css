@@ -1,0 +1,30 @@
+:host {
+  --dangerColor: rgb(194, 57, 52);
+  --warningColor: rgb(255, 183, 93);
+  --infoColor: rgb(22, 50, 92);
+  --whiteColor: rgb(255, 255, 255);
+}
+
+.alert-button {
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+}
+
+.alert-button.danger {
+  background-color: var(--dangerColor);
+  color: var(--whiteColor);
+}
+
+.alert-button.warning {
+  background-color: var(--warningColor);
+  color: var(--whiteColor);
+}
+
+.alert-button.info {
+  background-color: var(--infoColor);
+  color: var(--whiteColor);
+}

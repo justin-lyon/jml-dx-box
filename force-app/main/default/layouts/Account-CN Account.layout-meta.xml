@@ -97,11 +97,10 @@
     </relatedLists>
     <relatedLists>
         <fields>Alert__c.NAME</fields>
-        <fields>Alert__c.Title__c</fields>
         <fields>Alert__c.Type__c</fields>
-        <fields>Alert__c.Message__c</fields>
-        <fields>IsActiveAlert__c</fields>
+        <fields>IsActive__c</fields>
         <fields>CREATED_DATE</fields>
+        <fields>Message__c</fields>
         <relatedList>AccountAlert__c.Account__c</relatedList>
     </relatedLists>
     <relatedObjects>ParentId</relatedObjects>
@@ -111,7 +110,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h55000000XI3A</masterLabel>
+        <masterLabel>00h2a000000QB3T</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

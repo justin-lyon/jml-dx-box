@@ -13,12 +13,16 @@
     <tabs>standard-home</tabs>
     <tabs>Base_Demo</tabs>
     <tabs>Field_Demo</tabs>
+    <tabs>Design_Tokens</tabs>
     <tabs>WIP</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>LWC_Demo_UtilityBar</utilityBar>
     <workspaceConfig>
         <mappings>
             <tab>Base_Demo</tab>
+        </mappings>
+        <mappings>
+            <tab>Design_Tokens</tab>
         </mappings>
         <mappings>
             <tab>Field_Demo</tab>

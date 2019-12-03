@@ -68,28 +68,46 @@ export default class AlertPanel extends LightningElement {
   }
 
   closeAlertPanel () {
-    this.showAlertPanel = false
+    this.clearAlertState()
   }
 
   clickDangerAlert () {
+    this.clearAlertState()
     this.showAlertPanel = true
     this.showDangerPanel = true
-    this.showWarningPanel = false
-    this.showInfoPanel = false
+    this.setButtonActive('danger')
   }
 
   clickWarningAlert () {
+    this.clearAlertState()
     this.showAlertPanel = true
-    this.showDangerPanel = false
     this.showWarningPanel = true
-    this.showInfoPanel = false
+    this.setButtonActive('warning')
   }
 
   clickInfoAlert () {
+    this.clearAlertState()
     this.showAlertPanel = true
+    this.showInfoPanel = true
+    this.setButtonActive('info')
+  }
+
+  clearAlertState () {
+    this.showAlertPanel = false
     this.showDangerPanel = false
     this.showWarningPanel = false
-    this.showInfoPanel = true
+    this.showInfoPanel = false
+
+    const activeButtons = this.template.querySelectorAll('button.alert-button.active')
+    if (activeButtons) {
+      [ ...activeButtons ].forEach(btn => btn.classList.remove('active'))
+    }
+  }
+
+  setButtonActive (type) {
+    const selector = 'button.' + type
+    const activeBtn = this.template.querySelector(selector)
+    activeBtn.classList.add('active')
   }
 
   toast ({ title, message, variant }) {

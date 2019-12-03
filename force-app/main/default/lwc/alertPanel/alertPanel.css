@@ -1,7 +1,10 @@
 :host {
-  --dangerColor: rgb(194, 57, 52);
+  --dangerColor: rgb(194, 2, 1);
+  --dangerActiveColor: rgb(172, 0, 0);
   --warningColor: rgb(255, 183, 93);
-  --infoColor: rgb(22, 50, 92);
+  --warningActiveColor: rgb(255, 158, 44);
+  --infoColor: rgb(0, 112, 210);
+  --infoActiveColor: rgb(0, 95, 178);
   --whiteColor: rgb(255, 255, 255);
 }
 
@@ -12,19 +15,34 @@
   text-align: center;
   vertical-align: middle;
   justify-content: center;
+
+  color: var(--whiteColor);
 }
 
-.alert-button.danger {
+.danger {
   background-color: var(--dangerColor);
-  color: var(--whiteColor);
 }
 
-.alert-button.warning {
+.warning {
   background-color: var(--warningColor);
-  color: var(--whiteColor);
 }
 
-.alert-button.info {
+.info {
   background-color: var(--infoColor);
-  color: var(--whiteColor);
+}
+
+.danger.active {
+  background-color: var(--dangerActiveColor);
+}
+
+.warning.active {
+  background-color: var(--warningActiveColor);
+}
+
+.info.active {
+  background-color: var(--infoActiveColor);
+}
+
+.active {
+  box-shadow: inset 0 0 10px #000000;
 }

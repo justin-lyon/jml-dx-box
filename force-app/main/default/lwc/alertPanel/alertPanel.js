@@ -15,10 +15,12 @@ export default class AlertPanel extends LightningElement {
   @track warnings
   @track infos
 
-  @track showAlertPanel = false
-  @track showDangerPanel = false
-  @track showWarningPanel = false
-  @track showInfoPanel = false
+  @track panelState = {
+    show: false,
+    showDanger: false,
+    showWarning:false,
+    showInfo: false
+  }
 
   @api hasToast = false
   @api sobjectType
@@ -104,30 +106,30 @@ export default class AlertPanel extends LightningElement {
 
   clickDangerAlert () {
     this.clearAlertState()
-    this.showAlertPanel = true
-    this.showDangerPanel = true
+    this.panelState.show = true
+    this.panelState.showDanger = true
     this.setButtonActive('danger')
   }
 
   clickWarningAlert () {
     this.clearAlertState()
-    this.showAlertPanel = true
-    this.showWarningPanel = true
+    this.panelState.show = true
+    this.panelState.showWarning = true
     this.setButtonActive('warning')
   }
 
   clickInfoAlert () {
     this.clearAlertState()
-    this.showAlertPanel = true
-    this.showInfoPanel = true
+    this.panelState.show = true
+    this.panelState.showInfo = true
     this.setButtonActive('info')
   }
 
   clearAlertState () {
-    this.showAlertPanel = false
-    this.showDangerPanel = false
-    this.showWarningPanel = false
-    this.showInfoPanel = false
+    this.panelState.show = false
+    this.panelState.showDanger = false
+    this.panelState.showWarning = false
+    this.panelState.showInfo = false
 
     const activeButtons = this.template.querySelectorAll('button.alert-button.active')
     if (activeButtons) {

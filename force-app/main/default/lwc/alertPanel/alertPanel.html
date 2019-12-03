@@ -34,7 +34,7 @@
               <span class="slds-p-left_x-small">{infos.length}</span>
             </button>
             <button class="slds-button slds-button_neutral"
-              if:true={showAlertPanel} >
+              if:true={panelState.show} >
               <lightning-icon
                 onclick={closeAlertPanel}
                 icon-name="utility:close"
@@ -44,9 +44,9 @@
         </div>
       </div>
 
-      <div if:true={showAlertPanel}>
+      <div if:true={panelState.show}>
         <div class="slds-grid slds-wrap slds-gutters">
-          <template if:true={showDangerPanel}>
+          <template if:true={panelState.showDanger}>
             <template for:item="alert" for:each={dangers}>
               <div key={alert.id} class="slds-col slds-p-top_x-small slds-size_1-of-1">
 
@@ -55,7 +55,7 @@
               </div>
             </template>
           </template>
-          <template if:true={showWarningPanel}>
+          <template if:true={panelState.showWarning}>
             <template for:item="alert" for:each={warnings}>
               <div key={alert.id} class="slds-col slds-p-top_x-small slds-size_1-of-1">
 
@@ -64,7 +64,7 @@
               </div>
             </template>
           </template>
-          <template if:true={showInfoPanel}>
+          <template if:true={panelState.showInfo}>
             <template for:item="alert" for:each={infos}>
               <div key={alert.id} class="slds-col slds-p-top_x-small slds-size_1-of-1">
 

@@ -1,7 +1,15 @@
-import { LightningElement, api, track } from 'lwc'
+import { LightningElement, api, track, wire } from 'lwc'
+import { CurrentPageReference } from 'lightning/navigation'
+import { getRecord } from 'lightning/uiRecordApi'
 import { ShowToastEvent } from 'lightning/platformShowToastEvent'
 
+const FIELDS = []
+
 export default class AlertPanel extends LightningElement {
+  @track recordId
+  @track recordName
+  @track _nameField
+
   @track _alerts
   @track dangers
   @track warnings
@@ -13,6 +21,15 @@ export default class AlertPanel extends LightningElement {
   @track showInfoPanel = false
 
   @api hasToast = false
+  @api sobjectType
+  @api
+  get nameField () { return this.sobjectType + '.' + this._nameField }
+  set nameField (value) {
+    this._nameField = value
+    FIELDS.push(this.nameField)
+  }
+
+  get message () { return `Alert on ${this.sobjectType}, ${this.recordName}` }
 
   @api
   get alerts () { return this._alerts }
@@ -22,8 +39,6 @@ export default class AlertPanel extends LightningElement {
       this.infos = this.filterByType(data, 'Info')
       this.warnings = this.filterByType(data, 'Warning')
       this.dangers = this.filterByType(data, 'Danger')
-
-      if (this.hasToast) this.toastAlert()
     }
   }
 
@@ -35,6 +50,22 @@ export default class AlertPanel extends LightningElement {
   get hasDanger () { return this.dangers && this.dangers.length > 0 }
   get hasWarning () { return this.warnings && this.warnings.length > 0 }
   get hasInfo () { return this.infos && this.infos.length > 0 }
+
+  @wire(CurrentPageReference)
+  wiredPageRef (pageRef) {
+    this.recordId = pageRef.attributes.recordId
+  }
+
+  @wire(getRecord, { recordId: '$recordId', fields: FIELDS })
+  wiredRecord ({ error, data }) {
+    if (data) {
+      this.recordName = data.fields[this._nameField].value
+
+      if (this.hasToast) this.toastAlert()
+    } else if (error) {
+      console.error('error retrieving page record', JSON.parse(JSON.stringify(error)))
+    }
+  }
 
   clickRefresh () {
     const refresh = new CustomEvent('refresh')
@@ -49,19 +80,19 @@ export default class AlertPanel extends LightningElement {
     if (this.dangers && this.dangers.length > 0) {
       this.toast({
         title: 'Danger',
-        message: 'Active alert on this record.',
+        message: this.message,
         variant: 'error'
       })
     } else if (this.warnings && this.warnings.length > 0) {
       this.toast({
         title: 'Warning',
-        message: 'Active alert on this record.',
+        message: this.message,
         variant: 'warning'
       })
     } else if (this.infos && this.infos.length > 0) {
       this.toast({
         title: 'Info',
-        message: 'Active alert on this record.',
+        message: this.message,
         variant: 'info'
       })
     }

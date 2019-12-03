@@ -31,8 +31,6 @@ export default class AlertPanel extends LightningElement {
     FIELDS.push(this.nameField)
   }
 
-  get message () { return `Alert on ${this.sobjectType}, ${this.recordName}` }
-
   @api
   get alerts () { return this._alerts }
   set alerts (data) {
@@ -43,6 +41,8 @@ export default class AlertPanel extends LightningElement {
       this.dangers = this.filterByType(data, 'Danger')
     }
   }
+
+  get message () { return `Alert on ${this.sobjectType}, ${this.recordName}` }
 
   get dangerLabel () { return 'Danger (' + this.dangers.length + ')'}
   get warningLabel () { return 'Warning (' + this.warnings.length + ')' }

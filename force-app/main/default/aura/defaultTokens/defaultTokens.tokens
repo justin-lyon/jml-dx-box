@@ -1,0 +1,11 @@
+<aura:tokens extends="force:base">
+  <aura:token
+    name="myYellow"
+    value="#fcba03" />
+  <aura:token
+    name="colorWarning"
+    value="{!colorBackgroundWarning}" />
+  <aura:token
+    name="myColorBrand"
+    value="{!colorBrand}" />
+</aura:tokens>

@@ -1,0 +1,31 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "Alert__c",
+                "referenceId": "Alert__cRef1"
+            },
+            "Type__c": "Warning",
+            "Name": "Missing Documents",
+            "Description__c": "Ask this user for additional documents"
+        },
+        {
+            "attributes": {
+                "type": "Alert__c",
+                "referenceId": "Alert__cRef2"
+            },
+            "Type__c": "Info",
+            "Name": "Alternate Name",
+            "Description__c": "This person has a nickname"
+        },
+        {
+            "attributes": {
+                "type": "Alert__c",
+                "referenceId": "Alert__cRef3"
+            },
+            "Type__c": "Danger",
+            "Name": "Fraud",
+            "Description__c": "Impersonation attempt"
+        }
+    ]
+}

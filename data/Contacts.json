@@ -1,0 +1,319 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef1"
+            },
+            "Birthdate": "1941-04-29",
+            "Department": "Technology",
+            "Email": "efrank@genepoint.com",
+            "MailingCity": "Barcelona",
+            "MailingCountry": "ES",
+            "MailingPostalCode": "08028",
+            "MailingStreet": "12 C. d'Aristides Maillol",
+            "FirstName": "Edna",
+            "LastName": "Frank",
+            "Phone": "(650) 867-3450",
+            "Title": "VP, Technology",
+            "AccountId": "@AccountRef1"
+        },
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef2"
+            },
+            "Birthdate": "1945-06-15",
+            "Department": "Finance",
+            "Email": "ajames@uog.com",
+            "MailingCity": "Seo-gu",
+            "MailingCountry": "KR",
+            "MailingPostalCode": "302-834",
+            "MailingState": "Daejeon-shi",
+            "MailingStreet": "298 Mannyeon-dong",
+            "FirstName": "Ashley",
+            "LastName": "James",
+            "Phone": "+44 191 4956203",
+            "Title": "VP, Finance",
+            "AccountId": "@AccountRef2"
+        },
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef3"
+            },
+            "Birthdate": "1949-08-12",
+            "Department": "Executive Team",
+            "Email": "tripley@uog.com",
+            "MailingCity": "Seven Hills",
+            "MailingCountry": "USA",
+            "MailingPostalCode": "44131",
+            "MailingState": "OH",
+            "MailingStreet": "5700 Lombardo Center",
+            "FirstName": "Tom",
+            "LastName": "Ripley",
+            "Phone": "(650) 450-8810",
+            "Title": "Regional General Manager",
+            "AccountId": "@AccountRef3"
+        },
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef4"
+            },
+            "Birthdate": "1960-11-22",
+            "Department": "Production",
+            "Email": "ldcruz@uog.com",
+            "MailingCity": "San Francisco",
+            "MailingCountry": "USA",
+            "MailingPostalCode": "94105",
+            "MailingState": "CA",
+            "MailingStreet": "415 Mission St",
+            "FirstName": "Liz",
+            "LastName": "D'Cruz",
+            "Phone": "(650) 450-8810",
+            "Title": "VP, Production",
+            "AccountId": "@AccountRef3"
+        },
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef5"
+            },
+            "Birthdate": "1967-02-17",
+            "Department": "Procurement",
+            "Email": "rose@edge.com",
+            "MailingStreet": "313 Constitution Place\nAustin, TX 78767\nUSA",
+            "FirstName": "Rose",
+            "LastName": "Gonzalez",
+            "Phone": "(512) 757-6000",
+            "Title": "SVP, Procurement",
+            "AccountId": "@AccountRef4"
+        },
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef6"
+            },
+            "Birthdate": "1945-11-15",
+            "Department": "Finance",
+            "Email": "sean@edge.com",
+            "MailingStreet": "312 Constitution Place\nAustin, TX 78767\nUSA",
+            "FirstName": "Sean",
+            "LastName": "Forbes",
+            "Phone": "(512) 757-6000",
+            "Title": "CFO",
+            "AccountId": "@AccountRef4"
+        },
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef7"
+            },
+            "Email": "jrogers@burlington.com",
+            "MailingCity": "Burlington",
+            "MailingCountry": "USA",
+            "MailingPostalCode": "27215",
+            "MailingState": "NC",
+            "MailingStreet": "525 S. Lexington Ave",
+            "FirstName": "Jack",
+            "LastName": "Rogers",
+            "Phone": "(336) 222-7000",
+            "Title": "VP, Facilities",
+            "AccountId": "@AccountRef5"
+        },
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef8"
+            },
+            "Department": "Finance",
+            "Email": "pat@pyramid.net",
+            "MailingCity": "Paris",
+            "MailingCountry": "France",
+            "MailingPostalCode": "75251",
+            "MailingStreet": "2 Place Jussieu",
+            "FirstName": "Pat",
+            "LastName": "Stumuller",
+            "Phone": "(014) 427-4427",
+            "Title": "SVP, Administration and Finance",
+            "AccountId": "@AccountRef6"
+        },
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef9"
+            },
+            "Department": "Internal Operations",
+            "Email": "a_young@dickenson.com",
+            "MailingCity": "Lawrence",
+            "MailingCountry": "USA",
+            "MailingPostalCode": "66045",
+            "MailingState": "KS",
+            "MailingStreet": "1301 Hoch Drive",
+            "FirstName": "Andy",
+            "LastName": "Young",
+            "Phone": "(785) 241-6200",
+            "Title": "SVP, Operations",
+            "AccountId": "@AccountRef7"
+        },
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef10"
+            },
+            "Birthdate": "1952-10-13",
+            "Department": "Finance",
+            "Email": "barr_tim@grandhotels.com",
+            "MailingStreet": "2335 N. Michigan Avenue, Suite 1500\nChicago, IL 60601, USA",
+            "FirstName": "Tim",
+            "LastName": "Barr",
+            "Phone": "(312) 596-1000",
+            "Title": "SVP, Administration and Finance",
+            "AccountId": "@AccountRef8"
+        },
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef11"
+            },
+            "Birthdate": "1954-12-25",
+            "Department": "Facilities",
+            "Email": "bond_john@grandhotels.com",
+            "MailingStreet": "2334 N. Michigan Avenue, Suite 1500\nChicago, IL 60601, USA",
+            "FirstName": "John",
+            "LastName": "Bond",
+            "Phone": "(312) 596-1000",
+            "Title": "VP, Facilities",
+            "AccountId": "@AccountRef8"
+        },
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef12"
+            },
+            "Birthdate": "1936-01-25",
+            "Department": "Operations",
+            "Email": "b.levy@expresslt.net",
+            "MailingStreet": "620 SW 5th Avenue Suite 400\nPortland, Oregon 97204\nUnited States",
+            "FirstName": "Babara",
+            "LastName": "Levy",
+            "Phone": "(503) 421-7800",
+            "Title": "SVP, Operations",
+            "AccountId": "@AccountRef9"
+        },
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef13"
+            },
+            "Birthdate": "1947-05-21",
+            "Department": "Warehouse Mgmt",
+            "Email": "j.davis@expresslt.net",
+            "MailingStreet": "621 SW 5th Avenue Suite 400\nPortland, Oregon 97204\nUnited States",
+            "FirstName": "Josh",
+            "LastName": "Davis",
+            "Phone": "(503) 421-7800",
+            "Title": "Director, Warehouse Mgmt",
+            "AccountId": "@AccountRef9"
+        },
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef14"
+            },
+            "Birthdate": "1943-04-07",
+            "Department": "Administration",
+            "Email": "jane_gray@uoa.edu",
+            "MailingStreet": "888 N Euclid \nHallis Center, Room 501\nTucson, AZ 85721\nUnited States",
+            "FirstName": "Jane",
+            "LastName": "Grey",
+            "Phone": "(520) 773-9050",
+            "Title": "Dean of Administration",
+            "AccountId": "@AccountRef10"
+        },
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef15"
+            },
+            "Birthdate": "1959-07-24",
+            "Department": "Technology",
+            "Email": "lboyle@uog.com",
+            "MailingStreet": "1304 Avenue of the Americas \nNew York, NY 10019\nUSA",
+            "FirstName": "Lauren",
+            "LastName": "Boyle",
+            "Phone": "(212) 842-5500",
+            "Title": "SVP, Technology",
+            "AccountId": "@AccountRef11"
+        },
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef16"
+            },
+            "Birthdate": "1942-06-10",
+            "Department": "Production",
+            "Email": "spavlova@uog.com",
+            "MailingStreet": "1303 Avenue of the Americas \nNew York, NY 10019\nUSA",
+            "FirstName": "Stella",
+            "LastName": "Pavlova",
+            "Phone": "(212) 842-5500",
+            "Title": "SVP, Production",
+            "AccountId": "@AccountRef11"
+        },
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef17"
+            },
+            "Birthdate": "1932-09-16",
+            "Department": "Finance",
+            "Email": "agreen@uog.com",
+            "MailingStreet": "1302 Avenue of the Americas \nNew York, NY 10019\nUSA",
+            "FirstName": "Avi",
+            "LastName": "Green",
+            "Phone": "(212) 842-5500",
+            "Title": "CFO",
+            "AccountId": "@AccountRef11"
+        },
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef18"
+            },
+            "Birthdate": "1950-10-06",
+            "Department": "Executive Team",
+            "Email": "asong@uog.com",
+            "MailingStreet": "1301 Avenue of the Americas \nNew York, NY 10019\nUSA",
+            "FirstName": "Arthur",
+            "LastName": "Song",
+            "Phone": "(212) 842-5500",
+            "Title": "CEO",
+            "AccountId": "@AccountRef11"
+        },
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef19"
+            },
+            "MailingCity": "San Francisco",
+            "MailingCountry": "US",
+            "MailingPostalCode": "94087",
+            "MailingState": "CA",
+            "MailingStreet": "The Landmark @ One Market",
+            "FirstName": "Siddartha",
+            "LastName": "Nedaerk",
+            "AccountId": "@AccountRef12"
+        },
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef20"
+            },
+            "FirstName": "Jake",
+            "LastName": "Llorrac",
+            "AccountId": "@AccountRef12"
+        }
+    ]
+}

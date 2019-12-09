@@ -4,6 +4,7 @@
 
 # Salesforce cache
 .sfdx/
+**/lwc/jsconfig.json
 
 # Logs
 logs
@@ -29,3 +30,10 @@ $RECYCLE.BIN/
 
 # editor settings
 .vscode/
+
+# chore folders
+manifest/*
+anon/
+
+#Exceptions
+!manifest/package.xml

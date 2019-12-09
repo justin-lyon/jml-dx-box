@@ -10,8 +10,14 @@ package.xml
 
 # LWC Jest
 **/__tests__/**
+**/*.test.js
 
 # Metadata Ignore
 AppSwitcher.appMenu
-**/profiles/**
 **/settings/**
+**/profiles/**
+
+# Whitelisted Metadata
+!**/settings/BusinessHours
+!**/settings/Notes
+!**/profiles/Admin

@@ -1,4 +1,61 @@
+# jml-dx-box
+
+> Justin's running sfdx poc environment.
+
+## Setup
+
+```bash
+# In your workspace directory, initialize a new project named `jml-dx-box`
+sfdx force:project:create -n jml-dx-box -t empty
+# Clone the repo
+git clone https://github.com/jlyon87/jml-dx-box.git jml-dx-box
+# Checkout the develop branch and pull the latest
+git checkout develop && git pull
+
+# Install Node dependencies
+npm install
+
+# Create a scratch org named 'my-scratch' using the develop branch
+bash scripts/create-org.sh my-scratch
+```
+
+## Apps
+
+### LWC Demo
+
+A lightning console application for various POCs.
+
+#### Permission Set
+
+LWCDemoApp provides access to the LWC Demo console application.
+
+#### Tabs
+
+ 1. Home - Default Home tab
+ 1. Base Demo - LWC Base Component POCs
+ 1. Field Demo - Custom Component POCs
+ 1. WIP - Work In Progress app page for active development
+
+### Console Nav
+
+A lightning console application to poc the Utility Bar and Workspace APIs.
+
+Setup to mock a typical Service Cloud console for case management.
+
+#### Permission Set
+
+ConsoleNav provides access to the Console Nav console application.
+
+#### Tabs
+
+ 1. Home - Default Home tab
+ 1. Cases
+ 1. Accounts
+ 1. Contacts
+
 # Salesforce App
+
+> Salesforce CLI Generated README
 
 This guide helps Salesforce developers who are new to Visual Studio Code go from zero to a deployed app using Salesforce Extensions for VS Code and Salesforce CLI.
 

@@ -1,0 +1,10 @@
+.THIS .content-area {
+	transform-origin: top;
+	transform:scaleY(1);
+	transition: all 250ms ease-out;
+}
+
+.THIS .content-area.collapsed {
+	transform:scaleY(0);
+	transition: all 250ms ease-out;
+}

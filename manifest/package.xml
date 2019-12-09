@@ -38,6 +38,22 @@
         <name>CustomMetadata</name>
     </types>
     <types>
+        <members>Account</members>
+        <members>AccountAlert__c</members>
+        <members>Alert__c</members>
+        <members>Case</members>
+        <members>Contact</members>
+        <members>ContactAlert__c</members>
+        <members>Dragon__mdt</members>
+        <members>MachineClient__mdt</members>
+        <members>TriggerBypass__mdt</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>AccountAlert__c-en_US</members>
+        <name>CustomObjectTranslation</name>
+    </types>
+    <types>
         <members>lightningMap</members>
         <name>CspTrustedSite</name>
     </types>
@@ -65,27 +81,13 @@
         <members>Contact-CN Contact</members>
         <members>ContactAlert__c-Contact Alert Layout</members>
         <members>Dragon__mdt-Dragon Layout</members>
+        <members>MachineClient__mdt-Machine Client Layout</members>
         <members>TriggerBypass__mdt-Trigger Bypass Layout</members>
         <name>Layout</name>
     </types>
     <types>
         <members>*</members>
         <name>LightningComponentBundle</name>
-    </types>
-    <types>
-        <members>Account</members>
-        <members>AccountAlert__c</members>
-        <members>Alert__c</members>
-        <members>Case</members>
-        <members>Contact</members>
-        <members>ContactAlert__c</members>
-        <members>Dragon__mdt</members>
-        <members>TriggerBypass__mdt</members>
-        <name>CustomObject</name>
-    </types>
-    <types>
-        <members>AccountAlert__c-en_US</members>
-        <name>CustomObjectTranslation</name>
     </types>
     <types>
         <members>Case</members>

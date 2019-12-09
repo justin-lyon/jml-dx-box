@@ -32,6 +32,8 @@ $RECYCLE.BIN/
 .vscode/
 
 # chore folders
-manifest
-!manifest/package.xml
+manifest/*
 anon/
+
+#Exceptions
+!manifest/package.xml

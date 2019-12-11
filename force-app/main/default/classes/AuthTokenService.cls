@@ -5,7 +5,11 @@ public with sharing class AuthTokenService implements AuthTokenServiceI {
 	public AuthTokenService.Response requestTokenByClient(AuthClient clientType) {
 
 		// Make a request for an auth token based on clientType
-		return null;
+		Response res = new Response();
+		res.expires_in = '84600';
+		res.access_token = '123';
+		res.token_type = String.valueOf(clientType);
+		return res;
 	}
 
 	public class Request {

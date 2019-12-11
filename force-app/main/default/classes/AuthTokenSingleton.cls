@@ -1,10 +1,11 @@
 public with sharing class AuthTokenSingleton {
 	private static final String PARTITION_NAME = 'AuthToken';
-	private static AuthTokenSingleton INSTANCE = new AuthTokenSingleton();
 
 	private Cache.OrgPartition authPartition = Cache.Org.getPartition(PARTITION_NAME);
 
 	public AuthTokenServiceI authService = new AuthTokenService();
+
+	private static AuthTokenSingleton INSTANCE = new AuthTokenSingleton();
 	private AuthTokenSingleton() {}
 
 	public static AuthTokenSingleton get() {
@@ -25,7 +26,7 @@ public with sharing class AuthTokenSingleton {
 	private Token fetchNewToken(AuthClient clientType) {
 		try {
 			AuthTokenService.Response res = authService.requestTokenByClient(clientType);
-			Token token = new Token(res.access_token, res.expires_in);
+			Token token = new Token(res.access_token, res.token_type, res.expires_in);
 			return token;
 		} catch(Exception exc) {
 			// Handle Exception
@@ -35,10 +36,12 @@ public with sharing class AuthTokenSingleton {
 
 	public class Token {
 		public String value;
+		public String type;
 		public DateTime expiresAt;
 
-		public Token (String v, String expiresIn) {
+		public Token (String v, String t, String expiresIn) {
 			this.value = v;
+			this.type = t;
 			if (expiresIn != null) {
 				this.expiresAt = DateTime.now().addSeconds(Integer.valueOf(expiresIn));
 			}

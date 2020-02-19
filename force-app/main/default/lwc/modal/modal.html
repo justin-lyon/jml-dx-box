@@ -1,0 +1,36 @@
+<template>
+  <div class="modal" onkeyup={handleKeyup} >
+    <section class={sectionClass}
+      role="dialog"
+      tabindex="-1"
+      aria-labelledby="modal-heading-01"
+      aria-modal="true"
+      aria-describedby="modal-content-id-1">
+
+      <div class="slds-modal__container">
+        <header class="slds-modal__header">
+          <lightning-button-icon
+            class="slds-modal__close"
+            icon-class="dark"
+            icon-name="utility:close"
+            variant="bare-inverse"
+            alternative-text="Close"
+            onclick={clickCancel} ></lightning-button-icon>
+          <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">
+            <slot name="header"></slot>
+          </h2>
+        </header>
+
+        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+          <slot ></slot>
+        </div>
+
+        <footer class="slds-modal__footer">
+          <slot name="footer" ></slot>
+        </footer>
+      </div>
+    </section>
+    <div class={backdropClass}
+      onclick={clickedClose}></div>
+  </div>
+</template>

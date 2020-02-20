@@ -1,10 +1,13 @@
 import { LightningElement, track } from 'lwc'
-import { NavigationMixin } from 'lightning/navigation'
 
-export default class WipContainer extends NavigationMixin(LightningElement) {
-  @track selected = {}
+export default class WipContainer extends LightningElement {
+  @track isShown = false
 
-  setSelected (event) {
-    this.selected = event.detail
+  toggleModal () {
+    this.isShown = !this.isShown
+  }
+
+  handleClosed () {
+    this.isShown = false
   }
 }

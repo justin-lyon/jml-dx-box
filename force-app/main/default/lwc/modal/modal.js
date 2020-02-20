@@ -8,12 +8,15 @@ const SIZE_OPTIONS = [
 
 export default class Modal extends LightningElement {
   @api isShown = false
+  @api hideHeader = false
+  @api hideFooter = false
+
   @track _size = 'medium'
 
   @api
   set size (val) {
     if (!SIZE_OPTIONS.includes(val)) {
-      throw new Error(`Property size expects values ${SIZE_OPTIONS.join(', ')}`)
+      throw new Error(`Property size expects values: ${SIZE_OPTIONS.join(', ')}`)
     }
     this._size = val
   }
@@ -57,6 +60,17 @@ export default class Modal extends LightningElement {
 
     if (this.isShown) {
       classes.push('slds-backdrop_open')
+    }
+
+    return classes.join(' ')
+  }
+
+  get headerClass () {
+    const classes = []
+    classes.push('slds-modal__header')
+
+    if (this.hideHeader) {
+      classes.push('slds-modal__header_empty')
     }
 
     return classes.join(' ')

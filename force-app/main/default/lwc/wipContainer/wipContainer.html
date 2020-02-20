@@ -1,3 +1,9 @@
 <template>
-  <c-design-token-demo></c-design-token-demo>
+  <button onclick={toggleModal}>toggle modal</button>
+  <c-modal is-shown={isShown}
+    onclose={handleClosed}>
+    <div slot="header">my header</div>
+    body
+    <div slot="footer">my footer</div>
+  </c-modal>
 </template>

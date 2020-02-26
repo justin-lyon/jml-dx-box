@@ -4,8 +4,8 @@
 echo "...Creating new Scratch Org $1"
 sfdx force:org:create -sa $1 -f config/project-scratch-def.json
 
-echo "...Install Open CTI Lightning Demo Adapter"
-sfdx force:package:install --package OpenCTIDemo
+# echo "...Install Open CTI Lightning Demo Adapter"
+# sfdx force:package:install --package OpenCTIDemo
 
 # push mdt
 echo "...Pushing metadata to $1"

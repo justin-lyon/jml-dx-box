@@ -1,0 +1,17 @@
+<template>
+  <div class="slds-form-element">
+    <label
+      class="slds-form_element__label slds-text-color_weak"
+      for="textArea">{label}</label>
+    <div class="slds-form-element__control">
+      <textarea
+        class={classList}
+        name="textarea"
+        id="textArea"
+        cols={cols}
+        rows={rows}
+        onchange={onChange}
+        onkeyup={onKeyup} >{value}</textarea>
+    </div>
+  </div>
+</template>

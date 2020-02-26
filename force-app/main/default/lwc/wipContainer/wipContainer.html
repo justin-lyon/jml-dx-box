@@ -1,10 +1,11 @@
 <template>
-  <button onclick={toggleModal}>toggle modal</button>
-  <c-modal is-shown={isShown}
-    size="small"
-    onclose={handleClosed}>
-    <div slot="header">my header</div>
-    body
-    <div slot="footer">my footer</div>
-  </c-modal>
+  <lightning-card title="Text Area">
+    <div class="slds-p-horizontal_medium">
+      <c-textarea
+        label="Description"
+        value={description}
+        onchange={onChange}
+        onkeyup={onKeyup} ></c-textarea>
+    </div>
+  </lightning-card>
 </template>

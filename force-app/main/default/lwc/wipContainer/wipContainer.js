@@ -1,13 +1,13 @@
 import { LightningElement, track } from 'lwc'
 
 export default class WipContainer extends LightningElement {
-  @track isShown = false
+  @track description = 'Lorem ipsum dolor set'
 
-  toggleModal () {
-    this.isShown = !this.isShown
+  onChange (event) {
+    this.description = event.detail
   }
 
-  handleClosed () {
-    this.isShown = false
+  onKeyup (event) {
+    this.description = event.detail
   }
 }

@@ -1,8 +1,10 @@
 public abstract class DmlBaseMock implements DmlInterface {
 	protected Map<Id, SObject> Records;
 	public MockIdGenerator Builder;
+	public Boolean IsSuccess = true;
 
 	private static final String ID_FIELD = 'Id';
+	private static final String FORCED_MESSAGE = 'Forced Exception from DmlBaseMock.';
 
 	public DmlBaseMock(Map<Id, SObject> records, Schema.SObjectType objectType) {
 		this.Records = records;
@@ -14,6 +16,8 @@ public abstract class DmlBaseMock implements DmlInterface {
 	}
 
 	public void insertRecords(List<SObject> newRecords) {
+		if (!IsSuccess) throw new DmlException(FORCED_MESSAGE);
+
 		for (SObject record : newRecords) {
 			if (record.get(ID_FIELD) != null) {
 				throw new DmlException('Cannot insert a record with an ID.');
@@ -25,6 +29,8 @@ public abstract class DmlBaseMock implements DmlInterface {
 	}
 
 	public void updateRecords(List<SObject> records) {
+		if (!IsSuccess) throw new DmlException(FORCED_MESSAGE);
+
 		for (SObject record : records) {
 			if (record.get(ID_FIELD) == null) {
 				throw new DmlException('Records to update must have a record Id.');
@@ -34,6 +40,8 @@ public abstract class DmlBaseMock implements DmlInterface {
 	}
 
 	public void upsertRecords(List<SObject> records) {
+		if (!IsSuccess) throw new DmlException(FORCED_MESSAGE);
+
 		for (SObject record : records) {
 			if (record.get(ID_FIELD) == null) {
 				Id recordId = Builder.getMockId();
@@ -44,6 +52,8 @@ public abstract class DmlBaseMock implements DmlInterface {
 	}
 
 	public void deleteRecords(List<SObject> records) {
+		if (!IsSuccess) throw new DmlException(FORCED_MESSAGE);
+
 		for (SObject record : records) {
 			if (record.get(ID_FIELD) == null) {
 				throw new DmlException('Records to delete must have a record Id.');

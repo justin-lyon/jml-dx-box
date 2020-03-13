@@ -1,4 +1,11 @@
-public with sharing class ToolBox {
+public class ToolBox {
+	private static List<String> hexMap;
+	static {
+		hexMap = new List<String> {
+			'0', '1', '2', '3', '4', '5', '6', '7',
+			'8', '9', 'a', 'b', 'c', 'd', 'e', 'f'
+		};
+	}
 
 	public static Schema.SObjectType getSObjectType(String objectName) {
 		return Schema.getGlobalDescribe().get(objectName);
@@ -26,15 +33,43 @@ public with sharing class ToolBox {
 		return objectDescribe.Fields.getMap().get(fieldName).getDescribe().getPicklistValues();
 	}
 
-	public static String generateGUID() {
-		Blob aesKey = Crypto.generateAesKey(128);
-		String hexKey = EncodingUtil.convertToHex(aesKey);
-		List<String> segments = new List<String>();
+	public static String generateUUID() {
+		// Create a Variant 4 UUID
+		// https://salesforce.stackexchange.com/a/223381
+		String randomStringAsHex = EncodingUtil.convertToHex(Crypto.generateAesKey(128));
 
-		segments.add(hexKey.substring(0, 8));
-		segments.add(hexKey.substring(8, 12));
-		segments.add(hexKey.substring(12, 16));
-		segments.add(hexKey.substring(20));
-		return String.join(segments, '-');
+		String versionHexBits = randomStringAsHex.substring(14, 16); // 7th bit
+		String variantHexBits = randomStringAsHex.substring(18, 20); // 9th bit
+
+		Integer versionIntBits = convertHexToInt(versionHexBits);
+		Integer variantIntBits = convertHexToInt(variantHexBits);
+
+		Integer versionShiftedIntBits = versionIntBits & 15 | 64; // (i & 0x0f) | 0x40
+		Integer variantShiftedIntBits = variantIntBits & 63 | 128; // (i & 0x3f) | 0x80
+
+		String versionShiftedHexBits = convertIntToHex(versionShiftedIntBits); // Always begins with 4
+		String variantShiftedHexBits = convertIntToHex(variantShiftedIntBits); // Always begins with one of 8, 9, a, b
+
+		List<String> parts = new List<String> {
+			randomStringAsHex.substring(0, 8),
+			randomStringAsHex.substring(8, 12),
+			versionShiftedHexBits + randomStringAsHex.substring(14, 16),
+			variantShiftedHexBits + randomStringAsHex.substring(18, 20),
+			randomStringAsHex.substring(20)
+		};
+		return String.join(parts, '-');
+	}
+
+	private static Integer convertHexToInt(String hex) {
+		Integer d0 = hexMap.indexOf(hex.substring(1, 2));
+		Integer d1 = hexMap.indexOf(hex.substring(0, 1));
+		return d0 + (d1*16);
+	}
+
+	private static String convertIntToHex(Integer val) {
+		// https://stackoverflow.com/a/13465128
+		String hs0 = hexMap.get(val & 15); // i & 0x0f
+		String hs1 = hexMap.get(((val >> 4) & 15)); // (i >> 4) & 0x0f
+		return hs1 + hs0;
 	}
 }

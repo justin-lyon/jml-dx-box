@@ -69,7 +69,7 @@ public class ToolBox {
 	private static String convertIntToHex(Integer val) {
 		// https://stackoverflow.com/a/13465128
 		String hs0 = hexMap.get(val & 15); // i & 0x0f
-		String hs1 = hexMap.get(((val >> 4) & 15)); // (i >> 4) & 0x0f
+		String hs1 = hexMap.get((val >> 4) & 15); // (i >> 4) & 0x0f
 		return hs1 + hs0;
 	}
 }

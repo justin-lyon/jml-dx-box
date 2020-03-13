@@ -1,7 +1,6 @@
 @isTest
 public inherited sharing class AccountDAMock extends DmlBaseMock implements AccountDAI {
 	public Map<Id, Account> Accounts;
-	public Boolean IsSuccess = true;
 
 	private static final Schema.SObjectType ACCOUNT_TYPE = Schema.Account.SObjectType;
 	private static final String ACCOUNT_NAME = 'Account';
@@ -37,7 +36,7 @@ public inherited sharing class AccountDAMock extends DmlBaseMock implements Acco
 	}
 
 	private void isQueryException() {
-		if (!IsSuccess) {
+		if (!super.IsSuccess) {
 			throw new QueryException('Forced Exception from AccountDAMock.');
 		}
 	}

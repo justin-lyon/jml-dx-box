@@ -34,7 +34,7 @@ public class ToolBox {
 	}
 
 	public static String generateUUID() {
-		// Create a Variant 4 UUID
+		// Create a Version 4 UUID
 		// https://salesforce.stackexchange.com/a/223381
 		String randomStringAsHex = EncodingUtil.convertToHex(Crypto.generateAesKey(128));
 

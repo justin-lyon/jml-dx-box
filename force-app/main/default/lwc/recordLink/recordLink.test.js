@@ -29,7 +29,7 @@ describe('c-record-link', () => {
     const label = 'Danny Tanner'
     const cmp = initCmp(RecordLink, { label })
 
-    const span = cmp.shadowRoot.querySelector('span.clickable')
+    const span = cmp.shadowRoot.querySelector('a')
     expect(span.textContent).toBe(label)
   })
 })

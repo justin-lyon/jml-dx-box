@@ -1,3 +1,7 @@
+.help-text.slds-form-element__icon {
+  padding-top: 0;
+}
+
 .fill-width {
   width: 100%;
 }

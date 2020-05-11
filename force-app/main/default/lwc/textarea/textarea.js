@@ -1,11 +1,44 @@
-import { LightningElement, api } from 'lwc'
+import { LightningElement, api, track } from 'lwc'
 
 export default class Textarea extends LightningElement {
   @api label
+  @api name
+  @api helpText
+  @api required = false
   @api cols
   @api rows = 10
+  @api messageWhenInputError = 'This field is required.'
 
-  @api value
+  @track errorMessage
+  @track _value
+  @api
+  get value () { return this._value }
+  set value (val) {
+    this._value = val
+    const area = this.template.querySelector('textarea')
+    if (area) {
+      this.errorMessage = null
+      area.value = this._value
+    }
+  }
+
+  @api checkValidity () {
+    return !this.required || Boolean(this.value && this.value.length > 0)
+  }
+
+  @api reportValidity () {
+    const isValid = this.checkValidity()
+    this.errorMessage = isValid ? null : this.messageWhenInputError
+    return isValid
+  }
+
+  get formElementClass () {
+    const classes = [ 'slds-form-element' ]
+    if (this.errorMessage) {
+      classes.push('slds-has-error')
+    }
+    return classes.join(' ')
+  }
 
   get classList () {
     const classes = []
@@ -16,21 +49,21 @@ export default class Textarea extends LightningElement {
     return classes.join(' ')
   }
 
-  onChange (event) {
-    event.preventDefault()
-    event.stopPropagation()
-    const change = new CustomEvent('change', {
-      detail: event.target.value
-    })
-    this.dispatchEvent(change)
+  onChange () {
+    this.reportValidity()
+  }
+
+  onBlur () {
+    this.reportValidity()
   }
 
   onKeyup (event) {
     event.preventDefault()
     event.stopPropagation()
-    const keyup = new CustomEvent('keyup', {
+
+    const update = new CustomEvent('update', {
       detail: event.target.value
     })
-    this.dispatchEvent(keyup)
+    this.dispatchEvent(update)
   }
 }

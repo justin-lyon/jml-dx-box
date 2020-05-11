@@ -16,9 +16,9 @@ export default class Textarea extends LightningElement {
   @api
   get value () { return this._value }
   set value (val) {
-    const newVal = !!val ? val : ''
+    const newVal = val ? val : ''
     this._value = newVal
-    if (!!this.textarea) {
+    if (this.textarea) {
       this.textarea.value = this._value
     }
   }
@@ -42,11 +42,11 @@ export default class Textarea extends LightningElement {
     return isValid
   }
 
-  renderedCallback() {
+  renderedCallback () {
     this.textarea.value = this.value
   }
 
-  get textarea() { return this.template.querySelector('textarea') }
+  get textarea () { return this.template.querySelector('textarea') }
   get maxLength () { return this.fieldDescribe.length }
   get currentLength () { return this.value.length }
   get isTooLong () { return this.currentLength > this.maxLength }

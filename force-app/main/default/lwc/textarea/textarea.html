@@ -25,11 +25,15 @@
         cols={cols}
         rows={rows}
         required={required}
+        onpaste={onPaste}
         onchange={onChange}
-        onblur={onBlur}
-        onkeyup={onKeyup} >{value}</textarea>
+        onblur={onChange}
+        onkeyup={onChange} ></textarea>
     </div>
-    <div if:true={errorMessage} class="slds-form-element__help">
+    <small if:true={showCharacterCount} class={countClass}>
+      {currentLength} / {maxLength}
+    </small>
+    <div if:true={hasError} class="slds-form-element__help">
       {errorMessage}
     </div>
   </div>

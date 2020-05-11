@@ -1,4 +1,4 @@
-import { LightningElement, api, track } from 'lwc'
+import { LightningElement, api, track, wire } from 'lwc'
 
 export default class Textarea extends LightningElement {
   @api label
@@ -8,33 +8,54 @@ export default class Textarea extends LightningElement {
   @api cols
   @api rows = 10
   @api messageWhenInputError = 'This field is required.'
+  @api fieldDescribe
+  @api showCharacterCount = false
 
   @track errorMessage
-  @track _value
+  @track _value = ''
   @api
   get value () { return this._value }
   set value (val) {
-    this._value = val
-    const area = this.template.querySelector('textarea')
-    if (area) {
-      this.errorMessage = null
-      area.value = this._value
+    const newVal = !!val ? val : ''
+    this._value = newVal
+    if (!!this.textarea) {
+      this.textarea.value = this._value
     }
   }
 
   @api checkValidity () {
-    return !this.required || Boolean(this.value && this.value.length > 0)
+    return !this.required || Boolean(this.value && this.value.length > 0) && !this.isTooLong
   }
 
   @api reportValidity () {
+    this.errorMessage = null
     const isValid = this.checkValidity()
-    this.errorMessage = isValid ? null : this.messageWhenInputError
+
+    if (!isValid) {
+      this.errorMessage = this.messageWhenInputError
+
+    }
+    if (this.isTooLong) {
+      this.errorMessage = `${this.lengthDifference} too many characters.`
+    }
+
     return isValid
   }
 
+  renderedCallback() {
+    this.textarea.value = this.value
+  }
+
+  get textarea() { return this.template.querySelector('textarea') }
+  get maxLength () { return this.fieldDescribe.length }
+  get currentLength () { return this.value.length }
+  get isTooLong () { return this.currentLength > this.maxLength }
+  get lengthDifference () { return (this.maxLength - this.currentLength) * -1 }
+  get hasError () { return !!this.errorMessage }
+
   get formElementClass () {
     const classes = [ 'slds-form-element' ]
-    if (this.errorMessage) {
+    if (this.hasError) {
       classes.push('slds-has-error')
     }
     return classes.join(' ')
@@ -49,20 +70,29 @@ export default class Textarea extends LightningElement {
     return classes.join(' ')
   }
 
-  onChange () {
+  get countClass () {
+    const classes = []
+    if (this.isTooLong) {
+      classes.push('slds-text-color_error')
+    }
+    return classes.join(classes)
+  }
+
+  onPaste () {
+    this.fireUpdate()
     this.reportValidity()
   }
 
-  onBlur () {
+  onChange (event) {
+    this.value = event.target.value
+
+    this.fireUpdate()
     this.reportValidity()
   }
 
-  onKeyup (event) {
-    event.preventDefault()
-    event.stopPropagation()
-
+  fireUpdate () {
     const update = new CustomEvent('update', {
-      detail: event.target.value
+      detail: this.value
     })
     this.dispatchEvent(update)
   }

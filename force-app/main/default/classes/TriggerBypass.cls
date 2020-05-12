@@ -2,7 +2,7 @@ public with sharing class TriggerBypass {
 	private static final String REPLACER = '{!name}';
 	private static final String ERROR_MESSAGE = 'No record by MasterLabel: ' + REPLACER + ' found in TriggerBypass__mdt Custom Metadata.';
 
-	private static TriggerBypassDAI bypassAccessor;
+	private static TriggerBypassDAI bypassAccessor = new TriggerBypassDA();
 	public static TriggerBypassDAI BypassDI {get; set {
 		bypassAccessor = value; }}
 

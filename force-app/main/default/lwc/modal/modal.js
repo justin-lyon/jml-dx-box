@@ -19,7 +19,7 @@ export default class Modal extends LightningElement {
 
     if (this.isShown) {
       console.log('isShown', this.isShown)
-      // trap focus
+      // todo trap focus
     } else {
       console.log('isShown', this.isShown)
     }

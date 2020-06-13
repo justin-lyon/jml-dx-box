@@ -7,11 +7,26 @@ const SIZE_OPTIONS = [
 ]
 
 export default class Modal extends LightningElement {
-  @api isShown = false
+  @track _isShown = false
   @api hideHeader = false
   @api hideFooter = false
 
   @track _size = 'medium'
+
+  @api
+  set isShown (val) {
+    this._isShown = val
+
+    if (this.isShown) {
+      console.log('isShown', this.isShown)
+      // trap focus
+    } else {
+      console.log('isShown', this.isShown)
+    }
+  }
+  get isShown () {
+    return this._isShown
+  }
 
   @api
   set size (val) {
@@ -20,22 +35,27 @@ export default class Modal extends LightningElement {
     }
     this._size = val
   }
-
   get size () { return this._size }
 
-  @api
-  closeModal () {
-    this.isShown = false
-  }
+  constructor () {
+    super()
 
-  @api
-  showModal () {
-    this.isShown = true
-  }
+    // bind click listener to template
+    this.template.addEventListener('click', event => {
+      console.log('capture click', event.target.nodeName.toLowerCase(), event.target.classList)
+      const name = event.target.nodeName.toLowerCase()
+      const classList = [ ...event.target.classList ]
 
-  @api
-  toggleModal () {
-    this.isShown = !this.isShown
+      // if section.slds-modal or div.slds-modal_container
+      if (name === 'section' && classList.includes('slds-modal')
+        || name === 'div' && classList.includes('slds-modal__container')) {
+
+        console.log('clicking in backdrop', name, classList)
+        this.fireClosed()
+      } else {
+        console.log('clicking in modal', name, classList)
+      }
+    })
   }
 
   get sectionClass () {
@@ -54,23 +74,23 @@ export default class Modal extends LightningElement {
     return classes.join(' ')
   }
 
-  get backdropClass () {
-    const classes = []
-    classes.push('slds-backdrop')
-
-    if (this.isShown) {
-      classes.push('slds-backdrop_open')
-    }
-
-    return classes.join(' ')
-  }
-
   get headerClass () {
     const classes = []
     classes.push('slds-modal__header')
 
     if (this.hideHeader) {
       classes.push('slds-modal__header_empty')
+    }
+
+    return classes.join(' ')
+  }
+
+  get backdropClass () {
+    const classes = []
+    classes.push('slds-backdrop')
+
+    if (this.isShown) {
+      classes.push('slds-backdrop_open')
     }
 
     return classes.join(' ')

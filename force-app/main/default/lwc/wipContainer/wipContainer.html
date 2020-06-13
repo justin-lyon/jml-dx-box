@@ -1,11 +1,19 @@
 <template>
   <lightning-card title="Text Area">
     <div class="slds-p-horizontal_medium">
-      <c-textarea
-        label="Description"
-        value={description}
-        onchange={onChange}
-        onkeyup={onKeyup} ></c-textarea>
+      <button onclick={toggleModal}>Pop Modal</button>
     </div>
   </lightning-card>
+
+  <c-modal is-shown={isShown}
+    onclose={closeModal} >
+
+    <div slot="header">my header</div>
+
+    <!-- Content of the modal -->
+    Content
+
+    <div slot="footer">my footer</div>
+
+  </c-modal>
 </template>

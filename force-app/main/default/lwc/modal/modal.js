@@ -20,6 +20,9 @@ export default class Modal extends LightningElement {
     if (this.isShown) {
       console.log('isShown', this.isShown)
       // todo trap focus
+      console.log(JSON.parse(JSON.stringify([ ...this.querySelectorAll('*[tabindex]') ])))
+      console.log(JSON.parse(JSON.stringify([ ...this.querySelectorAll('.focusable') ])))
+
     } else {
       console.log('isShown', this.isShown)
     }

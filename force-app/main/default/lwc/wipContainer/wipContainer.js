@@ -1,13 +1,22 @@
-import { LightningElement, track } from 'lwc'
+import { LightningElement } from 'lwc'
+import debouncify from 'c/debouncify'
 
 export default class WipContainer extends LightningElement {
-  @track description = 'Lorem ipsum dolor set'
+  doThingLater = debouncify(() => {
+    this.makeLog('thing is done later')
+  }, 1000)
 
-  onChange (event) {
-    this.description = event.detail
+  doThingEvenLater = debouncify(() => {
+    this.makeLog('thing is done EVEN later')
+  }, 2000)
+
+  clickButton () {
+    console.log('click')
+    this.doThingLater()
+    this.doThingEvenLater()
   }
 
-  onKeyup (event) {
-    this.description = event.detail
+  makeLog (message) {
+    console.log(message)
   }
 }

@@ -1,6 +1,7 @@
 import { LightningElement, api } from 'lwc'
 import FA from '@salesforce/resourceUrl/FontAwesome'
 import { loadStyle } from 'lightning/platformResourceLoader'
+import LIGHTNING_KIT from '@salesforce/resourceUrl/LightningKit'
 
 export default class Star extends LightningElement {
   @api star
@@ -16,6 +17,8 @@ export default class Star extends LightningElement {
     }
   }
 
+  get salesforceIcon () { return `${LIGHTNING_KIT}/svg/icons#salesforce` }
+  get starIcon () { return `${LIGHTNING_KIT}/svg/icons#star` }
   get classes () {
     const classes = []
     classes.push('fa fa-star lwc-star')

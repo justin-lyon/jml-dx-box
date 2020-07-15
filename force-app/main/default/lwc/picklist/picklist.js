@@ -29,6 +29,13 @@ export default class Picklist extends LightningElement {
     this._variant = val
   }
 
+  @api
+  get value () { return this.selected }
+
+  set value (val) {
+    this.selected = val || ''
+  }
+
   @track selected
   @track options
 
@@ -39,7 +46,7 @@ export default class Picklist extends LightningElement {
       console.error('Error', error)
     } else if (data) {
       const options = data.values.map(({ label, value }) => ({ label, value }))
-      if (!this.required) {
+      if (!this.required && !data.defaultValue) {
         options.unshift({ label: 'None', value: '' })
       }
       this.options = options
@@ -55,10 +62,16 @@ export default class Picklist extends LightningElement {
     } else {
       this.selected = this.options[0].value
     }
+
+    this.fireSelected()
   }
 
   onChange (event) {
     this.selected = event.target.value
+    this.fireSelected()
+  }
+
+  fireSelected () {
     const selected = new CustomEvent('selected', {
       detail: this.selected
     })

@@ -1,7 +1,13 @@
 <template>
-  <lightning-card title="Text Area">
-    <div class="slds-p-horizontal_medium">
-      <lightning-button label="Click" onclick={clickButton}></lightning-button>
+  <div class="slds-grid">
+    <div class="slds-col slds-size_1-of-2">
+      <lightning-card title="Text Area">
+        <div class="slds-p-horizontal_medium">
+          <c-star-rating
+            max-rating="5"
+            size="xx-small"></c-star-rating>
+        </div>
+      </lightning-card>
     </div>
-  </lightning-card>
+  </div>
 </template>

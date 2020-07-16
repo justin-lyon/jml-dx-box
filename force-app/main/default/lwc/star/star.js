@@ -1,7 +1,15 @@
 import { LightningElement, api } from 'lwc'
-import FA from '@salesforce/resourceUrl/FontAwesome'
-import { loadStyle } from 'lightning/platformResourceLoader'
 import LIGHTNING_KIT from '@salesforce/resourceUrl/LightningKit'
+
+const SIZES = [
+  'xx-small',
+  'x-small',
+  'small',
+  'medium',
+  'large',
+  'x-large',
+  'xx-large'
+]
 
 export default class Star extends LightningElement {
   @api star
@@ -10,6 +18,17 @@ export default class Star extends LightningElement {
   @api activeColor = '#ffd055'
   @api inactiveColor = '#d8d8d8'
 
+  _size = 'small'
+  @api
+  get size () { return this._size }
+
+  set size (val) {
+    if (!SIZES.includes(val)) {
+      throw new Error(`Error in Star.js. Invalid value assigned to size attribute. Valid attributes are ${SIZES.join(', ')}`)
+    }
+    this._size = val
+  }
+
   clickStar () {
     if (!this.readOnly) {
       const selected = new CustomEvent('selected', { detail: this.star.id })
@@ -17,11 +36,16 @@ export default class Star extends LightningElement {
     }
   }
 
-  get salesforceIcon () { return `${LIGHTNING_KIT}/svg/icons#salesforce` }
-  get starIcon () { return `${LIGHTNING_KIT}/svg/icons#star` }
+  get salesforceIcon () {
+    const resource = `${LIGHTNING_KIT}/svg/symbols.svg#salesforce`
+    console.log('resource', resource)
+    return resource
+  }
+
+  get starIcon () { return `${LIGHTNING_KIT}/svg/symbols.svg#star` }
   get classes () {
     const classes = []
-    classes.push('fa fa-star lwc-star')
+    classes.push(this.size)
     classes.push(this.isReadOnly())
     return classes.join(' ')
   }
@@ -31,13 +55,6 @@ export default class Star extends LightningElement {
   }
 
   get color () {
-    return 'color:' + (this.star.isActive ? this.activeColor : this.inactiveColor) + ';'
-  }
-
-  renderedCallback () {
-    loadStyle(this, FA + '/css/all.css')
-      .catch(error => {
-        console.error(error.message)
-      })
+    return 'fill:' + (this.star.isActive ? this.activeColor : this.inactiveColor) + ';'
   }
 }

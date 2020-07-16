@@ -36,6 +36,11 @@ export default class Star extends LightningElement {
     }
   }
 
+  get resourceUrl () { return LIGHTNING_KIT }
+  get resourcePath () { return 'svg/symbols.svg' }
+  get sfIconName () { return 'salesforce' }
+  get iconName () { return 'star' }
+
   get salesforceIcon () {
     const resource = `${LIGHTNING_KIT}/svg/symbols.svg#salesforce`
     console.log('resource', resource)
@@ -45,7 +50,7 @@ export default class Star extends LightningElement {
   get starIcon () { return `${LIGHTNING_KIT}/svg/symbols.svg#star` }
   get classes () {
     const classes = []
-    classes.push(this.size)
+    // classes.push(this.size)
     classes.push(this.isReadOnly())
     return classes.join(' ')
   }
@@ -55,6 +60,6 @@ export default class Star extends LightningElement {
   }
 
   get color () {
-    return 'fill:' + (this.star.isActive ? this.activeColor : this.inactiveColor) + ';'
+    return (this.star.isActive ? this.activeColor : this.inactiveColor)
   }
 }

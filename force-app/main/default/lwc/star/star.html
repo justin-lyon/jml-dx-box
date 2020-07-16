@@ -1,7 +1,10 @@
 <template>
-  <span >
-    <svg onclick={clickStar} class={classes} style={color} >
-      <use href={starIcon} ></use>
-    </svg>
+  <span onclick={clickStar} class={classes} >
+    <c-icon
+      resource-url={resourceUrl}
+      resource-path={resourcePath}
+      icon-name={iconName}
+      fill={color}
+      size={size}></c-icon>
   </span>
 </template>

@@ -1,3 +1,44 @@
 .clickable {
   cursor: pointer;
 }
+
+.star-container {
+  /* background-color: orange; */
+  display: inline-block;
+  margin: 0 1px;
+}
+
+.xx-small {
+  height: 25px;
+  width: 25px;
+}
+
+.x-small {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.small {
+  height: 2rem;
+  width: 2rem;
+}
+
+.medium {
+  height: 2.5rem;
+  width: 2.5rem;
+}
+
+.large {
+  height: 3rem;
+  width: 3rem;
+}
+
+.x-large {
+  height: 3.5rem;
+  width: 3.5rem;
+}
+
+.xx-large {
+  height: 4rem;
+  width: 4rem;
+}

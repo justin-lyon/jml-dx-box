@@ -1,6 +1,15 @@
 import { LightningElement, api } from 'lwc'
-import FA from '@salesforce/resourceUrl/FontAwesome'
-import { loadStyle } from 'lightning/platformResourceLoader'
+import LIGHTNING_KIT from '@salesforce/resourceUrl/LightningKit'
+
+const SIZES = [
+  'xx-small',
+  'x-small',
+  'small',
+  'medium',
+  'large',
+  'x-large',
+  'xx-large'
+]
 
 export default class Star extends LightningElement {
   @api star
@@ -9,6 +18,17 @@ export default class Star extends LightningElement {
   @api activeColor = '#ffd055'
   @api inactiveColor = '#d8d8d8'
 
+  _size = 'small'
+  @api
+  get size () { return this._size }
+
+  set size (val) {
+    if (!SIZES.includes(val)) {
+      throw new Error(`Error in Star.js. Invalid value assigned to size attribute. Valid attributes are ${SIZES.join(', ')}`)
+    }
+    this._size = val
+  }
+
   clickStar () {
     if (!this.readOnly) {
       const selected = new CustomEvent('selected', { detail: this.star.id })
@@ -16,9 +36,14 @@ export default class Star extends LightningElement {
     }
   }
 
+  get resourceUrl () { return LIGHTNING_KIT }
+  get resourcePath () { return 'svg/symbols.svg' }
+  get iconName () { return 'star' }
+
   get classes () {
     const classes = []
-    classes.push('fa fa-star lwc-star')
+    classes.push('star-container')
+    classes.push(this.size)
     classes.push(this.isReadOnly())
     return classes.join(' ')
   }
@@ -28,13 +53,6 @@ export default class Star extends LightningElement {
   }
 
   get color () {
-    return 'color:' + (this.star.isActive ? this.activeColor : this.inactiveColor) + ';'
-  }
-
-  renderedCallback () {
-    loadStyle(this, FA + '/css/all.css')
-      .catch(error => {
-        console.error(error.message)
-      })
+    return (this.star.isActive ? this.activeColor : this.inactiveColor)
   }
 }

@@ -9,10 +9,10 @@ export default class RecordLink extends NavigationMixin(LightningElement) {
   @api actionName = 'view'
 
   @api title
-  @api target = "_parent"
+  @api target = '_parent'
   @api isVisualforce = false
 
-  get href () { return this.isVisualforce ? '/' + this.recordId  : '#' }
+  get href () { return this.isVisualforce ? '/' + this.recordId : '#' }
   get titleText () { return this.title ? this.title : this.label }
 
   clickRecord (e) {

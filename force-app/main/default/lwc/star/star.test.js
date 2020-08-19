@@ -18,11 +18,11 @@ describe('c-star', () => {
     }
   })
 
-  it ('constructs', () => {
+  it('constructs', () => {
     const cmp = initCmp(Star, { id: 1, isActive: true })
 
-    const italic = cmp.shadowRoot.querySelector('i')
-    expect(italic.className).toEqual(expect.stringContaining('fa-star'))
+    const starContainer = cmp.shadowRoot.querySelector('span')
+    expect(starContainer.className).toEqual(expect.stringContaining('star-container'))
   })
 
   it('is clickable', () => {
@@ -33,8 +33,8 @@ describe('c-star', () => {
     }
     cmp.addEventListener('selected', eventHandler)
 
-    const italic = cmp.shadowRoot.querySelector('i')
-    italic.click()
+    const starContainer = cmp.shadowRoot.querySelector('span')
+    starContainer.click()
   })
 
   it('is readonly', () => {
@@ -45,9 +45,9 @@ describe('c-star', () => {
     }
     cmp.addEventListener('click', eventHandler)
 
-    const italic = cmp.shadowRoot.querySelector('i')
-    italic.click()
+    const starContainer = cmp.shadowRoot.querySelector('span')
+    starContainer.click()
 
-    expect(italic.className).not.toEqual(expect.stringContaining('clickable'))
+    expect(starContainer.className).not.toEqual(expect.stringContaining('clickable'))
   })
 })

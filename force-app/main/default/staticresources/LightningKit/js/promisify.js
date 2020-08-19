@@ -1,7 +1,7 @@
 window.kit = (function Promisify(kit) {
 
 	var promisify = function(auraAction) {
-		return new Promise(function(resolve, reject) {
+		return new Promise($A.getCallback(function(resolve, reject) {
 			auraAction.setCallback(this, function(res) {
 				var state = res.getState();
 				if(state === "SUCCESS") {
@@ -12,7 +12,7 @@ window.kit = (function Promisify(kit) {
 			});
 
 			$A.enqueueAction(auraAction);
-		});
+		}));
 	};
 
 	kit.promisify = promisify;

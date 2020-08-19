@@ -1,4 +1,5 @@
-import { LightningElement, track } from 'lwc'
+import { LightningElement } from 'lwc'
+import debouncify from 'c/debouncify'
 
 export default class WipContainer extends LightningElement {
   @track isShown = false

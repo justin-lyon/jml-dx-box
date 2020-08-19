@@ -33,6 +33,26 @@ public class ToolBox {
 		return objectDescribe.Fields.getMap().get(fieldName).getDescribe().getPicklistValues();
 	}
 
+	public static SObject setUnwritableField(SObject record, String fieldName, Object value) {
+		String jsonRecord = JSON.serialize(record);
+		Map<String, Object> temp = (Map<String, Object>) JSON.deserializeUntyped(jsonRecord);
+		temp.put(fieldName, value);
+		String updatedRecord = JSON.serialize(temp);
+		return (SObject) JSON.deserialize(updatedRecord, SObject.class);
+	}
+
+	public static Boolean isEmailEnabled() {
+		// Cannot Check Email Deliverability in APEX,
+		// but we can force an exception from a related API Method.
+		Boolean isEmailEnabled = true;
+		try {
+			Messaging.reserveSingleEmailCapacity(0);
+		} catch(Exception exc) {
+			isEmailEnabled = false;
+		}
+		return isEmailEnabled;
+	}
+
 	public static String generateUUID() {
 		// Create a Version 4 UUID
 		// https://salesforce.stackexchange.com/a/223381

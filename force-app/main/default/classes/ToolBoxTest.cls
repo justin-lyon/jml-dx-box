@@ -79,6 +79,19 @@ private class ToolBoxTest {
 		System.assertNotEquals(guid1, guid2, 'Two generated GUIDs are unique.');
 	}
 
+	static TestMethod void setUnwritableField_givenCaseNumber_shouldSetCaseNumber() {
+		Case c = new Case(Subject = 'Test Case');
+		String CASE_NUMBER = '00001111';
+
+		Test.startTest();
+
+			c = (Case) ToolBox.setUnwritableField(c, 'CaseNumber', CASE_NUMBER);
+
+		Test.stopTest();
+
+		System.assertEquals(CASE_NUMBER, c.CaseNumber);
+	}
+
 	static TestMethod void generateUUID_default_shouldBeValidVersion4UUID() {
 		// https://salesforce.stackexchange.com/a/223381
 		// Version 4, random UUID format

@@ -8,7 +8,7 @@ const ARROW_UP = 'ArrowUp'
 const ARROW_DOWN = 'ArrowDown'
 const ENTER = 'Enter'
 const ESCAPE = 'Escape'
-const ACTIONABLE_KEYS = [ ARROW_UP, ARROW_DOWN, ENTER, ESCAPE ]
+const ACTIONABLE_KEYS = [ARROW_UP, ARROW_DOWN, ENTER, ESCAPE]
 
 export default class Lookup extends LightningElement {
   @track inputValue = ''
@@ -22,6 +22,7 @@ export default class Lookup extends LightningElement {
   @track _value
   @api
   get value () { return this._value }
+
   set value (val) {
     this._value = val
     if (val) {
@@ -65,7 +66,7 @@ export default class Lookup extends LightningElement {
   get recordIds () { return this.records.map(r => r.Id) }
 
   get containerClasses () {
-    const classes = [ 'slds-combobox_container' ]
+    const classes = ['slds-combobox_container']
 
     if (this.record) {
       classes.push('slds-has-selection')
@@ -77,7 +78,7 @@ export default class Lookup extends LightningElement {
   get inputClasses () {
     const classes = [
       'slds-input',
-      'slds-combobox__input' ]
+      'slds-combobox__input']
 
     if (this.record) {
       classes.push('slds-combobox__input-value')
@@ -90,7 +91,7 @@ export default class Lookup extends LightningElement {
     const classes = [
       'slds-combobox',
       'slds-dropdown-trigger',
-      'slds-dropdown-trigger_click' ]
+      'slds-dropdown-trigger_click']
 
     if (this.showListbox) {
       classes.push('slds-is-open')
@@ -116,7 +117,6 @@ export default class Lookup extends LightningElement {
 
     if (ACTIONABLE_KEYS.includes(event.code)) {
       keyAction[event.code]()
-
     } else {
       if (this.inputValue.length > 2) {
         this.debounceSearch()
@@ -248,7 +248,7 @@ export default class Lookup extends LightningElement {
     return {
       searchTerm: this.inputValue,
       objectName: this.sobjectName,
-      fields: [ this.title, this.subtitle ]
+      fields: [this.title, this.subtitle]
     }
   }
 

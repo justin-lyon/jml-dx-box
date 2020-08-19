@@ -35,13 +35,15 @@ export default class RecentContactsMap extends LightningElement {
   }
 
   createPins (contacts) {
-    return contacts.map(contact => {
-      return {
-        record: contact,
-        lat: contact.MailingLatitude,
-        lng: contact.MailingLongitude
-      }
-    })
+    return contacts
+      .filter(contact => contact.MailingLatitude && contact.MailingLongitude)
+      .map(contact => {
+        return {
+          record: contact,
+          lat: contact.MailingLatitude,
+          lng: contact.MailingLongitude
+        }
+      })
   }
 
   setMapMarkers () {

@@ -2,6 +2,10 @@
 
 > Justin's running sfdx poc environment.
 
+## License
+
+[BSD3 License](./LICENSE)
+
 ## Setup
 
 ```bash

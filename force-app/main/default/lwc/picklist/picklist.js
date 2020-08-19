@@ -22,10 +22,18 @@ export default class Picklist extends LightningElement {
   @track _variant
   @api
   get variant () { return this._variant }
+
   set variant (val) {
     if (!VARIANTS.includes(val)) throw new Error('Property variant expects values of ', VARIANTS.join(', '))
 
     this._variant = val
+  }
+
+  @api
+  get value () { return this.selected }
+
+  set value (val) {
+    this.selected = val || ''
   }
 
   @track selected
@@ -37,7 +45,11 @@ export default class Picklist extends LightningElement {
       this.errors.push(error)
       console.error('Error', error)
     } else if (data) {
-      this.options = data.values.map(({ label, value }) => ({ label, value }))
+      const options = data.values.map(({ label, value }) => ({ label, value }))
+      if (!this.required && !data.defaultValue) {
+        options.unshift({ label: 'None', value: '' })
+      }
+      this.options = options
       this.setDefaultSelected(data)
     }
   }
@@ -50,10 +62,16 @@ export default class Picklist extends LightningElement {
     } else {
       this.selected = this.options[0].value
     }
+
+    this.fireSelected()
   }
 
   onChange (event) {
     this.selected = event.target.value
+    this.fireSelected()
+  }
+
+  fireSelected () {
     const selected = new CustomEvent('selected', {
       detail: this.selected
     })

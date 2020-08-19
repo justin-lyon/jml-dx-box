@@ -1,5 +1,15 @@
 import { LightningElement, api, track } from 'lwc'
 
+const SIZES = [
+  'xx-small',
+  'x-small',
+  'small',
+  'medium',
+  'large',
+  'x-large',
+  'xx-large'
+]
+
 export default class StarRating extends LightningElement {
   @track score = 0
   @track maxScore = 5
@@ -23,6 +33,17 @@ export default class StarRating extends LightningElement {
 
   set maxRating (value) {
     this.maxScore = Number(value)
+  }
+
+  _size = 'small'
+  @api
+  get size () { return this._size }
+
+  set size (val) {
+    if (!SIZES.includes(val)) {
+      throw new Error(`Error in StarRating.js. Invalid value assigned to size attribute. Valid attributes are ${SIZES.join(', ')}`)
+    }
+    this._size = val
   }
 
   generateStars () {

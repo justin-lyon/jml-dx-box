@@ -1,4 +1,4 @@
-import { LightningElement, api, track, wire } from 'lwc'
+import { LightningElement, api, track } from 'lwc'
 
 export default class Textarea extends LightningElement {
   @api label
@@ -15,8 +15,9 @@ export default class Textarea extends LightningElement {
   @track _value = ''
   @api
   get value () { return this._value }
+
   set value (val) {
-    const newVal = val ? val : ''
+    const newVal = val || ''
     this._value = newVal
     if (this.textarea) {
       this.textarea.value = this._value
@@ -33,7 +34,6 @@ export default class Textarea extends LightningElement {
 
     if (!isValid) {
       this.errorMessage = this.messageWhenInputError
-
     }
     if (this.isTooLong) {
       this.errorMessage = `${this.lengthDifference} too many characters.`
@@ -54,7 +54,7 @@ export default class Textarea extends LightningElement {
   get hasError () { return !!this.errorMessage }
 
   get formElementClass () {
-    const classes = [ 'slds-form-element' ]
+    const classes = ['slds-form-element']
     if (this.hasError) {
       classes.push('slds-has-error')
     }

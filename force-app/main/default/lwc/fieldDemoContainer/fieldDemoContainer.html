@@ -49,10 +49,7 @@
       <div class="slds-col slds-size_1-of-3 slds-p-top_medium">
         <lightning-card title="Account Lookup">
           <div class="slds-p-horizontal_medium">
-            <c-lookup sobject-name="Account"
-              title="Name"
-              subtitle="Phone"
-              onselected={handleAccountLookup}
+            <c-lookup sobject-name="Account" title="Name" subtitle="Phone" onselected={handleAccountLookup}
               icon-name="standard:account"></c-lookup>
           </div>
           <div slot="footer">
@@ -64,10 +61,7 @@
       <div class="slds-col slds-size_1-of-3 slds-p-top_medium">
         <lightning-card title="Contact Lookup">
           <div class="slds-p-horizontal_medium">
-            <c-lookup sobject-name="Contact"
-              title="Name"
-              subtitle="Email"
-              onselected={handleContactLookup}
+            <c-lookup sobject-name="Contact" title="Name" subtitle="Email" onselected={handleContactLookup}
               icon-name="standard:contact"></c-lookup>
           </div>
           <div slot="footer">
@@ -79,10 +73,7 @@
       <div class="slds-col slds-size_1-of-3 slds-p-top_medium">
         <lightning-card title="Contact Lookup">
           <div class="slds-p-horizontal_medium">
-            <c-lookup sobject-name="Contact"
-              title="Name"
-              subtitle="Email"
-              onselected={handleContactLookup2}
+            <c-lookup sobject-name="Contact" title="Name" subtitle="Email" onselected={handleContactLookup2}
               icon-name="standard:contact"></c-lookup>
           </div>
           <div slot="footer">
@@ -94,10 +85,8 @@
       <div class="slds-col slds-size_1-of-3 slds-p-top_medium">
         <lightning-card title="Leaflet Map">
           <div class="slds-p-horizontal_medium">
-            <c-leaflet-map class="wip-map"
-              height="20rem"
-              onready={onMapInit}
-              onpinclick={onMarkerClick}></c-leaflet-map>
+            <c-leaflet-map class="wip-map" height="20rem" onready={onMapInit} onpinclick={onMarkerClick}>
+            </c-leaflet-map>
           </div>
         </lightning-card>
       </div>
@@ -105,9 +94,7 @@
       <div class="slds-col slds-size_1-of-3 slds-p-top_medium">
         <lightning-card title="Recent Contacts Map">
           <div class="slds-p-horizontal_medium">
-            <c-recent-contacts-map
-              height="20rem"
-              onmarkerclick={onMarkerClick}></c-recent-contacts-map>
+            <c-recent-contacts-map height="20rem" onmarkerclick={onMarkerClick}></c-recent-contacts-map>
           </div>
         </lightning-card>
       </div>
@@ -115,24 +102,69 @@
       <div class="slds-col slds-size_1-of-3 slds-p-top_medium">
         <lightning-card title="Custom Metadata Picker">
           <div class="slds-p-horizontal_medium">
-            <fieldset class="slds-box" >
-              <legend class="slds-p-horizontal_small slds-text-color_weak" >Dragons</legend>
+            <fieldset class="slds-box">
+              <legend class="slds-p-horizontal_small slds-text-color_weak">Dragons</legend>
 
-              <c-metadata-finder
-                combo-label="Size Filter"
-                picker-label="Search"
-                icon-name="utility:setup"
-                placeholder="Search Dragons..."
-                mdt-name="Dragon__mdt"
-                title="MasterLabel"
-                subtitle="Size__c"
-                filter-by="Size__c"
-                onselected={handleMdtSelected}></c-metadata-finder>
+              <c-metadata-finder combo-label="Size Filter" picker-label="Search" icon-name="utility:setup"
+                placeholder="Search Dragons..." mdt-name="Dragon__mdt" title="MasterLabel" subtitle="Size__c"
+                filter-by="Size__c" onselected={handleMdtSelected}></c-metadata-finder>
             </fieldset>
           </div>
 
           <div slot="footer">
             Custom Metadata Id: {mdtId}
+          </div>
+        </lightning-card>
+      </div>
+
+      <div class="slds-col slds-size_1-of-3 slds-p-top_medium">
+        <lightning-card title="Case Status Picklist">
+          <div class="slds-p-horizontal_medium">
+            <small>Case Status is not required, but has a default value.</small>
+            <c-picklist
+              label="Case Status"
+              record-type-id={masterRecordTypeId}
+              field-describe={caseStatusDescribe}
+              onselected={onCaseStatusChange}></c-picklist>
+          </div>
+
+          <div slot="footer">
+            {_selectedStatus}
+          </div>
+        </lightning-card>
+      </div>
+
+      <div class="slds-col slds-size_1-of-3 slds-p-top_medium">
+        <lightning-card title="Account Type Picklist">
+          <div class="slds-p-horizontal_medium">
+            <small>Account Type is not required and does not have a default value.</small>
+            <c-picklist
+              label="Account Type"
+              record-type-id={masterRecordTypeId}
+              field-describe={accountTypeDescribe}
+              onselected={onAccountTypeChange}></c-picklist>
+          </div>
+
+          <div slot="footer">
+            {_selectedType}
+          </div>
+        </lightning-card>
+      </div>
+
+      <div class="slds-col slds-size_1-of-3 slds-p-top_medium">
+        <lightning-card title="Case Subtype Picklist">
+          <div class="slds-p-horizontal_medium">
+            <small>Case Subtype is a required field.</small>
+            <c-picklist
+              label="Case Subtype"
+              required
+              record-type-id={masterRecordTypeId}
+              field-describe={caseSubtypeDescribe}
+              onselected={onCaseSubtypeChange}></c-picklist>
+          </div>
+
+          <div slot="footer">
+            {_selectedSubtype}
           </div>
         </lightning-card>
       </div>

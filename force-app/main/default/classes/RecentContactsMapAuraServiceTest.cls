@@ -6,27 +6,39 @@ private class RecentContactsMapAuraServiceTest {
 		contacts.add(new Contact(
 			FirstName = 'Joe',
 			LastName = 'Contact1',
-			MailingCity = 'Dallas'));
+			MailingCity = 'Dallas',
+			MailingLatitude = 41,
+			MailingLongitude = 81));
 		contacts.add(new Contact(
 			FirstName = 'Joe',
 			LastName = 'Contact2',
-			MailingCity = 'Dallas'));
+			MailingCity = 'Dallas',
+			MailingLatitude = 41,
+			MailingLongitude = 81));
 		contacts.add(new Contact(
 			FirstName = 'Joe',
 			LastName = 'Contact3',
-			MailingCity = 'Dallas'));
+			MailingCity = 'Dallas',
+			MailingLatitude = 41,
+			MailingLongitude = 81));
 		contacts.add(new Contact(
 			FirstName = 'Joe',
 			LastName = 'Contact4',
-			MailingCity = 'Dallas'));
+			MailingCity = 'Dallas',
+			MailingLatitude = 41,
+			MailingLongitude = 81));
 		contacts.add(new Contact(
 			FirstName = 'Joe',
 			LastName = 'Contact5',
-			MailingCity = 'Dallas'));
+			MailingCity = 'Dallas',
+			MailingLatitude = 41,
+			MailingLongitude = 81));
 		contacts.add(new Contact(
 			FirstName = 'Joe',
 			LastName = 'Contact6',
-			MailingCity = 'Dallas'));
+			MailingCity = 'Dallas',
+			MailingLatitude = 41,
+			MailingLongitude = 81));
 
 		insert contacts;
 	}

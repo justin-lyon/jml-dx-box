@@ -36,9 +36,10 @@ export default class Star extends LightningElement {
     }
   }
 
+  iconName = 'star'
+
   get resourceUrl () { return LIGHTNING_KIT }
   get resourcePath () { return 'svg/symbols.svg' }
-  get iconName () { return 'star' }
 
   get classes () {
     const classes = []

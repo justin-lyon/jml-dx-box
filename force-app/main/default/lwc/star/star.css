@@ -8,36 +8,36 @@
 }
 
 .xx-small {
-  height: 25px;
-  width: 25px;
+  height: .875rem;
+  width: .875rem;
 }
 
 .x-small {
-  height: 1.5rem;
-  width: 1.5rem;
+  height: var(--lwc-squareIconUtilitySmall);
+  width: var(--lwc-squareIconUtilitySmall);
 }
 
 .small {
-  height: 2rem;
-  width: 2rem;
+  height: var(--lwc-squareIconSmallBoundary);
+  width: var(--lwc-squareIconSmallBoundary);
 }
 
 .medium {
-  height: 2.5rem;
-  width: 2.5rem;
+  height: var(--lwc-squareIconMediumBoundary);
+  width: var(--lwc-squareIconMediumBoundary);
 }
 
 .large {
-  height: 3rem;
-  width: 3rem;
+  height: var(--lwc-squareIconLargeBoundary);
+  width: var(--lwc-squareIconLargeBoundary);
 }
 
 .x-large {
-  height: 3.5rem;
-  width: 3.5rem;
+  height: 5rem;
+  width: 5rem;
 }
 
 .xx-large {
-  height: 4rem;
-  width: 4rem;
+  height: 8rem;
+  width: 8rem;
 }

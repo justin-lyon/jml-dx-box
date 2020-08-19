@@ -2,21 +2,17 @@ import { LightningElement } from 'lwc'
 import debouncify from 'c/debouncify'
 
 export default class WipContainer extends LightningElement {
-  doThingLater = debouncify(() => {
-    this.makeLog('thing is done later')
-  }, 1000)
+  @track isShown = false
 
-  doThingEvenLater = debouncify(() => {
-    this.makeLog('thing is done EVEN later')
-  }, 2000)
-
-  clickButton () {
-    console.log('click')
-    this.doThingLater()
-    this.doThingEvenLater()
+  toggleModal () {
+    this.isShown = !this.isShown
   }
 
-  makeLog (message) {
-    console.log(message)
+  closeModal () {
+    this.isShown = false
+  }
+
+  handleClick (event) {
+    console.log('click', event.target)
   }
 }

@@ -1,25 +1,19 @@
 {
-  "extends": ["@salesforce/eslint-config-lwc/recommended"],
+  "extends": [
+    "@salesforce/eslint-config-lwc/recommended",
+    "standard"
+  ],
   "env": {
     "es6": true
   },
   "parserOptions": {
-    "ecmaVersion": 8,
-    "ecmaFeatures": {
-      "experimentalObjectRestSpread": true
-    }
+    "ecmaVersion": 2018,
+    "sourceType": "module"
   },
-  "rules": {
-    "semi": [2, "never"],
-    "indent": ["error", 2],
-    "object-curly-spacing": ["error", "always"],
-    "array-bracket-spacing": ["error", "always"],
-    "space-before-blocks": ["error", "always"],
-    "keyword-spacing": [ 2, { "before": true, "after": true }],
-    "space-before-function-paren": ["error", "always"],
-    "no-console": [ "error", { "allow": [ "error" ]}]
-  },
+  "rules": {},
   "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly",
     "L": "readonly"
   }
 }

@@ -18,6 +18,8 @@ public with sharing class RecentContactsMapAuraService {
 			FROM Contact
 			WHERE Id IN :contactIds
 				AND MailingCity != null
+				AND MailingLatitude != null
+				AND MailingLongitude != null
 			LIMIT 5];
 
 		List<ViewModel> vm = new List<ViewModel>();

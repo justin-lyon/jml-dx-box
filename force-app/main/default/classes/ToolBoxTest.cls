@@ -58,24 +58,50 @@ private class ToolBoxTest {
 		System.assertEquals(accountSource.size(), entries.size());
 	}
 
-	static TestMethod void generateGUID_default_shouldGetID() {
+	static TestMethod void generateUUID_default_shouldGetID() {
 		Test.startTest();
 
-			String guid = ToolBox.generateGUID();
+			String guid = ToolBox.generateUUID();
 
 		Test.stopTest();
 
 		System.assertNotEquals(null, guid);
 	}
 
-	static TestMethod void generateGUID_default_shouldGetUniqueIDs() {
+	static TestMethod void generateUUID_default_shouldGetUniqueIDs() {
 		Test.startTest();
 
-			String guid1 = ToolBox.generateGUID();
-			String guid2 = ToolBox.generateGUID();
+			String guid1 = ToolBox.generateUUID();
+			String guid2 = ToolBox.generateUUID();
 
 		Test.stopTest();
 
 		System.assertNotEquals(guid1, guid2, 'Two generated GUIDs are unique.');
+	}
+
+	static TestMethod void setUnwritableField_givenCaseNumber_shouldSetCaseNumber() {
+		Case c = new Case(Subject = 'Test Case');
+		String CASE_NUMBER = '00001111';
+
+		Test.startTest();
+
+			c = (Case) ToolBox.setUnwritableField(c, 'CaseNumber', CASE_NUMBER);
+
+		Test.stopTest();
+
+		System.assertEquals(CASE_NUMBER, c.CaseNumber);
+	}
+
+	static TestMethod void generateUUID_default_shouldBeValidVersion4UUID() {
+		// https://salesforce.stackexchange.com/a/223381
+		// Version 4, random UUID format
+		// xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx
+		// M is the Version, 4
+		// N is the Variant, either a, b, 8, or 9
+		Pattern p = Pattern.compile('[\\w]{8}-[\\w]{4}-4[\\w]{3}-[89ab][\\w]{3}-[\\w]{12}');
+		for(Integer x = 0; x < 100; x++) {
+			Matcher m = p.matcher(ToolBox.generateUUID());
+			System.assert(m.matches() == true);
+		}
 	}
 }

@@ -2,10 +2,42 @@
   cursor: pointer;
 }
 
-.lwc-star.active {
-  color: #ffd055;
+.star-container {
+  display: inline-block;
+  margin: 0 1px;
 }
 
-.lwc-star {
-  color: #d8d8d8;
+.xx-small {
+  height: .875rem;
+  width: .875rem;
+}
+
+.x-small {
+  height: var(--lwc-squareIconUtilitySmall);
+  width: var(--lwc-squareIconUtilitySmall);
+}
+
+.small {
+  height: var(--lwc-squareIconSmallBoundary);
+  width: var(--lwc-squareIconSmallBoundary);
+}
+
+.medium {
+  height: var(--lwc-squareIconMediumBoundary);
+  width: var(--lwc-squareIconMediumBoundary);
+}
+
+.large {
+  height: var(--lwc-squareIconLargeBoundary);
+  width: var(--lwc-squareIconLargeBoundary);
+}
+
+.x-large {
+  height: 5rem;
+  width: 5rem;
+}
+
+.xx-large {
+  height: 8rem;
+  width: 8rem;
 }

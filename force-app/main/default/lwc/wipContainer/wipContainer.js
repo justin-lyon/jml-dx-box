@@ -1,10 +1,22 @@
-import { LightningElement, track } from 'lwc'
-import { NavigationMixin } from 'lightning/navigation'
+import { LightningElement } from 'lwc'
+import debouncify from 'c/debouncify'
 
-export default class WipContainer extends NavigationMixin(LightningElement) {
-  @track selected = {}
+export default class WipContainer extends LightningElement {
+  doThingLater = debouncify(() => {
+    this.makeLog('thing is done later')
+  }, 1000)
 
-  setSelected (event) {
-    this.selected = event.detail
+  doThingEvenLater = debouncify(() => {
+    this.makeLog('thing is done EVEN later')
+  }, 2000)
+
+  clickButton () {
+    console.log('click')
+    this.doThingLater()
+    this.doThingEvenLater()
+  }
+
+  makeLog (message) {
+    console.log(message)
   }
 }

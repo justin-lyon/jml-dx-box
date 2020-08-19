@@ -33,7 +33,7 @@ $RECYCLE.BIN/
 
 # chore folders
 manifest/*
-anon/
+scripts/anon
 
 #Exceptions
 !manifest/package.xml

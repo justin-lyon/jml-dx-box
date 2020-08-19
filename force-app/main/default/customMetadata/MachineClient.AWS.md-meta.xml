@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>AWS</label>
+    <protected>false</protected>
+    <values>
+        <field>Audience__c</field>
+        <value xsi:type="xsd:string">https://www.aws.com</value>
+    </values>
+    <values>
+        <field>ClientId__c</field>
+        <value xsi:type="xsd:string">234</value>
+    </values>
+    <values>
+        <field>ClientSecret__c</field>
+        <value xsi:type="xsd:string">bcd</value>
+    </values>
+    <values>
+        <field>GrantType__c</field>
+        <value xsi:type="xsd:string">client_credentials</value>
+    </values>
+</CustomMetadata>

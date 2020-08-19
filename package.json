@@ -28,7 +28,14 @@
   },
   "homepage": "https://github.com/jlyon87/jml-dx-box#readme",
   "devDependencies": {
+    "@salesforce/eslint-config-lwc": "^0.5.0",
     "@salesforce/sfdx-lwc-jest": "^0.6.1",
+    "eslint": "^7.4.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
     "jest-canvas-mock": "^2.1.2"
   }
 }

@@ -1,0 +1,40 @@
+<template>
+  <div class={formElementClass} >
+    <div class="slds-form-element__label">
+      <label
+        class="slds-text-color_weak"
+        for="textArea">
+        <abbr if:true={required}
+          class="slds-required"
+          title="required">* </abbr>
+        {label}
+      </label>
+    </div>
+
+    <div if:true={helpText} class="help-text slds-form-element__icon slds-m-bottom_small">
+      <lightning-helptext
+        icon-variant="inverse"
+        content={helpText}></lightning-helptext>
+    </div>
+
+    <div class="slds-form-element__control">
+      <textarea
+        class={classList}
+        name="textarea"
+        id="textArea"
+        cols={cols}
+        rows={rows}
+        required={required}
+        onpaste={onPaste}
+        onchange={onChange}
+        onblur={onChange}
+        onkeyup={onChange} ></textarea>
+    </div>
+    <small if:true={showCharacterCount} class={countClass}>
+      {currentLength} / {maxLength}
+    </small>
+    <div if:true={hasError} class="slds-form-element__help">
+      {errorMessage}
+    </div>
+  </div>
+</template>

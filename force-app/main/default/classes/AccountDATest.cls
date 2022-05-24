@@ -16,6 +16,19 @@ private class AccountDATest {
 		insert accounts;
 	}
 
+	static TestMethod void queryLimittedAccounts_shouldInvokeMock() {
+		UniversalMocker mockerInstance = UniversalMocker.mock(AccountDA.class);
+		mockerInstance
+			.when('queryLimittedAccounts')
+			// .withParamTypes(new List<Type>{Integer.class})
+			.thenReturn(new List<Account>());
+        AccountDA accessor = (AccountDA) mockerInstance.createStub();
+
+		List<Account> accounts = accessor.queryLimittedAccounts(1);
+		mockerInstance.assertThat().method('queryLimittedAccounts').wasCalled(1);
+		System.assert(accounts.isEmpty());
+	}
+
 	static TestMethod void queryLimittedAccounts_given5_shouldGet5Accounts() {
 		AccountDA accessor = new AccountDA();
 		Integer limitter = 5;

@@ -7,7 +7,7 @@
   ],
   "namespace": "",
   "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "47.0",
+  "sourceApiVersion": "54.0",
   "packageAliases": {
       "OpenCTIDemo": "04t41000000bSXh"
   }

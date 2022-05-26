@@ -17,7 +17,7 @@ AppSwitcher.appMenu
 **/settings/**
 **/profiles/**
 
-# Whitelisted Metadata
-!**/settings/BusinessHours
+# Unignored Metadata
+!**/settings/BusinessHours.settings-meta.xml
 !**/settings/Notes
-!**/profiles/Admin
+!**/profiles/Admin.profile-meta.xml

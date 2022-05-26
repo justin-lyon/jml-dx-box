@@ -5,10 +5,8 @@
       "default": true
     }
   ],
+  "name": "jml-dx-box",
   "namespace": "",
   "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "47.0",
-  "packageAliases": {
-      "OpenCTIDemo": "04t41000000bSXh"
-  }
+  "sourceApiVersion": "54.0"
 }

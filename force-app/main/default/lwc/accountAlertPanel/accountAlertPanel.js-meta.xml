@@ -1,6 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata" fqn="accountAlertPanel">
-    <apiVersion>47.0</apiVersion>
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle
+  xmlns="http://soap.sforce.com/2006/04/metadata"
+  fqn="accountAlertPanel"
+>
+    <apiVersion>54.0</apiVersion>
     <isExposed>true</isExposed>
 
     <targets>
@@ -9,7 +12,12 @@
 
     <targetConfigs>
         <targetConfig targets="lightning__RecordPage">
-            <property name="hasToast" label="Has Alert Toast" type="Boolean" default="false" />
+            <property
+        name="hasToast"
+        label="Has Alert Toast"
+        type="Boolean"
+        default="false"
+      />
             <objects>
                 <object>Account</object>
             </objects>

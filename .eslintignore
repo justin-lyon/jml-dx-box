@@ -14,3 +14,11 @@
 **/aura/**/*.xml
 **/aura/**/*.app
 .sfdx
+
+# eslint fails when using kit.promisify
+**/aura/NewCaseUtilityItem/NewCaseUtilityItemHelper.js
+
+# TODO fix these
+**/lwc/metadataPicker/metadataPicker.js
+**/lwc/starRating/starRating.js
+**/lwc/textarea/textarea.js

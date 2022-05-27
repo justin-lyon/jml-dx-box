@@ -1,6 +1,6 @@
 public enum AuthClient {
-	AWS,
-	AZURE,
-	HEROKU,
-	MULESOFT
+  AWS,
+  AZURE,
+  HEROKU,
+  MULESOFT
 }

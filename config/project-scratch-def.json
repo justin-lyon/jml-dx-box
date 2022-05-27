@@ -1,16 +1,16 @@
 {
-    "orgName": "Demo Company",
-    "edition": "Developer",
+  "orgName": "Demo Company",
+  "edition": "Developer",
   "features": ["EnableSetPasswordInApi"],
-    "settings": {
-        "enhancedNotesSettings": {
-            "enableEnhancedNotes": true
-        },
-        "lightningExperienceSettings": {
-            "enableS1DesktopEnabled": true
-        },
-        "mobileSettings": {
-            "enableS1EncryptedStoragePref2": false
-        }
+  "settings": {
+    "enhancedNotesSettings": {
+      "enableEnhancedNotes": true
+    },
+    "lightningExperienceSettings": {
+      "enableS1DesktopEnabled": true
+    },
+    "mobileSettings": {
+      "enableS1EncryptedStoragePref2": false
     }
+  }
 }

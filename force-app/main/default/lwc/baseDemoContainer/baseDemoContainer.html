@@ -7,11 +7,10 @@
             <lightning-combobox
               value={cbSelected}
               options={cbOptions}
-              onchange={cbHandleChange} ></lightning-combobox>
+              onchange={cbHandleChange}
+            ></lightning-combobox>
           </div>
-          <div slot="footer">
-            Selected: {cbSelected}
-          </div>
+          <div slot="footer">Selected: {cbSelected}</div>
         </lightning-card>
       </div>
 
@@ -25,11 +24,10 @@
               selected-label="Selected"
               field-level-help="This is a dual listbox"
               options={dlOptions}
-              onchange={dlHandleChange}></lightning-dual-listbox>
+              onchange={dlHandleChange}
+            ></lightning-dual-listbox>
           </div>
-          <div slot="footer">
-            Selected: {dlSelected}
-          </div>
+          <div slot="footer">Selected: {dlSelected}</div>
         </lightning-card>
       </div>
 
@@ -42,13 +40,15 @@
               accept=".pdf"
               record-id={currentUserId}
               onuploadfinished={handleUploadFinished}
-              multiple></lightning-file-upload>
+              multiple
+            ></lightning-file-upload>
           </div>
           <div slot="footer">
             <div if:true={isUploaded}>
               <lightning-icon
                 icon-name="utility:success"
-                variant="success" ></lightning-icon>
+                variant="success"
+              ></lightning-icon>
             </div>
           </div>
         </lightning-card>
@@ -63,7 +63,8 @@
               country="US"
               province="TX"
               postal-code="75001"
-              show-static-map></lightning-formatted-address>
+              show-static-map
+            ></lightning-formatted-address>
           </div>
         </lightning-card>
       </div>
@@ -77,7 +78,8 @@
               month="short"
               day="2-digit"
               hour="numeric"
-              weekday="long" ></lightning-formatted-date-time>
+              weekday="long"
+            ></lightning-formatted-date-time>
           </div>
         </lightning-card>
       </div>
@@ -89,11 +91,10 @@
               name="search-demo"
               label="Search"
               type="search"
-              onkeyup={onSearchKeyup}></lightning-input>
+              onkeyup={onSearchKeyup}
+            ></lightning-input>
           </div>
-          <div slot="footer">
-            Searching for: {searchTerm}
-          </div>
+          <div slot="footer">Searching for: {searchTerm}</div>
         </lightning-card>
       </div>
 
@@ -102,7 +103,8 @@
           <div class="slds-p-horizontal_medium">
             <lightning-map
               markers-title={markersTitle}
-              map-markers={mapMarkers}></lightning-map>
+              map-markers={mapMarkers}
+            ></lightning-map>
           </div>
         </lightning-card>
       </div>
@@ -116,11 +118,10 @@
               options={rgOptions}
               value={rgSelected}
               onchange={rgChanged}
-              type="radio" ></lightning-radio-group>
+              type="radio"
+            ></lightning-radio-group>
           </div>
-          <div slot="footer">
-            Selected: {rgSelected}
-          </div>
+          <div slot="footer">Selected: {rgSelected}</div>
         </lightning-card>
       </div>
 
@@ -130,11 +131,10 @@
             <lightning-slider
               label="Volume"
               value={volume}
-              onchange={onVolumeChanged} ></lightning-slider>
+              onchange={onVolumeChanged}
+            ></lightning-slider>
           </div>
-          <div slot="footer">
-            Volume: {volume}
-          </div>
+          <div slot="footer">Volume: {volume}</div>
         </lightning-card>
       </div>
     </div>

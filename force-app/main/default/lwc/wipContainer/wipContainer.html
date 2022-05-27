@@ -5,19 +5,24 @@
     </div>
   </lightning-card>
 
-  <c-modal is-shown={isShown}
-    onclose={closeModal} >
-
+  <c-modal is-shown={isShown} onclose={closeModal}>
     <div slot="header">my header</div>
 
     <!-- Content of the modal -->
     <lightning-input class="focusable" label="Name"></lightning-input>
 
-    <lightning-input class="focusable" label="Date" type="date"></lightning-input>
+    <lightning-input
+      class="focusable"
+      label="Date"
+      type="date"
+    ></lightning-input>
 
-    <lightning-input class="focusable" label="Mobile" type="tel"></lightning-input>
+    <lightning-input
+      class="focusable"
+      label="Mobile"
+      type="tel"
+    ></lightning-input>
 
     <div slot="footer">my footer</div>
-
   </c-modal>
 </template>

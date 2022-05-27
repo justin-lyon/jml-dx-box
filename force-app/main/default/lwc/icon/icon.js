@@ -1,23 +1,23 @@
-import { LightningElement, api } from 'lwc'
+import { LightningElement, api } from "lwc";
 
 export default class Icon extends LightningElement {
-  @api resourceUrl
-  @api resourcePath
-  @api iconName
+  @api resourceUrl;
+  @api resourcePath;
+  @api iconName;
 
-  @api fill
-  @api alt
-  @api ariaHidden = false
+  @api fill;
+  @api alt;
+  @api ariaHidden = false;
 
-  get icon () {
-    const parts = [this.resourceUrl]
+  get icon() {
+    const parts = [this.resourceUrl];
     if (this.resourcePath) {
-      parts.push(this.resourcePath)
+      parts.push(this.resourcePath);
     }
-    return `${parts.join('/')}#${this.iconName}`
+    return `${parts.join("/")}#${this.iconName}`;
   }
 
-  get color () {
-    return `fill: ${this.fill};`
+  get color() {
+    return `fill: ${this.fill};`;
   }
 }

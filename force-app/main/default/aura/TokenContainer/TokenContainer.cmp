@@ -1,10 +1,9 @@
-<aura:component description="TokenContainer"
+<aura:component
+  description="TokenContainer"
   implements="flexipage:availableForAllPageTypes"
-  access="global">
-
-  <div class="aura-box">
-    Aura, colorBackgroundWarning
-  </div>
+  access="global"
+>
+  <div class="aura-box">Aura, colorBackgroundWarning</div>
 
   <div class="slds-box">
     <div>Aura > LWC</div>

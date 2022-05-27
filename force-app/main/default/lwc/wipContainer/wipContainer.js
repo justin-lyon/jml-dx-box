@@ -1,18 +1,17 @@
-import { LightningElement } from 'lwc'
-import debouncify from 'c/debouncify'
+import { LightningElement } from "lwc";
 
 export default class WipContainer extends LightningElement {
-  isShown = false
+  isShown = false;
 
-  toggleModal () {
-    this.isShown = !this.isShown
+  toggleModal() {
+    this.isShown = !this.isShown;
   }
 
-  closeModal () {
-    this.isShown = false
+  closeModal() {
+    this.isShown = false;
   }
 
-  handleClick (event) {
-    console.log('click', event.target)
+  handleClick(event) {
+    console.log("click", event.target);
   }
 }

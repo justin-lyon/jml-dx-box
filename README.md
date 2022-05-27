@@ -35,10 +35,10 @@ LWCDemoApp provides access to the LWC Demo console application.
 
 #### Tabs
 
- 1. Home - Default Home tab
- 1. Base Demo - LWC Base Component POCs
- 1. Field Demo - Custom Component POCs
- 1. WIP - Work In Progress app page for active development
+1.  Home - Default Home tab
+1.  Base Demo - LWC Base Component POCs
+1.  Field Demo - Custom Component POCs
+1.  WIP - Work In Progress app page for active development
 
 ### Console Nav
 
@@ -52,10 +52,10 @@ ConsoleNav provides access to the Console Nav console application.
 
 #### Tabs
 
- 1. Home - Default Home tab
- 1. Cases
- 1. Accounts
- 1. Contacts
+1.  Home - Default Home tab
+1.  Cases
+1.  Accounts
+1.  Contacts
 
 # Salesforce App
 
@@ -73,7 +73,7 @@ The package development model allows you to create self-contained applications o
 
 If you are starting a new project, we recommend that you consider the package development model. To start developing with this model in Visual Studio Code, see [Package Development Model with VS Code](https://forcedotcom.github.io/salesforcedx-vscode/articles/user-guide/package-development-model). For details about the model, see the [Package Development Model](https://trailhead.salesforce.com/en/content/learn/modules/sfdx_dev_model) Trailhead module.
 
-If you are developing against scratch orgs, use the command `SFDX: Create Project` (VS Code) or `sfdx force:project:create` (Salesforce CLI)  to create your project. If you used another command, you might want to start over with that command.
+If you are developing against scratch orgs, use the command `SFDX: Create Project` (VS Code) or `sfdx force:project:create` (Salesforce CLI) to create your project. If you used another command, you might want to start over with that command.
 
 When working with source-tracked orgs, use the commands `SFDX: Push Source to Org` (VS Code) or `sfdx force:source:push` (Salesforce CLI) and `SFDX: Pull Source from Org` (VS Code) or `sfdx force:source:pull` (Salesforce CLI). Do not use the `Retrieve` and `Deploy` commands with scratch orgs.
 

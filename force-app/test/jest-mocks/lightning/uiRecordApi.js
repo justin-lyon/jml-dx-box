@@ -16,20 +16,20 @@ export const getRecordInput = jest.fn();
 export const refresh = jest.fn().mockResolvedValue();
 export const getRecordUi = jest.fn();
 export const getFieldValue = jest.fn((data, fieldReference) => {
-    if (data) {
-        const fields = fieldReference.fieldApiName.split('.');
-        if (data.result) {
-            const fieldData = fields.reduce((o, i) => o[i], data.result.fields);
-            if (fieldData && fieldData.value) {
-                return fieldData.value;
-            }
-        } else {
-            const fieldData = fields.reduce((o, i) => o[i], data.fields);
-            if (fieldData && fieldData.value) {
-                return fieldData.value;
-            }
-        }
-        return null;
+  if (data) {
+    const fields = fieldReference.fieldApiName.split(".");
+    if (data.result) {
+      const fieldData = fields.reduce((o, i) => o[i], data.result.fields);
+      if (fieldData && fieldData.value) {
+        return fieldData.value;
+      }
+    } else {
+      const fieldData = fields.reduce((o, i) => o[i], data.fields);
+      if (fieldData && fieldData.value) {
+        return fieldData.value;
+      }
     }
+    return null;
+  }
 });
 export const getFieldDisplayValue = jest.fn();

@@ -1,18 +1,17 @@
 @isTest
 private class TriggerBypassDATest {
+  private static final String MASTER_LABEL_USER = 'User';
 
-	private static final String MASTER_LABEL_USER = 'User';
+  static testMethod void queryByMasterLabel_givenMasterLabel_shouldFindRecord() {
+    TriggerBypass__mdt bypassRecord;
 
-	static TestMethod void queryByMasterLabel_givenMasterLabel_shouldFindRecord() {
-		TriggerBypass__mdt bypassRecord;
+    TriggerBypassDAI bypassAccessor = new TriggerBypassDA();
+    Test.startTest();
 
-		TriggerBypassDAI bypassAccessor = new TriggerBypassDA();
-		Test.startTest();
+    bypassRecord = bypassAccessor.queryByMasterLabel(MASTER_LABEL_USER);
 
-			bypassRecord = bypassAccessor.queryByMasterLabel(MASTER_LABEL_USER);
+    Test.stopTest();
 
-		Test.stopTest();
-
-		System.assertNotEquals(null, bypassRecord);
-	}
+    System.assertNotEquals(null, bypassRecord);
+  }
 }

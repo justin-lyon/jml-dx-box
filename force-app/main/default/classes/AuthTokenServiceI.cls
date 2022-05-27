@@ -1,3 +1,3 @@
 public interface AuthTokenServiceI {
-	AuthTokenService.Response requestTokenByClient(AuthClient clientType);
+  AuthTokenService.Response requestTokenByClient(AuthClient clientType);
 }

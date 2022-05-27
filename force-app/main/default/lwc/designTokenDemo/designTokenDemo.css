@@ -4,17 +4,16 @@ div.box {
 }
 
 div.box.warning {
-  background-color: var(--lwc-colorWarning,#fc3000);
+  background-color: var(--lwc-colorWarning, #fc3000);
 }
 
 div.box.slds-warning {
-
 }
 
 div.box.brand {
-  background-color: var(--lwc-myColorBrand,#7eeba2);
+  background-color: var(--lwc-myColorBrand, #7eeba2);
 }
 
 div.box.slds-brand {
-  background-color: var(--lwc-colorBrand,#7eeba2);
+  background-color: var(--lwc-colorBrand, #7eeba2);
 }

@@ -1,17 +1,17 @@
-import { LightningElement, api } from 'lwc'
-import { NavigationMixin } from 'lightning/navigation'
+import { LightningElement, api } from "lwc";
+import { NavigationMixin } from "lightning/navigation";
 
 export default class AlertPanelItem extends NavigationMixin(LightningElement) {
-  @api alert
+  @api alert;
 
-  clickOpen () {
+  clickOpen() {
     this[NavigationMixin.Navigate]({
-      type: 'standard__recordPage',
+      type: "standard__recordPage",
       attributes: {
         recordId: this.alert.alertId,
         objectApiName: this.alert.sobjectType,
-        actionName: 'view'
+        actionName: "view"
       }
-    })
+    });
   }
 }

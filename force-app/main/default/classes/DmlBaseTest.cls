@@ -1,74 +1,77 @@
 @isTest
 private class DmlBaseTest {
-	private class DmlStub extends DmlBase {}
-	static TestMethod void insertRecords_givenAccount_shouldGetId() {
-		Account acc = new Account(
-			Name = 'Test Account');
+  private class DmlStub extends DmlBase {
+  }
+  static testMethod void insertRecords_givenAccount_shouldGetId() {
+    Account acc = new Account(Name = 'Test Account');
 
-		DmlStub stub = new DmlStub();
-		Test.startTest();
+    DmlStub stub = new DmlStub();
+    Test.startTest();
 
-			stub.insertRecords(new List<Account> { acc });
+    stub.insertRecords(new List<Account>{ acc });
 
-		Test.stopTest();
+    Test.stopTest();
 
-		System.assertNotEquals(null, acc.Id);
-	}
+    System.assertNotEquals(null, acc.Id);
+  }
 
-	static TestMethod void updateRecords_givenAccount_shouldGetUpdatedAccount() {
-		String oldAccoountNumber = '123';
-		String newAccountNumber = '456';
+  static testMethod void updateRecords_givenAccount_shouldGetUpdatedAccount() {
+    String oldAccoountNumber = '123';
+    String newAccountNumber = '456';
 
-		Account acc = new Account(
-			Name = 'Test Account',
-			AccountNumber = oldAccoountNumber);
+    Account acc = new Account(
+      Name = 'Test Account',
+      AccountNumber = oldAccoountNumber
+    );
 
-		insert acc;
+    insert acc;
 
-		acc.AccountNumber = newAccountNumber;
+    acc.AccountNumber = newAccountNumber;
 
-		DmlStub stub = new DmlStub();
-		Test.startTest();
+    DmlStub stub = new DmlStub();
+    Test.startTest();
 
-			stub.updateRecords(new List<Account> { acc });
+    stub.updateRecords(new List<Account>{ acc });
 
-		Test.stopTest();
+    Test.stopTest();
 
-		System.assertNotEquals(null, acc.Id);
-		Account updatedAccount = [SELECT AccountNumber FROM Account WHERE Id = :acc.Id];
+    System.assertNotEquals(null, acc.Id);
+    Account updatedAccount = [
+      SELECT AccountNumber
+      FROM Account
+      WHERE Id = :acc.Id
+    ];
 
-		System.assertNotEquals(oldAccoountNumber, updatedAccount.AccountNumber);
-		System.assertEquals(newAccountNumber, updatedAccount.AccountNumber);
-	}
+    System.assertNotEquals(oldAccoountNumber, updatedAccount.AccountNumber);
+    System.assertEquals(newAccountNumber, updatedAccount.AccountNumber);
+  }
 
-	static TestMethod void upsertRecords_givenNewAccount_shouldGetId() {
-		Account acc = new Account(
-			Name = 'Test Account');
+  static testMethod void upsertRecords_givenNewAccount_shouldGetId() {
+    Account acc = new Account(Name = 'Test Account');
 
-		DmlStub stub = new DmlStub();
-		Test.startTest();
+    DmlStub stub = new DmlStub();
+    Test.startTest();
 
-			stub.upsertRecords(new List<Account> { acc });
+    stub.upsertRecords(new List<Account>{ acc });
 
-		Test.stopTest();
+    Test.stopTest();
 
-		System.assertNotEquals(null, acc.Id);
-	}
+    System.assertNotEquals(null, acc.Id);
+  }
 
-	static TestMethod void deleteRecords_givenOldAccount_shouldGetNullID() {
-		Account acc = new Account(
-			Name = 'Test Account');
+  static testMethod void deleteRecords_givenOldAccount_shouldGetNullID() {
+    Account acc = new Account(Name = 'Test Account');
 
-		insert acc;
+    insert acc;
 
-		DmlStub stub = new DmlStub();
-		Test.startTest();
+    DmlStub stub = new DmlStub();
+    Test.startTest();
 
-			stub.deleteRecords(new List<Account> { acc });
+    stub.deleteRecords(new List<Account>{ acc });
 
-		Test.stopTest();
+    Test.stopTest();
 
-		List<Account> accounts = [SELECT Id FROM Account];
-		System.assert(accounts.isEmpty());
-	}
+    List<Account> accounts = [SELECT Id FROM Account];
+    System.assert(accounts.isEmpty());
+  }
 }

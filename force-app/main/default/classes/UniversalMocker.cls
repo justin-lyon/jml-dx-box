@@ -173,7 +173,10 @@ public with sharing class UniversalMocker implements System.StubProvider {
     List<String> listOfParamNames,
     List<Object> listOfArgs
   ) {
-    String keyInUse = this.determineKeyToUseForCurrentStubbedMethod(stubbedMethodName, listOfParamTypes);
+    String keyInUse = this.determineKeyToUseForCurrentStubbedMethod(
+      stubbedMethodName,
+      listOfParamTypes
+    );
     this.incrementCallCount(keyInUse);
     this.saveArguments(listOfParamNames, listOfArgs, keyInUse);
 
@@ -181,7 +184,12 @@ public with sharing class UniversalMocker implements System.StubProvider {
 
     if (this.mutatorMap.containsKey(keyInUse)) {
       for (Mutator m : this.mutatorMap.get(keyInUse)) {
-        m.mutate(stubbedObject, stubbedMethodName, listOfParamTypes, listOfArgs);
+        m.mutate(
+          stubbedObject,
+          stubbedMethodName,
+          listOfParamTypes,
+          listOfArgs
+        );
       }
     }
 
@@ -205,7 +213,12 @@ public with sharing class UniversalMocker implements System.StubProvider {
   }
 
   public interface Mutator {
-    void mutate(Object stubbedObject, String stubbedMethodName, List<Type> listOfParamTypes, List<Object> listOfArgs);
+    void mutate(
+      Object stubbedObject,
+      String stubbedMethodName,
+      List<Type> listOfParamTypes,
+      List<Object> listOfArgs
+    );
   }
 
   /* End Public methods */
@@ -260,13 +273,23 @@ public with sharing class UniversalMocker implements System.StubProvider {
     String methodName = this.currentMethodName;
     switch on assertTypeValue {
       when OR_LESS {
-        system.assert(this.expectedCallCount >= actualCallCount, this.getMethodCallCountAssertMessage(methodName, 'less than or equal'));
+        system.assert(
+          this.expectedCallCount >= actualCallCount,
+          this.getMethodCallCountAssertMessage(methodName, 'less than or equal')
+        );
       }
       when OR_MORE {
-        system.assert(this.expectedCallCount <= actualCallCount, this.getMethodCallCountAssertMessage(methodName, 'more than or equal'));
+        system.assert(
+          this.expectedCallCount <= actualCallCount,
+          this.getMethodCallCountAssertMessage(methodName, 'more than or equal')
+        );
       }
       when else {
-        system.assertEquals(this.expectedCallCount, actualCallCount, this.getMethodCallCountAssertMessage(methodName, 'equal'));
+        system.assertEquals(
+          this.expectedCallCount,
+          actualCallCount,
+          this.getMethodCallCountAssertMessage(methodName, 'equal')
+        );
       }
     }
   }
@@ -277,7 +300,14 @@ public with sharing class UniversalMocker implements System.StubProvider {
     String methodName = this.currentMethodName;
     if (actualCallCount != null) {
       this.expectedCallCount = 0;
-      system.assertEquals(this.expectedCallCount, actualCallCount, String.format('Method {0} was called 1 or more times', new List<String>{ methodName }));
+      system.assertEquals(
+        this.expectedCallCount,
+        actualCallCount,
+        String.format(
+          'Method {0} was called 1 or more times',
+          new List<String>{ methodName }
+        )
+      );
     }
   }
 
@@ -287,9 +317,16 @@ public with sharing class UniversalMocker implements System.StubProvider {
 
   private Object getValueOf(String paramName) {
     String theKey = this.getCurrentKey();
-    Map<String, Object> paramsMap = this.getArgumentsMapInternal().get(theKey).get(this.forInvocationNumber);
+    Map<String, Object> paramsMap = this.getArgumentsMapInternal()
+      .get(theKey)
+      .get(this.forInvocationNumber);
     if (!paramsMap.containsKey(paramName.toLowerCase())) {
-      throw new IllegalArgumentException(String.format('Param name {0} not found for the method {1}', new List<Object>{ paramName, this.currentMethodName }));
+      throw new IllegalArgumentException(
+        String.format(
+          'Param name {0} not found for the method {1}',
+          new List<Object>{ paramName, this.currentMethodName }
+        )
+      );
     }
     Object returnValue = paramsMap.get(paramName.toLowerCase());
     return returnValue;
@@ -297,7 +334,9 @@ public with sharing class UniversalMocker implements System.StubProvider {
 
   private Map<String, Object> getArgumentsMap() {
     String theKey = this.getCurrentKey();
-    Map<String, Object> returnValue = this.getArgumentsMapInternal().get(theKey).get(this.forInvocationNumber);
+    Map<String, Object> returnValue = this.getArgumentsMapInternal()
+      .get(theKey)
+      .get(this.forInvocationNumber);
     return returnValue;
   }
 
@@ -310,7 +349,10 @@ public with sharing class UniversalMocker implements System.StubProvider {
   }
 
   private String getKey(String methodName, List<Type> paramTypes) {
-    return (methodName + KEY_DELIMITER + this.getParamTypesString(paramTypes)).toLowerCase();
+    return (methodName +
+      KEY_DELIMITER +
+      this.getParamTypesString(paramTypes))
+      .toLowerCase();
   }
 
   private String getParamTypesString(List<Type> paramTypes) {
@@ -321,20 +363,34 @@ public with sharing class UniversalMocker implements System.StubProvider {
     return String.join(classNames, '-');
   }
 
-  private String determineKeyToUseForCurrentStubbedMethod(String stubbedMethodName, List<Type> listOfParamTypes) {
+  private String determineKeyToUseForCurrentStubbedMethod(
+    String stubbedMethodName,
+    List<Type> listOfParamTypes
+  ) {
     String keyWithParamTypes = this.getKey(stubbedMethodName, listOfParamTypes);
-    return this.callCountsMap.containsKey(keyWithParamTypes) ? keyWithParamTypes : stubbedMethodName.toLowerCase();
+    return this.callCountsMap.containsKey(keyWithParamTypes)
+      ? keyWithParamTypes
+      : stubbedMethodName.toLowerCase();
   }
 
   private void incrementCallCount(String key) {
-    Integer count = this.callCountsMap.containsKey(key) ? this.callCountsMap.get(key) : 0;
+    Integer count = this.callCountsMap.containsKey(key)
+      ? this.callCountsMap.get(key)
+      : 0;
     this.callCountsMap.put(key, count + 1);
   }
 
-  private void saveArguments(List<String> listOfParamNames, List<Object> listOfArgs, String key) {
+  private void saveArguments(
+    List<String> listOfParamNames,
+    List<Object> listOfArgs,
+    String key
+  ) {
     Map<String, Object> currentArgsMap = new Map<String, Object>();
     if (!this.argumentsMap.containsKey(key)) {
-      this.argumentsMap.put(key, new List<Map<String, Object>>{ currentArgsMap });
+      this.argumentsMap.put(
+        key,
+        new List<Map<String, Object>>{ currentArgsMap }
+      );
     } else {
       this.argumentsMap.get(key).add(currentArgsMap);
     }
@@ -344,8 +400,14 @@ public with sharing class UniversalMocker implements System.StubProvider {
     }
   }
 
-  private String getMethodCallCountAssertMessage(String methodName, String comparison) {
-    return String.format('Expected call count for method {0} is not {1} to the actual count', new List<String>{ methodName, comparison });
+  private String getMethodCallCountAssertMessage(
+    String methodName,
+    String comparison
+  ) {
+    return String.format(
+      'Expected call count for method {0} is not {1} to the actual count',
+      new List<String>{ methodName, comparison }
+    );
   }
 
   private Map<String, Integer> getCallCountsMapInternal() {

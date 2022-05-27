@@ -1,9 +1,12 @@
-name: validate-apex-code
+name: PMD Source Code Analyzer on Push
+
 on: [push]
+
 jobs:
-  check-apex:
+  pmd:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Check APEX
-        uses: legetz/setup-pmd@v6.44
-      - run: pmd -d force-app/main/default/classes -R category/apex/design.xml -f text
+      - uses: sfdx-actions/setup-pmd@v1
+      - name: run-pmd
+        run: pmd -d ./force-app/main/default/classes -R category/apex/design.xml -f text

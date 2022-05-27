@@ -17,6 +17,7 @@ private class AccountDATest {
   @isTest
   static void queryLimittedAccounts_shouldInvokeMock() {
     UniversalMocker mockerInstance = UniversalMocker.mock(AccountDA.class);
+    AccountDA accessor = (AccountDA) mockerInstance.createStub();
 
     Test.startTest();
 

@@ -7,6 +7,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Checkout the code
       - uses: sfdx-actions/setup-pmd@v1
+      - name: "Checkout source code"
+        uses: actions/checkout@v2
       - name: run-pmd
         run: pmd -d ./force-app/main/default/classes/ -R rulesets/apex/quickstart.xml -f text

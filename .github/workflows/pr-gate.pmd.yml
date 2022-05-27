@@ -1,0 +1,9 @@
+name: validate-apex-code
+on: [push]
+jobs:
+  check-apex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check APEX
+        uses: legetz/setup-pmd@v6.44
+      - run: pmd -d ./force-app/main/default/classes -R category/apex/design.xml -f text

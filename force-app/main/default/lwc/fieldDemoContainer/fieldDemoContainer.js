@@ -17,15 +17,15 @@ export default class WipContainer extends NavigationMixin(LightningElement) {
   }
 
   handleAccountLookup(event) {
-    this.accountId = event.detail;
+    this.accountId = event.detail.value;
   }
 
   handleContactLookup(event) {
-    this.contactId = event.detail;
+    this.contactId = event.detail.value;
   }
 
   handleContactLookup2(event) {
-    this.contactId2 = event.detail;
+    this.contactId2 = event.detail.value;
   }
 
   // Leaflet Map

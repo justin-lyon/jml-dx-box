@@ -1,4 +1,4 @@
-import { LightningElement, api, track } from "lwc";
+import { LightningElement, api } from "lwc";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import getOneRecordById from "@salesforce/apex/LookupAuraService.getOneRecordById";
 import getRecent from "@salesforce/apex/LookupAuraService.getRecent";
@@ -11,27 +11,25 @@ const ESCAPE = "Escape";
 const ACTIONABLE_KEYS = [ARROW_UP, ARROW_DOWN, ENTER, ESCAPE];
 
 export default class Lookup extends LightningElement {
-  @track inputValue = "";
-  @track records = [];
-  @track focused = false;
-  @track selected = "";
-  @track record;
-  @track error;
-  @track activeId = "";
+  _connected = false;
 
-  @track _value;
-  @api
-  get value() {
-    return this._value;
+  selectedId = null;
+  value = "";
+
+  records = [];
+  focused = false;
+  record = null;
+  error = null;
+  activeId = null;
+
+  get displayValue() {
+    return this.value;
+  }
+  set displayValue(v) {
+    this.value = v;
   }
 
-  set value(val) {
-    this._value = val;
-    if (val) {
-      this.requestOneById();
-    }
-  }
-
+  @api defaultRecordId = null;
   @api sobjectName;
   @api iconName;
   @api name;
@@ -39,12 +37,17 @@ export default class Lookup extends LightningElement {
   @api fieldLabel = "Search";
   @api title = "Name";
   @api subtitle = "Id";
+  @api minimumCharacterSearchDebounce = 2;
   @api readOnly = false;
   @api required = false;
   @api messageWhenInputError = "This field is required.";
 
   @api checkValidity() {
-    return !this.required || (this.value && this.value.length > 14);
+    const isRequired = this.required;
+    const hasSelection = !!this.selectedId;
+    // Either its NOT required, and we exit with truthy.
+    // OR it IS required, and we then must have a selection.
+    return !isRequired || hasSelection;
   }
 
   @api reportValidity() {
@@ -54,11 +57,17 @@ export default class Lookup extends LightningElement {
   }
 
   connectedCallback() {
-    if (this.value) {
+    if (this.defaultRecordId) {
       this.requestOneById();
     } else {
       this.requestRecent();
     }
+
+    this._connected = true;
+  }
+
+  get searchInput() {
+    return this.template.querySelector("#searchInput");
   }
 
   get isReadOnly() {
@@ -69,8 +78,7 @@ export default class Lookup extends LightningElement {
   }
   get showClear() {
     return (
-      !this.readOnly &&
-      (this.record || (!this.record && this.inputValue.length > 0))
+      !this.readOnly && (this.record || (!this.record && this.value.length > 0))
     );
   }
   get hasError() {
@@ -119,7 +127,9 @@ export default class Lookup extends LightningElement {
 
   onKeyup(event) {
     if (this.readOnly) return;
-    this.inputValue = event.target.value;
+    const searchTerm = event.target.value;
+    this.value = searchTerm;
+
     this.error = null;
 
     const keyAction = {
@@ -140,34 +150,35 @@ export default class Lookup extends LightningElement {
     if (ACTIONABLE_KEYS.includes(event.code)) {
       keyAction[event.code]();
     } else {
-      if (this.inputValue.length > 2) {
-        this.debounceSearch();
-      } else if (this.inputValue.length === 0) {
+      if (searchTerm.length >= this.minimumCharacterSearchDebounce) {
+        this.debounceSearch(searchTerm);
+      } else if (searchTerm.length === 0) {
         this.records = [];
         this.requestRecent();
       } else {
         this.error = {
-          message: "Minimum 2 characters"
+          message: `Please enter ${this.minimumCharacterSearchDebounce} or more characters.`
         };
       }
     }
   }
 
   handleSelected(event) {
-    this.selected = event.detail;
-    this.record = this.records.find((record) => record.Id === this.selected);
-    this.inputValue = this.record[this.title];
+    this.selectedId = event.detail;
+    this.record = this.records.find((record) => record.Id === this.selectedId);
+    this.displayValue = this.record[this.title];
     this.fireSelected();
   }
 
-  search() {
-    const searcher = this.getSearcher();
+  search(searchTerm) {
+    const searcher = this.getSearcher(searchTerm);
     this.error = null;
 
     getRecords({ searcher })
       .then((data) => {
         const newData = JSON.parse(data);
         this.records = newData.flat().sort((a, b) => this.sortAlpha(a, b));
+        this.initActiveId();
 
         if (this.records.length === 0) {
           this.fireToast({
@@ -183,11 +194,11 @@ export default class Lookup extends LightningElement {
       });
   }
 
-  debounceSearch() {
+  debounceSearch(searchTerm) {
     window.clearTimeout(this.delaySearch);
     // eslint-disable-next-line @lwc/lwc/no-async-operation
     this.delaySearch = setTimeout(() => {
-      this.search();
+      this.search(searchTerm);
     }, 300);
   }
 
@@ -195,13 +206,13 @@ export default class Lookup extends LightningElement {
     const searcher = this.getSearcher();
     this.error = null;
 
-    getOneRecordById({ searcher, recordId: this.value })
+    getOneRecordById({ searcher, recordId: this.defaultRecordId })
       .then((data) => {
         const records = JSON.parse(data);
         this.records = records;
         this.record = records[0];
-        this.selected = this.record.Id;
-        this.inputValue = this.record[this.title];
+        this.selectedId = this.record.Id;
+        this.displayValue = this.record[this.title];
       })
       .catch((error) => {
         console.error("Error getting record by Id", error);
@@ -216,6 +227,7 @@ export default class Lookup extends LightningElement {
     getRecent({ searcher })
       .then((data) => {
         this.records = JSON.parse(data);
+        this.initActiveId();
       })
       .catch((error) => {
         console.error("Error requesting recents", error);
@@ -223,18 +235,25 @@ export default class Lookup extends LightningElement {
       });
   }
 
+  initActiveId() {
+    if (this.records.length > 0) {
+      this.activeId = this.records[0].Id;
+    }
+  }
+
   clearSelection() {
-    this.selected = "";
+    this.selectedId = null;
     this.record = null;
-    this.inputValue = "";
+    this.displayValue = "";
     this.error = null;
     this.requestRecent();
     this.fireSelected();
+    this.reportValidity();
   }
 
   fireSelected() {
     const selected = new CustomEvent("selected", {
-      detail: this.selected
+      detail: { value: this.selectedId }
     });
     this.dispatchEvent(selected);
   }
@@ -266,9 +285,9 @@ export default class Lookup extends LightningElement {
     }
   }
 
-  getSearcher() {
+  getSearcher(searchTerm) {
     return {
-      searchTerm: this.inputValue,
+      searchTerm: searchTerm || "",
       objectName: this.sobjectName,
       fields: [this.title, this.subtitle]
     };

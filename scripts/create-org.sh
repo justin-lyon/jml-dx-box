@@ -11,8 +11,13 @@ sfdx force:org:create -sa $1 -f config/project-scratch-def.json
 echo "...Pushing metadata to $1"
 sfdx force:source:push
 
-# assign permset
-bash ./scripts/assign-perms.sh
+# assign permsets
+echo "...Assigning Permission Set LWCDemoApp, ConsoleNav, & AlertsManager"
+sfdx force:user:permset:assign -n "LWCDemoApp, ConsoleNav, AlertsManager"
 
 # load data
-bash ./scripts/add-data.sh
+echo "...Importing data/Account-Contact-Case-plan.json"
+sfdx force:data:tree:import -p data/Account-Contact-Case-plan.json
+
+echo "...Importing data/Alert__c-plan.json"
+sfdx force:data:tree:import -p data/Alert__c-plan.json

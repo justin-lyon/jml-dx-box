@@ -29,7 +29,6 @@ export default class Lookup extends LightningElement {
     this.value = v;
   }
 
-  @api defaultRecordId = null;
   @api sobjectName;
   @api iconName;
   @api name;
@@ -41,6 +40,21 @@ export default class Lookup extends LightningElement {
   @api readOnly = false;
   @api required = false;
   @api messageWhenInputError = "This field is required.";
+
+  _defaultRecordId = null;
+  @api
+  get defaultRecordId() {
+    return this._defaultRecordId;
+  }
+  set defaultRecordId(value) {
+    if (value === this._defaultRecordId) return;
+
+    this._defaultRecordId = value;
+
+    if (value !== null) {
+      this.requestOneById();
+    }
+  }
 
   @api checkValidity() {
     const isRequired = this.required;
@@ -57,9 +71,7 @@ export default class Lookup extends LightningElement {
   }
 
   connectedCallback() {
-    if (this.defaultRecordId) {
-      this.requestOneById();
-    } else {
+    if (!this.defaultRecordId) {
       this.requestRecent();
     }
 

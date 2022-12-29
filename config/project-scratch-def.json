@@ -1,5 +1,6 @@
 {
   "orgName": "Demo Company",
+  "edition": "Developer",
   "features": ["EnableSetPasswordInApi"],
   "settings": {
     "enhancedNotesSettings": {

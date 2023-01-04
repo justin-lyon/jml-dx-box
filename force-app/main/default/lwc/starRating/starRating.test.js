@@ -12,6 +12,7 @@ const initCmp = (el, { isReadOnly = false, rating = 1, maxRating = 5 }) => {
   return cmp;
 };
 
+jest.mock("c/icon");
 describe("c-star-rating", () => {
   afterEach(() => {
     while (document.body.firstChild) {

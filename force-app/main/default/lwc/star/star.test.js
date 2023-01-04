@@ -11,6 +11,7 @@ const initCmp = (el, data, isReadOnly = false) => {
   return cmp;
 };
 
+jest.mock("c/icon");
 describe("c-star", () => {
   afterEach(() => {
     while (document.body.firstChild) {

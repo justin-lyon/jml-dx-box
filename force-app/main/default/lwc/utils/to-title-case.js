@@ -1,6 +1,6 @@
 const transform = (word) => {
   if (word.length > 0) {
-    const firstLetter = word[0];
+    const firstLetter = word[0].toUpperCase();
     const remainder = word.substring(1).toLowerCase();
     return firstLetter + remainder;
   }

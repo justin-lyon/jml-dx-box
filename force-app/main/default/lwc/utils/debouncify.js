@@ -1,4 +1,4 @@
-const debouncify = (fn, delay) => {
+const debouncify = (fn, delay = 0) => {
   let timeoutId = null;
   return () => {
     clearTimeout(timeoutId);

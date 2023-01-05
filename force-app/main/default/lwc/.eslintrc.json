@@ -1,5 +1,9 @@
 {
   "extends": ["@salesforce/eslint-config-lwc/recommended"],
+  "rules": {
+    "quotes": ["error", "single"],
+    "consistent-return": "off"
+  },
   "overrides": [
     {
       "files": ["*.test.js"],

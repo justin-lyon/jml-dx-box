@@ -1,15 +1,18 @@
 @isTest
 private class MetadataFinderAuraServiceTest {
-	static TestMethod void getPicklistValues_givenObjectAndField_shouldGetOptions() {
-		String objectName = 'Account';
-		String fieldName = 'Type';
+  static testMethod void getPicklistValues_givenObjectAndField_shouldGetOptions() {
+    String objectName = 'Account';
+    String fieldName = 'Type';
 
-		Test.startTest();
+    Test.startTest();
 
-			List<MetadataFinderAuraService.Option> options = MetadataFinderAuraService.getPicklistValues(objectName, fieldName);
+    List<MetadataFinderAuraService.Option> options = MetadataFinderAuraService.getPicklistValues(
+      objectName,
+      fieldName
+    );
 
-		Test.stopTest();
+    Test.stopTest();
 
-		System.assert(!options.isEmpty());
-	}
+    System.assert(!options.isEmpty());
+  }
 }

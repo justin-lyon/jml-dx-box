@@ -1,9 +1,11 @@
 <template>
-  <span onclick={clickStar} class={classes} >
+  <span onclick={clickStar} class={classes}>
     <c-icon
+      id={star.id}
       resource-url={resourceUrl}
       resource-path={resourcePath}
       icon-name={iconName}
-      fill={color}></c-icon>
+      fill={color}
+    ></c-icon>
   </span>
 </template>

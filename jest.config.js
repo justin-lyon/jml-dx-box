@@ -1,14 +1,20 @@
-const { jestConfig } = require('@salesforce/sfdx-lwc-jest/config');
+// crypto is a std web library available in all modern browsers
+// it is also available in node v19+
+// it is not however available at jest runtime
+// jest uses jsdom which does not yet support the web crypto api
+const crypto = require("crypto");
+
+const { jestConfig } = require("@salesforce/sfdx-lwc-jest/config");
+
 module.exports = {
   ...jestConfig,
-  moduleNameMapper: {
-    '^@salesforce/apex$': '<rootDir>/force-app/test/jest-mocks/apex',
-    '^lightning/navigation$':
-      '<rootDir>/force-app/test/jest-mocks/lightning/navigation',
-    '^lightning/platformShowToastEvent$':
-      '<rootDir>/force-app/test/jest-mocks/lightning/platformShowToastEvent',
-    '^lightning/uiRecordApi$':
-      '<rootDir>/force-app/test/jest-mocks/lightning/uiRecordApi'
+  globals: {
+    ...jestConfig.globals,
+    crypto
   },
-  setupFiles: ['jest-canvas-mock']
+  modulePathIgnorePatterns: ["<rootDir>/.localdevserver"],
+  moduleNameMapper: {
+    "^lightning/platformShowToastEvent$":
+      "<rootDir>/force-app/test/jest-mocks/lightning/platformShowToastEvent"
+  }
 };

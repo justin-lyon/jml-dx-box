@@ -1,6 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata" fqn="metadataFinder">
-    <apiVersion>47.0</apiVersion>
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle
+  xmlns="http://soap.sforce.com/2006/04/metadata"
+  fqn="metadataFinder"
+>
+    <apiVersion>54.0</apiVersion>
     <isExposed>true</isExposed>
 
     <masterLabel>Metadata Finder</masterLabel>
@@ -13,24 +16,129 @@
 
     <targetConfigs>
         <targetConfig targets="lightning__RecordPage">
-            <property name="mdtName" label="Custom Metadata Name" type="String" required="true" description="Custom Metadata API Name" ></property>
-            <property name="title" label="Title" type="String" default="Masterlabel" required="true" description="The visible record name in the component" ></property>
-            <property name="subtitle" label="Subtitle" type="String" default="Id" required="true" description="A secondary field visible on the record" ></property>
-            <property name="filterBy" label="Filter By" type="String" default="Id" required="true" description="A field to filter by, recommend using the same as Subtitle" ></property>
-            <property name="comboLabel" label="Combobox Label" type="String" default="Filter" ></property>
-            <property name="pickerLabel" label="Search Label" type="String" default="Search" ></property>
-            <property name="iconName" label="Icon Name" type="String" default="utility:setup" description="See SLDS Documentation for Icons. Must follow category:name grammar." ></property>
-            <property name="placeholder" label="Search Placeholder" type="String" default="Search..." ></property>
+            <property
+        name="mdtName"
+        label="Custom Metadata Name"
+        type="String"
+        required="true"
+        description="Custom Metadata API Name"
+      />
+            <property
+        name="title"
+        label="Title"
+        type="String"
+        default="Masterlabel"
+        required="true"
+        description="The visible record name in the component"
+      />
+            <property
+        name="subtitle"
+        label="Subtitle"
+        type="String"
+        default="Id"
+        required="true"
+        description="A secondary field visible on the record"
+      />
+            <property
+        name="filterBy"
+        label="Filter By"
+        type="String"
+        default="Id"
+        required="true"
+        description="A field to filter by, recommend using the same as Subtitle"
+      />
+            <property
+        name="comboLabel"
+        label="Combobox Label"
+        type="String"
+        default="Filter"
+      />
+            <property
+        name="pickerLabel"
+        label="Search Label"
+        type="String"
+        default="Search"
+      />
+            <property
+        name="iconName"
+        label="Icon Name"
+        type="String"
+        default="utility:setup"
+        description="See SLDS Documentation for Icons. Must follow category:name grammar."
+      />
+            <property
+        name="placeholder"
+        label="Search Placeholder"
+        type="String"
+        default="Search..."
+      />
         </targetConfig>
         <targetConfig targets="lightning__FlowScreen">
-            <property name="mdtName" role="inputOnly" label="Custom Metadata Name" type="String" default="" required="true" description="Custom Metadata API Name" ></property>
-            <property name="title" role="inputOnly" label="Title" type="String" default="Masterlabel" required="true" description="The visible record name in the component" ></property>
-            <property name="subtitle" role="inputOnly" label="Subtitle" type="String" default="Id" required="true" description="A secondary field visible on the record" ></property>
-            <property name="filterBy" role="inputOnly" label="Filter By" type="String" default="Id" required="true" description="A field to filter by, recommend using the same as Subtitle" ></property>
-            <property name="comboLabel" role="inputOnly" label="Combobox Label" type="String" default="Filter" ></property>
-            <property name="pickerLabel" role="inputOnly" label="Search Label" type="String" default="Search" ></property>
-            <property name="iconName" role="inputOnly" label="Icon Name" type="String" default="utility:setup" description="See SLDS Documentation for Icons. Must follow category:name grammar." ></property>
-            <property name="placeholder" role="inputOnly" label="Search Placeholder" type="String" default="Search..." ></property>
+            <property
+        name="mdtName"
+        role="inputOnly"
+        label="Custom Metadata Name"
+        type="String"
+        default=""
+        required="true"
+        description="Custom Metadata API Name"
+      />
+            <property
+        name="title"
+        role="inputOnly"
+        label="Title"
+        type="String"
+        default="Masterlabel"
+        required="true"
+        description="The visible record name in the component"
+      />
+            <property
+        name="subtitle"
+        role="inputOnly"
+        label="Subtitle"
+        type="String"
+        default="Id"
+        required="true"
+        description="A secondary field visible on the record"
+      />
+            <property
+        name="filterBy"
+        role="inputOnly"
+        label="Filter By"
+        type="String"
+        default="Id"
+        required="true"
+        description="A field to filter by, recommend using the same as Subtitle"
+      />
+            <property
+        name="comboLabel"
+        role="inputOnly"
+        label="Combobox Label"
+        type="String"
+        default="Filter"
+      />
+            <property
+        name="pickerLabel"
+        role="inputOnly"
+        label="Search Label"
+        type="String"
+        default="Search"
+      />
+            <property
+        name="iconName"
+        role="inputOnly"
+        label="Icon Name"
+        type="String"
+        default="utility:setup"
+        description="See SLDS Documentation for Icons. Must follow category:name grammar."
+      />
+            <property
+        name="placeholder"
+        role="inputOnly"
+        label="Search Placeholder"
+        type="String"
+        default="Search..."
+      />
         </targetConfig>
     </targetConfigs>
 </LightningComponentBundle>

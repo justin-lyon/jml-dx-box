@@ -1,6 +1,6 @@
 ({
-  afterRender: function(cmp, helper) {
+  afterRender: function (cmp, helper) {
     this.superAfterRender();
     helper.afterRender(cmp, helper);
   }
-})
+});

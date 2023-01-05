@@ -1,49 +1,52 @@
 @isTest
 private class MockIdGeneratorTest {
+  static testMethod void getMockId_givenAccount_shouldGetAccountPrefixId() {
+    Account acc = new Account();
+    MockIdGenerator idGen = new MockIdGenerator(acc);
+    String accountIdPrefix = Account.getSObjectType()
+      .getDescribe()
+      .getKeyPrefix();
 
-	static TestMethod void getMockId_givenAccount_shouldGetAccountPrefixId() {
-		Account acc = new Account();
-		MockIdGenerator idGen = new MockIdGenerator(acc);
-		String accountIdPrefix = Account.getSObjectType().getDescribe().getKeyPrefix();
+    Test.startTest();
 
-		Test.startTest();
+    String accountId = idGen.getMockId();
 
-			String accountId = idGen.getMockId();
+    Test.stopTest();
 
-		Test.stopTest();
+    System.assertEquals(accountIdPrefix, accountId.substring(0, 3));
+    System.assertEquals(18, accountId.length(), accountId);
+  }
 
-		System.assertEquals(accountIdPrefix, accountId.substring(0, 3));
-		System.assertEquals(18, accountId.length(), accountId);
-	}
+  static testMethod void statelessMockId_givenContact_shouldGetContactId() {
+    Contact con = new Contact();
+    String contactIdPrefix = Contact.getSObjectType()
+      .getDescribe()
+      .getKeyPrefix();
 
-	static TestMethod void statelessMockId_givenContact_shouldGetContactId() {
-		Contact con = new Contact();
-		String contactIdPrefix = Contact.getSObjectType().getDescribe().getKeyPrefix();
+    Test.startTest();
 
-		Test.startTest();
+    String contactId = MockIdGenerator.getMockId(con);
 
-			String contactId = MockIdGenerator.getMockId(con);
+    Test.stopTest();
 
-		Test.stopTest();
+    System.assertEquals(contactIdPrefix, contactId.substring(0, 3));
+    System.assertEquals(18, contactId.length(), contactId);
+  }
 
-		System.assertEquals(contactIdPrefix, contactId.substring(0, 3));
-		System.assertEquals(18, contactId.length(), contactId);
-	}
+  static testMethod void getMockId_givenTwoObjectStates_shouldGetUniqueObjectCounts() {
+    MockIdGenerator accGen = new MockIdGenerator(new Account());
+    MockIdGenerator conGen = new MockIdGenerator(new Contact());
 
-	static TestMethod void getMockId_givenTwoObjectStates_shouldGetUniqueObjectCounts() {
-		MockIdGenerator accGen = new MockIdGenerator(new Account());
-		MockIdGenerator conGen = new MockIdGenerator(new Contact());
+    Test.startTest();
 
-		Test.startTest();
+    String accountId = accGen.getMockId();
+    String contactId = conGen.getMockId();
 
-			String accountId = accGen.getMockId();
-			String contactId = conGen.getMockId();
+    Test.stopTest();
 
-		Test.stopTest();
+    String accountWithoutPrefix = accountId.substring(3, 18);
+    String contactWithoutPrefix = contactId.substring(3, 18);
 
-		String accountWithoutPrefix = accountId.substring(3, 18);
-		String contactWithoutPrefix = contactId.substring(3, 18);
-
-		System.assertEquals(accountWithoutPrefix, contactWithoutPrefix);
-	}
+    System.assertEquals(accountWithoutPrefix, contactWithoutPrefix);
+  }
 }

@@ -1,14 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <CleanDataService xmlns="http://soap.sforce.com/2006/04/metadata">
     <cleanRules>
         <bulkEnabled>true</bulkEnabled>
         <bypassTriggers>true</bypassTriggers>
         <bypassWorkflow>true</bypassWorkflow>
         <description>Adds geocodes for Mailing Address</description>
-        <developerName>Contact_Geo_Clean_Rule_for_Mailing_Address</developerName>
+        <developerName
+    >Contact_Geo_Clean_Rule_for_Mailing_Address</developerName>
         <fieldMappings>
             <SObjectType>DatacloudAddress</SObjectType>
-            <developerName>Contact_Geo_Clean_Rule_for_Mailing_AddressInputMapping</developerName>
+            <developerName
+      >Contact_Geo_Clean_Rule_for_Mailing_AddressInputMapping</developerName>
             <fieldMappingRows>
                 <SObjectType>DatacloudAddress</SObjectType>
                 <fieldMappingFields>
@@ -63,12 +65,14 @@
         </fieldMappings>
         <fieldMappings>
             <SObjectType>Contact</SObjectType>
-            <developerName>Contact_Geo_Clean_Rule_for_Mailing_AddressOutputMapping</developerName>
+            <developerName
+      >Contact_Geo_Clean_Rule_for_Mailing_AddressOutputMapping</developerName>
             <fieldMappingRows>
                 <SObjectType>Contact</SObjectType>
                 <fieldMappingFields>
                     <dataServiceField>GeoAccuracyNum</dataServiceField>
-                    <dataServiceObjectName>DatacloudAddress</dataServiceObjectName>
+                    <dataServiceObjectName
+          >DatacloudAddress</dataServiceObjectName>
                     <priority>1</priority>
                 </fieldMappingFields>
                 <fieldName>MailingGeocodeAccuracy</fieldName>
@@ -78,7 +82,8 @@
                 <SObjectType>Contact</SObjectType>
                 <fieldMappingFields>
                     <dataServiceField>Latitude</dataServiceField>
-                    <dataServiceObjectName>DatacloudAddress</dataServiceObjectName>
+                    <dataServiceObjectName
+          >DatacloudAddress</dataServiceObjectName>
                     <priority>1</priority>
                 </fieldMappingFields>
                 <fieldName>MailingLatitude</fieldName>
@@ -88,7 +93,8 @@
                 <SObjectType>Contact</SObjectType>
                 <fieldMappingFields>
                     <dataServiceField>Longitude</dataServiceField>
-                    <dataServiceObjectName>DatacloudAddress</dataServiceObjectName>
+                    <dataServiceObjectName
+          >DatacloudAddress</dataServiceObjectName>
                     <priority>1</priority>
                 </fieldMappingFields>
                 <fieldName>MailingLongitude</fieldName>

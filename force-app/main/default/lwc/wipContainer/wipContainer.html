@@ -1,23 +1,17 @@
 <template>
-  <lightning-card title="Text Area">
-    <div class="slds-p-horizontal_medium">
-      <button onclick={toggleModal}>Pop Modal</button>
+  <div class="slds-grid slds-gutters">
+    <div class="slds-col slds-size_1-of-1">
+      <div class="slds-box slds-theme_default">
+        <c-lookup
+          default-record-id="0011g000011ahvWAAQ"
+          sobject-name="Account"
+          title="Name"
+          subtitle="Phone"
+          onselected={handleAccountLookup}
+          icon-name="standard:account"
+          required
+        ></c-lookup>
+      </div>
     </div>
-  </lightning-card>
-
-  <c-modal is-shown={isShown}
-    onclose={closeModal} >
-
-    <div slot="header">my header</div>
-
-    <!-- Content of the modal -->
-    <lightning-input class="focusable" label="Name"></lightning-input>
-
-    <lightning-input class="focusable" label="Date" type="date"></lightning-input>
-
-    <lightning-input class="focusable" label="Mobile" type="tel"></lightning-input>
-
-    <div slot="footer">my footer</div>
-
-  </c-modal>
+  </div>
 </template>

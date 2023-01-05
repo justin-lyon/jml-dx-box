@@ -1,80 +1,84 @@
 @isTest
 private class BusinessDaysTest {
-	static TestMethod void constructor_givenDefault_shouldGetDefaultBusinessHours() {
-		BusinessDays bd;
+  static testMethod void constructor_givenDefault_shouldGetDefaultBusinessHours() {
+    BusinessDays bd;
 
-		Test.startTest();
+    Test.startTest();
 
-			bd = new BusinessDays();
+    bd = new BusinessDays();
 
-		Test.stopTest();
+    Test.stopTest();
 
-		System.assertNotEquals(null, bd, 'Should construct.');
-	}
+    System.assertNotEquals(null, bd, 'Should construct.');
+  }
 
-	static TestMethod void isBusinessDay_givenMonday_shouldGetTrue() {
-		Date monday = Date.newInstance(2019, 11, 11); // Monday Nov 11, 2019
-		BusinessDays bd = new BusinessDays();
+  static testMethod void isBusinessDay_givenMonday_shouldGetTrue() {
+    Date monday = Date.newInstance(2019, 11, 11); // Monday Nov 11, 2019
+    BusinessDays bd = new BusinessDays();
 
-		Test.startTest();
+    Test.startTest();
 
-			Boolean isBusinessDay = bd.isBusinessDay(monday);
+    Boolean isBusinessDay = bd.isBusinessDay(monday);
 
-		Test.stopTest();
+    Test.stopTest();
 
-		System.assert(isBusinessDay, 'Monday is a business day.');
-	}
+    System.assert(isBusinessDay, 'Monday is a business day.');
+  }
 
-	static TestMethod void isBusinessDay_givenSunday_shouldGetFalse() {
-		Date sunday = Date.newInstance(2019, 11, 10); // Sunday Nov 10, 2019
-		BusinessDays bd = new BusinessDays();
+  static testMethod void isBusinessDay_givenSunday_shouldGetFalse() {
+    Date sunday = Date.newInstance(2019, 11, 10); // Sunday Nov 10, 2019
+    BusinessDays bd = new BusinessDays();
 
-		Test.startTest();
+    Test.startTest();
 
-			Boolean isBusinessDay = bd.isBusinessDay(sunday);
+    Boolean isBusinessDay = bd.isBusinessDay(sunday);
 
-		Test.stopTest();
+    Test.stopTest();
 
-		System.assert(!isBusinessDay, 'Sunday is not a business day.');
-	}
+    System.assert(!isBusinessDay, 'Sunday is not a business day.');
+  }
 
-	static TestMethod void getStartTime_givenMonday_shouldGet9amEastern() {
-		Date monday = Date.newInstance(2019, 11, 11); // Monday Nov 11, 2019
-		BusinessDays bd = new BusinessDays();
+  static testMethod void getStartTime_givenMonday_shouldGet9amEastern() {
+    Date monday = Date.newInstance(2019, 11, 11); // Monday Nov 11, 2019
+    BusinessDays bd = new BusinessDays();
 
-		Test.startTest();
+    Test.startTest();
 
-			Time startTime = bd.getStartTime(monday);
+    Time startTime = bd.getStartTime(monday);
 
-		Test.stopTest();
+    Test.stopTest();
 
-		System.assertEquals(9, startTime.hour());
-	}
+    System.assertEquals(9, startTime.hour());
+  }
 
-	static TestMethod void getEndTime_givenMonday_shouldGet5pmEastern() {
-		Date monday = Date.newInstance(2019, 11, 11); // Monday Nov 11, 2019
-		BusinessDays bd = new BusinessDays();
+  static testMethod void getEndTime_givenMonday_shouldGet5pmEastern() {
+    Date monday = Date.newInstance(2019, 11, 11); // Monday Nov 11, 2019
+    BusinessDays bd = new BusinessDays();
 
-		Test.startTest();
+    Test.startTest();
 
-			Time endTime = bd.getEndTime(monday);
+    Time endTime = bd.getEndTime(monday);
 
-		Test.stopTest();
+    Test.stopTest();
 
-		System.assertEquals(17, endTime.hour());
-	}
+    System.assertEquals(17, endTime.hour());
+  }
 
-	static TestMethod void nextBusinessDay_givenSaturday_shouldGetMonday() {
-		Date saturday = Date.newInstance(2019, 11, 9); // Saturday Nov 9, 2019
-		Date monday = Date.newInstance(2019, 11, 11); // Monday Nov 11, 2019
-		BusinessDays bd = new BusinessDays();
+  static testMethod void nextBusinessDay_givenSaturday_shouldGetMonday() {
+    Date saturday = Date.newInstance(2019, 11, 9); // Saturday Nov 9, 2019
+    Date monday = Date.newInstance(2019, 11, 11); // Monday Nov 11, 2019
+    BusinessDays bd = new BusinessDays();
 
-		Test.startTest();
+    Test.startTest();
 
-			Date nextBusinessDay = bd.nextBusinessDay(saturday);
+    Date nextBusinessDay = bd.nextBusinessDay(saturday);
 
-		Test.stopTest();
+    Test.stopTest();
 
-		System.assertEquals(monday, nextBusinessDay, 'Next business day from Saturday is Monday.');
-	}
+    System.assertEquals(
+      monday,
+      nextBusinessDay,
+      'Next business day from Saturday is Monday.'
+    );
+  }
 }

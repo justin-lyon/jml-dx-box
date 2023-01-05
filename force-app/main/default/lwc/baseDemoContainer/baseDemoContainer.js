@@ -1,17 +1,17 @@
-import { LightningElement, track } from "lwc";
-import USER_ID from "@salesforce/user/Id";
+import { LightningElement, track } from 'lwc';
+import USER_ID from '@salesforce/user/Id';
 
 export default class BaseDemoContainer extends LightningElement {
   @track currentUserId = USER_ID;
 
   // Combobox
-  @track cbSelected = "inProgress";
+  @track cbSelected = 'inProgress';
 
   get cbOptions() {
     return [
-      { label: "New", value: "new" },
-      { label: "In Progress", value: "inProgress" },
-      { label: "Finished", value: "finished" }
+      { label: 'New', value: 'new' },
+      { label: 'In Progress', value: 'inProgress' },
+      { label: 'Finished', value: 'finished' }
     ];
   }
 
@@ -24,18 +24,18 @@ export default class BaseDemoContainer extends LightningElement {
 
   get dlOptions() {
     return [
-      { label: "English", value: "en" },
-      { label: "German", value: "de" },
-      { label: "Spanish", value: "es" },
-      { label: "French", value: "fr" },
-      { label: "Italian", value: "it" },
-      { label: "Japanese", value: "jp" },
-      { label: "Korean", value: "kr" }
+      { label: 'English', value: 'en' },
+      { label: 'German', value: 'de' },
+      { label: 'Spanish', value: 'es' },
+      { label: 'French', value: 'fr' },
+      { label: 'Italian', value: 'it' },
+      { label: 'Japanese', value: 'jp' },
+      { label: 'Korean', value: 'kr' }
     ];
   }
 
   get dlSelected() {
-    return this._dlSelected.length ? this._dlSelected : "none";
+    return this._dlSelected.length ? this._dlSelected : 'none';
   }
 
   dlHandleChange({ detail }) {
@@ -63,53 +63,53 @@ export default class BaseDemoContainer extends LightningElement {
   }
 
   // Map
-  @track markersTitle = "These are my markers";
+  @track markersTitle = 'These are my markers';
   @track mapMarkers = [
     {
       location: {
-        Street: "5080 Spectrum Dr, Suite 650E",
-        City: "Addison",
-        State: "TX"
+        Street: '5080 Spectrum Dr, Suite 650E',
+        City: 'Addison',
+        State: 'TX'
       },
-      title: "Slalom Dallas",
-      description: "The Slalom Dallas office in Addison, TX"
+      title: 'Slalom Dallas',
+      description: 'The Slalom Dallas office in Addison, TX'
     },
     {
       location: {
-        Street: "2200 N Lamar St",
-        City: "Dallas",
-        State: "TX"
+        Street: '2200 N Lamar St',
+        City: 'Dallas',
+        State: 'TX'
       },
-      title: "Dallas House of Blues",
-      description: "HOB in Dallas"
+      title: 'Dallas House of Blues',
+      description: 'HOB in Dallas'
     },
     {
       location: {
-        Street: "3320 K Ave",
-        City: "Plano",
-        State: "TX"
+        Street: '3320 K Ave',
+        City: 'Plano',
+        State: 'TX'
       },
-      title: "Plano H Mart",
-      description: "Korean Grocer in Plano"
+      title: 'Plano H Mart',
+      description: 'Korean Grocer in Plano'
     },
     {
       location: {
-        Street: "2059 Summer Lee Dr",
-        City: "Rockwall",
-        State: "TX"
+        Street: '2059 Summer Lee Dr',
+        City: 'Rockwall',
+        State: 'TX'
       },
-      title: "The Harbor Rockwall",
-      description: "Park and Shopping Center"
+      title: 'The Harbor Rockwall',
+      description: 'Park and Shopping Center'
     }
   ];
 
   // Radio Group
-  @track rgSelected = "";
+  @track rgSelected = '';
 
   get rgOptions() {
     return [
-      { label: "Ross", value: "ross" },
-      { label: "Rachel", value: "rachel" }
+      { label: 'Ross', value: 'ross' },
+      { label: 'Rachel', value: 'rachel' }
     ];
   }
 

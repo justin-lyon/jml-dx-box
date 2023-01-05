@@ -1,4 +1,4 @@
-import { ShowToastEvent } from "lightning/platformShowToastEvent";
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
 let component = null;
 
@@ -8,7 +8,7 @@ const init = (cmp) => {
 
 const toast = (title, message, variant, mode) => {
   if (!component) {
-    throw new Error("Component is null. Call init with `this`.");
+    throw new Error('Component is null. Call init with `this`.');
   }
 
   const event = new ShowToastEvent({
@@ -22,19 +22,19 @@ const toast = (title, message, variant, mode) => {
 };
 
 const error = (title, message) => {
-  toast(title, message, "error", "sticky");
+  toast(title, message, 'error', 'sticky');
 };
 
 const warning = (title, message) => {
-  toast(title, message, "warning", "pester");
+  toast(title, message, 'warning', 'pester');
 };
 
 const success = (title, message) => {
-  toast(title, message, "success", "dismissible");
+  toast(title, message, 'success', 'dismissible');
 };
 
 const info = (title, message) => {
-  toast(title, message, "info", "dismissible");
+  toast(title, message, 'info', 'dismissible');
 };
 
 export { init, error, warning, success, info };

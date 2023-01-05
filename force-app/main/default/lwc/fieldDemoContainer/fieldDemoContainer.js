@@ -1,10 +1,10 @@
 /* eslint-disable @lwc/lwc/no-async-operation */
-import { LightningElement, track } from "lwc";
-import { NavigationMixin } from "lightning/navigation";
+import { LightningElement, track } from 'lwc';
+import { NavigationMixin } from 'lightning/navigation';
 
-import CASE_STATUS from "@salesforce/schema/Case.Status";
-import ACCOUNT_TYPE from "@salesforce/schema/Account.Type";
-import CASE_SUBTYPE from "@salesforce/schema/Case.Subtype__c";
+import CASE_STATUS from '@salesforce/schema/Case.Status';
+import ACCOUNT_TYPE from '@salesforce/schema/Account.Type';
+import CASE_SUBTYPE from '@salesforce/schema/Case.Subtype__c';
 
 export default class WipContainer extends NavigationMixin(LightningElement) {
   @track ratingValue = 0;
@@ -32,24 +32,24 @@ export default class WipContainer extends NavigationMixin(LightningElement) {
   @track map;
   pins = [
     {
-      record: { Name: "Slalom Dallas", Id: "0015400000NjnGEAAZ" },
+      record: { Name: 'Slalom Dallas', Id: '0015400000NjnGEAAZ' },
       lat: 32.95574,
       lng: -96.824257
     },
     {
-      record: { Name: "Dallas House of Blues", Id: "0015400000NjnGwAAJ" },
+      record: { Name: 'Dallas House of Blues', Id: '0015400000NjnGwAAJ' },
       lat: 32.785327,
       lng: -96.808264
     },
     {
-      record: { Name: "Plano H Mart", Id: "0015400000NjnI0AAJ" },
+      record: { Name: 'Plano H Mart', Id: '0015400000NjnI0AAJ' },
       lat: 33.039529,
       lng: -96.696605
     }
   ];
 
   newPin = {
-    record: { Name: "Rockwall", Id: "0015400000NjnI1AAJ" },
+    record: { Name: 'Rockwall', Id: '0015400000NjnI1AAJ' },
     lat: 32.899261,
     lng: -96.480826
   };
@@ -57,7 +57,7 @@ export default class WipContainer extends NavigationMixin(LightningElement) {
   @track rockwallMarker;
 
   onMapInit() {
-    this.map = this.template.querySelector(".wip-map");
+    this.map = this.template.querySelector('.wip-map');
     this.setMapRecords();
     setTimeout(() => {
       this.addNewPin();
@@ -74,11 +74,11 @@ export default class WipContainer extends NavigationMixin(LightningElement) {
 
   gotoRecord(recordId) {
     this[NavigationMixin.Navigate]({
-      type: "standard__recordPage",
+      type: 'standard__recordPage',
       attributes: {
         recordId,
-        objectApiName: "Account",
-        actionName: "view"
+        objectApiName: 'Account',
+        actionName: 'view'
       }
     });
   }
@@ -103,7 +103,7 @@ export default class WipContainer extends NavigationMixin(LightningElement) {
   }
 
   // Picklist
-  masterRecordTypeId = "012000000000000AAA"; // Master RT Id
+  masterRecordTypeId = '012000000000000AAA'; // Master RT Id
   _selectedStatus;
   get caseStatusDescribe() {
     return CASE_STATUS;

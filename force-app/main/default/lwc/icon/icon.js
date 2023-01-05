@@ -1,4 +1,4 @@
-import { LightningElement, api } from "lwc";
+import { LightningElement, api } from 'lwc';
 
 export default class Icon extends LightningElement {
   @api resourceUrl;
@@ -14,7 +14,7 @@ export default class Icon extends LightningElement {
     if (this.resourcePath) {
       parts.push(this.resourcePath);
     }
-    return `${parts.join("/")}#${this.iconName}`;
+    return `${parts.join('/')}#${this.iconName}`;
   }
 
   get color() {

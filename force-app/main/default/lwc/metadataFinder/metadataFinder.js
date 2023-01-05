@@ -1,20 +1,20 @@
-import { LightningElement, api, track } from "lwc";
-import getPicklistValues from "@salesforce/apex/MetadataFinderAuraService.getPicklistValues";
+import { LightningElement, api, track } from 'lwc';
+import getPicklistValues from '@salesforce/apex/MetadataFinderAuraService.getPicklistValues';
 
 export default class WipContainer extends LightningElement {
-  @track mdtId = "";
-  @track selectedStatus = "";
+  @track mdtId = '';
+  @track selectedStatus = '';
   @track filterOptions = [];
-  @track filterTest = "";
+  @track filterTest = '';
 
-  @api comboLabel = "";
-  @api pickerLabel = "";
-  @api iconName = "utility:setup";
-  @api placeholder = "Search...";
+  @api comboLabel = '';
+  @api pickerLabel = '';
+  @api iconName = 'utility:setup';
+  @api placeholder = 'Search...';
 
-  @api mdtName = "";
-  @api title = "MasterLabel";
-  @api filterBy = "MasterLabel";
+  @api mdtName = '';
+  @api title = 'MasterLabel';
+  @api filterBy = 'MasterLabel';
 
   @track context;
   @api
@@ -37,32 +37,32 @@ export default class WipContainer extends LightningElement {
     })
       .then((data) => {
         if (data.length === 0) {
-          this.filterOptions = [{ label: "None", value: "" }];
+          this.filterOptions = [{ label: 'None', value: '' }];
           return;
         }
         this.filterOptions = data;
       })
       .catch((error) => {
-        console.error("error getting ple", error);
+        console.error('error getting ple', error);
       });
   }
 
   handleFilterSelected(event) {
     this.selectedStatus = event.target.value;
-    const mdtPicker = this.template.querySelector("c-metadata-picker");
+    const mdtPicker = this.template.querySelector('c-metadata-picker');
     mdtPicker.clear();
     mdtPicker.getFilterMetadata(this.selectedStatus);
   }
 
   handleMdtSelected(event) {
-    this.mdtId = event.detail ? event.detail.Id : "";
+    this.mdtId = event.detail ? event.detail.Id : '';
     this.selectedStatus =
       event.detail && event.detail[this.filterBy]
         ? event.detail[this.filterBy]
         : this.selectedStatus;
 
     if (event.detail && event.detail.Id) {
-      const mdtPicker = this.template.querySelector("c-metadata-picker");
+      const mdtPicker = this.template.querySelector('c-metadata-picker');
       mdtPicker.getFilterMetadata(this.selectedStatus);
     }
 
@@ -70,7 +70,7 @@ export default class WipContainer extends LightningElement {
   }
 
   fireSelected() {
-    const selected = new CustomEvent("selected", {
+    const selected = new CustomEvent('selected', {
       detail: this.mdtId
     });
     this.dispatchEvent(selected);

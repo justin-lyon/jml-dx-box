@@ -8,8 +8,8 @@ const transform = (word) => {
 };
 
 const toTitleCase = (sentence) => {
-  const words = sentence.split(" ");
-  return words.map(transform).join(" ");
+  const words = sentence.split(' ');
+  return words.map(transform).join(' ');
 };
 
 export { toTitleCase };

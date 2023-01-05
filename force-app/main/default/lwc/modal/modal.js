@@ -1,29 +1,29 @@
-import { LightningElement, api, track } from "lwc";
+import { LightningElement, api, track } from 'lwc';
 
-const SIZE_OPTIONS = ["small", "medium", "large"];
+const SIZE_OPTIONS = ['small', 'medium', 'large'];
 
 export default class Modal extends LightningElement {
   @track _isShown = false;
   @api hideHeader = false;
   @api hideFooter = false;
 
-  @track _size = "medium";
+  @track _size = 'medium';
 
   @api
   set isShown(val) {
     this._isShown = val;
 
     if (this.isShown) {
-      console.log("isShown", this.isShown);
+      console.log('isShown', this.isShown);
       // todo trap focus
       console.log(
-        JSON.parse(JSON.stringify([...this.querySelectorAll("*[tabindex]")]))
+        JSON.parse(JSON.stringify([...this.querySelectorAll('*[tabindex]')]))
       );
       console.log(
-        JSON.parse(JSON.stringify([...this.querySelectorAll(".focusable")]))
+        JSON.parse(JSON.stringify([...this.querySelectorAll('.focusable')]))
       );
     } else {
-      console.log("isShown", this.isShown);
+      console.log('isShown', this.isShown);
     }
   }
   get isShown() {
@@ -34,7 +34,7 @@ export default class Modal extends LightningElement {
   set size(val) {
     if (!SIZE_OPTIONS.includes(val)) {
       throw new Error(
-        `Property size expects values: ${SIZE_OPTIONS.join(", ")}`
+        `Property size expects values: ${SIZE_OPTIONS.join(', ')}`
       );
     }
     this._size = val;
@@ -47,9 +47,9 @@ export default class Modal extends LightningElement {
     super();
 
     // bind click listener to template
-    this.template.addEventListener("click", (event) => {
+    this.template.addEventListener('click', (event) => {
       console.log(
-        "capture click",
+        'capture click',
         event.target.nodeName.toLowerCase(),
         event.target.classList
       );
@@ -58,20 +58,20 @@ export default class Modal extends LightningElement {
 
       // if section.slds-modal or div.slds-modal_container
       if (
-        (name === "section" && classList.includes("slds-modal")) ||
-        (name === "div" && classList.includes("slds-modal__container"))
+        (name === 'section' && classList.includes('slds-modal')) ||
+        (name === 'div' && classList.includes('slds-modal__container'))
       ) {
-        console.log("clicking in backdrop", name, classList);
+        console.log('clicking in backdrop', name, classList);
         this.fireClosed();
       } else {
-        console.log("clicking in modal", name, classList);
+        console.log('clicking in modal', name, classList);
       }
     });
   }
 
   get sectionClass() {
     const classes = [];
-    classes.push("slds-modal");
+    classes.push('slds-modal');
 
     if (this._size) {
       const sizeClass = `slds-modal_${this._size}`;
@@ -79,32 +79,32 @@ export default class Modal extends LightningElement {
     }
 
     if (this.isShown) {
-      classes.push("slds-fade-in-open");
+      classes.push('slds-fade-in-open');
     }
 
-    return classes.join(" ");
+    return classes.join(' ');
   }
 
   get headerClass() {
     const classes = [];
-    classes.push("slds-modal__header");
+    classes.push('slds-modal__header');
 
     if (this.hideHeader) {
-      classes.push("slds-modal__header_empty");
+      classes.push('slds-modal__header_empty');
     }
 
-    return classes.join(" ");
+    return classes.join(' ');
   }
 
   get backdropClass() {
     const classes = [];
-    classes.push("slds-backdrop");
+    classes.push('slds-backdrop');
 
     if (this.isShown) {
-      classes.push("slds-backdrop_open");
+      classes.push('slds-backdrop_open');
     }
 
-    return classes.join(" ");
+    return classes.join(' ');
   }
 
   clickedClose() {
@@ -118,7 +118,7 @@ export default class Modal extends LightningElement {
   }
 
   fireClosed() {
-    const close = new CustomEvent("close");
+    const close = new CustomEvent('close');
     this.dispatchEvent(close);
   }
 }

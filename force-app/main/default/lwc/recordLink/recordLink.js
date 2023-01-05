@@ -1,19 +1,19 @@
-import { LightningElement, api } from "lwc";
-import { NavigationMixin } from "lightning/navigation";
+import { LightningElement, api } from 'lwc';
+import { NavigationMixin } from 'lightning/navigation';
 
 export default class RecordLink extends NavigationMixin(LightningElement) {
   @api label;
   @api recordId;
 
   @api objectApiName;
-  @api actionName = "view";
+  @api actionName = 'view';
 
   @api title;
-  @api target = "_parent";
+  @api target = '_parent';
   @api isVisualforce = false;
 
   get href() {
-    return this.isVisualforce ? "/" + this.recordId : "#";
+    return this.isVisualforce ? '/' + this.recordId : '#';
   }
   get titleText() {
     return this.title ? this.title : this.label;
@@ -22,7 +22,7 @@ export default class RecordLink extends NavigationMixin(LightningElement) {
   clickRecord(e) {
     if (!this.isVisualforce) e.preventDefault();
     this[NavigationMixin.Navigate]({
-      type: "standard__recordPage",
+      type: 'standard__recordPage',
       attributes: {
         recordId: this.recordId,
         objectApiName: this.objectApiName,

@@ -1,20 +1,20 @@
-import { LightningElement, api } from "lwc";
-import { ShowToastEvent } from "lightning/platformShowToastEvent";
-import getOneRecordById from "@salesforce/apex/LookupAuraService.getOneRecordById";
-import getRecent from "@salesforce/apex/LookupAuraService.getRecent";
-import getRecords from "@salesforce/apex/LookupAuraService.getRecords";
+import { LightningElement, api } from 'lwc';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import getOneRecordById from '@salesforce/apex/LookupAuraService.getOneRecordById';
+import getRecent from '@salesforce/apex/LookupAuraService.getRecent';
+import getRecords from '@salesforce/apex/LookupAuraService.getRecords';
 
-const ARROW_UP = "ArrowUp";
-const ARROW_DOWN = "ArrowDown";
-const ENTER = "Enter";
-const ESCAPE = "Escape";
+const ARROW_UP = 'ArrowUp';
+const ARROW_DOWN = 'ArrowDown';
+const ENTER = 'Enter';
+const ESCAPE = 'Escape';
 const ACTIONABLE_KEYS = [ARROW_UP, ARROW_DOWN, ENTER, ESCAPE];
 
 export default class Lookup extends LightningElement {
   _connected = false;
 
   selectedId = null;
-  value = "";
+  value = '';
 
   records = [];
   focused = false;
@@ -33,13 +33,13 @@ export default class Lookup extends LightningElement {
   @api iconName;
   @api name;
 
-  @api fieldLabel = "Search";
-  @api title = "Name";
-  @api subtitle = "Id";
+  @api fieldLabel = 'Search';
+  @api title = 'Name';
+  @api subtitle = 'Id';
   @api minimumCharacterSearchDebounce = 2;
   @api readOnly = false;
   @api required = false;
-  @api messageWhenInputError = "This field is required.";
+  @api messageWhenInputError = 'This field is required.';
 
   _defaultRecordId = null;
   @api
@@ -79,7 +79,7 @@ export default class Lookup extends LightningElement {
   }
 
   get searchInput() {
-    return this.template.querySelector("#searchInput");
+    return this.template.querySelector('#searchInput');
   }
 
   get isReadOnly() {
@@ -94,47 +94,47 @@ export default class Lookup extends LightningElement {
     );
   }
   get hasError() {
-    return this.error ? this.error.message : "";
+    return this.error ? this.error.message : '';
   }
   get recordIds() {
     return this.records.map((r) => r.Id);
   }
 
   get containerClasses() {
-    const classes = ["slds-combobox_container"];
+    const classes = ['slds-combobox_container'];
 
     if (this.record) {
-      classes.push("slds-has-selection");
+      classes.push('slds-has-selection');
     }
 
-    return classes.join(" ");
+    return classes.join(' ');
   }
 
   get inputClasses() {
-    const classes = ["slds-input", "slds-combobox__input"];
+    const classes = ['slds-input', 'slds-combobox__input'];
 
     if (this.record) {
-      classes.push("slds-combobox__input-value");
+      classes.push('slds-combobox__input-value');
     }
 
-    return classes.join(" ");
+    return classes.join(' ');
   }
 
   get comboboxClasses() {
     const classes = [
-      "slds-combobox",
-      "slds-dropdown-trigger",
-      "slds-dropdown-trigger_click"
+      'slds-combobox',
+      'slds-dropdown-trigger',
+      'slds-dropdown-trigger_click'
     ];
 
     if (this.showListbox) {
-      classes.push("slds-is-open");
+      classes.push('slds-is-open');
     }
     if (this.hasError) {
-      classes.push("slds-has-error");
+      classes.push('slds-has-error');
     }
 
-    return classes.join(" ");
+    return classes.join(' ');
   }
 
   onKeyup(event) {
@@ -194,14 +194,14 @@ export default class Lookup extends LightningElement {
 
         if (this.records.length === 0) {
           this.fireToast({
-            title: "Info",
-            variant: "info",
-            message: "No records found, please refine your search."
+            title: 'Info',
+            variant: 'info',
+            message: 'No records found, please refine your search.'
           });
         }
       })
       .catch((error) => {
-        console.error("Error searching records: ", error);
+        console.error('Error searching records: ', error);
         this.error = error;
       });
   }
@@ -227,7 +227,7 @@ export default class Lookup extends LightningElement {
         this.displayValue = this.record[this.title];
       })
       .catch((error) => {
-        console.error("Error getting record by Id", error);
+        console.error('Error getting record by Id', error);
         this.error = error;
       });
   }
@@ -242,7 +242,7 @@ export default class Lookup extends LightningElement {
         this.initActiveId();
       })
       .catch((error) => {
-        console.error("Error requesting recents", error);
+        console.error('Error requesting recents', error);
         this.error = error;
       });
   }
@@ -256,7 +256,7 @@ export default class Lookup extends LightningElement {
   clearSelection() {
     this.selectedId = null;
     this.record = null;
-    this.displayValue = "";
+    this.displayValue = '';
     this.error = null;
     this.requestRecent();
     this.fireSelected();
@@ -264,7 +264,7 @@ export default class Lookup extends LightningElement {
   }
 
   fireSelected() {
-    const selected = new CustomEvent("selected", {
+    const selected = new CustomEvent('selected', {
       detail: { value: this.selectedId }
     });
     this.dispatchEvent(selected);
@@ -286,20 +286,20 @@ export default class Lookup extends LightningElement {
   selectItem() {
     if (!this.records || this.records.length === 0) return;
 
-    const listbox = this.template.querySelector("c-listbox");
+    const listbox = this.template.querySelector('c-listbox');
     listbox.selectItem();
   }
 
   setFocus(event) {
-    this.focused = event.type === "focus";
-    if (event.type === "blur") {
+    this.focused = event.type === 'focus';
+    if (event.type === 'blur') {
       this.reportValidity();
     }
   }
 
   getSearcher(searchTerm) {
     return {
-      searchTerm: searchTerm || "",
+      searchTerm: searchTerm || '',
       objectName: this.sobjectName,
       fields: [this.title, this.subtitle]
     };

@@ -1,13 +1,13 @@
-import { LightningElement, api, track } from "lwc";
+import { LightningElement, api, track } from 'lwc';
 
 const SIZES = [
-  "xx-small",
-  "x-small",
-  "small",
-  "medium",
-  "large",
-  "x-large",
-  "xx-large"
+  'xx-small',
+  'x-small',
+  'small',
+  'medium',
+  'large',
+  'x-large',
+  'xx-large'
 ];
 
 export default class StarRating extends LightningElement {
@@ -15,8 +15,8 @@ export default class StarRating extends LightningElement {
   @track maxScore = 5;
   @track stars = [];
   @api readOnly = false;
-  @api activeColor = "#ffd055";
-  @api inactiveColor = "#d8d8d8";
+  @api activeColor = '#ffd055';
+  @api inactiveColor = '#d8d8d8';
 
   @api
   get rating() {
@@ -37,7 +37,7 @@ export default class StarRating extends LightningElement {
     this.maxScore = Number(value);
   }
 
-  _size = "small";
+  _size = 'small';
   @api
   get size() {
     return this._size;
@@ -47,7 +47,7 @@ export default class StarRating extends LightningElement {
     if (!SIZES.includes(val)) {
       throw new Error(
         `Error in StarRating.js. Invalid value assigned to size attribute. Valid attributes are ${SIZES.join(
-          ", "
+          ', '
         )}`
       );
     }
@@ -73,7 +73,7 @@ export default class StarRating extends LightningElement {
   }
 
   ratingChanged() {
-    const value = new CustomEvent("value", { detail: this.score });
+    const value = new CustomEvent('value', { detail: this.score });
     this.dispatchEvent(value);
   }
 

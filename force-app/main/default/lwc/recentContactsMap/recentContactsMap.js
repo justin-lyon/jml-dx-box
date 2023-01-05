@@ -1,5 +1,5 @@
-import { LightningElement, api, track } from "lwc";
-import getRecentContacts from "@salesforce/apex/RecentContactsMapAuraService.getRecentContacts";
+import { LightningElement, api, track } from 'lwc';
+import getRecentContacts from '@salesforce/apex/RecentContactsMapAuraService.getRecentContacts';
 
 export default class RecentContactsMap extends LightningElement {
   @track contactMarkers;
@@ -9,12 +9,12 @@ export default class RecentContactsMap extends LightningElement {
   @api height;
 
   onMapInit() {
-    this.map = this.template.querySelector(".leaflet-map");
+    this.map = this.template.querySelector('.leaflet-map');
     this.getContacts();
   }
 
   onMarkerClick(event) {
-    const markerClick = new CustomEvent("markerclick", {
+    const markerClick = new CustomEvent('markerclick', {
       detail: event.detail
     });
 
@@ -30,7 +30,7 @@ export default class RecentContactsMap extends LightningElement {
       .catch((error) => {
         this.error = error;
         this.contactMarkers = null;
-        console.error("Error getting contacts", error);
+        console.error('Error getting contacts', error);
       });
   }
 

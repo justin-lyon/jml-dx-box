@@ -1,15 +1,15 @@
-import { createElement } from "lwc";
-import RecordLink from "c/recordLink";
+import { createElement } from 'lwc';
+import RecordLink from 'c/recordLink';
 
 const initCmp = (
   el,
   {
-    label = "Rick Sanchez",
-    recordId = "50000000000000a",
-    objectApiName = "Contact"
+    label = 'Rick Sanchez',
+    recordId = '50000000000000a',
+    objectApiName = 'Contact'
   }
 ) => {
-  const cmp = createElement("c-record-link", {
+  const cmp = createElement('c-record-link', {
     is: el
   });
 
@@ -21,18 +21,18 @@ const initCmp = (
   return cmp;
 };
 
-describe("c-record-link", () => {
+describe('c-record-link', () => {
   afterEach(() => {
     while (document.body.firstChild) {
       document.body.removeChild(document.body.firstChild);
     }
   });
 
-  it("constructs", () => {
-    const label = "Danny Tanner";
+  it('constructs', () => {
+    const label = 'Danny Tanner';
     const cmp = initCmp(RecordLink, { label });
 
-    const span = cmp.shadowRoot.querySelector("a");
+    const span = cmp.shadowRoot.querySelector('a');
     expect(span.textContent).toBe(label);
   });
 });

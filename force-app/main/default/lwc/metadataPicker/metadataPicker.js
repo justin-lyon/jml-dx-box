@@ -1,33 +1,33 @@
 /* eslint-disable @lwc/lwc/no-async-operation */
-import { LightningElement, api, track } from "lwc";
-import { ShowToastEvent } from "lightning/platformShowToastEvent";
-import getFilteredMdt from "@salesforce/apex/MetadataPickerAuraService.getFilteredMdt";
-import getMetadata from "@salesforce/apex/MetadataPickerAuraService.getMetadata";
+import { LightningElement, api, track } from 'lwc';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import getFilteredMdt from '@salesforce/apex/MetadataPickerAuraService.getFilteredMdt';
+import getMetadata from '@salesforce/apex/MetadataPickerAuraService.getMetadata';
 
-const ARROW_UP = "ArrowUp";
-const ARROW_DOWN = "ArrowDown";
-const ENTER = "Enter";
-const ESCAPE = "Escape";
+const ARROW_UP = 'ArrowUp';
+const ARROW_DOWN = 'ArrowDown';
+const ENTER = 'Enter';
+const ESCAPE = 'Escape';
 const ACTIONABLE_KEYS = [ARROW_UP, ARROW_DOWN, ENTER, ESCAPE];
 
 export default class Lookup extends LightningElement {
-  @track inputValue = "";
+  @track inputValue = '';
   @track records = [];
   @track focused = false;
-  @track selected = "";
+  @track selected = '';
   @track record;
   @track error;
   @track recordIds = [];
-  @track activeId = "";
+  @track activeId = '';
 
-  @api iconName = "utility:setup";
-  @api fieldLabel = "Search";
-  @api placeholder = "Search...";
+  @api iconName = 'utility:setup';
+  @api fieldLabel = 'Search';
+  @api placeholder = 'Search...';
 
   @api mdtName;
-  @api title = "Name";
-  @api subtitle = "Id";
-  @api filterBy = "";
+  @api title = 'Name';
+  @api subtitle = 'Id';
+  @api filterBy = '';
   @api filterTest;
 
   connectedCallback() {
@@ -55,43 +55,43 @@ export default class Lookup extends LightningElement {
     return this.record || (!this.record && this.inputValue.length > 0);
   }
   get hasError() {
-    return this.error ? this.error.message : "";
+    return this.error ? this.error.message : '';
   }
   get mdtFields() {
     return [this.title, this.subtitle];
   }
 
   get containerClasses() {
-    const classes = ["slds-combobox_container"];
+    const classes = ['slds-combobox_container'];
 
     if (this.record) {
-      classes.push("slds-has-selection");
+      classes.push('slds-has-selection');
     }
 
-    return classes.join(" ");
+    return classes.join(' ');
   }
 
   get inputClasses() {
-    const classes = ["slds-input", "slds-combobox__input"];
+    const classes = ['slds-input', 'slds-combobox__input'];
 
     if (this.record) {
-      classes.push("slds-combobox__input-value");
+      classes.push('slds-combobox__input-value');
     }
 
-    return classes.join(" ");
+    return classes.join(' ');
   }
 
   get comboboxClasses() {
     const classes = [
-      "slds-combobox",
-      "slds-dropdown-trigger",
-      "slds-dropdown-trigger_click"
+      'slds-combobox',
+      'slds-dropdown-trigger',
+      'slds-dropdown-trigger_click'
     ];
 
     if (this.showListbox) {
-      classes.push("slds-is-open");
+      classes.push('slds-is-open');
     }
-    return classes.join(" ");
+    return classes.join(' ');
   }
 
   onKeyup(event) {
@@ -123,7 +123,7 @@ export default class Lookup extends LightningElement {
         this.requestFiltered();
       } else {
         this.error = {
-          message: "Minimum 3 characters"
+          message: 'Minimum 3 characters'
         };
       }
     }
@@ -151,14 +151,14 @@ export default class Lookup extends LightningElement {
 
         if (this.records.length === 0) {
           this.fireToast({
-            title: "Info",
-            variant: "info",
-            message: "No records found, please refine your search."
+            title: 'Info',
+            variant: 'info',
+            message: 'No records found, please refine your search.'
           });
         }
       })
       .catch((error) => {
-        console.error("Error searching records: ", error);
+        console.error('Error searching records: ', error);
         this.error = error;
       });
   }
@@ -184,23 +184,23 @@ export default class Lookup extends LightningElement {
         this.recordIds = this.getRecordIds();
       })
       .catch((error) => {
-        console.error("Error requesting recents", error);
+        console.error('Error requesting recents', error);
         this.error = error;
       });
   }
 
   clearSelection() {
-    this.selected = "";
+    this.selected = '';
     this.record = null;
     this.recordIds = [];
-    this.inputValue = "";
+    this.inputValue = '';
     this.error = null;
     this.requestFiltered();
     this.fireSelected();
   }
 
   fireSelected() {
-    const selected = new CustomEvent("selected", {
+    const selected = new CustomEvent('selected', {
       detail: { ...this.record }
     });
     this.dispatchEvent(selected);
@@ -220,16 +220,16 @@ export default class Lookup extends LightningElement {
   }
 
   selectItem() {
-    if (this.activeId === "" || !this.recordIds.includes(this.activeId)) {
+    if (this.activeId === '' || !this.recordIds.includes(this.activeId)) {
       this.activeId = this.records[0].Id;
     }
 
-    const listbox = this.template.querySelector("c-listbox");
+    const listbox = this.template.querySelector('c-listbox');
     listbox.selectItem(this.activeId);
   }
 
   setFocus(event) {
-    this.focused = event.type === "focus";
+    this.focused = event.type === 'focus';
   }
 
   getRecordIds() {

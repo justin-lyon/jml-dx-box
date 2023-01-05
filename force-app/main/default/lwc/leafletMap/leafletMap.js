@@ -1,6 +1,6 @@
-import { LightningElement, api, track } from "lwc";
-import Leaflet from "@salesforce/resourceUrl/Leaflet";
-import { loadStyle, loadScript } from "lightning/platformResourceLoader";
+import { LightningElement, api, track } from 'lwc';
+import Leaflet from '@salesforce/resourceUrl/Leaflet';
+import { loadStyle, loadScript } from 'lightning/platformResourceLoader';
 
 export default class LeafletMap extends LightningElement {
   @track map;
@@ -50,8 +50,8 @@ export default class LeafletMap extends LightningElement {
       this.markerGroup.clearLayers();
     } else {
       this.markerGroup = new L.featureGroup();
-      this.markerGroup.on("click", (event) => this.clickMarker(this, event));
-      this.markerGroup.on("mouseover", (event) => {
+      this.markerGroup.on('click', (event) => this.clickMarker(this, event));
+      this.markerGroup.on('mouseover', (event) => {
         event.target.openToolTip();
       });
       this.markerGroup.addTo(this.map);
@@ -64,31 +64,31 @@ export default class LeafletMap extends LightningElement {
 
   initializeLeaflet() {
     Promise.all([
-      loadScript(this, Leaflet + "/leaflet.js"),
-      loadStyle(this, Leaflet + "/leaflet.css")
+      loadScript(this, Leaflet + '/leaflet.js'),
+      loadStyle(this, Leaflet + '/leaflet.css')
     ])
       .then(() => {
-        const mapEl = this.template.querySelector(".map-root");
-        mapEl.style = "height: " + this.height + ";";
+        const mapEl = this.template.querySelector('.map-root');
+        mapEl.style = 'height: ' + this.height + ';';
         this.map = L.map(mapEl, { zoomControl: false }).setView(
           [32.95574, -96.824257],
           14
         ); // Default View
         L.tileLayer(
-          "https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}",
+          'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',
           {
-            attribution: "Justin Lyon @ Slalom"
+            attribution: 'Justin Lyon @ Slalom'
           }
         ).addTo(this.map);
         this.fireMapReady();
       })
       .catch((error) => {
-        console.error("Error loading leaflet styles", error.message);
+        console.error('Error loading leaflet styles', error.message);
       });
   }
 
   fireMapReady() {
-    const ready = new CustomEvent("ready");
+    const ready = new CustomEvent('ready');
     this.dispatchEvent(ready);
   }
 
@@ -97,7 +97,7 @@ export default class LeafletMap extends LightningElement {
   }
 
   fireMarker(layer) {
-    const pinclick = new CustomEvent("pinclick", {
+    const pinclick = new CustomEvent('pinclick', {
       detail: layer.options.record.Id
     });
 

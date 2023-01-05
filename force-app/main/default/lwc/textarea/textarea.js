@@ -1,4 +1,4 @@
-import { LightningElement, api, track } from "lwc";
+import { LightningElement, api, track } from 'lwc';
 
 export default class Textarea extends LightningElement {
   @api label;
@@ -7,19 +7,19 @@ export default class Textarea extends LightningElement {
   @api required = false;
   @api cols;
   @api rows = 10;
-  @api messageWhenInputError = "This field is required.";
+  @api messageWhenInputError = 'This field is required.';
   @api fieldDescribe;
   @api showCharacterCount = false;
 
   @track errorMessage;
-  @track _value = "";
+  @track _value = '';
   @api
   get value() {
     return this._value;
   }
 
   set value(val) {
-    const newVal = val || "";
+    const newVal = val || '';
     this._value = newVal;
     if (this.textarea) {
       this.textarea.value = this._value;
@@ -52,7 +52,7 @@ export default class Textarea extends LightningElement {
   }
 
   get textarea() {
-    return this.template.querySelector("textarea");
+    return this.template.querySelector('textarea');
   }
   get maxLength() {
     return this.fieldDescribe.length;
@@ -71,26 +71,26 @@ export default class Textarea extends LightningElement {
   }
 
   get formElementClass() {
-    const classes = ["slds-form-element"];
+    const classes = ['slds-form-element'];
     if (this.hasError) {
-      classes.push("slds-has-error");
+      classes.push('slds-has-error');
     }
-    return classes.join(" ");
+    return classes.join(' ');
   }
 
   get classList() {
     const classes = [];
-    classes.push("slds-textarea");
+    classes.push('slds-textarea');
     if (this.cols) {
-      classes.push("fill-width");
+      classes.push('fill-width');
     }
-    return classes.join(" ");
+    return classes.join(' ');
   }
 
   get countClass() {
     const classes = [];
     if (this.isTooLong) {
-      classes.push("slds-text-color_error");
+      classes.push('slds-text-color_error');
     }
     return classes.join(classes);
   }
@@ -108,7 +108,7 @@ export default class Textarea extends LightningElement {
   }
 
   fireUpdate() {
-    const update = new CustomEvent("update", {
+    const update = new CustomEvent('update', {
       detail: this.value
     });
     this.dispatchEvent(update);

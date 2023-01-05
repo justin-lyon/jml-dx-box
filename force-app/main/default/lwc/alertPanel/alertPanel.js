@@ -1,7 +1,7 @@
-import { LightningElement, api, track, wire } from "lwc";
-import { CurrentPageReference } from "lightning/navigation";
-import { getRecord } from "lightning/uiRecordApi";
-import { ShowToastEvent } from "lightning/platformShowToastEvent";
+import { LightningElement, api, track, wire } from 'lwc';
+import { CurrentPageReference } from 'lightning/navigation';
+import { getRecord } from 'lightning/uiRecordApi';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
 const FIELDS = [];
 
@@ -26,7 +26,7 @@ export default class AlertPanel extends LightningElement {
   @api sobjectType;
   @api
   get nameField() {
-    return this.sobjectType + "." + this._nameField;
+    return this.sobjectType + '.' + this._nameField;
   }
   set nameField(value) {
     this._nameField = value;
@@ -40,9 +40,9 @@ export default class AlertPanel extends LightningElement {
   set alerts(data) {
     if (data && data.length > 0) {
       this._alerts = data;
-      this.infos = this.filterByType(data, "Info");
-      this.warnings = this.filterByType(data, "Warning");
-      this.dangers = this.filterByType(data, "Danger");
+      this.infos = this.filterByType(data, 'Info');
+      this.warnings = this.filterByType(data, 'Warning');
+      this.dangers = this.filterByType(data, 'Danger');
     }
   }
 
@@ -51,13 +51,13 @@ export default class AlertPanel extends LightningElement {
   }
 
   get dangerLabel() {
-    return "Danger (" + this.dangers.length + ")";
+    return 'Danger (' + this.dangers.length + ')';
   }
   get warningLabel() {
-    return "Warning (" + this.warnings.length + ")";
+    return 'Warning (' + this.warnings.length + ')';
   }
   get infoLabel() {
-    return "Info (" + this.infos.length + ")";
+    return 'Info (' + this.infos.length + ')';
   }
 
   get hasAlerts() {
@@ -78,7 +78,7 @@ export default class AlertPanel extends LightningElement {
     this.recordId = pageRef.attributes.recordId;
   }
 
-  @wire(getRecord, { recordId: "$recordId", fields: FIELDS })
+  @wire(getRecord, { recordId: '$recordId', fields: FIELDS })
   wiredRecord({ error, data }) {
     if (data) {
       this.recordName = data.fields[this._nameField].value;
@@ -86,14 +86,14 @@ export default class AlertPanel extends LightningElement {
       if (this.hasToast) this.toastAlert();
     } else if (error) {
       console.error(
-        "error retrieving page record",
+        'error retrieving page record',
         JSON.parse(JSON.stringify(error))
       );
     }
   }
 
   clickRefresh() {
-    const refresh = new CustomEvent("refresh");
+    const refresh = new CustomEvent('refresh');
     this.dispatchEvent(refresh);
   }
 
@@ -104,21 +104,21 @@ export default class AlertPanel extends LightningElement {
   toastAlert() {
     if (this.dangers && this.dangers.length > 0) {
       this.toast({
-        title: "Danger",
+        title: 'Danger',
         message: this.message,
-        variant: "error"
+        variant: 'error'
       });
     } else if (this.warnings && this.warnings.length > 0) {
       this.toast({
-        title: "Warning",
+        title: 'Warning',
         message: this.message,
-        variant: "warning"
+        variant: 'warning'
       });
     } else if (this.infos && this.infos.length > 0) {
       this.toast({
-        title: "Info",
+        title: 'Info',
         message: this.message,
-        variant: "info"
+        variant: 'info'
       });
     }
   }
@@ -131,21 +131,21 @@ export default class AlertPanel extends LightningElement {
     this.clearAlertState();
     this.panelState.show = true;
     this.panelState.showDanger = true;
-    this.setButtonActive("danger");
+    this.setButtonActive('danger');
   }
 
   clickWarningAlert() {
     this.clearAlertState();
     this.panelState.show = true;
     this.panelState.showWarning = true;
-    this.setButtonActive("warning");
+    this.setButtonActive('warning');
   }
 
   clickInfoAlert() {
     this.clearAlertState();
     this.panelState.show = true;
     this.panelState.showInfo = true;
-    this.setButtonActive("info");
+    this.setButtonActive('info');
   }
 
   clearAlertState() {
@@ -155,17 +155,17 @@ export default class AlertPanel extends LightningElement {
     this.panelState.showInfo = false;
 
     const activeButtons = this.template.querySelectorAll(
-      "button.alert-button.active"
+      'button.alert-button.active'
     );
     if (activeButtons) {
-      [...activeButtons].forEach((btn) => btn.classList.remove("active"));
+      [...activeButtons].forEach((btn) => btn.classList.remove('active'));
     }
   }
 
   setButtonActive(type) {
-    const selector = "button." + type;
+    const selector = 'button.' + type;
     const activeBtn = this.template.querySelector(selector);
-    activeBtn.classList.add("active");
+    activeBtn.classList.add('active');
   }
 
   toast({ title, message, variant }) {

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # create org
 echo "...Creating new Scratch Org $1"
 sf org create scratch \

@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Rank__c</fullName>
     <externalId>false</externalId>
-    <formula>IF(TEXT(Type__c) = &#39;Danger&#39;, 3,
-  IF(TEXT(Type__c) = &#39;Warning&#39;, 2,
-    IF(TEXT(Type__c) = &#39;Info&#39;, 1, 0)
+    <formula>IF(TEXT(Type__c) = &apos;Danger&apos;, 3,
+  IF(TEXT(Type__c) = &apos;Warning&apos;, 2,
+    IF(TEXT(Type__c) = &apos;Info&apos;, 1, 0)
   )
 )</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>

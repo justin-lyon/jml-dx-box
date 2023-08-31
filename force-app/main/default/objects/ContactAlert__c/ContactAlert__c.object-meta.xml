@@ -153,6 +153,7 @@
     <enableSearch>false</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
     <label>Contact Alert</label>
     <nameField>
         <displayFormat>CA-{00000000}</displayFormat>

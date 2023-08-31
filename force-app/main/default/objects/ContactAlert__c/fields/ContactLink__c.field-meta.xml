@@ -3,7 +3,7 @@
     <fullName>ContactLink__c</fullName>
     <externalId>false</externalId>
     <formula
-  >HYPERLINK(Contact__c, Contact__r.FirstName + &#39; &#39; + Contact__r.LastName)</formula>
+  >HYPERLINK(Contact__c, Contact__r.FirstName + &apos; &apos; + Contact__r.LastName)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Contact</label>
     <required>false</required>

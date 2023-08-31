@@ -1,7 +1,7 @@
 <aura:component
   description="NewCaseUtilityItem"
   controller="UtilityItemAuraService"
-  implements="lightning:utilityItem, force:hasRecordId"
+  implements="lightning:utilityItem,force:hasRecordId"
   access="global"
 >
   <ltng:require

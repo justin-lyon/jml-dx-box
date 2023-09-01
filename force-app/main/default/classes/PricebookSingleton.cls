@@ -1,25 +1,37 @@
+// prettier-ignore
 public with sharing class PricebookSingleton {
-  private Pricebook2 stdPricebook;
-  private static final PricebookSingleton instance = new PricebookSingleton();
+  private static PricebookSingleton instance;
+  private Id stdPricebookId = null;
 
-  private PricebookSingleton() {
-  }
+  private PricebookSingleton() {}
 
   public static PricebookSingleton get() {
+    if (instance == null) {
+      instance = new PricebookSingleton();
+    }
     return instance;
   }
 
   public Id getStdPricebookId() {
-    return Test.isRunningTest()
-      ? Test.getStandardPricebookId()
-      : getStdPricebook().Id;
-  }
+    if (stdPricebookId != null) {
+      return stdPricebookId;
+    }
 
-  public Pricebook2 getStdPricebook() {
-    return (stdPricebook != null) ? stdPricebook : queryStdPricebook();
+    if (Test.isRunningTest()) {
+      stdPricebookId = Test.getStandardPricebookId();
+      return stdPricebookId;
+    }
+
+    stdPricebookId = queryStdPricebook().Id;
+    return stdPricebookId;
   }
 
   private Pricebook2 queryStdPricebook() {
-    return [SELECT Id, Name FROM Pricebook2 WHERE IsStandard = TRUE LIMIT 1];
+    return [
+      SELECT Id
+      FROM Pricebook2
+      WHERE IsStandard = TRUE
+      LIMIT 1
+    ];
   }
 }

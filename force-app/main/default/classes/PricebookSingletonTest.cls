@@ -1,14 +1,7 @@
-@isTest
+@IsTest
 private class PricebookSingletonTest {
-  @TestSetup
-  static void setupData() {
-    Pricebook2 stdPricebook = new Pricebook2(
-      Id = Test.getStandardPricebookId()
-    );
-    update stdPricebook;
-  }
-
-  static testMethod void getStdPricebookId_shouldGetId() {
+  @IsTest
+  static void it_should_return_pricebook_id() {
     PricebookSingleton instance = PricebookSingleton.get();
 
     Test.startTest();
@@ -17,28 +10,45 @@ private class PricebookSingletonTest {
 
     Test.stopTest();
 
-    System.assertNotEquals(null, stdPricebookId);
+    Id expected = Test.getStandardPricebookId();
+    System.Assert.areEqual(
+      expected,
+      stdPricebookId,
+      'Expecting the SF Test Standard Pricebook Id.'
+    );
   }
 
-  static testMethod void getStdPricebook_shouldGetStdPricebook() {
+  @IsTest
+  static void it_should_read_private_member_on_second_get() {
     PricebookSingleton instance = PricebookSingleton.get();
+    Id stdPricebookId = instance.getStdPricebookId();
 
     Test.startTest();
 
-    Pricebook2 stdPricebook = instance.getStdPricebook();
+    Id secondPricebookId = instance.getStdPricebookId();
 
     Test.stopTest();
 
-    System.assertNotEquals(null, stdPricebook);
+    Id expected = Test.getStandardPricebookId();
+    System.Assert.areEqual(
+      expected,
+      secondPricebookId,
+      'Expecting the SF Test Standard Pricebook Id.'
+    );
   }
 
-  static testMethod void instance_givenTwoGets_shouldGetOneInstance() {
+  @IsTest
+  static void it_should_get_the_same_instance() {
     PricebookSingleton instance1 = PricebookSingleton.get();
     PricebookSingleton instance2 = PricebookSingleton.get();
+
+    Test.startTest();
 
     Integer hash1 = System.hashCode(instance1);
     Integer hash2 = System.hashCode(instance2);
 
-    System.assertEquals(hash1, hash2);
+    Test.stopTest();
+
+    System.Assert.areEqual(hash1, hash2);
   }
 }

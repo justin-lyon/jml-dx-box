@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Record Refresh Listener</masterLabel>
+    <description>Refresh when a Refresh Platform Event is fired.</description>
+    <targets>
+        <target>lightning__RecordPage</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__RecordPage">
+            <property
+        name="recordId"
+        type="String"
+        label="Record Id"
+        description="Automatically bind the page's record id to the component variable"
+      />
+            <objects>
+                <object>Account</object>
+                <object>Contact</object>
+                <object>Lead</object>
+                <object>Opportunity</object>
+            </objects>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

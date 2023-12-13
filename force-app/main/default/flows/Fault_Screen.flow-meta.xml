@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <description
+  >A default fault screen to be used in screen flows.</description>
+    <environments>Default</environments>
+    <interviewLabel>Fault Screen {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Fault Screen</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <screens>
+        <description
+    >A default Fault Screen to use in any screen flow.</description>
+        <name>Fault_Screen</name>
+        <label>Fault Screen</label>
+        <locationX>176</locationX>
+        <locationY>134</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Title</name>
+            <fieldText
+      >&lt;p&gt;&lt;span style=&quot;color: rgb(234, 0, 30); font-size: 24px; background-color: rgb(255, 255, 255);&quot;&gt;🛑 &lt;/span&gt;&lt;span style=&quot;color: rgb(234, 0, 30); font-size: 24px;&quot;&gt;Oops! &lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>FaultScreen_DisplayText</name>
+            <fieldText
+      >&lt;p&gt;&lt;span style=&quot;color: rgb(234, 0, 30);&quot;&gt;{!message}&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>I_need_more_help</name>
+            <fieldText>🙋 I need more help</fieldText>
+            <fieldType>RegionContainer</fieldType>
+            <fields>
+                <name>I_need_more_help_Column1</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>AdditionalHelp_DisplayText</name>
+                    <fieldText
+          >&lt;p&gt;&lt;span style=&quot;font-size: 10px;&quot;&gt;If you need additional help, please send an email to helpdesk@plzhalp.com. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 10px;&quot;&gt;🙏 For the quickest response time, please include &lt;/span&gt;&lt;/p&gt;&lt;ol&gt;&lt;li&gt;&lt;span style=&quot;font-size: 10px;&quot;&gt;The exact error message&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 10px;&quot;&gt;The steps to reproduce the error&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 10px;&quot;&gt;Screen shots&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;</fieldText>
+                    <fieldType>DisplayText</fieldType>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>12</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <isRequired>false</isRequired>
+            <regionContainerType>SectionWithHeader</regionContainerType>
+        </fields>
+        <helpText
+    >&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); font-size: 10px; color: rgb(68, 68, 68);&quot;&gt;You can click previous to go back and change your inputs, or Finish to leave.&lt;/span&gt;&lt;/p&gt;</helpText>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Fault_Screen</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>The message to display to the user.</description>
+        <name>message</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

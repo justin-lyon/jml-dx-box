@@ -1,0 +1,36 @@
+<template>
+  <div>
+    <label for="timePicker" class="slds-text-heading_small">{label}</label>
+  </div>
+  <div id="timePicker" class="time-picker">
+    <div class="slds-grid slds-gutters slds-grid_vertical-align-end">
+      <div class="slds-col slds-size_1-of-3">
+        <lightning-combobox
+          label="Hour"
+          value={selectedHour}
+          options={hourOptions}
+          onchange={onHourChanged}
+          required={required}
+        ></lightning-combobox>
+      </div>
+      <div class="slds-col slds-size_1-of-3">
+        <lightning-combobox
+          label="Minute"
+          value={selectedMinute}
+          options={minuteOptions}
+          onchange={onMinuteChanged}
+          required={required}
+        ></lightning-combobox>
+      </div>
+      <div class="slds-col slds-size_1-of-3">
+        <lightning-combobox
+          label="☀️/🌙"
+          value={selectedMeridiem}
+          options={meridiemOptions}
+          onchange={onMeridiemChanged}
+          required={required}
+        ></lightning-combobox>
+      </div>
+    </div>
+  </div>
+</template>

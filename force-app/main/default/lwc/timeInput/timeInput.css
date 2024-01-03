@@ -1,0 +1,7 @@
+:host {
+  --maxWidth: 400px;
+}
+
+.time-picker {
+  max-width: var(--maxWidth, 400px);
+}

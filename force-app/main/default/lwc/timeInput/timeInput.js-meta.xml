@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Time Input</masterLabel>
+    <description>A time input component.</description>
+
+    <targets>
+        <target>lightning__FlowScreen</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen">
+            <property
+        name="required"
+        label="Is Required"
+        type="Boolean"
+        default="false"
+      />
+            <property
+        name="defaultDateTime"
+        label="Default Date Time"
+        type="Datetime"
+      />
+            <property
+        name="defaultMeridiem"
+        label="Default AM/PM"
+        default="AM"
+        type="String"
+      />
+            <property
+        name="maxWidth"
+        label="The Max Width of the input"
+        type="Integer"
+        default="400"
+      />
+            <property
+        name="label"
+        label="Label"
+        type="String"
+        default="Placeholder"
+      />
+
+            <property
+        name="value"
+        label="value"
+        type="Datetime"
+        role="outputOnly"
+      />
+            <property
+        name="timeValue"
+        label="Time Value"
+        type="String"
+        description="The time portion of the iso datetime string value"
+        role="outputOnly"
+      />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

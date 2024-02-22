@@ -3,9 +3,7 @@ public with sharing class SplitStringInvocable {
     label='Split String'
     description='Given a string and a delimiter, return a collection of strings'
   )
-  public static List<List<String>> SplitStringInvocable(
-    List<Request> requests
-  ) {
+  public static List<List<String>> execute(List<Request> requests) {
     List<List<String>> output = new List<List<String>>();
     for (Request req : requests) {
       output.add(req.inputText.split(req.delimiter));

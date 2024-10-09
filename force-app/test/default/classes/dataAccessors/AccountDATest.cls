@@ -41,9 +41,7 @@ private class AccountDATest {
     System.assertEquals(
       limitter,
       accounts.size(),
-      'Should only recieve ' +
-      AccountDA.MAX_RESULTS +
-      ' Accounts.'
+      'Should only recieve ' + AccountDA.MAX_RESULTS + ' Accounts.'
     );
   }
 

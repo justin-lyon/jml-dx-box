@@ -35,10 +35,7 @@ public with sharing class RecentContactsMapAuraService {
       m.lat = String.valueOf(con.MailingLatitude);
       m.lng = String.valueOf(con.MailingLongitude);
       System.debug(
-        'lat: ' +
-        con.MailingLatitude +
-        ' lng: ' +
-        con.MailingLongitude
+        'lat: ' + con.MailingLatitude + ' lng: ' + con.MailingLongitude
       );
       vm.add(m);
     }

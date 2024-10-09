@@ -23,9 +23,7 @@ public with sharing class LookupAuraService {
     expr.add('SELECT ' + String.join(searcher.fields, ', '));
     expr.add('FROM ' + String.escapeSingleQuotes(searcher.objectName));
     expr.add(
-      'WHERE Id IN (\'' +
-      String.join(new List<Id>(recentIds), '\', \'') +
-      '\')'
+      'WHERE Id IN (\'' + String.join(new List<Id>(recentIds), '\', \'') + '\')'
     );
 
     return JSON.serialize(Database.query(String.join(expr, ' ')));

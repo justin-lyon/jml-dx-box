@@ -9,6 +9,11 @@ sf org create scratch \
   --alias $1 \
   --definition-file config/project-scratch-def.json
 
+sf package install --wait 30 \
+  --security-type AdminsOnly \
+  --no-prompt \
+  --package 04t5Y0000015pGtQAI
+
 # push mdt
 echo "...Pushing metadata to $1"
 sf project deploy start \

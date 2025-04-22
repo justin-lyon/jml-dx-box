@@ -5,11 +5,11 @@ public with sharing class TriggerBypass {
     REPLACER +
     ' found in TriggerBypass__mdt Custom Metadata.';
 
-  private static TriggerBypassDAI bypassAccessor = new TriggerBypassDA();
-  public static TriggerBypassDAI BypassDI {
+  private static TriggerBypassRepo bypassRepo = new TriggerBypassRepo();
+  public static TriggerBypassRepo bypassDI {
     get;
     set {
-      bypassAccessor = value;
+      bypassRepo = value;
     }
   }
 
@@ -17,7 +17,7 @@ public with sharing class TriggerBypass {
     TriggerBypass__mdt record;
 
     try {
-      record = bypassAccessor.queryByMasterLabel(triggerName);
+      record = bypassRepo.getInstance(triggerName);
     } catch (QueryException qex) {
       String message = ERROR_MESSAGE.replace(REPLACER, triggerName);
       throw new TriggerBypassException(message);

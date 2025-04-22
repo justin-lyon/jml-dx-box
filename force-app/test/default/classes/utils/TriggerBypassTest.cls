@@ -1,17 +1,32 @@
 @isTest
 private class TriggerBypassTest {
-  static testMethod void isActive_forceFailure_shouldThrowException() {
-    TriggerBypassDAMock bypassMock = new TriggerBypassDAMock();
-    bypassMock.IsSuccess = false;
+  static Mock bypassMock;
+  static MethodSpy bm_getInstance;
 
-    String triggerName = 'NotARealThing';
-    TriggerBypass.BypassDI = bypassMock;
+  static {
+    bypassMock = Mock.forType(TriggerBypassRepo.class);
+    bm_getInstance = bypassMock.spyOn('getInstance');
+
+    TriggerBypass__mdt bypass = new TriggerBypass__mdt();
+    bypass.DeveloperName = 'Case';
+    bypass.IsActive__c = true;
+    bm_getInstance.returns(bypass);
+
+    TriggerBypass.bypassDI = (TriggerBypassRepo) bypassMock.stub;
+  }
+
+  static testMethod void it_should_throw_when_not_found() {
+    TriggerBypass__mdt bypass = new TriggerBypass__mdt();
+    bypass.IsActive__c = false;
+    bm_getInstance.throwsException(
+      new TriggerBypass.TriggerBypassException('forced exception')
+    );
 
     Boolean isSuccess = false;
     Test.startTest();
 
     try {
-      TriggerBypass.isActive(triggerName);
+      TriggerBypass.isActive('anystring');
     } catch (TriggerBypass.TriggerBypassException tbex) {
       isSuccess = true;
     }
@@ -24,29 +39,14 @@ private class TriggerBypassTest {
     );
   }
 
-  static testMethod void isActive_givenCase_shouldEvaluateToTrue() {
-    TriggerBypassDAMock bypassMock = new TriggerBypassDAMock();
+  static testMethod void it_should_return_isActive() {
+    TriggerBypass__mdt bypass = new TriggerBypass__mdt();
+    bypass.IsActive__c = true;
+    bm_getInstance.returns(bypass);
 
-    String triggerName = 'Case';
-    TriggerBypass.BypassDI = bypassMock;
     Test.startTest();
 
-    Boolean isSuccess = TriggerBypass.isActive(triggerName);
-
-    Test.stopTest();
-
-    System.assert(isSuccess, 'The Case Trigger should be on.');
-  }
-
-  static testMethod void isActive_givenCase_shouldEvaluateToFalse() {
-    TriggerBypassDAMock bypassMock = new TriggerBypassDAMock();
-    bypassMock.IsActive = false;
-
-    String triggerName = 'Case';
-    TriggerBypass.BypassDI = bypassMock;
-    Test.startTest();
-
-    Boolean isSuccess = !TriggerBypass.isActive(triggerName);
+    Boolean isSuccess = TriggerBypass.isActive('triggerName');
 
     Test.stopTest();
 

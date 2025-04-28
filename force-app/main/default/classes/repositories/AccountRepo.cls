@@ -1,6 +1,14 @@
 public with sharing class AccountRepo {
   public static final Integer MAX_RESULTS = 5;
 
+  public List<Account> queryByIds(Set<Id> accountIds) {
+    return [
+      SELECT Id, OwnerId
+      FROM Account
+      WHERE Id IN :accountIds
+    ];
+  }
+
   public List<Account> queryLimittedAccounts(Integer limitter) {
     limitter = Integer.valueOf(limitter);
     return [

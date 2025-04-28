@@ -1,13 +1,11 @@
-public with sharing class AsyncUpdate implements Actionable {
-  private DmlService dml;
-  private List<SObject> records;
-
-  public AsyncUpdate(DmlService dml, List<SObject> records) {
-    this.dml = dml;
-    this.records = records;
+public with sharing class AsyncUpdate extends AsyncDmlBase implements Actionable {
+  public AsyncUpdate(DmlService dml) {
+    super(dml);
   }
 
   public void call() {
-    this.dml.updateRecords(this.records);
+    super.validate();
+
+    super.dml.updateRecords(super.records);
   }
 }

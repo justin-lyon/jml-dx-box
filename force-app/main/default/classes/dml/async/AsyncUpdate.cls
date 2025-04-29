@@ -1,11 +1,9 @@
-public with sharing class AsyncUpdate extends AsyncDmlBase implements Actionable {
+public with sharing class AsyncUpdate extends AsyncDmlBase {
   public AsyncUpdate(DmlService dml) {
     super(dml);
   }
 
-  public void call() {
-    super.validate();
-
-    super.dml.updateRecords(super.records);
+  public override void invokeDml() {
+    dml.updateRecords(records);
   }
 }

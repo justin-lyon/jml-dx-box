@@ -7,11 +7,24 @@ public abstract class AsyncDmlBase implements Actionable {
     this.dml = dml;
   }
 
+  protected abstract void invokeDml();
+
   public void setRecords(List<SObject> records) {
     this.records = records;
   }
 
-  protected void validate() {
+  public void call() {
+    invokeDml();
+  }
+
+  public Id enqueue() {
+    validate();
+
+    AsyncAction action = new AsyncAction(this);
+    return System.enqueueJob(action);
+  }
+
+  private void validate() {
     if (this.records == null || this.records.isEmpty()) {
       throw new IllegalArgumentException(ERROR_RECORDS_REQUIRED);
     }

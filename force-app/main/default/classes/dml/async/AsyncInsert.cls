@@ -3,9 +3,7 @@ public with sharing class AsyncInsert extends AsyncDmlBase {
     super(dml);
   }
 
-  public override void call() {
-    super.validate();
-
-    super.dml.insertRecords(super.records);
+  public override void invokeDml() {
+    dml.insertRecords(records);
   }
 }

@@ -13,7 +13,7 @@ private class AsyncInsertTest {
   }
 
   @IsTest
-  static void it_should_call_dml_when_happy() {
+  static void it_should_invoke_dml_when_called() {
     Contact garbageMan = TestUtil.createContact('Mamoa');
     List<Contact> characters = new List<Contact>{ garbageMan };
     sut.setRecords(characters);
@@ -26,24 +26,5 @@ private class AsyncInsertTest {
 
     Expect.that(dml_insertRecords).hasBeenCalledTimes(1);
     Expect.that(dml_insertRecords).hasBeenCalledWith(characters);
-  }
-
-  @IsTest
-  static void it_should_throw_when_missing_records() {
-    Test.startTest();
-
-    try {
-      sut.call();
-      System.Assert.fail();
-    } catch (IllegalArgumentException e) {
-      System.Assert.areEqual(
-        AsyncDmlBase.ERROR_RECORDS_REQUIRED,
-        e.getMessage()
-      );
-    }
-
-    Test.stopTest();
-
-    Expect.that(dml_insertRecords).hasNotBeenCalled();
   }
 }

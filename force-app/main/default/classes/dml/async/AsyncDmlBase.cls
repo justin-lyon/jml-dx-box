@@ -9,15 +9,13 @@ public abstract class AsyncDmlBase implements Actionable {
 
   protected abstract void invokeDml();
 
-  public void setRecords(List<SObject> records) {
-    this.records = records;
-  }
-
   public void call() {
     invokeDml();
   }
 
-  public Id enqueue() {
+  public Id enqueue(List<SObject> records) {
+    this.records = records;
+
     validate();
 
     AsyncAction action = new AsyncAction(this);

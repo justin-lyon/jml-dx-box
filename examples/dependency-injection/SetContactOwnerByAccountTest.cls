@@ -1,5 +1,5 @@
 @IsTest
-private class SetContactOwnerByAccounTest {
+private class SetContactOwnerByAccountTest {
   private static final Id ACCOUNT_ID;
   private static final Id OWNER_ID;
 
@@ -95,5 +95,16 @@ private class SetContactOwnerByAccounTest {
     Expect.that(ar_queryByIds).hasBeenCalledWith(new Set<Id>{ ACCOUNT_ID });
 
     System.Assert.areEqual(OWNER_ID, withAccount.OwnerId);
+  }
+
+  @IsTest
+  static void it_should_default_construct() {
+    Test.startTest();
+
+    sut = new SetContactOwnerByAccount();
+
+    Test.stopTest();
+
+    System.Assert.isNotNull(sut);
   }
 }

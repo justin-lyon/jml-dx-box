@@ -4,6 +4,7 @@ private class AsyncActionTest {
 
   static Mock actionableMock;
   static MethodSpy action_call;
+
   static AsyncAction sut;
 
   static {
@@ -12,7 +13,7 @@ private class AsyncActionTest {
     actionableMock = Mock.forType(Actionable.class);
     action_call = actionableMock.spyOn('call');
 
-    sut = new AsyncAction((Actionable) actionableMock.stub, TRANSACTION_ID);
+    sut = new AsyncAction((Actionable) actionableMock.stub);
   }
 
   @IsTest

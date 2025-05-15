@@ -16,11 +16,10 @@ private class AsyncUpdateTest {
   static void it_should_invoke_dml_when_called() {
     Contact steve = TestUtil.createContact('JackBlack');
     List<Contact> characters = new List<Contact>{ steve };
-    sut.setRecords(characters);
 
     Test.startTest();
 
-    sut.call();
+    sut.enqueue(characters);
 
     Test.stopTest();
 

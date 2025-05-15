@@ -17,7 +17,8 @@ sf package install --wait 30 \
 # push mdt
 echo "...Pushing metadata to $1"
 sf project deploy start \
-  --source-dir force-app
+  --source-dir force-app \
+  --source-dir examples
 
 # assign permsets
 echo "...Assigning Permission Set LWCDemoApp, ConsoleNav, & AlertsManager"

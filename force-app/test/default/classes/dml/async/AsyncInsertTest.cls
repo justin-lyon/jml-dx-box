@@ -16,11 +16,10 @@ private class AsyncInsertTest {
   static void it_should_invoke_dml_when_called() {
     Contact garbageMan = TestUtil.createContact('Mamoa');
     List<Contact> characters = new List<Contact>{ garbageMan };
-    sut.setRecords(characters);
 
     Test.startTest();
 
-    sut.call();
+    sut.enqueue(characters);
 
     Test.stopTest();
 

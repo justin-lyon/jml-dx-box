@@ -7,21 +7,18 @@ Date thursday = Date.newInstance(2025, 1, 16);
 Date friday = Date.newInstance(2025, 1, 17);
 Date saturday = Date.newInstance(2025, 1, 18);
 
-Assert.areEqual(0, Math.mod(epoch.daysBetween(sunday), 7));
-Assert.areEqual(1, Math.mod(epoch.daysBetween(monday), 7));
-Assert.areEqual(2, Math.mod(epoch.daysBetween(tuesday), 7));
-Assert.areEqual(3, Math.mod(epoch.daysBetween(wednesday), 7));
-Assert.areEqual(4, Math.mod(epoch.daysBetween(thursday), 7));
-Assert.areEqual(5, Math.mod(epoch.daysBetween(friday), 7));
-Assert.areEqual(6, Math.mod(epoch.daysBetween(saturday), 7));
+Assert.areEqual(0, DateUtil.dayInWeekInt(sunday));
+Assert.areEqual(1, DateUtil.dayInWeekInt(monday));
+Assert.areEqual(2, DateUtil.dayInWeekInt(tuesday));
+Assert.areEqual(3, DateUtil.dayInWeekInt(wednesday));
+Assert.areEqual(4, DateUtil.dayInWeekInt(thursday));
+Assert.areEqual(5, DateUtil.dayInWeekInt(friday));
+Assert.areEqual(6, DateUtil.dayInWeekInt(saturday));
 
-Datetime startDatetime = Datetime.now();
-Datetime endDatetime = Datetime.now().addDays(14).addHours(1);
-
-Integer weekdays = DateUtil.weekdaysBetween(startDatetime, endDatetime);
+Date nextFriday = thursday.addDays(1);
+Date nextMonday = thursday.addDays(4);
+Date nextTuesday = thursday.addDays(5);
+Datetime startDt = Datetime.newInstance(friday, Time.newInstance(0, 0, 0, 0));
+Datetime endDt = Datetime.newInstance(nextMonday, Time.newInstance(0, 0, 0, 0));
+Integer weekdays = DateUtil.weekdaysBetween(startDt, endDt);
 System.debug(weekDays);
-
-Date beforeDt = Date.today().addDays(-1);
-Date afterDt = Date.today();
-Boolean isAfter = beforeDt > afterDt;
-System.debug(isAfter + ' ' + beforeDt + ' ' + afterDt);

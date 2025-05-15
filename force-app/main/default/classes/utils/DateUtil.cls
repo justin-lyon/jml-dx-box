@@ -1,4 +1,7 @@
 public with sharing class DateUtil {
+  /**
+   * Count the weekdays between two dates
+   */
   public static Integer weekdaysBetween(
     DateTime fromDateTime,
     DateTime toDateTime
@@ -15,7 +18,7 @@ public with sharing class DateUtil {
       fromDate.day()
     );
 
-    while (!(currentDate > toDate)) {
+    while (currentDate <= toDate) {
       integer currentDay = dayInWeekInt(currentDate);
       if (0 < currentDay && currentDay < 6) {
         weekdays++;
@@ -26,10 +29,13 @@ public with sharing class DateUtil {
     return weekdays;
   }
 
+  /**
+   * Count the days between two dates that are in the days list
+   */
   public static Integer daysBetween(
     Date fromDate,
     Date toDate,
-    List<Day> workdays
+    List<Day> days
   ) {
     Integer weekdays = 0;
 
@@ -39,9 +45,9 @@ public with sharing class DateUtil {
       fromDate.day()
     );
 
-    while (!(currentDate > toDate)) {
+    while (currentDate <= toDate) {
       Day currentDay = dayInWeek(currentDate);
-      if (workdays.contains(currentDay)) {
+      if (days.contains(currentDay)) {
         weekdays++;
       }
       currentDate = currentDate.addDays(1);
@@ -53,13 +59,20 @@ public with sharing class DateUtil {
   /**
    * Returns the integer day in the week 0 indexed to Sunday
    * */
+  public static Integer dayInWeekInt(Date d) {
+    return dayInWeek(d).ordinal();
+  }
+
   public static Day dayInWeek(Date d) {
-    Date epoch = Date.newInstance(1900, 1, 6); // Sunday
+    Date epoch = Date.newInstance(1900, 1, 7); // Sunday
     return Day.values().get(Math.mod(epoch.daysBetween(d), 7));
   }
 
-  public static Integer dayInWeekInt(Date d) {
-    Date epoch = Date.newInstance(1900, 1, 6); // Sunday
-    return Math.mod(epoch.daysBetween(d), 7);
+  public static List<Day> getWorkdays(List<String> workdays) {
+    List<Day> days = new List<Day>();
+    for (String dayStr : workdays) {
+      days.add(Day.valueOf(dayStr));
+    }
+    return days;
   }
 }

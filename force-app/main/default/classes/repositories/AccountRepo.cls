@@ -12,7 +12,7 @@ public with sharing class AccountRepo {
   public List<Account> queryLimittedAccounts(Integer limitter) {
     limitter = Integer.valueOf(limitter);
     return [
-      SELECT Id, Name
+      SELECT Id, Name, Description
       FROM Account
       ORDER BY CreatedDate ASC
       LIMIT :limitter

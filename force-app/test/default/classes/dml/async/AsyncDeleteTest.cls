@@ -16,11 +16,10 @@ private class AsyncDeleteTest {
   static void it_should_invoke_dml_when_called() {
     Account garbageMan = TestUtil.createAccount('Mamoa');
     List<Account> characters = new List<Account>{ garbageMan };
-    sut.setRecords(characters);
 
     Test.startTest();
 
-    sut.call();
+    sut.enqueue(characters);
 
     Test.stopTest();
 

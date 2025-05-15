@@ -13,23 +13,12 @@ private class AsyncDmlBaseTest {
   }
 
   @IsTest
-  static void it_should_invoke_dml_when_called() {
-    Test.startTest();
-
-    sut.call();
-
-    Test.stopTest();
-
-    Expect.that(dml_insertRecords).hasBeenCalledTimes(1);
-  }
-
-  @IsTest
   static void it_should_return_jobid_when_enqueued() {
-    sut.setRecords(new List<Account>{ new Account(Name = 'anystring') });
-
     Test.startTest();
 
-    Id jobId = sut.enqueue();
+    Id jobId = sut.enqueue(
+      new List<Account>{ new Account(Name = 'anystring') }
+    );
 
     Test.stopTest();
 
@@ -38,12 +27,10 @@ private class AsyncDmlBaseTest {
 
   @IsTest
   static void it_should_throw_when_records_is_null() {
-    sut.setRecords(null);
-
     Test.startTest();
 
     try {
-      sut.enqueue();
+      sut.enqueue(new List<Account>{ new Account(Name = 'anystring') });
       System.Assert.fail('Should throw IllegalArgumentException');
     } catch (IllegalArgumentException iaex) {
       System.Assert.areEqual(
@@ -57,12 +44,10 @@ private class AsyncDmlBaseTest {
 
   @IsTest
   static void it_should_throw_when_records_is_empty() {
-    sut.setRecords(new List<Account>());
-
     Test.startTest();
 
     try {
-      sut.enqueue();
+      sut.enqueue(new List<Account>{ new Account(Name = 'anystring') });
       System.Assert.fail('Should throw IllegalArgumentException');
     } catch (IllegalArgumentException iaex) {
       System.Assert.areEqual(

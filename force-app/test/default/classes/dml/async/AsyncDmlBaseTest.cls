@@ -30,7 +30,7 @@ private class AsyncDmlBaseTest {
     Test.startTest();
 
     try {
-      sut.enqueue(new List<Account>{ new Account(Name = 'anystring') });
+      sut.enqueue(null);
       System.Assert.fail('Should throw IllegalArgumentException');
     } catch (IllegalArgumentException iaex) {
       System.Assert.areEqual(
@@ -47,7 +47,7 @@ private class AsyncDmlBaseTest {
     Test.startTest();
 
     try {
-      sut.enqueue(new List<Account>{ new Account(Name = 'anystring') });
+      sut.enqueue(new List<Account>());
       System.Assert.fail('Should throw IllegalArgumentException');
     } catch (IllegalArgumentException iaex) {
       System.Assert.areEqual(

@@ -19,9 +19,18 @@ private class AsyncDeleteTest {
 
     Test.startTest();
 
-    sut.enqueue(characters);
+    Id jobId = sut.enqueue(characters);
 
     Test.stopTest();
+
+    System.Assert.isNotNull(jobId);
+    AsyncApexJob job = [
+      SELECT Id, Status
+      FROM AsyncApexJob
+      WHERE Id = :jobId
+      LIMIT 1
+    ];
+    System.Assert.areEqual('Completed', job.Status);
 
     Expect.that(dml_deleteRecords).hasBeenCalledTimes(1);
     Expect.that(dml_deleteRecords).hasBeenCalledWith(characters);

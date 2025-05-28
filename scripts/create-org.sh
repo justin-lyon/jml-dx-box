@@ -9,6 +9,7 @@ sf org create scratch \
   --alias $1 \
   --definition-file config/project-scratch-def.json
 
+# install nebula logger
 sf package install --wait 30 \
   --security-type AdminsOnly \
   --no-prompt \

@@ -10,23 +10,15 @@ public with sharing class DateUtil {
   }
 
   public static Integer weekdaysBetween(Date fromDate, Date toDate) {
-    Integer weekdays = 0;
+    List<Day> weekdays = new List<Day>{
+      Day.MONDAY,
+      Day.TUESDAY,
+      Day.WEDNESDAY,
+      Day.THURSDAY,
+      Day.FRIDAY
+    };
 
-    Date currentDate = Date.newInstance(
-      fromDate.year(),
-      fromDate.month(),
-      fromDate.day()
-    );
-
-    while (currentDate <= toDate) {
-      integer currentDay = dayInWeekInt(currentDate);
-      if (0 < currentDay && currentDay < 6) {
-        weekdays++;
-      }
-      currentDate = currentDate.addDays(1);
-    }
-
-    return weekdays;
+    return daysBetween(fromDate, toDate, weekdays);
   }
 
   /**
@@ -54,13 +46,6 @@ public with sharing class DateUtil {
     }
 
     return weekdays;
-  }
-
-  /**
-   * Returns the integer day in the week 0 indexed to Sunday
-   * */
-  public static Integer dayInWeekInt(Date d) {
-    return dayInWeek(d).ordinal();
   }
 
   public static Day dayInWeek(Date d) {

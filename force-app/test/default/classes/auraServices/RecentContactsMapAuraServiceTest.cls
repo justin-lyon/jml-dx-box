@@ -59,6 +59,14 @@ private class RecentContactsMapAuraServiceTest {
     );
 
     insert contacts;
+
+    // mark contacts as RecentlyViewed
+    List<Contact> unused = [
+      SELECT Id
+      FROM Contact
+      LIMIT 5
+      FOR VIEW
+    ];
   }
 
   static testMethod void getRecentContacts_givenDefault_shouldGet5Contacts() {

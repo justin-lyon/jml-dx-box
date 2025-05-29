@@ -13,7 +13,7 @@ private class AsyncDmlBaseTest {
   }
 
   @IsTest
-  static void it_should_return_jobid_when_enqueued() {
+  static void it_should_enqueue_an_async_job() {
     Test.startTest();
 
     Id jobId = sut.enqueue(
@@ -23,6 +23,13 @@ private class AsyncDmlBaseTest {
     Test.stopTest();
 
     System.Assert.isNotNull(jobId, 'enqueue method should return a jobId');
+
+    List<AsyncApexJob> jobs = [
+      SELECT Id, JobType, Status
+      FROM AsyncApexJob
+      WHERE Id = :jobId
+    ];
+    System.assertEquals(1, jobs.size(), 'There should be one queued job');
   }
 
   @IsTest
@@ -30,7 +37,7 @@ private class AsyncDmlBaseTest {
     Test.startTest();
 
     try {
-      sut.enqueue(new List<Account>{ new Account(Name = 'anystring') });
+      sut.enqueue(null);
       System.Assert.fail('Should throw IllegalArgumentException');
     } catch (IllegalArgumentException iaex) {
       System.Assert.areEqual(
@@ -47,7 +54,7 @@ private class AsyncDmlBaseTest {
     Test.startTest();
 
     try {
-      sut.enqueue(new List<Account>{ new Account(Name = 'anystring') });
+      sut.enqueue(new List<Account>());
       System.Assert.fail('Should throw IllegalArgumentException');
     } catch (IllegalArgumentException iaex) {
       System.Assert.areEqual(

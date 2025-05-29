@@ -16,12 +16,9 @@ private class AsyncUpdateTest {
   static void it_should_invoke_dml_when_called() {
     Contact steve = TestUtil.createContact('JackBlack');
     List<Contact> characters = new List<Contact>{ steve };
+    sut.records = characters;
 
-    Test.startTest();
-
-    sut.enqueue(characters);
-
-    Test.stopTest();
+    sut.call();
 
     Expect.that(dml_updateRecords).hasBeenCalledTimes(1);
     Expect.that(dml_updateRecords).hasBeenCalledWith(characters);

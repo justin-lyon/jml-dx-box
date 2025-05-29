@@ -16,12 +16,9 @@ private class AsyncInsertTest {
   static void it_should_invoke_dml_when_called() {
     Contact garbageMan = TestUtil.createContact('Mamoa');
     List<Contact> characters = new List<Contact>{ garbageMan };
+    sut.records = characters;
 
-    Test.startTest();
-
-    sut.enqueue(characters);
-
-    Test.stopTest();
+    sut.call();
 
     Expect.that(dml_insertRecords).hasBeenCalledTimes(1);
     Expect.that(dml_insertRecords).hasBeenCalledWith(characters);

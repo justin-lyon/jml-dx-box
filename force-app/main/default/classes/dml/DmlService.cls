@@ -7,15 +7,6 @@ public with sharing class DmlService {
     update records;
   }
 
-  /**
-   * @description Upsert a Collection of Records
-   * @param List<SObject> records - The Collection to be upserted.
-   * @example
-   * public class MyClass extends DmlImpl {}
-   * MyClass instance = new MyClass();
-   * List<Account> accounts = new List<Account>();
-   * instance.upsertRecords(accounts);
-   */
   public void upsertRecords(List<SObject> records) {
     upsert records;
   }

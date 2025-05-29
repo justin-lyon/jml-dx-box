@@ -3,12 +3,14 @@ public class ErrorProxy {
   public StatusCode statusCode;
   public List<String> fields;
 
-  public ErrorProxy() {
+  private ErrorProxy() {
   }
 
-  public ErrorProxy(Database.Error err) {
-    this.message = err.getMessage();
-    this.statusCode = err.getStatusCode();
-    this.fields = err.getFields();
+  public static ErrorProxy fromDBError(Database.Error err) {
+    ErrorProxy proxy = new ErrorProxy();
+    proxy.message = err.getMessage();
+    proxy.statusCode = err.getStatusCode();
+    proxy.fields = err.getFields();
+    return proxy;
   }
 }

@@ -52,4 +52,26 @@ private class TriggerBypassTest {
 
     System.assert(isSuccess, 'The Case Trigger should be on.');
   }
+
+  @IsTest
+  static void it_should_rethrow_exception() {
+    bm_getInstance.throwsException(new QueryException('forced exception'));
+
+    Test.startTest();
+
+    Boolean isSuccess = false;
+    try {
+      TriggerBypass.isActive('triggerName');
+      System.Assert.fail();
+    } catch (TriggerBypass.TriggerBypassException tbex) {
+      isSuccess = true;
+    }
+
+    Test.stopTest();
+
+    System.Assert.isTrue(
+      isSuccess,
+      'The exception should be rethrown as a TriggerBypassException.'
+    );
+  }
 }

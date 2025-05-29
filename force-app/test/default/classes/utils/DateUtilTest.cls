@@ -214,4 +214,31 @@ private class DateUtilTest {
       'Expected SATURDAY for the given date.'
     );
   }
+
+  @IsTest
+  static void it_should_get_DAYS_from_strings() {
+    List<String> workdays = new List<String>{ 'MONDAY', 'TUESDAY' };
+
+    Test.startTest();
+
+    List<Day> days = DateUtil.getWorkdays(workdays);
+
+    Test.stopTest();
+
+    System.Assert.areEqual(
+      2,
+      days.size(),
+      'Expected 2 days from the workdays list.'
+    );
+    System.Assert.areEqual(
+      Day.MONDAY,
+      days[0],
+      'Expected first day to be MONDAY.'
+    );
+    System.Assert.areEqual(
+      Day.TUESDAY,
+      days[1],
+      'Expected second day to be TUESDAY.'
+    );
+  }
 }

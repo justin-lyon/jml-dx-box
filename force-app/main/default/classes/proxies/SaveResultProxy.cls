@@ -3,24 +3,18 @@ public with sharing class SaveResultProxy {
   public Id id;
   public List<ErrorProxy> errors;
 
-  public SaveResultProxy() {
+  private SaveResultProxy() {
   }
 
-  public SaveResultProxy(Database.SaveResult sr) {
-    success = sr.isSuccess();
-    id = sr.getId();
-    this.errors = new List<ErrorProxy>();
+  public static SaveResultProxy fromDBSaveResult(Database.SaveResult sr) {
+    SaveResultProxy proxy = new SaveResultProxy();
+    proxy.success = sr.isSuccess();
+    proxy.id = sr.getId();
+    proxy.errors = new List<ErrorProxy>();
 
     for (Database.Error err : sr.getErrors()) {
-      this.errors.add(new ErrorProxy(err));
+      proxy.errors.add(ErrorProxy.fromDBError(err));
     }
-  }
-
-  public Database.SaveResult toSaveResult() {
-    String resultStr = JSON.serialize(this);
-    return (Database.SaveResult) JSON.deserialize(
-      resultStr,
-      Database.SaveResult.class
-    );
+    return proxy;
   }
 }

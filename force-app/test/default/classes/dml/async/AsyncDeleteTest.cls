@@ -16,21 +16,9 @@ private class AsyncDeleteTest {
   static void it_should_invoke_dml_when_called() {
     Account garbageMan = TestUtil.createAccount('Mamoa');
     List<Account> characters = new List<Account>{ garbageMan };
+    sut.records = characters;
 
-    Test.startTest();
-
-    Id jobId = sut.enqueue(characters);
-
-    Test.stopTest();
-
-    System.Assert.isNotNull(jobId);
-    AsyncApexJob job = [
-      SELECT Id, Status
-      FROM AsyncApexJob
-      WHERE Id = :jobId
-      LIMIT 1
-    ];
-    System.Assert.areEqual('Completed', job.Status);
+    sut.call();
 
     Expect.that(dml_deleteRecords).hasBeenCalledTimes(1);
     Expect.that(dml_deleteRecords).hasBeenCalledWith(characters);

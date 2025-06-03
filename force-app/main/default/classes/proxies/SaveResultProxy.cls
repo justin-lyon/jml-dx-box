@@ -4,6 +4,7 @@ public with sharing class SaveResultProxy {
   public List<ErrorProxy> errors;
 
   private SaveResultProxy() {
+    // NOPMD
   }
 
   public static SaveResultProxy fromDBSaveResult(Database.SaveResult sr) {

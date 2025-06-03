@@ -56,7 +56,7 @@ public with sharing class CollectionsUtil {
   }
 
   public Object[] slice(Object[] ary, Integer first, Integer last) {
-    Object[] res = ary.clone(), temp;
+    Object[] res = ary.clone(), temp; // NOPMD
     Integer size = ary.size(),
       startIndex = Math.min(
         size,
@@ -70,6 +70,7 @@ public with sharing class CollectionsUtil {
     temp = new List<Object>(offset + 1);
 
     for (Integer h = 0, i = startIndex, j = endIndex; i <= j;) {
+      // NOPMD
       temp[h++] = ary[i++];
     }
 

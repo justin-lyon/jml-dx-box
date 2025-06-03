@@ -36,7 +36,7 @@ private class LookupAuraServiceTest {
       data,
       List<Account>.class
     );
-    System.assertEquals(acc.Id, queried[0].Id);
+    System.Assert.areEqual(acc.Id, queried[0].Id);
   }
 
   @IsTest
@@ -93,6 +93,6 @@ private class LookupAuraServiceTest {
 
     Test.stopTest();
 
-    System.assertEquals(5, results[0].size());
+    System.Assert.areEqual(5, results[0].size());
   }
 }

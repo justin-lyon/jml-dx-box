@@ -10,7 +10,7 @@ private class ToolboxTest {
 
     Test.stopTest();
 
-    System.assertEquals(accountType, objectType);
+    System.Assert.areEqual(accountType, objectType);
   }
 
   @IsTest
@@ -25,7 +25,7 @@ private class ToolboxTest {
 
     Test.stopTest();
 
-    System.assertEquals(userType, objectType);
+    System.Assert.areEqual(userType, objectType);
   }
 
   @IsTest
@@ -67,7 +67,7 @@ private class ToolboxTest {
 
     Test.stopTest();
 
-    System.assertEquals(accountSource.size(), entries.size());
+    System.Assert.areEqual(accountSource.size(), entries.size());
   }
 
   @IsTest
@@ -104,7 +104,7 @@ private class ToolboxTest {
 
     Test.stopTest();
 
-    System.assertEquals(CASE_NUMBER, c.CaseNumber);
+    System.Assert.areEqual(CASE_NUMBER, c.CaseNumber);
   }
 
   @IsTest

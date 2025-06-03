@@ -14,8 +14,8 @@ private class MockIdGeneratorTest {
 
     Test.stopTest();
 
-    System.assertEquals(accountIdPrefix, accountId.substring(0, 3));
-    System.assertEquals(18, accountId.length(), accountId);
+    System.Assert.areEqual(accountIdPrefix, accountId.substring(0, 3));
+    System.Assert.areEqual(18, accountId.length(), accountId);
   }
 
   @IsTest
@@ -31,8 +31,8 @@ private class MockIdGeneratorTest {
 
     Test.stopTest();
 
-    System.assertEquals(contactIdPrefix, contactId.substring(0, 3));
-    System.assertEquals(18, contactId.length(), contactId);
+    System.Assert.areEqual(contactIdPrefix, contactId.substring(0, 3));
+    System.Assert.areEqual(18, contactId.length(), contactId);
   }
 
   @IsTest
@@ -50,6 +50,6 @@ private class MockIdGeneratorTest {
     String accountWithoutPrefix = accountId.substring(3, 18);
     String contactWithoutPrefix = contactId.substring(3, 18);
 
-    System.assertEquals(accountWithoutPrefix, contactWithoutPrefix);
+    System.Assert.areEqual(accountWithoutPrefix, contactWithoutPrefix);
   }
 }

@@ -23,7 +23,7 @@ private class MetadataPickerAuraServiceTest {
       List<Dragon__mdt>.class
     );
     System.assert(!dragons.isEmpty());
-    System.assertEquals(1, dragons.size());
+    System.Assert.areEqual(1, dragons.size());
   }
 
   @IsTest
@@ -47,6 +47,6 @@ private class MetadataPickerAuraServiceTest {
       List<Dragon__mdt>.class
     );
     System.assert(!dragons.isEmpty());
-    System.assertEquals(1, dragons.size());
+    System.Assert.areEqual(1, dragons.size());
   }
 }

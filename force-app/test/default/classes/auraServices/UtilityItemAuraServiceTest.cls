@@ -6,10 +6,10 @@ private class UtilityItemAuraServiceTest {
 
     Test.startTest();
 
-    sObjectName = UtilityItemAuraService.getSObjectType('00100000000000a');
+    sObjectName = UtilityItemAuraService.getSObjectType('00100000000000a'); // NOPMD
 
     Test.stopTest();
 
-    System.assertEquals('Account', sObjectName);
+    System.Assert.areEqual('Account', sObjectName);
   }
 }

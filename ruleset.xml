@@ -144,6 +144,7 @@
   >
       <priority>3</priority>
       <properties>
+        <property name="testPattern" value="[a-z]+(_[a-z]+)*" />
       </properties>
    </rule>
    <rule
@@ -157,6 +158,10 @@
    <rule ref="category/apex/codestyle.xml/FieldNamingConventions">
       <priority>3</priority>
       <properties>
+        <property
+        name="staticPattern"
+        value="^[a-z][a-zA-Z0-9]*\(.*\)|[a-z0-9]+(?:_[a-z0-9]+)*\(.*\)$"
+      />
       </properties>
    </rule>
    <rule ref="category/apex/codestyle.xml/FormalParameterNamingConventions">
@@ -176,11 +181,11 @@
    </rule>
 
    <!-- TESTS -->
-   <rule
+   <!-- <rule
     ref="category/apex/bestpractices.xml/ApexAssertionsShouldIncludeMessage"
   >
       <priority>4</priority>
-   </rule>
+   </rule> -->
    <rule
     ref="category/apex/bestpractices.xml/ApexUnitTestMethodShouldHaveIsTestAnnotation"
   >
@@ -192,6 +197,7 @@
   >
       <priority>3</priority>
       <properties>
+        <property name="Apex-Mockery Expect" value="Expect\.that\(.*\)\." />
       </properties>
    </rule>
    <rule

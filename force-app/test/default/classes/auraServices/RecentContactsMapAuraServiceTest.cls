@@ -77,6 +77,6 @@ private class RecentContactsMapAuraServiceTest {
 
     Test.stopTest();
 
-    System.assertEquals(5, contacts.size());
+    System.Assert.areEqual(5, contacts.size());
   }
 }

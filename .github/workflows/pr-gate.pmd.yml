@@ -1,15 +1,14 @@
-name: PMD Source Code Analyzer on Push
-
+name: PMD Source Code Analyzer
 on: [push]
-
 jobs:
-  pmd:
+  apex:
     runs-on: ubuntu-latest
-
     steps:
-      # Checkout the code
-      - uses: sfdx-actions/setup-pmd@v1
-      - name: "Checkout source code"
-        uses: actions/checkout@v2
-      - name: run-pmd
-        run: pmd -d ./force-app/main/default/classes/ -R ./ruleset.xml -f text
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Setup PMD
+        uses: legetz/setup-pmd@7.1.0
+      - name: APEX full scan
+        run: pmd check --dir ./force-app/main/default/classes/*.cls --rulesets ./ruleset.xml -f text

@@ -1,27 +1,6 @@
 @IsTest
 private class DateUtilTest {
   @IsTest
-  static void it_should_return_2_days_between_friday_and_monday_datetimes() {
-    Date friday = Date.newInstance(2025, 5, 23);
-    Date monday = Date.newInstance(2025, 5, 26);
-
-    DateTime friDt = DateTime.newInstance(friday, Time.newInstance(0, 0, 0, 0));
-    DateTime monDt = DateTime.newInstance(monday, Time.newInstance(0, 0, 0, 0));
-
-    Test.startTest();
-
-    Integer days = DateUtil.weekdaysBetween(friDt, monDt);
-
-    Test.stopTest();
-
-    System.Assert.areEqual(
-      2,
-      days,
-      'Expected 2 weekdays between Friday and the following Monday, inclusive.'
-    );
-  }
-
-  @IsTest
   static void it_should_return_2_days_between_friday_and_monday_dates() {
     Date friday = Date.newInstance(2025, 5, 23);
     Date monday = Date.newInstance(2025, 5, 26);

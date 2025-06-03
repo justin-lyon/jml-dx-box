@@ -2,13 +2,6 @@ public with sharing class DateUtil {
   /**
    * Count the weekdays between two dates
    */
-  public static Integer weekdaysBetween(
-    DateTime fromDateTime,
-    DateTime toDateTime
-  ) {
-    return weekdaysBetween(fromDateTime.date(), toDateTime.date());
-  }
-
   public static Integer weekdaysBetween(Date fromDate, Date toDate) {
     List<Day> weekdays = new List<Day>{
       Day.MONDAY,

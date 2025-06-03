@@ -1,6 +1,7 @@
-@isTest
+@IsTest
 private class MockIdGeneratorTest {
-  static testMethod void getMockId_givenAccount_shouldGetAccountPrefixId() {
+  @IsTest
+  static void getMockId_givenAccount_shouldGetAccountPrefixId() {
     Account acc = new Account();
     MockIdGenerator idGen = new MockIdGenerator(acc);
     String accountIdPrefix = Account.getSObjectType()
@@ -17,7 +18,8 @@ private class MockIdGeneratorTest {
     System.assertEquals(18, accountId.length(), accountId);
   }
 
-  static testMethod void statelessMockId_givenContact_shouldGetContactId() {
+  @IsTest
+  static void statelessMockId_givenContact_shouldGetContactId() {
     Contact con = new Contact();
     String contactIdPrefix = Contact.getSObjectType()
       .getDescribe()
@@ -33,7 +35,8 @@ private class MockIdGeneratorTest {
     System.assertEquals(18, contactId.length(), contactId);
   }
 
-  static testMethod void getMockId_givenTwoObjectStates_shouldGetUniqueObjectCounts() {
+  @IsTest
+  static void getMockId_givenTwoObjectStates_shouldGetUniqueObjectCounts() {
     MockIdGenerator accGen = new MockIdGenerator(new Account());
     MockIdGenerator conGen = new MockIdGenerator(new Contact());
 

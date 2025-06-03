@@ -1,4 +1,4 @@
-@isTest
+@IsTest
 private class TriggerBypassTest {
   static Mock bypassMock;
   static MethodSpy bm_getInstance;
@@ -15,7 +15,8 @@ private class TriggerBypassTest {
     TriggerBypass.bypassDI = (TriggerBypassRepo) bypassMock.stub;
   }
 
-  static testMethod void it_should_throw_when_not_found() {
+  @IsTest
+  static void it_should_throw_when_not_found() {
     TriggerBypass__mdt bypass = new TriggerBypass__mdt();
     bypass.IsActive__c = false;
     bm_getInstance.throwsException(
@@ -39,7 +40,8 @@ private class TriggerBypassTest {
     );
   }
 
-  static testMethod void it_should_return_isActive() {
+  @IsTest
+  static void it_should_return_isActive() {
     TriggerBypass__mdt bypass = new TriggerBypass__mdt();
     bypass.IsActive__c = true;
     bm_getInstance.returns(bypass);

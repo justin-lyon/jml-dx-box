@@ -1,6 +1,7 @@
-@isTest
+@IsTest
 private class UtilityItemAuraServiceTest {
-  static testMethod void getSObjectName_givenId_shouldGetStringName() {
+  @IsTest
+  static void getSObjectName_givenId_shouldGetStringName() {
     String sObjectName = '';
 
     Test.startTest();

@@ -1,6 +1,7 @@
-@isTest
+@IsTest
 private class MetadataFinderAuraServiceTest {
-  static testMethod void getPicklistValues_givenObjectAndField_shouldGetOptions() {
+  @IsTest
+  static void getPicklistValues_givenObjectAndField_shouldGetOptions() {
     String objectName = 'Account';
     String fieldName = 'Type';
 

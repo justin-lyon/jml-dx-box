@@ -2,7 +2,8 @@
 private class DmlServiceTest {
   static DmlService sut = new DmlService();
 
-  static testMethod void insertRecords_givenAccount_shouldGetId() {
+  @IsTest
+  static void insertRecords_givenAccount_shouldGetId() {
     Account acc = new Account(Name = 'Test Account');
 
     Test.startTest();
@@ -14,7 +15,8 @@ private class DmlServiceTest {
     System.Assert.areNotEqual(null, acc.Id);
   }
 
-  static testMethod void updateRecords_givenAccount_shouldGetUpdatedAccount() {
+  @IsTest
+  static void updateRecords_givenAccount_shouldGetUpdatedAccount() {
     String oldAccountNumber = '123';
     String newAccountNumber = '456';
 
@@ -44,7 +46,8 @@ private class DmlServiceTest {
     System.Assert.areEqual(newAccountNumber, updatedAccount.AccountNumber);
   }
 
-  static testMethod void upsertRecords_givenNewAccount_shouldGetId() {
+  @IsTest
+  static void upsertRecords_givenNewAccount_shouldGetId() {
     Account acc = new Account(Name = 'Test Account');
 
     Test.startTest();
@@ -56,7 +59,8 @@ private class DmlServiceTest {
     System.Assert.areNotEqual(null, acc.Id);
   }
 
-  static testMethod void deleteRecords_givenOldAccount_shouldGetNullID() {
+  @IsTest
+  static void deleteRecords_givenOldAccount_shouldGetNullID() {
     Account acc = new Account(Name = 'Test Account');
 
     insert acc;

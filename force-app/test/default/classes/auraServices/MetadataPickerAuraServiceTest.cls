@@ -1,6 +1,7 @@
-@isTest
+@IsTest
 private class MetadataPickerAuraServiceTest {
-  static testMethod void getFilteredMdt_givenFilter_shouldGetOneMdtRecord() {
+  @IsTest
+  static void getFilteredMdt_givenFilter_shouldGetOneMdtRecord() {
     String filterBy = 'Size__c';
     String filterTest = 'Medium';
     String mdtName = 'Dragon__mdt';
@@ -25,7 +26,8 @@ private class MetadataPickerAuraServiceTest {
     System.assertEquals(1, dragons.size());
   }
 
-  static testMethod void getMetadata_givenSearchTerm_shouldGetOneRecord() {
+  @IsTest
+  static void getMetadata_givenSearchTerm_shouldGetOneRecord() {
     String searchTerm = 'Fluffykins';
     String metadataName = 'Dragon__mdt';
     List<String> mdtFields = new List<String>{ 'Masterlabel', 'Size__c' };

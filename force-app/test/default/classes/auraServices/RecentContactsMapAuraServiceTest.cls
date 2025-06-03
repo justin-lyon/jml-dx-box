@@ -1,4 +1,4 @@
-@isTest
+@IsTest
 private class RecentContactsMapAuraServiceTest {
   @TestSetup
   static void setupContacts() {
@@ -69,7 +69,8 @@ private class RecentContactsMapAuraServiceTest {
     ];
   }
 
-  static testMethod void getRecentContacts_givenDefault_shouldGet5Contacts() {
+  @IsTest
+  static void getRecentContacts_givenDefault_shouldGet5Contacts() {
     Test.startTest();
 
     List<RecentContactsMapAuraService.ViewModel> contacts = RecentContactsMapAuraService.getRecentContacts();

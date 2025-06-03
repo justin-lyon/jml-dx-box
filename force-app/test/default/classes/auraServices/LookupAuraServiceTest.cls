@@ -1,4 +1,4 @@
-@isTest
+@IsTest
 private class LookupAuraServiceTest {
   @TestSetup
   static void makeData() {
@@ -12,7 +12,8 @@ private class LookupAuraServiceTest {
     insert accounts;
   }
 
-  static testMethod void getOneRecordById_givenSearchable_shouldGetRecord() {
+  @IsTest
+  static void getOneRecordById_givenSearchable_shouldGetRecord() {
     Account acc = [SELECT Id FROM Account LIMIT 1];
     LookupAuraService.Searchable searcher = new LookupAuraService.Searchable();
     searcher.searchTerm = 'test';
@@ -38,7 +39,8 @@ private class LookupAuraServiceTest {
     System.assertEquals(acc.Id, queried[0].Id);
   }
 
-  static testMethod void getRecent_givenDefault_shouldGetRecentRecords() {
+  @IsTest
+  static void getRecent_givenDefault_shouldGetRecentRecords() {
     List<Account> recentAccounts;
     LookupAuraService.Searchable searcher = new LookupAuraService.Searchable();
     searcher.searchTerm = 'test';
@@ -67,7 +69,8 @@ private class LookupAuraServiceTest {
     );
   }
 
-  static testMethod void getRecords_givenTerm_shouldGetAccounts() {
+  @IsTest
+  static void getRecords_givenTerm_shouldGetAccounts() {
     List<Id> fixedAccountIds = new List<Id>();
     for (Account acc : [SELECT Id FROM Account]) {
       fixedAccountIds.add(acc.Id);

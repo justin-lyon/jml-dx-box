@@ -12,4 +12,4 @@ jobs:
       - name: "Checkout source code"
         uses: actions/checkout@v2
       - name: run-pmd
-        run: pmd -d ./force-app/main/default/classes/ ./force-app/test/default/classes/ -R ./ruleset.xml -f text
+        run: pmd -d ./force-app/**/classes/ -R ./ruleset.xml -f text

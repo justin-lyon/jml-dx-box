@@ -1,4 +1,13 @@
+/**
+ * @description: Supports the lwc-lookup Lightning Web Component.
+ */
 public with sharing class LookupAuraService {
+  /**
+   * @description: Query a single record by ID.
+   * @param searcher, describes the search term and its filters
+   * @param recordId,
+   * @return a JSON string of the queried record.
+   */
   @AuraEnabled
   public static String getOneRecordById(Searchable searcher, Id recordId) {
     List<String> expr = new List<String>();
@@ -12,6 +21,12 @@ public with sharing class LookupAuraService {
     return JSON.serialize(Database.query(queryString));
   }
 
+  /**
+   * @description: Query recent records of a specific type.
+   * @param searcher, describes the object type and fields to return.
+   * @param recordId,
+   * @return a JSON string of the queried records.
+   */
   @AuraEnabled(cacheable=true)
   public static String getRecent(Searchable searcher) {
     Set<Id> recentIds = new Set<Id>();
@@ -29,6 +44,11 @@ public with sharing class LookupAuraService {
     return JSON.serialize(Database.query(String.join(expr, ' ')));
   }
 
+  /**
+   * @description: Search for records across all fields of a specific object.
+   * @param searcher, describes the search term and its filters.
+   * @return a JSON string of the search results.
+   */
   @AuraEnabled(cacheable=true)
   public static String getRecords(Searchable searcher) {
     String find =
@@ -58,6 +78,9 @@ public with sharing class LookupAuraService {
     return [SELECT Id FROM RecentlyViewed WHERE Type = :objectName LIMIT 5];
   }
 
+  /**
+   * @description: A class to encapsulate the search parameters for querying records.
+   */
   public class Searchable {
     @AuraEnabled
     public String searchTerm { get; set; }

@@ -1,7 +1,7 @@
 public with sharing class MetadataPickerAuraService {
   @AuraEnabled(cacheable=true)
   public static String getFilteredMdt(
-    String filterBy,
+    String filterBy, // NOPMD
     String filterTest,
     String metadataName,
     List<String> mdtFields

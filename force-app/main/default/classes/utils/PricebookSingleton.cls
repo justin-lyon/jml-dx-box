@@ -3,7 +3,7 @@ public with sharing class PricebookSingleton {
   private static PricebookSingleton instance;
   private Id stdPricebookId = null;
 
-  private PricebookSingleton() {}
+  private PricebookSingleton() {} // NOPMD
 
   public static PricebookSingleton get() {
     if (instance == null) {

@@ -29,7 +29,7 @@ private class AsyncDmlBaseTest {
       FROM AsyncApexJob
       WHERE Id = :jobId
     ];
-    System.assertEquals(1, jobs.size(), 'There should be one queued job');
+    System.Assert.areEqual(1, jobs.size(), 'There should be one queued job');
   }
 
   @IsTest

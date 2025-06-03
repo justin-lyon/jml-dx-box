@@ -1,14 +1,15 @@
-@isTest
+@IsTest
 private class UtilityItemAuraServiceTest {
-  static testMethod void getSObjectName_givenId_shouldGetStringName() {
+  @IsTest
+  static void getSObjectName_givenId_shouldGetStringName() {
     String sObjectName = '';
 
     Test.startTest();
 
-    sObjectName = UtilityItemAuraService.getSObjectType('00100000000000a');
+    sObjectName = UtilityItemAuraService.getSObjectType('00100000000000a'); // NOPMD
 
     Test.stopTest();
 
-    System.assertEquals('Account', sObjectName);
+    System.Assert.areEqual('Account', sObjectName);
   }
 }

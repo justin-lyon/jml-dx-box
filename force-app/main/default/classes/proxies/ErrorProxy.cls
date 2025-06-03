@@ -4,6 +4,7 @@ public class ErrorProxy {
   public List<String> fields;
 
   private ErrorProxy() {
+    // NOPMD
   }
 
   public static ErrorProxy fromDBError(Database.Error err) {

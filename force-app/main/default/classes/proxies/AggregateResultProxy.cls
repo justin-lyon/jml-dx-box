@@ -2,6 +2,7 @@ public with sharing class AggregateResultProxy {
   private Map<String, Object> valuesByAlias = new Map<String, Object>();
 
   private AggregateResultProxy() {
+    // NOPMD
   }
 
   public static AggregateResultProxy fromAggregateResult(AggregateResult item) {

@@ -1,6 +1,7 @@
-@isTest
+@IsTest
 private class ToolboxTest {
-  static testMethod void getSObjectType_givenName_shouldGetType() {
+  @IsTest
+  static void getSObjectType_givenName_shouldGetType() {
     Schema.SObjectType accountType = Schema.Account.SObjectType;
 
     Test.startTest();
@@ -9,10 +10,11 @@ private class ToolboxTest {
 
     Test.stopTest();
 
-    System.assertEquals(accountType, objectType);
+    System.Assert.areEqual(accountType, objectType);
   }
 
-  static testMethod void getSObjectType_givenId_shouldGetType() {
+  @IsTest
+  static void getSObjectType_givenId_shouldGetType() {
     Schema.SObjectType userType = Schema.User.SObjectType;
 
     Test.startTest();
@@ -23,10 +25,11 @@ private class ToolboxTest {
 
     Test.stopTest();
 
-    System.assertEquals(userType, objectType);
+    System.Assert.areEqual(userType, objectType);
   }
 
-  static testMethod void getRecordTypeId_givenCaseMaster_shouldGetId() {
+  @IsTest
+  static void getRecordTypeId_givenCaseMaster_shouldGetId() {
     Test.startTest();
 
     Id caseMaster = Toolbox.getRecordTypeId('Case', 'Master');
@@ -35,7 +38,8 @@ private class ToolboxTest {
     System.assertNotEquals(null, caseMaster);
   }
 
-  static testMethod void getRecordTypeIdsByObject_givenCase_shouldGetMaster() {
+  @IsTest
+  static void getRecordTypeIdsByObject_givenCase_shouldGetMaster() {
     String sobjectName = 'Case';
 
     Test.startTest();
@@ -49,7 +53,8 @@ private class ToolboxTest {
     System.assert(recordTypeIds.containsKey('Master'));
   }
 
-  static testMethod void getPicklistEntries_givenField_shouldGetEntries() {
+  @IsTest
+  static void getPicklistEntries_givenField_shouldGetEntries() {
     List<Schema.PicklistEntry> accountSource = Schema.Account.AccountSource.getDescribe()
       .getPicklistValues();
 
@@ -62,10 +67,11 @@ private class ToolboxTest {
 
     Test.stopTest();
 
-    System.assertEquals(accountSource.size(), entries.size());
+    System.Assert.areEqual(accountSource.size(), entries.size());
   }
 
-  static testMethod void generateUUID_default_shouldGetID() {
+  @IsTest
+  static void generateUUID_default_shouldGetID() {
     Test.startTest();
 
     String guid = Toolbox.generateUUID();
@@ -75,7 +81,8 @@ private class ToolboxTest {
     System.assertNotEquals(null, guid);
   }
 
-  static testMethod void generateUUID_default_shouldGetUniqueIDs() {
+  @IsTest
+  static void generateUUID_default_shouldGetUniqueIDs() {
     Test.startTest();
 
     String guid1 = Toolbox.generateUUID();
@@ -86,7 +93,8 @@ private class ToolboxTest {
     System.assertNotEquals(guid1, guid2, 'Two generated GUIDs are unique.');
   }
 
-  static testMethod void setUnwritableField_givenCaseNumber_shouldSetCaseNumber() {
+  @IsTest
+  static void setUnwritableField_givenCaseNumber_shouldSetCaseNumber() {
     Case c = new Case(Subject = 'Test Case');
     String CASE_NUMBER = '00001111';
 
@@ -96,10 +104,11 @@ private class ToolboxTest {
 
     Test.stopTest();
 
-    System.assertEquals(CASE_NUMBER, c.CaseNumber);
+    System.Assert.areEqual(CASE_NUMBER, c.CaseNumber);
   }
 
-  static testMethod void generateUUID_default_shouldBeValidVersion4UUID() {
+  @IsTest
+  static void generateUUID_default_shouldBeValidVersion4UUID() {
     // https://salesforce.stackexchange.com/a/223381
     // Version 4, random UUID format
     // xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx

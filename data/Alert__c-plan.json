@@ -1,8 +1,0 @@
-[
-  {
-    "sobject": "Alert__c",
-    "saveRefs": true,
-    "resolveRefs": false,
-    "files": ["Alert__cs.json"]
-  }
-]

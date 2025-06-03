@@ -10,10 +10,18 @@ sf org create scratch \
   --definition-file config/project-scratch-def.json
 
 # install nebula logger
+echo "...Installing Nebula Logger"
 sf package install --wait 30 \
   --security-type AdminsOnly \
   --no-prompt \
   --package 04t5Y0000015pGtQAI
+
+# install lwc-utils - core
+echo "...Installing LWC Utils Core"
+sf package install --wait 30 \
+  --security-type AdminsOnly \
+  --no-prompt \
+  --package 04t1Q000001ACZsQAO
 
 # push mdt
 echo "...Pushing metadata to $1"
@@ -24,15 +32,10 @@ sf project deploy start \
 # assign permsets
 echo "...Assigning Permission Set LWCDemoApp, ConsoleNav, & AlertsManager"
 sf org assign permset \
-  --name LWCDemoApp \
-  --name ConsoleNav \
-  --name AlertsManager
+  --name Admin \
+  --name LWCDemoApp
 
 # load data
 echo "...Importing data/Account-Contact-Case-plan.json"
 sf data import tree \
   --plan data/Account-Contact-Case-plan.json
-
-echo "...Importing data/Alert__c-plan.json"
-sf data import tree \
-  --plan data/Alert__c-plan.json

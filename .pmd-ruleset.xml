@@ -197,7 +197,10 @@
   >
       <priority>3</priority>
       <properties>
-        <property name="Apex-Mockery Expect" value="Expect\.that\(.*\)\." />
+        <property
+        name="additionalAssertMethodPattern"
+        value="Expect\.that\(.*\)\."
+      />
       </properties>
    </rule>
    <rule

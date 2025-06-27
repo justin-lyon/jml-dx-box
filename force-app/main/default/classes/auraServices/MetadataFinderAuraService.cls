@@ -4,9 +4,13 @@ public with sharing class MetadataFinderAuraService {
     String mdtName,
     String fieldName
   ) {
+    SObjectType mdtType = Toolbox.getSObjectType(mdtName);
+    SObjectField fieldToken = mdtType.getDescribe()
+      .fields.getMap()
+      .get(fieldName);
     List<Schema.PicklistEntry> entries = Toolbox.getPicklistEntries(
-      mdtName,
-      fieldName
+      mdtType,
+      fieldToken
     );
     List<Option> options = new List<Option>();
     for (Schema.PicklistEntry ple : entries) {

@@ -18,10 +18,14 @@ public with sharing class CollectionsUtil {
     return ownerChanged;
   }
 
-  public Set<Id> toSetOfId(List<SObject> records, final String idFieldName) {
+  public Set<Id> toSetOfId(
+    List<SObject> records,
+    final SObjectField fieldToken
+  ) {
+    String fieldName = fieldToken.getDescribe().getName();
     Set<Id> ids = new Set<Id>();
     for (SObject record : records) {
-      Id recordId = getIdField(record, IdFieldName);
+      Id recordId = getIdField(record, fieldName);
       ids.add(recordId);
     }
     return ids;
@@ -29,8 +33,9 @@ public with sharing class CollectionsUtil {
 
   public Set<String> toSetOfString(
     List<SObject> records,
-    final String fieldName
+    final SObjectField fieldToken
   ) {
+    String fieldName = fieldToken.getDescribe().getName();
     Set<String> items = new Set<String>();
     for (SObject record : records) {
       String item = getStringField(record, fieldName);
@@ -42,8 +47,9 @@ public with sharing class CollectionsUtil {
   public Map<String, SObject> toMapByStringKey(
     List<SObject> records,
     final Schema.SObjectType objType,
-    final String fieldName
+    final SObjectField fieldToken
   ) {
+    String fieldName = fieldToken.getDescribe().getName();
     Type mapType = Type.forName('Map<String, ' + String.valueOf(objType) + '>');
     Map<String, SObject> items = (Map<String, SObject>) mapType.newInstance();
 

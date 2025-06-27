@@ -52,7 +52,7 @@ private class CollectionsUtilTest {
 
     Test.startTest();
 
-    Set<Id> accountIds = sut.toSetOfId(new List<Account>{ acc }, 'Id');
+    Set<Id> accountIds = sut.toSetOfId(new List<Account>{ acc }, Account.Id);
 
     Test.stopTest();
 
@@ -76,7 +76,7 @@ private class CollectionsUtilTest {
 
     Test.startTest();
 
-    Set<String> names = sut.toSetOfString(accounts, 'Name');
+    Set<String> names = sut.toSetOfString(accounts, Account.Name);
 
     Test.stopTest();
 
@@ -196,7 +196,7 @@ private class CollectionsUtilTest {
     Map<String, Product2> productsByCode = (Map<String, Product2>) sut.toMapByStringKey(
       products,
       Product2.getSObjectType(),
-      'ProductCode'
+      Product2.ProductCode
     );
 
     Test.stopTest();

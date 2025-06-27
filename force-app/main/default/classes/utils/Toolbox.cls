@@ -30,10 +30,9 @@ public class Toolbox {
   }
 
   public static Id getRecordTypeId(
-    String objectName,
-    String recordTypeDeveloperName
+    final SObjectType objectType,
+    final String recordTypeDeveloperName
   ) {
-    Schema.SObjectType objectType = getSObjectType(objectName);
     return objectType.getDescribe()
       .getRecordTypeInfosByDeveloperName()
       .get(recordTypeDeveloperName)
@@ -54,22 +53,23 @@ public class Toolbox {
   }
 
   public static List<Schema.PicklistEntry> getPicklistEntries(
-    String objectName,
-    String fieldName
+    final SObjectType objectType,
+    final SObjectField fieldToken
   ) {
-    Schema.DescribeSObjectResult objectDescribe = getSObjectType(objectName)
-      .getDescribe();
-    return objectDescribe.Fields.getMap()
+    String fieldName = fieldToken.getDescribe().getName();
+    return objectType.getDescribe()
+      .Fields.getMap()
       .get(fieldName)
       .getDescribe()
       .getPicklistValues();
   }
 
   public static SObject setUnwritableField(
-    SObject record,
-    String fieldName,
-    Object value
+    final SObject record,
+    final SObjectField fieldToken,
+    final Object value
   ) {
+    String fieldName = fieldToken.getDescribe().getName();
     String jsonRecord = JSON.serialize(record);
     Map<String, Object> temp = (Map<String, Object>) JSON.deserializeUntyped(
       jsonRecord

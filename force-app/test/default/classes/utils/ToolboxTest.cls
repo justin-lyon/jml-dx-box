@@ -32,7 +32,7 @@ private class ToolboxTest {
   static void getRecordTypeId_givenCaseMaster_shouldGetId() {
     Test.startTest();
 
-    Id caseMaster = Toolbox.getRecordTypeId('Case', 'Master');
+    Id caseMaster = Toolbox.getRecordTypeId(Case.getSObjectType(), 'Master');
 
     Test.stopTest();
     System.assertNotEquals(null, caseMaster);
@@ -61,8 +61,8 @@ private class ToolboxTest {
     Test.startTest();
 
     List<Schema.PickListEntry> entries = Toolbox.getPicklistEntries(
-      'Account',
-      'AccountSource'
+      Account.getSObjectType(),
+      Account.AccountSource
     );
 
     Test.stopTest();
@@ -100,7 +100,7 @@ private class ToolboxTest {
 
     Test.startTest();
 
-    c = (Case) Toolbox.setUnwritableField(c, 'CaseNumber', CASE_NUMBER);
+    c = (Case) Toolbox.setUnwritableField(c, Case.CaseNumber, CASE_NUMBER);
 
     Test.stopTest();
 

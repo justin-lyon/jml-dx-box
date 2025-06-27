@@ -15,7 +15,7 @@ public with sharing class SetContactOwnerByAccount {
   }
 
   public void execute(List<Contact> contacts) {
-    Set<Id> accountIds = cutil.toSetOfId(contacts, 'AccountId');
+    Set<Id> accountIds = cutil.toSetOfId(contacts, Contact.AccountId);
     Map<Id, Account> accountsById = new Map<Id, Account>(
       // Here the dependency is used to query accounts by id.
       // We'll have to mock this in a test.

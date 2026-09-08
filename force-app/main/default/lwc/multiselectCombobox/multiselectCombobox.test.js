@@ -694,6 +694,78 @@ describe('c-multiselect-combobox', () => {
     expect(getPillsCmp(cmp).label).toBe('Selected Relate To');
   });
 
+  it('re-reports validity when removing a pill drops below min', async () => {
+    const cmp = initCmp(MultiselectCombobox, {
+      min: 3,
+      showPills: true,
+      value: ['Account', 'Report', 'Contact']
+    });
+    await Promise.resolve();
+
+    const help = () =>
+      cmp.shadowRoot
+        .querySelector('.slds-form-element__help')
+        .textContent.trim();
+
+    expect(cmp.checkValidity()).toBe(true);
+    expect(help()).toBe('');
+
+    // remove one through the real child, as a user would
+    const pills = getPillsCmp(cmp);
+    mouseSelect(pills.shadowRoot.querySelector('.slds-pill__remove'));
+    await Promise.resolve();
+
+    expect(cmp.value.length).toBe(2);
+    expect(cmp.checkValidity()).toBe(false);
+    expect(help()).toBe('Select at least 3 options.');
+    expect(getFormElement(cmp).className).toEqual(
+      expect.stringContaining('slds-has-error')
+    );
+    expect(getInput(cmp).getAttribute('aria-invalid')).toBe('true');
+  });
+
+  it('re-reports validity when deselecting in the dropdown drops below min', async () => {
+    const cmp = initCmp(MultiselectCombobox, {
+      min: 3,
+      value: ['Account', 'Report', 'Contact']
+    });
+    await open(cmp);
+
+    const selected = getOptions(cmp).find(
+      (o) => o.getAttribute('aria-selected') === 'true'
+    );
+    mouseSelect(selected);
+    await Promise.resolve();
+
+    expect(
+      cmp.shadowRoot
+        .querySelector('.slds-form-element__help')
+        .textContent.trim()
+    ).toBe('Select at least 3 options.');
+  });
+
+  it('clears the error again once min is satisfied', async () => {
+    const cmp = initCmp(MultiselectCombobox, { min: 2 });
+    await open(cmp);
+
+    mouseSelect(getOptions(cmp)[0]);
+    await Promise.resolve();
+    expect(
+      cmp.shadowRoot
+        .querySelector('.slds-form-element__help')
+        .textContent.trim()
+    ).toBe('Select at least 2 options.');
+
+    mouseSelect(getOptions(cmp)[1]);
+    await Promise.resolve();
+    expect(
+      cmp.shadowRoot
+        .querySelector('.slds-form-element__help')
+        .textContent.trim()
+    ).toBe('');
+    expect(getInput(cmp).getAttribute('aria-invalid')).toBe('false');
+  });
+
   it('reports a required field as invalid', async () => {
     const cmp = initCmp(MultiselectCombobox, { required: true });
 

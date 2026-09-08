@@ -700,8 +700,12 @@ export default class MultiselectCombobox extends LightningElement {
   }
 
   afterValueChange() {
-    // Clear a visible error as soon as the field becomes valid again.
-    if (this.errorMessage) this.reportValidity();
+    // Re-validate on every user-driven change, not just when an error is
+    // already showing. Removing a selection can take a valid field invalid
+    // (drop below min), and gating on errorMessage kept that silent until
+    // blur. Only toggleValue and removeValue reach here, so this never fires
+    // for a programmatic `value` assignment or on first render.
+    this.reportValidity();
     this.fireSelected();
   }
 

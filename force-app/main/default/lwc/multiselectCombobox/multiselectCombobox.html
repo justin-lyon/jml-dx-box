@@ -1,0 +1,139 @@
+<template>
+  <div class={formElementClass} onfocusout={handleFocusOut}>
+    <label class={labelClass} for={inputId}>
+      <abbr lwc:if={isRequired} class="slds-required" title="required">* </abbr>
+      {label}
+    </label>
+
+    <div class="slds-form-element__control">
+      <div class={containerClass}>
+        <div class={comboboxClass}>
+          <div
+            class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+            role="none"
+          >
+            <input
+              type="text"
+              id={inputId}
+              data-input
+              name={name}
+              class="slds-input slds-combobox__input"
+              role="combobox"
+              autocomplete="off"
+              aria-autocomplete="list"
+              aria-haspopup="listbox"
+              aria-expanded={ariaExpanded}
+              aria-controls={listboxId}
+              aria-activedescendant={activeDescendantId}
+              aria-describedby={helpId}
+              aria-required={ariaRequired}
+              aria-invalid={ariaInvalid}
+              value={displayValue}
+              placeholder={computedPlaceholder}
+              disabled={disabled}
+              onfocus={handleFocus}
+              onclick={handleInputClick}
+              oninput={handleInput}
+              onkeydown={handleKeyDown}
+            />
+            <span
+              class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right"
+            >
+              <lightning-icon
+                icon-name="utility:down"
+                size="x-small"
+              ></lightning-icon>
+            </span>
+          </div>
+
+          <div
+            id={listboxId}
+            class={dropdownClass}
+            role="listbox"
+            aria-multiselectable="true"
+            aria-label={listboxLabel}
+          >
+            <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+              <template lwc:if={hasVisibleOptions}>
+                <template for:each={visibleOptions} for:item="option">
+                  <li
+                    key={option.key}
+                    role="presentation"
+                    class="slds-listbox__item"
+                  >
+                    <div
+                      id={option.id}
+                      data-index={option.index}
+                      class={option.optionClass}
+                      role="option"
+                      aria-selected={option.ariaSelected}
+                      aria-disabled={option.ariaDisabled}
+                      onmousedown={handleOptionMouseDown}
+                      onclick={handleOptionClick}
+                    >
+                      <span
+                        class="slds-media__figure slds-listbox__option-icon"
+                      >
+                        <span
+                          lwc:if={option.isSelected}
+                          class="slds-icon_container slds-current-color"
+                        >
+                          <lightning-icon
+                            icon-name="utility:check"
+                            size="x-small"
+                          ></lightning-icon>
+                        </span>
+                      </span>
+                      <span class="slds-media__body">
+                        <span class="slds-truncate" title={option.label}
+                          >{option.label}</span
+                        >
+                      </span>
+                    </div>
+                  </li>
+                </template>
+              </template>
+
+              <template lwc:else>
+                <li role="presentation" class="slds-listbox__item">
+                  <div
+                    class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small"
+                    role="option"
+                    aria-disabled="true"
+                    aria-selected="false"
+                  >
+                    <span class="slds-media__figure slds-listbox__option-icon">
+                    </span>
+                    <span class="slds-media__body">
+                      <span class="slds-truncate">No matches found.</span>
+                    </span>
+                  </div>
+                </li>
+              </template>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <c-multiselect-combobox-pills
+        lwc:if={hasPills}
+        items={pillItems}
+        label={pillsLabel}
+        disabled={disabled}
+        onremove={handlePillRemove}
+      ></c-multiselect-combobox-pills>
+    </div>
+
+    <!--
+      Rendered unconditionally: a live region inserted already-populated is
+      not announced by NVDA, JAWS or VoiceOver. Only the text may change.
+    -->
+    <div id={helpId} class="slds-form-element__help" aria-live="polite">
+      {errorMessage}
+    </div>
+
+    <div class="slds-assistive-text" role="status" aria-live="polite">
+      {resultsAnnouncement}
+    </div>
+  </div>
+</template>

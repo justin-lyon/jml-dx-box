@@ -1,0 +1,13 @@
+.slds-listbox__option.slds-is-disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/*
+ * The check on a selected option should track the option's text colour. Same
+ * reason as the pill remove icon: .slds-current-color cannot cross into
+ * lightning-icon's shadow root, but the custom property inherits.
+ */
+.slds-listbox__option-icon {
+  --sds-c-icon-color-foreground-default: currentColor;
+}

@@ -1,0 +1,49 @@
+<template>
+  <div class="slds-listbox_selection-group slds-is-expanded">
+    <ul
+      class="slds-listbox slds-listbox_horizontal"
+      role="listbox"
+      aria-orientation="horizontal"
+      aria-label={label}
+    >
+      <template for:each={pills} for:item="pill">
+        <li key={pill.key} class="slds-listbox-item" role="presentation">
+          <span
+            class="slds-pill"
+            role="option"
+            aria-selected="true"
+            aria-describedby={helpId}
+            tabindex={pill.tabindex}
+            data-pill-index={pill.index}
+            onkeydown={handleKeyDown}
+          >
+            <span class="slds-pill__label" title={pill.label}
+              >{pill.label}</span
+            >
+            <span
+              class="slds-icon_container slds-pill__remove"
+              title="Remove"
+              data-remove-index={pill.index}
+              onmousedown={handleRemoveMouseDown}
+              onclick={handleRemoveClick}
+            >
+              <lightning-icon
+                icon-name="utility:close"
+                size="x-small"
+              ></lightning-icon>
+              <span class="slds-assistive-text">Remove {pill.label}</span>
+            </span>
+          </span>
+        </li>
+      </template>
+    </ul>
+
+    <!--
+      Described on each pill, not on the listbox: focus lands on the pill, and
+      a description on an ancestor is not announced to a focused descendant.
+    -->
+    <div id={helpId} class="slds-assistive-text">
+      Press delete or backspace to remove
+    </div>
+  </div>
+</template>

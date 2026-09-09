@@ -1,0 +1,58 @@
+:host {
+  display: block;
+  margin-top: 0.25rem;
+}
+
+/*
+ * On slds-is-expanded in the template: SLDS pins .slds-listbox_selection-group
+ * to height: $height-input with overflow: hidden, so a wrapped pill row is
+ * clipped after the first line. slds-is-expanded is the blueprint's own
+ * release valve (height: auto), used here in place of the "+N more" toggle.
+ */
+
+/* The pill is the roving focus target, so it needs a visible focus ring. */
+.slds-pill:focus {
+  outline: 2px solid var(--slds-g-color-brand-base-50, #0176d3);
+  outline-offset: 2px;
+}
+
+/*
+ * SLDS: .slds-icon falls back to $color-text-icon-inverse (white) and only
+ * .slds-icon-text-default reads --sds-c-icon-color-foreground-default. The
+ * icon renders inside lightning-icon's shadow root, so .slds-current-color's
+ * descendant selector cannot reach it. Custom properties inherit across the
+ * boundary, so drive the fill with the hook instead.
+ */
+.slds-pill__remove {
+  cursor: pointer;
+  flex-shrink: 0;
+  --sds-c-icon-color-foreground-default: currentColor;
+}
+
+/*
+ * Make SLDS's own truncation actually engage.
+ *
+ * .slds-pill__label already carries nowrap + ellipsis and .slds-pill is capped
+ * at max-width: 100%, but that 100% resolves against li.slds-listbox-item, a
+ * flex item defaulting to min-width: auto which never shrinks below its
+ * intrinsic text width. So the li inflates and every cap downstream is
+ * measured against an already-oversized box. min-width: 0 unblocks it.
+ *
+ * Full text stays reachable through the label's title attribute.
+ */
+.slds-listbox_horizontal {
+  max-width: 100%;
+}
+
+.slds-listbox-item {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.slds-pill {
+  max-width: 100%;
+}
+
+.slds-pill__label {
+  min-width: 0;
+}

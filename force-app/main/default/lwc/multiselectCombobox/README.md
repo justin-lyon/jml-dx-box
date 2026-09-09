@@ -2,7 +2,7 @@
 
 A multi-select combobox with typeahead filtering, an optional row of removable
 pills, and min/max selection constraints, built on the
-[SLDS combobox blueprint](https://www.lightningdesignsystem.com/components/combobox/)
+[SLDS 1 combobox blueprint](https://v1.lightningdesignsystem.com/components/combobox/#Multiple-selections)
 and the [ARIA 1.2 combobox pattern](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/).
 
 ## Usage

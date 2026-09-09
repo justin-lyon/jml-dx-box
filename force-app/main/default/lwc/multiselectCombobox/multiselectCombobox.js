@@ -29,6 +29,9 @@ const warnUnparsed = (name, raw, parsed) => {
   }
 };
 
+const sameOptionValues = (a, b) =>
+  a.length === b.length && a.every((option, i) => option.value === b[i].value);
+
 const toNumber = (value) => {
   if (value === undefined || value === null || value === '') return undefined;
   const num = Number(value);
@@ -44,7 +47,6 @@ const toNumber = (value) => {
  * alongside `min` is redundant but harmless.
  */
 export default class MultiselectCombobox extends LightningElement {
-  @api name;
   @api label;
   @api placeholder = 'Select an Option';
   @api messageWhenValueMissing = 'Complete this field.';
@@ -74,6 +76,7 @@ export default class MultiselectCombobox extends LightningElement {
   _pillItemsKey = null;
   _pillItems = [];
   _restoringFocus = false;
+  _pendingSelectedEvent = false;
 
   @api
   get options() {
@@ -107,8 +110,17 @@ export default class MultiselectCombobox extends LightningElement {
       );
     }
 
+    // A different set of options makes the current selection meaningless, so
+    // start clean. Skipped when there were no options before, because `value`
+    // is commonly assigned before options arrive from a wire and resetting
+    // then would discard it.
+    const isNewList =
+      this._options.length > 0 && !sameOptionValues(this._options, unique);
+
     this._options = unique;
     this._optionsRevision += 1;
+
+    if (isNewList) this.reset();
   }
 
   @api
@@ -243,6 +255,26 @@ export default class MultiselectCombobox extends LightningElement {
     this._customValidity = message || '';
   }
 
+  // Back to the state a freshly rendered component would be in, keeping the
+  // consumer's own configuration (options, constraints, custom validity).
+  // Internal: consumers clear a selection with `value = []`.
+  reset() {
+    // Only worth telling the consumer if there was actually a selection to
+    // lose. It also keeps the flag from latching when reset is a no-op and no
+    // re-render follows to consume it.
+    const hadValue = this._value.length > 0;
+
+    this._value = [];
+    this.searchTerm = '';
+    this.activeIndex = -1;
+    this.isOpen = false;
+    this.errorMessage = '';
+    this._scrolledIndex = -1;
+    // Dispatched from renderedCallback: firing here would run the consumer's
+    // handler inside its own render pass.
+    if (hadValue) this._pendingSelectedEvent = true;
+  }
+
   @api
   focus() {
     const input = this.inputElement;
@@ -268,6 +300,11 @@ export default class MultiselectCombobox extends LightningElement {
   }
 
   renderedCallback() {
+    if (this._pendingSelectedEvent) {
+      this._pendingSelectedEvent = false;
+      this.fireSelected();
+    }
+
     if (this._pendingInputFocus) {
       this._pendingInputFocus = false;
       this.focus();
@@ -423,7 +460,6 @@ export default class MultiselectCombobox extends LightningElement {
 
   // min >= 1 cannot be satisfied by an empty field, so it is a required field
   // whether or not `required` was also set.
-  @api
   get isRequired() {
     return this._required || this.effectiveMin !== undefined;
   }

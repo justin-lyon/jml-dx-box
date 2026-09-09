@@ -64,7 +64,6 @@ export default class MultiselectComboboxPills extends LightningElement {
     else if (this.focusIndex > count - 1) this.focusIndex = count - 1;
   }
 
-  @api
   focus() {
     const pill = this.template.querySelector(
       `[data-pill-index="${this.focusIndex}"]`

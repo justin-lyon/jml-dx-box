@@ -5,6 +5,10 @@ pills, and min/max selection constraints, built on the
 [SLDS 1 combobox blueprint](https://v1.lightningdesignsystem.com/components/combobox/#Multiple-selections)
 and the [ARIA 1.2 combobox pattern](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/).
 
+## Demo
+
+https://github.com/user-attachments/assets/5491b2b3-9014-4385-a161-2646206d855f
+
 ## Usage
 
 <!-- prettier-ignore -->
